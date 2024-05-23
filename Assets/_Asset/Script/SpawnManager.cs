@@ -21,6 +21,7 @@ public class SpawnManager : Singleton<SpawnManager>
     // Start is called before the first frame update
     void Start()
     {
+        InitDropBrick();
         SpawnCube();
     }
 
@@ -29,10 +30,16 @@ public class SpawnManager : Singleton<SpawnManager>
     {
 
     }
+
     public void SpawnCube()
     {
-        // GameObject brick = dropBrick[Random.Range(0, dropBrick.Count)];
+        GameObject brick = dropBrick[Random.Range(0, dropBrick.Count)];
         Instantiate(brick, Vector3.up * 10, Quaternion.identity, cubeContainer);
+    }
+
+    public void InitDropBrick()
+    {
+        dropBrick = blockConfig.GetBlockPrefab();
     }
 
 }

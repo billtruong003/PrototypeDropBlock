@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using BlockBuilder.BlockManagement;
 
 public class RayCastDetect : MonoBehaviour
 {
@@ -10,31 +11,52 @@ public class RayCastDetect : MonoBehaviour
     [SerializeField] private Material normalColor; // Màu bình thường
     [SerializeField] private Material blockNormCol;
     [SerializeField] private MeshRenderer lastMeshRenderer;
+    [SerializeField] private AngleShoot angleShoot;
 
     private GameObject lastHitObject; // Đối tượng cuối cùng mà raycast đã chạm vào
     private Vector3 hitPosition;
     private Ray ray;
-    private CubeController cubeController;
+    private BlockController cubeController;
+
     void Start()
     {
-        cubeController = gameObject.GetComponent<CubeController>();
+        cubeController = gameObject.GetComponent<BlockController>();
         if (cubeController == null)
         {
-            cubeController = transform.parent.GetComponent<CubeController>();
+            cubeController = transform.parent.GetComponent<BlockController>();
         }
     }
 
     void Update()
     {
-        RayCastDown();
+        RayCastAngle();
     }
 
-    private void RayCastDown()
+    private void RayCastAngle()
     {
         if (cubeController.DoneDrop)
             return;
 
-        ray = new Ray(transform.position, Vector3.down);
+        switch (angleShoot)
+        {
+            case AngleShoot.DOWN:
+                CastRay(Vector3.down);
+                break;
+            case AngleShoot.SIDE:
+                CastRay(Vector3.forward);
+                CastRay(Vector3.back);
+                CastRay(Vector3.left);
+                CastRay(Vector3.right);
+                break;
+            case AngleShoot.TOP:
+                CastRay(Vector3.up);
+                break;
+        }
+    }
+
+    private void CastRay(Vector3 direction)
+    {
+        ray = new Ray(transform.position, direction);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, 20, groundLayer))
@@ -43,7 +65,6 @@ public class RayCastDetect : MonoBehaviour
             Debug.DrawLine(transform.position, hit.point, Color.green);
 
             GameObject hitObject = hit.collider.gameObject;
-            Debug.Log(hitObject.tag);
             hitPosition = hitObject.transform.position;
 
             MeshRenderer meshRenderer = hitObject.GetComponent<MeshRenderer>();
@@ -80,8 +101,8 @@ public class RayCastDetect : MonoBehaviour
     public void SetDetectBlock(MeshRenderer mesh)
     {
         mesh.material = touchColor;
-
     }
+
     public void SetBackBlockMat()
     {
         if (lastMeshRenderer.gameObject.CompareTag("Ground"))
@@ -93,14 +114,17 @@ public class RayCastDetect : MonoBehaviour
             lastMeshRenderer.material = blockNormCol;
         }
     }
+
     public GameObject GetHitObject()
     {
         return lastHitObject;
     }
+
     public Vector3 GetHitPosition()
     {
         return hitPosition;
     }
+
     public float GetYHitPosition()
     {
         return hitPosition.y;

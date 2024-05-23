@@ -3,25 +3,66 @@ using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
-
-[Serializable]
-public class BlockInfo
+namespace BlockBuilder.BlockManagement
 {
-    public string PathToBlock;
-    public BlockShape Shape;
-
-    public GameObject GetBlock()
+    [Serializable]
+    public class BlockInfo
     {
-        return Resources.Load<GameObject>(PathToBlock);
+        public string PathToBlock;
+        public BlockShape Shape;
+
+        public GameObject GetBlock()
+        {
+            return Resources.Load<GameObject>(PathToBlock);
+        }
     }
-}
-[Serializable]
-public enum BlockShape
-{
-    SINGLE,
-    DOUBLE,
-    BIGPLANE,
-    ISHAPE,
+    [Serializable]
+    public class BlockGenInfo
+    {
+        public string PathToBuilding;
+        public BuildingType Type;
+        public GameObject GetBuilding()
+        {
+            if (string.IsNullOrEmpty(PathToBuilding))
+            {
+                Debug.LogError("PathToBuilding is null or empty!");
+                return null;
+            }
+
+            GameObject building = Resources.Load<GameObject>(PathToBuilding);
+            if (building == null)
+            {
+                Debug.LogError($"Failed to load building at path: {PathToBuilding}");
+            }
+
+            return building;
+        }
+
+    }
+
+    [Serializable]
+    public class MaterialApplyInfo
+    {
+        public string PathToMaterial;
+        public MaterialType MatType;
+        public MaterialMixType MatMixType;
+
+        public Material GetBuilding()
+        {
+            return Resources.Load<Material>(PathToMaterial);
+        }
+    }
+    [Serializable]
+    public class CombineBuildingAndMaterial
+    {
+        public BlockShape shape;
+        public BuildingType returnBuilding;
+        public BuildingType GetBuilding()
+        {
+            return returnBuilding;
+        }
+    }
 }
