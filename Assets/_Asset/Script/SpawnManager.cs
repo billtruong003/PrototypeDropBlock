@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
     [SerializeField] private Transform cubeContainer;
-    [SerializeField] private GameObject cubeDrop;
+    [SerializeField] private List<GameObject> dropBrick;
+    [SerializeField] private GameObject brick;
+
+    [SerializeField]
+    [Expandable] private BlockConfig blockConfig;
 
     protected override void Awake()
     {
@@ -25,7 +31,8 @@ public class SpawnManager : Singleton<SpawnManager>
     }
     public void SpawnCube()
     {
-        Instantiate(cubeDrop, Vector3.up * 10, Quaternion.identity, cubeContainer);
+        // GameObject brick = dropBrick[Random.Range(0, dropBrick.Count)];
+        Instantiate(brick, Vector3.up * 10, Quaternion.identity, cubeContainer);
     }
 
 }

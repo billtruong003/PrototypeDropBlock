@@ -14,10 +14,32 @@ public class BlockConfig : ScriptableObject
     [Button]
     private void GenerateBlockData()
     {
-        int count = 0;
+        blockDatas.Clear(); // Clear the existing data before generating new data
         foreach (BlockShape shape in Enum.GetValues(typeof(BlockShape)))
         {
-            blockDatas[count].PathToBlock = $"{path}/{shape}";
+            BlockInfo newData = new BlockInfo
+            {
+                PathToBlock = $"{path}/{shape.ToString()}",
+                Shape = shape
+            };
+            blockDatas.Add(newData);
         }
+    }
+
+    [Button]
+    private void ClearBlockData()
+    {
+        blockDatas.Clear();
+    }
+
+    public List<GameObject> GetBlockPrefab()
+    {
+        List<GameObject> blocks = new();
+        foreach (var item in blockDatas)
+        {
+            GameObject block = item.GetBlock();
+            blocks.Add(block);
+        }
+        return blocks;
     }
 }

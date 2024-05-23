@@ -1,109 +1,186 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+
 public class CubeController : MonoBehaviour
 {
-    public bool doneDrop = false;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private List<RayCastDetect> rayCastDetect;
-    [SerializeField] private float floatingSpeed;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float floatingSpeed = 2f;
+    [SerializeField] private Transform pivot;
+    [SerializeField] private List<RayCastDetect> rayCastDetect = new List<RayCastDetect>();
+    [SerializeField] private List<GameObject> totalCube = new();
     private bool isDropping = false;
     private Vector3 targetPosition;
+    private GameObject detectedObject;
     private GameObject hitObject;
 
-    void Start()
+    public bool DoneDrop { get; private set; } = false;
+
+    private void Start()
     {
+        // Ensure rayCastDetect is correctly populated with RayCastDetect components
         rayCastDetect = GetAllComponents(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        BlockMovement();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!DoneDrop)
         {
-            DropToCenter();
+            HandleMovement();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                DropToCenter();
+            }
         }
     }
 
-    private void BlockMovement()
+    private void HandleMovement()
     {
-        if (doneDrop)
-            return;
-
         float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         float moveZ = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-
         transform.Translate(new Vector3(moveX, 0, moveZ));
     }
+
     private void DropToCenter()
     {
-        if (doneDrop)
-            return;
-        doneDrop = true;
-        targetPosition = GetHighestPose();
+        DoneDrop = true;
+        targetPosition = GetHighestPosition();
         hitObject = GetHitObject();
+        detectedObject = GetObjectDetect();
 
+        // Ensure detectedObject is valid before proceeding
+        if (detectedObject == null)
+        {
+            Debug.LogError("Detected object is null");
+            return;
+        }
 
+        // Set pivot position before setting parent
+        pivot.position = detectedObject.transform.position;
+
+        // Set parent for all cubes
+        SetParentAllCube();
+
+        // Move pivot to target position
         Vector3 targetPose = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
-        transform.position = targetPose;
+        pivot.position = targetPose;
+
         Sequence mySequence = DOTween.Sequence();
 
-        // mySequence.Append(transform.DOMove(targetPose, floatingSpeed).SetEase(Ease.Flash));
-        if (hitObject.CompareTag("Block"))
+        if (hitObject != null && hitObject.CompareTag("Block"))
         {
-            mySequence.Append(transform.DOMoveY(targetPosition.y + 1, floatingSpeed).SetEase(Ease.InQuad));
+            mySequence.Append(pivot.DOMoveY(targetPosition.y + 1, floatingSpeed).SetEase(Ease.InQuad));
         }
         else
         {
-            mySequence.Append(transform.DOMoveY(targetPosition.y + 0.5f, floatingSpeed).SetEase(Ease.InQuad));
+            mySequence.Append(pivot.DOMoveY(targetPosition.y + 0.5f, floatingSpeed).SetEase(Ease.InQuad));
         }
-        mySequence.OnComplete(() =>
-        {
-            doneDrop = true;
 
-            if (SpawnManager.Instance != null)
-            {
-                SpawnManager.Instance.SpawnCube();
-            }
-        });
+        mySequence.OnComplete(() => OnDropComplete());
     }
+
+    private void OnDropComplete()
+    {
+        if (SpawnManager.Instance != null)
+        {
+            SpawnManager.Instance.SpawnCube();
+            SetAllBlockMaterials();
+            SavePosition();
+        }
+    }
+
     private List<RayCastDetect> GetAllComponents(GameObject gameObject)
     {
         List<RayCastDetect> allComponents = new List<RayCastDetect>();
-
-        gameObject.GetComponentsInChildren<RayCastDetect>(true, allComponents);
-
+        gameObject.GetComponentsInChildren(true, allComponents);
         return allComponents;
     }
-    private Vector3 GetHighestPose()
+
+    private Vector3 GetHighestPosition()
     {
-        float y = -1;
-        Vector3 highestRay = Vector3.zero;
-        foreach (var item in rayCastDetect)
+        float maxY = float.MinValue;
+        Vector3 highestPosition = Vector3.zero;
+
+        foreach (var detector in rayCastDetect)
         {
-            if (item.GetYHitPosition() > y)
+            float y = detector.GetYHitPosition();
+            if (y > maxY)
             {
-                highestRay = item.GetHitPosition();
+                maxY = y;
+                highestPosition = detector.GetHitPosition();
             }
         }
-        return highestRay;
+        return highestPosition;
     }
+
     private GameObject GetHitObject()
     {
-        float y = -1;
-        GameObject hitObject = null;
-        foreach (var item in rayCastDetect)
+        float maxY = float.MinValue;
+        GameObject highestHitObject = null;
+
+        foreach (var detector in rayCastDetect)
         {
-            if (item.GetYHitPosition() > y)
+            float y = detector.GetYHitPosition();
+            if (y > maxY)
             {
-                hitObject = item.GetHitObject();
+                maxY = y;
+                highestHitObject = detector.GetHitObject();
             }
         }
-        return hitObject;
+        return highestHitObject;
     }
 
+    private GameObject GetObjectDetect()
+    {
+        float maxY = float.MinValue;
+        GameObject objectDetected = null;
+
+        foreach (var detector in rayCastDetect)
+        {
+            float y = detector.GetYHitPosition();
+            if (y > maxY)
+            {
+                maxY = y;
+                objectDetected = detector.gameObject;
+            }
+        }
+        return objectDetected;
+    }
+
+    private void SetAllBlockMaterials()
+    {
+        foreach (var detector in rayCastDetect)
+        {
+            detector.SetBackBlockMat();
+        }
+    }
+
+    private void SavePosition()
+    {
+        if (PositionManager.Instance != null)
+        {
+            PositionManager.Instance.SavePosition(transform.position);
+        }
+    }
+
+    private void SetParentAllCube()
+    {
+        // Cache the current world positions of the cubes
+        List<Vector3> worldPositions = new List<Vector3>();
+        foreach (var cube in totalCube)
+        {
+            worldPositions.Add(cube.transform.position);
+        }
+
+        // Set the parent of each cube to the pivot
+        for (int i = 0; i < totalCube.Count; i++)
+        {
+            var cube = totalCube[i];
+            cube.transform.SetParent(pivot);
+
+            // Convert the cached world positions to local positions relative to the pivot
+            cube.transform.position = worldPositions[i];
+        }
+    }
 
 }
-

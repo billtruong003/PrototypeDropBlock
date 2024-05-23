@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RayCastDetect : MonoBehaviour
@@ -8,6 +9,8 @@ public class RayCastDetect : MonoBehaviour
     [SerializeField] private Material touchColor; // Màu khi chạm
     [SerializeField] private Material normalColor; // Màu bình thường
     [SerializeField] private Material blockNormCol;
+    [SerializeField] private MeshRenderer lastMeshRenderer;
+
     private GameObject lastHitObject; // Đối tượng cuối cùng mà raycast đã chạm vào
     private Vector3 hitPosition;
     private Ray ray;
@@ -15,6 +18,10 @@ public class RayCastDetect : MonoBehaviour
     void Start()
     {
         cubeController = gameObject.GetComponent<CubeController>();
+        if (cubeController == null)
+        {
+            cubeController = transform.parent.GetComponent<CubeController>();
+        }
     }
 
     void Update()
@@ -24,7 +31,7 @@ public class RayCastDetect : MonoBehaviour
 
     private void RayCastDown()
     {
-        if (cubeController.doneDrop)
+        if (cubeController.DoneDrop)
             return;
 
         ray = new Ray(transform.position, Vector3.down);
@@ -37,56 +44,55 @@ public class RayCastDetect : MonoBehaviour
 
             GameObject hitObject = hit.collider.gameObject;
             Debug.Log(hitObject.tag);
-            hitPosition = hitObject.transform.position; // Cập nhật vị trí chạm của raycast
+            hitPosition = hitObject.transform.position;
 
             MeshRenderer meshRenderer = hitObject.GetComponent<MeshRenderer>();
 
             if (meshRenderer != null)
             {
-                // Reset the material of the last hit object if it's different from the current hit object
                 if (lastHitObject != null && lastHitObject != hitObject)
                 {
-                    MeshRenderer lastMeshRenderer = lastHitObject.GetComponent<MeshRenderer>();
+                    lastMeshRenderer = lastHitObject.GetComponent<MeshRenderer>();
                     if (lastMeshRenderer != null)
                     {
-                        if (lastHitObject.CompareTag("Ground"))
-                        {
-                            lastMeshRenderer.material = normalColor;
-                        }
-                        else if (lastHitObject.CompareTag("Block"))
-                        {
-                            lastMeshRenderer.material = blockNormCol;
-                        }
+                        SetBackBlockMat();
                     }
                 }
 
-                // Set the material of the current hit object to touchColor
                 meshRenderer.material = touchColor;
                 lastHitObject = hitObject;
             }
         }
         else
         {
-            // Reset the material of the last hit object if no object is hit
             if (lastHitObject != null)
             {
-                MeshRenderer lastMeshRenderer = lastHitObject.GetComponent<MeshRenderer>();
-                if (lastMeshRenderer != null && lastHitObject.CompareTag("Ground"))
+                lastMeshRenderer = lastHitObject.GetComponent<MeshRenderer>();
+                if (lastMeshRenderer != null)
                 {
-                    if (lastHitObject.CompareTag("Ground"))
-                    {
-                        lastMeshRenderer.material = normalColor;
-                    }
-                    else if (lastHitObject.CompareTag("Block"))
-                    {
-                        lastMeshRenderer.material = blockNormCol;
-                    }
+                    SetBackBlockMat();
                 }
                 lastHitObject = null;
             }
         }
     }
 
+    public void SetDetectBlock(MeshRenderer mesh)
+    {
+        mesh.material = touchColor;
+
+    }
+    public void SetBackBlockMat()
+    {
+        if (lastMeshRenderer.gameObject.CompareTag("Ground"))
+        {
+            lastMeshRenderer.material = normalColor;
+        }
+        else
+        {
+            lastMeshRenderer.material = blockNormCol;
+        }
+    }
     public GameObject GetHitObject()
     {
         return lastHitObject;

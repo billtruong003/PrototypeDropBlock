@@ -250,6 +250,7 @@ MonoBehaviour:
   touchColor: {fileID: 2100000, guid: 924358803d7b1fb49adb93fdd8e1c443, type: 2}
   normalColor: {fileID: 2100000, guid: fcbecb990c0337743b882479b1fe39c3, type: 2}
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
+  lastMeshRenderer: {fileID: 0}
 --- !u!1 &7964105746581450550
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +367,10 @@ PrefabInstance:
     - target: {fileID: 1493661492193289348, guid: 2b3a94d9831c338449255d36b879d78a, type: 3}
       propertyPath: m_Name
       value: building_tower_base_green
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493661492193289348, guid: 2b3a94d9831c338449255d36b879d78a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2301723801549553214, guid: 2b3a94d9831c338449255d36b879d78a, type: 3}
       propertyPath: m_LocalScale.x

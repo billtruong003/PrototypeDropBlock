@@ -13,5 +13,12 @@ MonoBehaviour:
   m_Name: BlockConfig
   m_EditorClassIdentifier: 
   blockDatas:
-  - PathToBlock: 
+  - PathToBlock: Block/SINGLE
     Shape: 0
+  - PathToBlock: Block/DOUBLE
+    Shape: 1
+  - PathToBlock: Block/BIGPLANE
+    Shape: 2
+  - PathToBlock: Block/ISHAPE
+    Shape: 3
+  path: Block
