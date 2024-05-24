@@ -21,6 +21,7 @@ public class BlockController : MonoBehaviour
     [SerializeField] private BlockAngle blockAngle;
 
 
+
     private float targetHeight;
     private bool isDropping = false;
     private Vector3 targetPosition;
@@ -28,7 +29,7 @@ public class BlockController : MonoBehaviour
     private GameObject hitObject;
 
 
-
+    public Transform GetPivot() => pivot;
     public bool DoneDrop { get; private set; } = false;
 
     private void Start()
@@ -220,11 +221,28 @@ public class BlockController : MonoBehaviour
         cubeData.InitShapeAndAngle(this.blockShape, this.blockAngle);
         cubeData.InitPositionRotation(pos, rotate);
         cubeData.InitGameObjectAndPivot(gameObject, pivot);
+        cubeData.AddBlockController(this);
 
         if (PositionManager.Instance != null)
         {
             PositionManager.Instance.SaveCubeType(cubeData);
         }
     }
+
+    public bool CheckRoof()
+    {
+        foreach (var item in rayCastDetect)
+        {
+            if (item.CheckBlockOnTop() == true)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
 
 }

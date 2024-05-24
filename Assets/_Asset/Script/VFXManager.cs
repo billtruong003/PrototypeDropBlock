@@ -64,7 +64,7 @@ public class VFXManager : MonoBehaviour
     private IEnumerator Cor_TriggerExplo(Vector3 pose)
     {
         ParticleSystem explosion = GetExplosion();
-        Vector3 positionSpawn = new Vector3(pose.x, pose.y + 1.5f, pose.z);
+        Vector3 positionSpawn = new Vector3(pose.x, pose.y, pose.z);
         explosion.transform.SetPositionAndRotation(positionSpawn, quaternion.identity);
         ActivateParticle(explosion);
         yield return new WaitForSeconds(1.5f);

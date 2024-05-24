@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using BlockBuilder.BlockManagement;
+using System.Runtime.CompilerServices;
 
 public class RayCastDetect : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class RayCastDetect : MonoBehaviour
     [SerializeField] private Material blockNormCol;
     [SerializeField] private MeshRenderer lastMeshRenderer;
     [SerializeField] private AngleShoot angleShoot;
+    [SerializeField] private LayerMask blockLayer = 8;
+    [SerializeField] private float detectionRadius = 3f;
 
     private GameObject lastHitObject; // Đối tượng cuối cùng mà raycast đã chạm vào
     private Vector3 hitPosition;
@@ -25,6 +28,7 @@ public class RayCastDetect : MonoBehaviour
         {
             cubeController = transform.parent.GetComponent<BlockController>();
         }
+        blockLayer = 8;
     }
 
     void Update()
@@ -128,5 +132,22 @@ public class RayCastDetect : MonoBehaviour
     public float GetYHitPosition()
     {
         return hitPosition.y;
+    }
+    public bool CheckBlockOnTop()
+    {
+        bool roofOnTop = CheckBlock(transform.position, Vector3.up);
+        Debug.Log($"GameObject {gameObject.name} roofOnTop {roofOnTop}");
+        return roofOnTop;
+    }
+    private bool CheckBlock(Vector3 origin, Vector3 direction)
+    {
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, detectionRadius, blockLayer))
+        {
+            Debug.Log($"Block detected in direction {direction} from position {origin}.");
+            Debug.Log($"Detection Hit: {hit.collider.gameObject}");
+            return true;
+        }
+        Debug.Log($"No block detected in direction {direction} from position {origin}.");
+        return false;
     }
 }

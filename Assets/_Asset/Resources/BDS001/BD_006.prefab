@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4209813215949932029}
   - component: {fileID: 2985178430621464721}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: BD_006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ MonoBehaviour:
   brick: {fileID: 636426412642169104}
   funiture: {fileID: 2865310365916406233}
   roof: {fileID: 6127577675769859050}
-  pivot: {fileID: 5608084195156552799}
+  pivots: []
 --- !u!1 &636426412642169104
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5844505960487185000}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 728362019066014478}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5608084195156552799}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2627350408713572832}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Furniture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6189864785826407043}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,9 +260,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bf6478cc1a475a04394083d394f1dba7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f1a64a5808e780b40b208ac3fda59945, type: 2}
+    - target: {fileID: -7511558181221131132, guid: bf6478cc1a475a04394083d394f1dba7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d67ed3809436a9488bf1d2084eca7f2, type: 2}
     - target: {fileID: 919132149155446097, guid: bf6478cc1a475a04394083d394f1dba7, type: 3}
       propertyPath: m_Name
       value: SM_Clay_Body_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf6478cc1a475a04394083d394f1dba7, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -322,9 +334,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f56db92df8676ea46a1275aff54a0454, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d67ed3809436a9488bf1d2084eca7f2, type: 2}
+    - target: {fileID: -7511558181221131132, guid: f56db92df8676ea46a1275aff54a0454, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f1a64a5808e780b40b208ac3fda59945, type: 2}
     - target: {fileID: 919132149155446097, guid: f56db92df8676ea46a1275aff54a0454, type: 3}
       propertyPath: m_Name
       value: SM_Clay_Door_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f56db92df8676ea46a1275aff54a0454, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -384,9 +408,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 891fe5acc4f8edb4e8418690dec766ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d67ed3809436a9488bf1d2084eca7f2, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 891fe5acc4f8edb4e8418690dec766ee, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d67ed3809436a9488bf1d2084eca7f2, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 891fe5acc4f8edb4e8418690dec766ee, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: f1a64a5808e780b40b208ac3fda59945, type: 2}
     - target: {fileID: 919132149155446097, guid: 891fe5acc4f8edb4e8418690dec766ee, type: 3}
       propertyPath: m_Name
       value: SM_Clay_Roof_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 891fe5acc4f8edb4e8418690dec766ee, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -446,9 +486,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 891fe5acc4f8edb4e8418690dec766ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d67ed3809436a9488bf1d2084eca7f2, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 891fe5acc4f8edb4e8418690dec766ee, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d67ed3809436a9488bf1d2084eca7f2, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 891fe5acc4f8edb4e8418690dec766ee, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: f1a64a5808e780b40b208ac3fda59945, type: 2}
     - target: {fileID: 919132149155446097, guid: 891fe5acc4f8edb4e8418690dec766ee, type: 3}
       propertyPath: m_Name
       value: SM_Clay_Roof_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 891fe5acc4f8edb4e8418690dec766ee, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
