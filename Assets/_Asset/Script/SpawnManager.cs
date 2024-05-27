@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : Singleton<SpawnManager>
@@ -9,37 +7,44 @@ public class SpawnManager : Singleton<SpawnManager>
     [SerializeField] private Transform cubeContainer;
     [SerializeField] private List<GameObject> dropBrick;
     [SerializeField] private GameObject brick;
-
-    [SerializeField]
-    [Expandable] private BlockConfig blockConfig;
+    [SerializeField, Expandable] private BlockConfig blockConfig;
 
     protected override void Awake()
     {
         base.Awake();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         InitDropBrick();
         SpawnCube();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        // Intentionally left blank
     }
 
     public void SpawnCube()
     {
-        GameObject brick = dropBrick[Random.Range(0, dropBrick.Count)];
-        Instantiate(brick, Vector3.up * 10, Quaternion.identity, cubeContainer);
+        if (dropBrick == null || dropBrick.Count == 0)
+        {
+            Debug.LogError("DropBrick list is empty. Cannot spawn cube.");
+            return;
+        }
+
+        GameObject selectedBrick = dropBrick[Random.Range(0, dropBrick.Count)];
+        Instantiate(selectedBrick, Vector3.up * 10, Quaternion.identity, cubeContainer);
     }
 
-    public void InitDropBrick()
+    private void InitDropBrick()
     {
+        if (blockConfig == null)
+        {
+            Debug.LogError("BlockConfig is null. Cannot initialize drop bricks.");
+            return;
+        }
+
         dropBrick = blockConfig.GetBlockPrefab();
     }
-
 }

@@ -10,8 +10,6 @@ public class BuildingHandle : MonoBehaviour
     [SerializeField] private List<Transform> pivots;
 
 
-
-
     public void TurnOnRoof()
     {
         roof.SetActive(true);

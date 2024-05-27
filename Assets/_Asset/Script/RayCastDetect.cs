@@ -7,31 +7,33 @@ using System.Runtime.CompilerServices;
 
 public class RayCastDetect : MonoBehaviour
 {
+    // Layer masks and materials
+    [Header("Layer Masks and Materials")]
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Material touchColor; // Màu khi chạm
-    [SerializeField] private Material normalColor; // Màu bình thường
+    [SerializeField] private Material touchColor;
+    [SerializeField] private Material normalColor;
     [SerializeField] private Material blockNormCol;
     [SerializeField] private MeshRenderer lastMeshRenderer;
+
+    // Detection settings
+    [Header("Detection Settings")]
     [SerializeField] private AngleShoot angleShoot;
     [SerializeField] private LayerMask blockLayer = 8;
     [SerializeField] private float detectionRadius = 3f;
 
-    private GameObject lastHitObject; // Đối tượng cuối cùng mà raycast đã chạm vào
+    // Private variables
+    private GameObject lastHitObject;
     private Vector3 hitPosition;
     private Ray ray;
     private BlockController cubeController;
 
-    void Start()
+    private void Start()
     {
-        cubeController = gameObject.GetComponent<BlockController>();
-        if (cubeController == null)
-        {
-            cubeController = transform.parent.GetComponent<BlockController>();
-        }
+        cubeController = gameObject.GetComponent<BlockController>() ?? transform.parent.GetComponent<BlockController>();
         blockLayer = 8;
     }
 
-    void Update()
+    private void Update()
     {
         RayCastAngle();
     }
@@ -61,44 +63,52 @@ public class RayCastDetect : MonoBehaviour
     private void CastRay(Vector3 direction)
     {
         ray = new Ray(transform.position, direction);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 20, groundLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, 20, groundLayer))
         {
-            Debug.Log("Hit ground: " + hit.collider.gameObject.name);
-            Debug.DrawLine(transform.position, hit.point, Color.green);
-
-            GameObject hitObject = hit.collider.gameObject;
-            hitPosition = hitObject.transform.position;
-
-            MeshRenderer meshRenderer = hitObject.GetComponent<MeshRenderer>();
-
-            if (meshRenderer != null)
-            {
-                if (lastHitObject != null && lastHitObject != hitObject)
-                {
-                    lastMeshRenderer = lastHitObject.GetComponent<MeshRenderer>();
-                    if (lastMeshRenderer != null)
-                    {
-                        SetBackBlockMat();
-                    }
-                }
-
-                meshRenderer.material = touchColor;
-                lastHitObject = hitObject;
-            }
+            HandleRaycastHit(hit);
         }
         else
         {
-            if (lastHitObject != null)
+            ResetLastHitObject();
+        }
+    }
+
+    private void HandleRaycastHit(RaycastHit hit)
+    {
+        Debug.Log("Hit ground: " + hit.collider.gameObject.name);
+        Debug.DrawLine(transform.position, hit.point, Color.green);
+
+        GameObject hitObject = hit.collider.gameObject;
+        hitPosition = hitObject.transform.position;
+
+        MeshRenderer meshRenderer = hitObject.GetComponent<MeshRenderer>();
+
+        if (meshRenderer != null)
+        {
+            if (lastHitObject != null && lastHitObject != hitObject)
             {
                 lastMeshRenderer = lastHitObject.GetComponent<MeshRenderer>();
                 if (lastMeshRenderer != null)
                 {
                     SetBackBlockMat();
                 }
-                lastHitObject = null;
             }
+
+            meshRenderer.material = touchColor;
+            lastHitObject = hitObject;
+        }
+    }
+
+    private void ResetLastHitObject()
+    {
+        if (lastHitObject != null)
+        {
+            lastMeshRenderer = lastHitObject.GetComponent<MeshRenderer>();
+            if (lastMeshRenderer != null)
+            {
+                SetBackBlockMat();
+            }
+            lastHitObject = null;
         }
     }
 
@@ -133,12 +143,14 @@ public class RayCastDetect : MonoBehaviour
     {
         return hitPosition.y;
     }
+
     public bool CheckBlockOnTop()
     {
         bool roofOnTop = CheckBlock(transform.position, Vector3.up);
         Debug.Log($"GameObject {gameObject.name} roofOnTop {roofOnTop}");
         return roofOnTop;
     }
+
     private bool CheckBlock(Vector3 origin, Vector3 direction)
     {
         if (Physics.Raycast(origin, direction, out RaycastHit hit, detectionRadius, blockLayer))

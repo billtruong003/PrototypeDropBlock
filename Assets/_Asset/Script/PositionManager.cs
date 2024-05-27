@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class PositionManager : Singleton<PositionManager>
 {
+    // Serialized fields
+    [Header("Settings")]
     [SerializeField] private ProcessMesh processMesh;
     [SerializeField] private List<CubeData> cubeDatas = new List<CubeData>();
     [SerializeField] private LayerMask blockLayer;
     [SerializeField] private float detectionRadius = 1.0f;
 
+    // Initialization
     protected override void Awake()
     {
         base.Awake();
@@ -42,22 +45,12 @@ public class PositionManager : Singleton<PositionManager>
 
         foreach (CubeData cubeData in cubeDatas)
         {
-            Vector3 cubePosition = cubeData.positionDrop;
             DisableAllMeshRenderers(cubeData.cube);
             processMesh.SpawnBuilding(cubeData);
         }
     }
 
-    private void DisableAllMeshRenderers(GameObject target)
-    {
-        MeshRenderer[] meshRenderers = target.GetComponentsInChildren<MeshRenderer>();
-        foreach (var meshRenderer in meshRenderers)
-        {
-            meshRenderer.enabled = false;
-        }
-    }
-
-    public void CheckBlocksAround()
+    public void CheckBlocksAround() // DOUBLE CHECK: THIS FUNCTION ONLY FOR DEBUGGING
     {
         foreach (CubeData cubeData in cubeDatas)
         {
@@ -68,6 +61,15 @@ public class PositionManager : Singleton<PositionManager>
             CheckDirection(cubePosition, Vector3.right);
             CheckDirection(cubePosition, Vector3.forward);
             CheckDirection(cubePosition, Vector3.back);
+        }
+    }
+
+    private void DisableAllMeshRenderers(GameObject target)
+    {
+        MeshRenderer[] meshRenderers = target.GetComponentsInChildren<MeshRenderer>();
+        foreach (var meshRenderer in meshRenderers)
+        {
+            meshRenderer.enabled = false;
         }
     }
 
@@ -82,5 +84,4 @@ public class PositionManager : Singleton<PositionManager>
             Debug.Log($"No block detected in direction {direction} from position {origin}.");
         }
     }
-
 }

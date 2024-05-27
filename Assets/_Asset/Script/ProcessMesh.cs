@@ -22,14 +22,15 @@ public class ProcessMesh : MonoBehaviour
         }
         BlockShape shape = cubeData.Shape;
         BlockAngle angle = cubeData.Angle;
-        Vector3 dropPosition = cubeData.positionDrop;
+        Vector3 dropPosition = cubeData.centerPoint.position;
 
         GameObject building = ProcessCubeCode(shape, angle);
-        GameObject spawnBuilding = Instantiate(building, meshContainer); cubeData.AddMesh(spawnBuilding);
+        GameObject spawnBuilding = Instantiate(building, meshContainer);
+        cubeData.AddMesh(spawnBuilding);
         spawnBuilding.transform.SetLocalPositionAndRotation(dropPosition, quaternion.identity);
         Anim.JellyBounce(spawnBuilding.transform);
-        vFXManager.TriggerExplo(cubeData.positionDrop);
-        Debug.Log($"Position: {cubeData.positionDrop}, Roof:");
+        vFXManager.TriggerExplo(dropPosition);
+        Debug.Log($"Position: {dropPosition}, Roof:");
         cubeData.ConditionalRoof();
     }
 

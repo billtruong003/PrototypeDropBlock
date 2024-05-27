@@ -6,31 +6,43 @@ using BlockBuilder.BlockManagement;
 using NaughtyAttributes;
 using UnityEngine.UIElements;
 using Unity.Mathematics;
+using System.Linq;
+
 public class BlockController : MonoBehaviour
 {
+    // Movement settings
+    [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float floatingSpeed = 2f;
+    [SerializeField] private bool canRotate;
+
+    // Transforms
+    [Header("Transforms")]
     [SerializeField] private Transform pivot;
+    [SerializeField] private Transform centerPoint;
+
+    // Raycast and Cube data
+    [Header("Raycast and Cube Data")]
     [SerializeField] private List<RayCastDetect> rayCastDetect = new List<RayCastDetect>();
     [SerializeField] private List<GameObject> totalCube = new();
 
+    // Block data
     [CustomHeader("Data", 15, "#B0EBB4")]
     [BoxGroup("CubeData")]
     [SerializeField] private BlockShape blockShape;
     [BoxGroup("CubeData")]
     [SerializeField] private BlockAngle blockAngle;
 
-
-
+    // Private variables
     private float targetHeight;
     private bool isDropping = false;
     private Vector3 targetPosition;
     private GameObject detectedObject;
     private GameObject hitObject;
 
+    public bool DoneDrop { get; private set; } = false;
 
     public Transform GetPivot() => pivot;
-    public bool DoneDrop { get; private set; } = false;
 
     private void Start()
     {
@@ -42,11 +54,13 @@ public class BlockController : MonoBehaviour
         if (!DoneDrop)
         {
             HandleMovement();
+            HandleRotate();
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 DropToCenter();
             }
         }
+
     }
 
     private void Init()
@@ -58,7 +72,29 @@ public class BlockController : MonoBehaviour
     {
         float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         float moveZ = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-        transform.Translate(new Vector3(moveX, 0, moveZ));
+        transform.Translate(new Vector3(moveX, 0, moveZ), Space.World);
+    }
+    private void HandleRotate()
+    {
+        if (!canRotate)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.E)) // Xoay quanh trục Y (right)
+        {
+            transform.Rotate(Vector3.up, 90, Space.World); // Xoay 90 độ quanh trục Y
+        }
+        if (Input.GetKeyDown(KeyCode.Q)) // Xoay quanh trục Y (left)
+        {
+            transform.Rotate(Vector3.up, -90, Space.World); // Xoay -90 độ quanh trục Y
+        }
+        if (Input.GetKeyDown(KeyCode.R)) // Xoay quanh trục X (up)
+        {
+            transform.Rotate(Vector3.right, 90, Space.World); // Xoay 90 độ quanh trục X
+        }
+        if (Input.GetKeyDown(KeyCode.F)) // Xoay quanh trục X (down)
+        {
+            transform.Rotate(Vector3.right, -90, Space.World); // Xoay -90 độ quanh trục X
+        }
     }
 
     private void DropToCenter()
@@ -68,44 +104,25 @@ public class BlockController : MonoBehaviour
         hitObject = GetHitObject();
         detectedObject = GetObjectDetect();
 
-        // Ensure detectedObject is valid before proceeding
         if (detectedObject == null)
         {
             Debug.LogError("Detected object is null");
             return;
         }
 
-        // Set pivot position before setting parent
         pivot.position = detectedObject.transform.position;
-
-        // Set parent for all cubes
         SetParentAllCube();
 
-        // Move pivot to target position
         Vector3 targetPose = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
         pivot.position = targetPose;
 
         Sequence mySequence = DOTween.Sequence();
 
-        if (hitObject != null && hitObject.CompareTag("Block"))
-        {
-            targetHeight = targetPosition.y + 1;
-
-        }
-        else
-        {
-            targetHeight = targetPosition.y + 0.5f;
-        }
+        targetHeight = hitObject != null && hitObject.CompareTag("Block") ? targetPosition.y + 1 : targetPosition.y + 0.5f;
         mySequence.Append(pivot.DOMoveY(targetHeight, floatingSpeed).SetEase(Ease.InQuad));
 
-        // Debug logging to ensure the sequence is set up correctly
         Debug.Log("Sequence setup completed");
-        mySequence.OnComplete(() =>
-        {
-            OnDropComplete();
-        });
-
-        // Debug logging to ensure the sequence starts
+        mySequence.OnComplete(OnDropComplete);
         mySequence.Play();
         Debug.Log("Sequence started");
     }
@@ -117,18 +134,14 @@ public class BlockController : MonoBehaviour
 
         if (SpawnManager.Instance != null)
         {
-            PositionManager.Instance.CheckBlocksAround();
             SpawnManager.Instance.SpawnCube();
-            Vector3 poseSave = new Vector3(targetPosition.x, targetHeight, targetPosition.z);
-            Quaternion rotation = transform.rotation;
-            SaveData(poseSave, rotation);
+            SaveData(new Vector3(targetPosition.x, targetHeight, targetPosition.z), transform.rotation);
         }
         else
         {
             Debug.LogError("SpawnManager.Instance is null");
         }
     }
-
 
     private List<RayCastDetect> GetAllComponents(GameObject gameObject)
     {
@@ -188,33 +201,22 @@ public class BlockController : MonoBehaviour
         return objectDetected;
     }
 
-    private void SetAllBlockMaterials()
-    {
-        foreach (var detector in rayCastDetect)
-        {
-            detector.SetBackBlockMat();
-        }
-    }
     private void SetParentAllCube()
     {
-        // Cache the current world positions of the cubes
         List<Vector3> worldPositions = new List<Vector3>();
         foreach (var cube in totalCube)
         {
             worldPositions.Add(cube.transform.position);
         }
 
-        // Set the parent of each cube to the pivot
         for (int i = 0; i < totalCube.Count; i++)
         {
             var cube = totalCube[i];
-            cube.transform.SetParent(pivot);
-
-            // Convert the cached world positions to local positions relative to the pivot
-            cube.transform.position = worldPositions[i];
+            cube.transform.SetParent(pivot, true);
         }
-    }
 
+        centerPoint.SetParent(pivot, true);
+    }
     private void SaveData(Vector3 pos, quaternion rotate)
     {
         CubeData cubeData = new();
@@ -222,6 +224,7 @@ public class BlockController : MonoBehaviour
         cubeData.InitPositionRotation(pos, rotate);
         cubeData.InitGameObjectAndPivot(gameObject, pivot);
         cubeData.AddBlockController(this);
+        cubeData.centerPoint = centerPoint;
 
         if (PositionManager.Instance != null)
         {
@@ -231,18 +234,16 @@ public class BlockController : MonoBehaviour
 
     public bool CheckRoof()
     {
-        foreach (var item in rayCastDetect)
-        {
-            if (item.CheckBlockOnTop() == true)
-            {
-                return true;
-            }
-        }
-        return false;
+        return blockAngle == BlockAngle.FLAT ? CheckFlatRoof() : CheckStandRoof();
     }
 
+    public bool CheckFlatRoof()
+    {
+        return rayCastDetect.Any(item => item.CheckBlockOnTop());
+    }
 
-
-
-
+    public bool CheckStandRoof()
+    {
+        return rayCastDetect.All(item => item.CheckBlockOnTop());
+    }
 }

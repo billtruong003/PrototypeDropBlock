@@ -13,7 +13,7 @@ public class SceneSwitcherTool : EditorWindow
 
     private const string BookmarkedScenesKey = "BookmarkedScenes";
 
-    [MenuItem("Tools/Scene Switcher Tool")]
+    [MenuItem("Tools/Bill Utils/Scene Switcher Tool")]
     public static void ShowWindow()
     {
         GetWindow<SceneSwitcherTool>("Scene Switcher Tool");
