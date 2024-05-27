@@ -35,6 +35,7 @@ Transform:
   - {fileID: 4864540846682941030}
   - {fileID: 537582352622903635}
   - {fileID: 6479698850455221809}
+  - {fileID: 3671711047398519311}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3664434787771995156
@@ -51,7 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   floatingSpeed: 1
+  canRotate: 1
   pivot: {fileID: 6479698850455221809}
+  centerPoint: {fileID: 3671711047398519311}
   rayCastDetect: []
   totalCube:
   - {fileID: 6227558227615447489}
@@ -60,6 +63,37 @@ MonoBehaviour:
   - {fileID: 1182432290510839230}
   blockShape: 2
   blockAngle: 0
+--- !u!1 &1075091695467629779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3671711047398519311}
+  m_Layer: 0
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3671711047398519311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075091695467629779}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6370805050165930443}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1182432290510839230
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +221,10 @@ MonoBehaviour:
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
   lastMeshRenderer: {fileID: 0}
   angleShoot: 0
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  detectionRadius: 3
 --- !u!114 &5887529312735020334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +245,10 @@ MonoBehaviour:
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
   lastMeshRenderer: {fileID: 0}
   angleShoot: 0
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  detectionRadius: 3
 --- !u!1 &2691909764349979589
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +376,10 @@ MonoBehaviour:
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
   lastMeshRenderer: {fileID: 0}
   angleShoot: 0
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  detectionRadius: 3
 --- !u!114 &6900726405176157021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +400,10 @@ MonoBehaviour:
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
   lastMeshRenderer: {fileID: 0}
   angleShoot: 0
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  detectionRadius: 3
 --- !u!1 &5125298810740214411
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +531,10 @@ MonoBehaviour:
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
   lastMeshRenderer: {fileID: 0}
   angleShoot: 0
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  detectionRadius: 3
 --- !u!114 &3165001294993871118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +555,10 @@ MonoBehaviour:
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
   lastMeshRenderer: {fileID: 0}
   angleShoot: 0
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  detectionRadius: 3
 --- !u!1 &6227558227615447489
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +686,10 @@ MonoBehaviour:
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
   lastMeshRenderer: {fileID: 0}
   angleShoot: 0
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  detectionRadius: 3
 --- !u!114 &7314671331636718516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +710,10 @@ MonoBehaviour:
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
   lastMeshRenderer: {fileID: 0}
   angleShoot: 0
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  detectionRadius: 3
 --- !u!1 &6860651490624952680
 GameObject:
   m_ObjectHideFlags: 0
