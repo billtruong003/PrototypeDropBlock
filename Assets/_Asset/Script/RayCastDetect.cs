@@ -48,11 +48,17 @@ public class RayCastDetect : MonoBehaviour
             case AngleShoot.DOWN:
                 CastRay(Vector3.down);
                 break;
-            case AngleShoot.SIDE:
+            case AngleShoot.SIDE_FORWARD:
                 CastRay(Vector3.forward);
+                break;
+            case AngleShoot.SIDE_BACK:
                 CastRay(Vector3.back);
-                CastRay(Vector3.left);
+                break;
+            case AngleShoot.SIDE_RIGHT:
                 CastRay(Vector3.right);
+                break;
+            case AngleShoot.SIDE_LEFT:
+                CastRay(Vector3.left);
                 break;
             case AngleShoot.TOP:
                 CastRay(Vector3.up);
