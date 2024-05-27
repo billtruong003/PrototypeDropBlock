@@ -35,7 +35,6 @@ public class BlockController : MonoBehaviour
 
     // Private variables
     private float targetHeight;
-    private bool isDropping = false;
     private Vector3 targetPosition;
     private GameObject detectedObject;
     private GameObject hitObject;
