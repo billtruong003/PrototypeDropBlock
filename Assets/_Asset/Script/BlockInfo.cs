@@ -59,6 +59,7 @@ namespace BlockBuilder.BlockManagement
     public class CombineBuildingAndMaterial
     {
         public BlockShape shape;
+        public BlockAngle angle;
         public BuildingType returnBuilding;
         public BuildingType GetBuilding()
         {

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using BlockBuilder.BlockManagement;
-using System.Runtime.CompilerServices;
 
 public class RayCastDetect : MonoBehaviour
 {
     // Layer masks and materials
+    [HideInInspector] public bool valid;
+
     [Header("Layer Masks and Materials")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Material touchColor;
@@ -18,51 +19,80 @@ public class RayCastDetect : MonoBehaviour
     // Detection settings
     [Header("Detection Settings")]
     [SerializeField] private AngleShoot angleShoot;
-    [SerializeField] private LayerMask blockLayer = 8;
+    [SerializeField] private LayerMask blockLayer;
     [SerializeField] private float detectionRadius = 3f;
 
+    [Header("Block Case")]
+    [SerializeField] private List<Transform> cube;
+    [SerializeField] private BlockShape blockShape;
+
     // Private variables
+    private bool completeChangeMat;
     private GameObject lastHitObject;
     private Vector3 hitPosition;
     private Ray ray;
-    private BlockController cubeController;
+    private BlockController blockController;
 
     private void Start()
     {
-        cubeController = gameObject.GetComponent<BlockController>() ?? transform.parent.GetComponent<BlockController>();
-        blockLayer = 8;
+        blockController = gameObject.GetComponent<BlockController>() ?? transform.parent.GetComponent<BlockController>();
+        if (blockController == null)
+        {
+            Debug.LogError("BlockController not found!");
+            enabled = false; // Disable this script if BlockController is not found
+        }
     }
 
     private void Update()
     {
-        RayCastAngle();
+        if (blockController != null)
+        {
+            if (blockController.DoneDrop)
+            {
+                ResetLastHitObject();
+            }
+            else
+            {
+                ProcessRay();
+            }
+        }
     }
 
-    private void RayCastAngle()
+    public void ProcessRay()
     {
-        if (cubeController.DoneDrop)
-            return;
+        Vector3[] directions;
 
         switch (angleShoot)
         {
             case AngleShoot.DOWN:
-                CastRay(Vector3.down);
+                directions = new Vector3[] { Vector3.down };
                 break;
             case AngleShoot.SIDE_FORWARD:
-                CastRay(Vector3.forward);
+                directions = new Vector3[] { Vector3.forward };
                 break;
             case AngleShoot.SIDE_BACK:
-                CastRay(Vector3.back);
+                directions = new Vector3[] { Vector3.back };
                 break;
             case AngleShoot.SIDE_RIGHT:
-                CastRay(Vector3.right);
+                directions = new Vector3[] { Vector3.right };
                 break;
             case AngleShoot.SIDE_LEFT:
-                CastRay(Vector3.left);
+                directions = new Vector3[] { Vector3.left };
+                break;
+            case AngleShoot.SIDE:
+                directions = new Vector3[] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
                 break;
             case AngleShoot.TOP:
-                CastRay(Vector3.up);
+                directions = new Vector3[] { Vector3.up };
                 break;
+            default:
+                directions = new Vector3[0];
+                break;
+        }
+
+        foreach (var direction in directions)
+        {
+            CastRay(direction);
         }
     }
 
@@ -71,12 +101,50 @@ public class RayCastDetect : MonoBehaviour
         ray = new Ray(transform.position, direction);
         if (Physics.Raycast(ray, out RaycastHit hit, 20, groundLayer))
         {
+            if (hit.collider.gameObject.CompareTag("Block"))
+            {
+                BlockController blockController = FindBlockControllerInAncestors(hit.collider.gameObject);
+                if (blockController != null)
+                {
+                    Debug.Log($"Done Drop: {blockController.DoneDrop}");
+                    if (blockController.DoneDrop)
+                    {
+                        valid = true;
+                        blockController.TransparentRoof();
+                        HandleRaycastHit(hit);
+                        return;
+                    }
+                    else
+                    {
+                        valid = false;
+                        return;
+                    }
+                }
+            }
+            valid = true;
             HandleRaycastHit(hit);
         }
         else
         {
             ResetLastHitObject();
         }
+    }
+
+    private BlockController FindBlockControllerInAncestors(GameObject obj)
+    {
+        Transform currentTransform = obj.transform;
+
+        while (currentTransform != null)
+        {
+            BlockController blockController = currentTransform.GetComponent<BlockController>();
+            if (blockController != null)
+            {
+                return blockController;
+            }
+            currentTransform = currentTransform.parent;
+        }
+
+        return null;
     }
 
     private void HandleRaycastHit(RaycastHit hit)
@@ -93,15 +161,12 @@ public class RayCastDetect : MonoBehaviour
         {
             if (lastHitObject != null && lastHitObject != hitObject)
             {
-                lastMeshRenderer = lastHitObject.GetComponent<MeshRenderer>();
-                if (lastMeshRenderer != null)
-                {
-                    SetBackBlockMat();
-                }
+                ResetLastHitObject();
             }
 
             meshRenderer.material = touchColor;
             lastHitObject = hitObject;
+            lastMeshRenderer = meshRenderer;
         }
     }
 
@@ -109,29 +174,19 @@ public class RayCastDetect : MonoBehaviour
     {
         if (lastHitObject != null)
         {
-            lastMeshRenderer = lastHitObject.GetComponent<MeshRenderer>();
             if (lastMeshRenderer != null)
             {
-                SetBackBlockMat();
+                if (lastMeshRenderer.gameObject.CompareTag("Ground"))
+                {
+                    lastMeshRenderer.material = normalColor;
+                }
+                else
+                {
+                    lastMeshRenderer.material = blockNormCol;
+                }
             }
             lastHitObject = null;
-        }
-    }
-
-    public void SetDetectBlock(MeshRenderer mesh)
-    {
-        mesh.material = touchColor;
-    }
-
-    public void SetBackBlockMat()
-    {
-        if (lastMeshRenderer.gameObject.CompareTag("Ground"))
-        {
-            lastMeshRenderer.material = normalColor;
-        }
-        else
-        {
-            lastMeshRenderer.material = blockNormCol;
+            lastMeshRenderer = null;
         }
     }
 

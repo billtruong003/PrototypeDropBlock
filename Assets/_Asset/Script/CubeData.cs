@@ -11,7 +11,7 @@ public class CubeData
     public BlockShape Shape;
     public BlockAngle Angle;
     public Vector3 positionDrop;
-    public Quaternion rotateDrop;
+    public Vector3 rotateDrop;
     public GameObject cube;
     public Transform pivot;
     public Transform centerPoint;
@@ -28,7 +28,7 @@ public class CubeData
         Angle = blockAngle;
     }
 
-    public void InitPositionRotation(Vector3 pos, Quaternion rotation)
+    public void InitPositionRotation(Vector3 pos, Vector3 rotation)
     {
         positionDrop = pos;
         rotateDrop = rotation;
@@ -44,7 +44,7 @@ public class CubeData
     public void SaveCubeType()
     {
         positionDrop = pivot.transform.position;
-        rotateDrop = pivot.transform.rotation;
+        rotateDrop = pivot.transform.eulerAngles;
         PositionManager.Instance?.SaveCubeType(this);
     }
 
@@ -75,10 +75,15 @@ public class CubeData
     public void AddBuildingHandle(BuildingHandle buildingHandle)
     {
         this.buildingHandle = buildingHandle;
+        blockController.buildingHandle = buildingHandle;
     }
 
     public void AddBlockController(BlockController blockController)
     {
         this.blockController = blockController;
+    }
+    public void AddBuildingHandleToBlockController(BuildingHandle buildingHandle)
+    {
+        blockController.buildingHandle = buildingHandle;
     }
 }

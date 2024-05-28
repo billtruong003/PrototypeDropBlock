@@ -24,7 +24,7 @@ public class PositionManager : Singleton<PositionManager>
     public void SaveCubeType(CubeData data)
     {
         cubeDatas.Add(data);
-        if (cubeDatas.Count >= 2 && processMesh != null)
+        if (cubeDatas.Count > 0 && processMesh != null)
         {
             DisableAllMeshRenderers(data.cube);
             Spawn();

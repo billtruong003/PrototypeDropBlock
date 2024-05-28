@@ -33,6 +33,7 @@ public class BlockController : MonoBehaviour
     [BoxGroup("CubeData")]
     [SerializeField] private BlockAngle blockAngle;
 
+    public BuildingHandle buildingHandle;
     // Private variables
     private float targetHeight;
     private Vector3 targetPosition;
@@ -80,22 +81,39 @@ public class BlockController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E)) // Xoay quanh trục Y (right)
         {
-            transform.Rotate(Vector3.up, 90, Space.World); // Xoay 90 độ quanh trục Y
+            Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 90, transform.eulerAngles.z);
+            transform.eulerAngles = angle;
         }
         if (Input.GetKeyDown(KeyCode.Q)) // Xoay quanh trục Y (left)
         {
-            transform.Rotate(Vector3.up, -90, Space.World); // Xoay -90 độ quanh trục Y
+            Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 90, transform.eulerAngles.z);
+            transform.eulerAngles = angle;
         }
         if (Input.GetKeyDown(KeyCode.R)) // Xoay quanh trục X (up)
         {
-            transform.Rotate(Vector3.right, 90, Space.World); // Xoay 90 độ quanh trục X
+            Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
+            transform.eulerAngles = angle;
+            ChangeState();
         }
         if (Input.GetKeyDown(KeyCode.F)) // Xoay quanh trục X (down)
         {
-            transform.Rotate(Vector3.right, -90, Space.World); // Xoay -90 độ quanh trục X
+            Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
+            transform.eulerAngles = angle;
+            ChangeState();
+        }
+
+    }
+    private void ChangeState()
+    {
+        if (blockAngle == BlockAngle.FLAT)
+        {
+            blockAngle = BlockAngle.STAND;
+        }
+        else
+        {
+            blockAngle = BlockAngle.FLAT;
         }
     }
-
     private void DropToCenter()
     {
         DoneDrop = true;
@@ -134,7 +152,7 @@ public class BlockController : MonoBehaviour
         if (SpawnManager.Instance != null)
         {
             SpawnManager.Instance.SpawnCube();
-            SaveData(new Vector3(targetPosition.x, targetHeight, targetPosition.z), transform.rotation);
+            SaveData(new Vector3(targetPosition.x, targetHeight, targetPosition.z), transform.eulerAngles);
         }
         else
         {
@@ -156,6 +174,8 @@ public class BlockController : MonoBehaviour
 
         foreach (var detector in rayCastDetect)
         {
+            if (!detector.valid)
+                continue;
             float y = detector.GetYHitPosition();
             if (y > maxY)
             {
@@ -173,6 +193,8 @@ public class BlockController : MonoBehaviour
 
         foreach (var detector in rayCastDetect)
         {
+            if (!detector.valid)
+                continue;
             float y = detector.GetYHitPosition();
             if (y > maxY)
             {
@@ -190,6 +212,8 @@ public class BlockController : MonoBehaviour
 
         foreach (var detector in rayCastDetect)
         {
+            if (!detector.valid)
+                continue;
             float y = detector.GetYHitPosition();
             if (y > maxY)
             {
@@ -216,11 +240,11 @@ public class BlockController : MonoBehaviour
 
         centerPoint.SetParent(pivot, true);
     }
-    private void SaveData(Vector3 pos, quaternion rotate)
+    private void SaveData(Vector3 pos, Vector3 angle)
     {
         CubeData cubeData = new();
         cubeData.InitShapeAndAngle(this.blockShape, this.blockAngle);
-        cubeData.InitPositionRotation(pos, rotate);
+        cubeData.InitPositionRotation(pos, angle);
         cubeData.InitGameObjectAndPivot(gameObject, pivot);
         cubeData.AddBlockController(this);
         cubeData.centerPoint = centerPoint;
@@ -238,11 +262,41 @@ public class BlockController : MonoBehaviour
 
     public bool CheckFlatRoof()
     {
-        return rayCastDetect.Any(item => item.CheckBlockOnTop());
+        Debug.Log("CheckFlatRoof");
+        foreach (var item in rayCastDetect)
+        {
+            if (item.CheckBlockOnTop() == true)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public bool CheckStandRoof()
     {
-        return rayCastDetect.All(item => item.CheckBlockOnTop());
+        Debug.Log("CheckStandRoof");
+        foreach (var item in rayCastDetect)
+        {
+            if (item.CheckBlockOnTop() == false)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void TransparentRoof()
+    {
+        if (buildingHandle == null)
+            return;
+        buildingHandle.SetRoofTransparent();
+
+    }
+    public void ResetRoof()
+    {
+        if (buildingHandle == null)
+            return;
+        buildingHandle.SetRoofTransparent();
     }
 }

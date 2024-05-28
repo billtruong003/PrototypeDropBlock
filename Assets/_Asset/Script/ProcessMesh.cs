@@ -28,6 +28,7 @@ public class ProcessMesh : MonoBehaviour
         GameObject spawnBuilding = Instantiate(building, meshContainer);
         cubeData.AddMesh(spawnBuilding);
         spawnBuilding.transform.SetLocalPositionAndRotation(dropPosition, quaternion.identity);
+        spawnBuilding.transform.eulerAngles = new Vector3(0, -cubeData.rotateDrop.y, 0);
         Anim.JellyBounce(spawnBuilding.transform);
         vFXManager.TriggerExplo(dropPosition);
         Debug.Log($"Position: {dropPosition}, Roof:");
@@ -36,7 +37,7 @@ public class ProcessMesh : MonoBehaviour
 
     public GameObject ProcessCubeCode(BlockShape blockShape, BlockAngle blockAngle)
     {
-        return combineRuleConfig.GetReturnBlock(blockShape);
+        return combineRuleConfig.GetReturnBlock(blockShape, blockAngle);
     }
 
 

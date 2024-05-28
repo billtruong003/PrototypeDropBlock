@@ -8,7 +8,7 @@ public class CombineRuleConfig : ScriptableObject
 {
     public List<CombineBuildingAndMaterial> combineMat;
     public MeshRuleConfig ruleConfig;
-    public GameObject GetReturnBlock(BlockShape shape)
+    public GameObject GetReturnBlock(BlockShape shape, BlockAngle angle)
     {
         if (ruleConfig == null)
         {
@@ -16,7 +16,7 @@ public class CombineRuleConfig : ScriptableObject
             return null;
         }
 
-        BuildingType buildingType = GetBuildingType(shape);
+        BuildingType buildingType = GetBuildingType(shape, angle);
         GameObject building = ruleConfig.FindMatchBuilding(buildingType);
 
         // Kiểm tra xem building có bị null không
@@ -36,11 +36,11 @@ public class CombineRuleConfig : ScriptableObject
         }
         return building;
     }
-    public BuildingType GetBuildingType(BlockShape shape)
+    public BuildingType GetBuildingType(BlockShape shape, BlockAngle angle)
     {
         foreach (var item in combineMat)
         {
-            if (item.shape == shape)
+            if (item.shape == shape && item.angle == angle)
                 return item.GetBuilding();
         }
         return BuildingType.BD_001;

@@ -41,6 +41,7 @@ namespace BlockBuilder.BlockManagement
         SIDE_RIGHT,
         SIDE_FORWARD,
         SIDE_BACK,
+        SIDE,
         TOP,
     }
     public enum MaterialMixType

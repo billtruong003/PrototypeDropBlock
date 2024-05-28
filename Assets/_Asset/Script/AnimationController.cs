@@ -35,5 +35,19 @@ namespace AnimationController.WithTransform
             // Play the sequence
             mySequence.Play();
         }
+        public static void LineTextureScale(LineRenderer lineRenderer, Vector2 startScale, Vector2 endScale, float duration)
+        {
+            // Ensure the duration is greater than zero to avoid division by zero
+            if (duration <= 0)
+            {
+                Debug.LogWarning("Duration must be greater than zero.");
+                return;
+            }
+
+            lineRenderer.material.SetTextureScale("_MainTex", startScale);
+
+            DOTween.To(() => startScale, x => lineRenderer.material.SetTextureScale("_MainTex", x), endScale, duration)
+                   .SetEase(Ease.InOutQuad);
+        }
     }
 }

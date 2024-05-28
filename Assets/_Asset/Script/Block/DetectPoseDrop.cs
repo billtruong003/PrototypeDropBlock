@@ -25,7 +25,6 @@ public class DetectPoseDrop : MonoBehaviour
     private GameObject lastHitObject;
     private Vector3 hitPosition;
     private Ray ray;
-    public SingleBlock DoneDrop;
     private void Start()
     {
     }
