@@ -110,7 +110,6 @@ public class RayCastDetect : MonoBehaviour
                     if (blockController.DoneDrop)
                     {
                         valid = true;
-                        blockController.TransparentRoof();
                         HandleRaycastHit(hit);
                         return;
                     }

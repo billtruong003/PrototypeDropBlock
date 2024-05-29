@@ -28,6 +28,39 @@ MonoBehaviour:
   - PathToBuilding: BDS001/BD_007
     Type: 6
   materialDatas:
-  - PathToMaterial: 
+  - PathToMaterial: Material/METAL
     MatType: 0
-    MatMixType: 0
+    MainMat: {fileID: 2100000, guid: ff39d7f2c69a2504db615b454df32bfd, type: 2}
+    EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}
+  - PathToMaterial: Material/RARE_METAL
+    MatType: 1
+    MainMat: {fileID: 2100000, guid: ff39d7f2c69a2504db615b454df32bfd, type: 2}
+    EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}
+  - PathToMaterial: Material/PEBBLE_BRICK
+    MatType: 2
+    MainMat: {fileID: 2100000, guid: ff39d7f2c69a2504db615b454df32bfd, type: 2}
+    EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}
+  - PathToMaterial: Material/BRICK
+    MatType: 3
+    MainMat: {fileID: 2100000, guid: ff39d7f2c69a2504db615b454df32bfd, type: 2}
+    EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}
+  - PathToMaterial: Material/ROCK
+    MatType: 4
+    MainMat: {fileID: 2100000, guid: ff39d7f2c69a2504db615b454df32bfd, type: 2}
+    EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}
+  - PathToMaterial: Material/STONE_BRICK
+    MatType: 5
+    MainMat: {fileID: 2100000, guid: ff39d7f2c69a2504db615b454df32bfd, type: 2}
+    EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}
+  - PathToMaterial: Material/CLAY
+    MatType: 6
+    MainMat: {fileID: 2100000, guid: de15d2b539f16e948bf8e5be2b644294, type: 2}
+    EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}
+  - PathToMaterial: Material/WOOD
+    MatType: 7
+    MainMat: {fileID: 2100000, guid: ff39d7f2c69a2504db615b454df32bfd, type: 2}
+    EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}
+  - PathToMaterial: Material/GLASS
+    MatType: 8
+    MainMat: {fileID: 2100000, guid: ff39d7f2c69a2504db615b454df32bfd, type: 2}
+    EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}

@@ -1,31 +1,32 @@
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class CustomHeaderAttribute : PropertyAttribute
+namespace BillUtils.SerializeCustom
 {
-    public string header;
-    public int fontSize;
-    public Color color;
-
-    public CustomHeaderAttribute(string header, int fontSize = 12, string hexColor = "#FFFFFF")
+    public class CustomHeaderAttribute : PropertyAttribute
     {
-        this.header = header;
-        this.fontSize = fontSize;
-        this.color = HexToColor(hexColor);
-    }
+        public string Header { get; private set; }
+        public int FontSize { get; private set; }
+        public Color Color { get; private set; }
 
-    private Color HexToColor(string hex)
-    {
-        Color color;
-        if (ColorUtility.TryParseHtmlString(hex, out color))
+        public CustomHeaderAttribute(string header, int fontSize = 12, string hexColor = "#FFFFFF")
         {
-            return color;
+            this.Header = header;
+            this.FontSize = fontSize;
+            this.Color = HexToColor(hexColor);
         }
-        else
+
+        private Color HexToColor(string hex)
         {
-            Debug.LogWarning("Invalid hex color format. Defaulting to white.");
-            return Color.white;
+            if (ColorUtility.TryParseHtmlString(hex, out Color color))
+            {
+                return color;
+            }
+            else
+            {
+                Debug.LogWarning("Invalid hex color format. Defaulting to white.");
+                return Color.white;
+            }
         }
     }
-
 }

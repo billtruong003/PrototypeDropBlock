@@ -24,15 +24,23 @@ public class ToolGenPrefab : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
+            // Tạo khối chính
             GameObject mainPrefab = Instantiate(instantiatePrefab, Vector3.zero, quaternion.identity, container);
             mainPrefab.name = $"BD_0{ProcessCodeMesh(i + 1)}";
+
+            // Tạo khối container
             GameObject containAllSmall = Instantiate(instantiatePrefab, Vector3.zero, quaternion.identity, mainPrefab.transform);
-            mainPrefab.name = $"Container";
+            containAllSmall.name = "Container";
+
+            // Tạo các khối con
             CreateChildObject(containAllSmall.transform, "Brick", body, i + 1);
-            GameObject subPrefab = Instantiate(instantiatePrefab, Vector3.zero, quaternion.identity, mainPrefab.transform);
-            mainPrefab.name = $"BD_{ProcessCodeMesh(i + 1)}";
-            CreateChildObject(subPrefab.transform, "Door", door, i + 1);
-            CreateChildObject(subPrefab.transform, "Window", window, i + 1);
+
+            GameObject furniture = Instantiate(instantiatePrefab, Vector3.zero, quaternion.identity, containAllSmall.transform);
+            furniture.name = "Furniture";
+
+            CreateChildObject(furniture.transform, "Door", door, i + 1);
+            CreateChildObject(furniture.transform, "Window", window, i + 1);
+
             CreateChildObject(containAllSmall.transform, "Roof", roof, i + 1);
         }
     }
@@ -56,7 +64,6 @@ public class ToolGenPrefab : MonoBehaviour
     {
         GameObject child = Instantiate(instantiatePrefab, Vector3.zero, quaternion.identity, parent);
         child.name = childName;
-        Vector3 spawnPose = childName == "Roof" ? Vector3.up * 1 : Vector3.zero;
         GameObject childPrefab = Instantiate(GetPrefab(pathLoad, prefix, objectType, index), Vector3.zero, quaternion.identity, child.transform);
     }
 

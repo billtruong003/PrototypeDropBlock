@@ -48,9 +48,10 @@ namespace BlockBuilder.BlockManagement
     {
         public string PathToMaterial;
         public MaterialType MatType;
-        public MaterialMixType MatMixType;
+        public Material MainMat;
+        public Material EmissionLight;
 
-        public Material GetBuilding()
+        public Material GetMat()
         {
             return Resources.Load<Material>(PathToMaterial);
         }

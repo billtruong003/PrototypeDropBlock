@@ -1,29 +1,32 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(CustomHeaderAttribute))]
-public class CustomHeaderDrawer : DecoratorDrawer
+namespace BillUtils.SerializeCustom
 {
-    public override void OnGUI(Rect position)
+    [CustomPropertyDrawer(typeof(CustomHeaderAttribute))]
+    public class CustomHeaderDrawer : DecoratorDrawer
     {
-        CustomHeaderAttribute customHeader = (CustomHeaderAttribute)attribute;
-
-        GUIStyle style = new GUIStyle(EditorStyles.label)
+        public override void OnGUI(Rect position)
         {
-            fontSize = customHeader.fontSize,
-            fontStyle = FontStyle.Bold,
-            alignment = TextAnchor.MiddleLeft,
-            normal = { textColor = customHeader.color } // Đặt màu sắc của văn bản
-        };
+            CustomHeaderAttribute customHeader = (CustomHeaderAttribute)attribute;
 
-        GUIContent content = new GUIContent(customHeader.header);
+            GUIStyle style = new GUIStyle(EditorStyles.label)
+            {
+                fontSize = customHeader.FontSize,
+                fontStyle = FontStyle.Bold,
+                alignment = TextAnchor.MiddleLeft,
+                normal = { textColor = customHeader.Color } // Đặt màu sắc của văn bản
+            };
 
-        EditorGUI.LabelField(position, content, style);
-    }
+            GUIContent content = new GUIContent(customHeader.Header);
 
-    public override float GetHeight()
-    {
-        CustomHeaderAttribute customHeader = (CustomHeaderAttribute)attribute;
-        return EditorGUIUtility.singleLineHeight * (customHeader.fontSize / 12.0f);
+            EditorGUI.LabelField(position, content, style);
+        }
+
+        public override float GetHeight()
+        {
+            CustomHeaderAttribute customHeader = (CustomHeaderAttribute)attribute;
+            return EditorGUIUtility.singleLineHeight * (customHeader.FontSize / 12.0f);
+        }
     }
 }

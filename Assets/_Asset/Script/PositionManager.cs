@@ -26,7 +26,7 @@ public class PositionManager : Singleton<PositionManager>
         cubeDatas.Add(data);
         if (cubeDatas.Count > 0 && processMesh != null)
         {
-            DisableAllMeshRenderers(data.cube);
+            DisableAllMeshRenderers(data.Cube);
             Spawn();
         }
         else if (processMesh == null)
@@ -45,7 +45,7 @@ public class PositionManager : Singleton<PositionManager>
 
         foreach (CubeData cubeData in cubeDatas)
         {
-            DisableAllMeshRenderers(cubeData.cube);
+            DisableAllMeshRenderers(cubeData.Cube);
             processMesh.SpawnBuilding(cubeData);
         }
     }
@@ -54,7 +54,7 @@ public class PositionManager : Singleton<PositionManager>
     {
         foreach (CubeData cubeData in cubeDatas)
         {
-            Vector3 cubePosition = cubeData.positionDrop;
+            Vector3 cubePosition = cubeData.PositionDrop;
             CheckDirection(cubePosition, Vector3.up);
             CheckDirection(cubePosition, Vector3.down);
             CheckDirection(cubePosition, Vector3.left);

@@ -4,9 +4,8 @@ using DG.Tweening;
 using AnimationController.WithTransform;
 using BlockBuilder.BlockManagement;
 using NaughtyAttributes;
-using UnityEngine.UIElements;
-using Unity.Mathematics;
 using System.Linq;
+using BillUtils.SerializeCustom;
 
 public class BlockController : MonoBehaviour
 {
@@ -32,8 +31,10 @@ public class BlockController : MonoBehaviour
     [SerializeField] private BlockShape blockShape;
     [BoxGroup("CubeData")]
     [SerializeField] private BlockAngle blockAngle;
+    [BoxGroup("CubeData")]
+    [SerializeField] private MaterialType materialType;
 
-    public BuildingHandle buildingHandle;
+    public BuildingHandle BuildingHandle;
     // Private variables
     private float targetHeight;
     private Vector3 targetPosition;
@@ -66,6 +67,19 @@ public class BlockController : MonoBehaviour
     private void Init()
     {
         rayCastDetect = GetAllComponents(gameObject);
+#if UNITY_EDITOR
+        if (SpawnManager.Instance != null && SpawnManager.Instance.CheckMatCheat())
+        {
+            materialType = SpawnManager.Instance.GetCheatMat();
+            return;
+        }
+#endif
+        RandomMat();
+    }
+
+    private void RandomMat()
+    {
+        materialType = RandomizeMaterialType();
     }
 
     private void HandleMovement()
@@ -243,17 +257,23 @@ public class BlockController : MonoBehaviour
     private void SaveData(Vector3 pos, Vector3 angle)
     {
         CubeData cubeData = new();
-        cubeData.InitShapeAndAngle(this.blockShape, this.blockAngle);
-        cubeData.InitPositionRotation(pos, angle);
-        cubeData.InitGameObjectAndPivot(gameObject, pivot);
-        cubeData.AddBlockController(this);
-        cubeData.centerPoint = centerPoint;
+
+        cubeData.SetShape(this.blockShape);
+        cubeData.SetAngle(this.blockAngle);
+        cubeData.SetMaterialType(this.materialType);
+        cubeData.SetPositionDrop(pos);
+        cubeData.SetRotateDrop(angle);
+        cubeData.SetCube(gameObject);
+        cubeData.SetPivot(pivot);
+        cubeData.SetBlockController(this);
+        cubeData.SetCenterPoint(this.centerPoint);
 
         if (PositionManager.Instance != null)
         {
             PositionManager.Instance.SaveCubeType(cubeData);
         }
     }
+
 
     public bool CheckRoof()
     {
@@ -286,17 +306,13 @@ public class BlockController : MonoBehaviour
         return true;
     }
 
-    public void TransparentRoof()
+    private MaterialType RandomizeMaterialType()
     {
-        if (buildingHandle == null)
-            return;
-        buildingHandle.SetRoofTransparent();
+        // Get all possible values of MaterialType enum
+        MaterialType[] materialTypes = (MaterialType[])System.Enum.GetValues(typeof(MaterialType));
 
-    }
-    public void ResetRoof()
-    {
-        if (buildingHandle == null)
-            return;
-        buildingHandle.SetRoofTransparent();
+        // Randomly select one of the material types
+        int randomIndex = Random.Range(0, materialTypes.Length);
+        return materialTypes[randomIndex];
     }
 }

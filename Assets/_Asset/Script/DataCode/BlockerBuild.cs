@@ -1,5 +1,6 @@
 namespace BlockBuilder.BlockManagement
 {
+    #region Block Configuration
     public enum BlockShape
     {
         SINGLE,
@@ -8,6 +9,14 @@ namespace BlockBuilder.BlockManagement
         ISHAPE,
     }
 
+    public enum BlockAngle
+    {
+        FLAT,
+        STAND,
+    }
+    #endregion
+
+    #region Building Configuration
     public enum BuildingType
     {
         BD_001,
@@ -18,6 +27,7 @@ namespace BlockBuilder.BlockManagement
         BD_006,
         BD_007,
     }
+
     public enum BuildingStyleType
     {
         BDS_001,
@@ -25,6 +35,9 @@ namespace BlockBuilder.BlockManagement
         BDS_003,
         BDS_004,
     }
+    #endregion
+
+    #region Orientation
     public enum Direction
     {
         TOP,
@@ -34,6 +47,7 @@ namespace BlockBuilder.BlockManagement
         ABOVE_DOWN,
         ABOVE_UP
     }
+
     public enum AngleShoot
     {
         DOWN,
@@ -44,6 +58,9 @@ namespace BlockBuilder.BlockManagement
         SIDE,
         TOP,
     }
+    #endregion
+
+    #region Material Configuration
     public enum MaterialMixType
     {
         MATMIX_001,
@@ -53,20 +70,15 @@ namespace BlockBuilder.BlockManagement
 
     public enum MaterialType
     {
-        MAT_001,
-        MAT_002,
-        MAT_003,
-        MAT_004,
-        MAT_005,
-        MAT_006,
-        MAT_007,
-        MAT_008,
-        MAT_009,
-        MAT_010,
+        METAL,
+        RARE_METAL,
+        PEBBLE_BRICK,
+        BRICK,
+        ROCK,
+        STONE_BRICK,
+        CLAY,
+        WOOD,
+        GLASS
     }
-    public enum BlockAngle
-    {
-        FLAT,
-        STAND,
-    }
+    #endregion
 }

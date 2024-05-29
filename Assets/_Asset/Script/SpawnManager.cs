@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
-
+using BillUtils.SerializeCustom;
+using BlockBuilder.BlockManagement;
 public class SpawnManager : Singleton<SpawnManager>
 {
     [SerializeField] private Transform cubeContainer;
@@ -10,8 +11,20 @@ public class SpawnManager : Singleton<SpawnManager>
     [SerializeField, Expandable] private BlockConfig blockConfig;
 
     [CustomHeader("Cheat", 20, "#EE4E4E")]
+
+    [BoxGroup]
     [SerializeField] private bool spawnCheat;
+    [BoxGroup]
     [SerializeField] private GameObject cheatBlock;
+
+    [BoxGroup]
+    [SerializeField] private bool materialCheat;
+    [BoxGroup]
+    [SerializeField] private MaterialType cheatMaterial;
+
+    public bool CheckMatCheat() => materialCheat;
+    public MaterialType GetCheatMat() => cheatMaterial;
+
     protected override void Awake()
     {
         base.Awake();
@@ -41,7 +54,6 @@ public class SpawnManager : Singleton<SpawnManager>
             Instantiate(cheatBlock, Vector3.up * 10, Quaternion.identity, cubeContainer);
             return;
         }
-
         GameObject selectedBrick = dropBrick[Random.Range(0, dropBrick.Count)];
         Instantiate(selectedBrick, Vector3.up * 10, Quaternion.identity, cubeContainer);
     }

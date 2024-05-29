@@ -45,4 +45,13 @@ public class CombineRuleConfig : ScriptableObject
         }
         return BuildingType.BD_001;
     }
+
+    public Material GetMainMat(MaterialType matType)
+    {
+        return ruleConfig.GetMainMat(matType);
+    }
+    public Material GetEmissionLight(MaterialType matType)
+    {
+        return ruleConfig.GetEmissionLightMat(matType);
+    }
 }

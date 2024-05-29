@@ -5,6 +5,8 @@ using System.Threading;
 using NaughtyAttributes;
 using UnityEngine;
 using BlockBuilder.BlockManagement;
+using BillUtils.SerializeCustom;
+
 [CreateAssetMenu(fileName = "BlockConfig", menuName = "BlockBuilder/BlockCheck")]
 public class BlockConfig : ScriptableObject
 {

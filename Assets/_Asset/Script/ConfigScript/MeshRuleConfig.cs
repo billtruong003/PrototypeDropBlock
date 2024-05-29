@@ -4,16 +4,15 @@ using UnityEngine;
 using BlockBuilder.BlockManagement;
 using System;
 using NaughtyAttributes;
+using BillUtils.SerializeCustom;
 
 [CreateAssetMenu(fileName = "MeshRuleConfig", menuName = "BlockBuilder/BuildingConfig")]
 public class MeshRuleConfig : ScriptableObject
 {
-    [CustomHeader("Building Data", 15, "#F6DCAC")]
+
     [SerializeField] private List<BlockGenInfo> buildingDatas;
     [SerializeField] private const string PATH_BUILDING = "BDS001";
-    [CustomHeader("Building Data", 15, "#FED8B1")]
-    [SerializeField] private List<MaterialApplyInfo> materialDatas;
-    [SerializeField] private const string PATH_MATERIAL = "Material";
+
 
     [Button]
     private void GenerateBlockData()
@@ -64,7 +63,6 @@ public class MeshRuleConfig : ScriptableObject
         Debug.LogWarning($"No matching building found for buildingType: {buildingType}");
         return null;
     }
-
     public List<GameObject> GetBlockPrefab()
     {
         List<GameObject> blocks = new();
@@ -75,4 +73,68 @@ public class MeshRuleConfig : ScriptableObject
         }
         return blocks;
     }
+
+    [CustomHeader("Building Data", 15, "#FED8B1")]
+    [SerializeField] private List<MaterialApplyInfo> materialDatas;
+    [SerializeField] private const string PATH_MATERIAL = "Material";
+
+    [Button]
+    private void GenMats()
+    {
+        materialDatas.Clear();
+        foreach (MaterialType type in Enum.GetValues(typeof(MaterialType)))
+        {
+            MaterialApplyInfo materialData = new MaterialApplyInfo
+            {
+                MatType = type,
+                PathToMaterial = $"{PATH_MATERIAL}/{type.ToString()}"
+            };
+
+            materialData.MainMat = Resources.Load<Material>(materialData.PathToMaterial);
+            materialData.EmissionLight = Resources.Load<Material>($"{PATH_MATERIAL}/EMISSION_{type.ToString()}");
+            if (materialData.MainMat == null)
+            {
+                Debug.LogError($"Material not found for type {type} at path {materialData.PathToMaterial}");
+                materialData.MainMat = Resources.Load<Material>($"{PATH_MATERIAL}/MAT_014");
+            }
+            if (materialData.EmissionLight == null)
+            {
+                Debug.LogError($"Material not found for type {type} at path {materialData.PathToMaterial}");
+                materialData.EmissionLight = Resources.Load<Material>($"{PATH_MATERIAL}/EMISSION_CLAY");
+            }
+
+            materialDatas.Add(materialData);
+        }
+    }
+    [Button]
+    private void ClearMatData()
+    {
+        materialDatas.Clear();
+    }
+
+    public Material GetMainMat(MaterialType matType)
+    {
+        foreach (var materialData in materialDatas)
+        {
+            if (materialData.MatType == matType)
+            {
+                return materialData.MainMat;
+            }
+        }
+        Debug.LogWarning($"No main material found for type {matType}");
+        return null;
+    }
+    public Material GetEmissionLightMat(MaterialType matType)
+    {
+        foreach (var materialData in materialDatas)
+        {
+            if (materialData.MatType == matType)
+            {
+                return materialData.EmissionLight;
+            }
+        }
+        Debug.LogWarning($"No main material found for type {matType}");
+        return null;
+    }
+
 }

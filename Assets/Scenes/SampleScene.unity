@@ -613,10 +613,6 @@ MonoBehaviour:
   combineRuleConfig: {fileID: 11400000, guid: 46ba8fcf515ff52429d04337dca34ce1, type: 2}
   vFXManager: {fileID: 1903591077}
   meshContainer: {fileID: 1029458187}
-  blockLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  detectionRadius: 1
 --- !u!1 &146817384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,8 +1510,10 @@ MonoBehaviour:
   dropBrick: []
   brick: {fileID: 602012538645101227, guid: 0ecde2428373bc54588236317432c705, type: 3}
   blockConfig: {fileID: 11400000, guid: c2c336e96aa41994aac12bce7e94ffe3, type: 2}
-  spawnCheat: 0
-  cheatBlock: {fileID: 602012538645101227, guid: 5ea1c81b430c84641b7dbda5bb985a0a, type: 3}
+  spawnCheat: 1
+  cheatBlock: {fileID: 602012538645101227, guid: 0ecde2428373bc54588236317432c705, type: 3}
+  materialCheat: 1
+  cheatMaterial: 6
 --- !u!1 &366089833
 GameObject:
   m_ObjectHideFlags: 0
