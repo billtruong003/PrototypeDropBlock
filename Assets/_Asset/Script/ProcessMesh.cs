@@ -33,7 +33,8 @@ public class ProcessMesh : MonoBehaviour
 
         Material mainMat = GetMainMat(cubeData.MaterialType);
         Material emissionLight = GetLight(cubeData.MaterialType);
-        cubeData.AssignMaterialToBuildingHandle(mainMat, emissionLight);
+        Material transMat = GetTNSMat(cubeData.MaterialType);
+        cubeData.AssignMaterialToBuildingHandle(mainMat, emissionLight, transMat);
 
         spawnBuilding.transform.SetLocalPositionAndRotation(dropPosition, Quaternion.identity);
         spawnBuilding.transform.eulerAngles = new Vector3(0, -cubeData.RotateDrop.y, 0);
@@ -65,6 +66,11 @@ public class ProcessMesh : MonoBehaviour
     public Material GetLight(MaterialType matType)
     {
         return combineRuleConfig.GetEmissionLight(matType);
+    }
+
+    public Material GetTNSMat(MaterialType matType)
+    {
+        return combineRuleConfig.GetTransparentMat(matType);
     }
 
 

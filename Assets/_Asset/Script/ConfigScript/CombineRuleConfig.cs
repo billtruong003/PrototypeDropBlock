@@ -54,4 +54,8 @@ public class CombineRuleConfig : ScriptableObject
     {
         return ruleConfig.GetEmissionLightMat(matType);
     }
+    public Material GetTransparentMat(MaterialType matType)
+    {
+        return ruleConfig.GetTNSMat(matType);
+    }
 }

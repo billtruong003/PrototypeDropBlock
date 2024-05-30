@@ -18,6 +18,7 @@ public class BuildingHandle : MonoBehaviour
     [SerializeField, Range(0, 1)] private float alpha = 0.5f;
 
     public void AddMat(Material mat) => mats.Add(mat);
+    public void AddTNSMat(Material mat) => TNS_Mat = mat;
     private void Start()
     {
         alpha = 0.5f;
@@ -78,30 +79,23 @@ public class BuildingHandle : MonoBehaviour
 
     public Material SetMaterialAlpha(float alpha)
     {
-        // Tạo một instance riêng của material
         Material material = TNS_Mat;
 
-        // Kiểm tra nếu material có thuộc tính _Color
         if (material.HasProperty("_Color"))
         {
-            // Lấy màu hiện tại
             Color color = material.color;
 
-            // Thiết lập giá trị alpha mới
             color.a = alpha;
 
-            // Gán lại màu mới cho material
             material.color = color;
         }
         else if (material.HasProperty("_BaseColor"))
         {
-            // Nếu sử dụng HDRP hoặc URP với shader có thuộc tính _BaseColor
             Color color = material.GetColor("_BaseColor");
             color.a = alpha;
             material.SetColor("_BaseColor", color);
         }
 
-        // Thiết lập chế độ blend để hỗ trợ alpha
         material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
         material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
         material.SetInt("_ZWrite", 0);
@@ -114,12 +108,23 @@ public class BuildingHandle : MonoBehaviour
 
     public void SetRoofTransparent()
     {
-        SetMaterialAlpha(alpha);
+        MeshRenderer mesh = roof.GetComponentInChildren<MeshRenderer>();
+        Material tnsMat = SetMaterialAlpha(0.4f);
+        if (mesh != null)
+        {
+            mesh.materials = new Material[0]; // Clear materials
+        }
+        ApplyMaterials(roof, tnsMat);
     }
 
-    public void ResetMaterialAlpha()
+    public void ResetRoof()
     {
-        SetMaterialAlpha(1.0f);
+        MeshRenderer mesh = roof.GetComponentInChildren<MeshRenderer>();
+        if (mesh != null)
+        {
+            mesh.materials = new Material[0]; // Clear materials
+        }
+        ApplyMaterials(roof, mats[0]);
     }
 
     public void ChangeMaterials()
@@ -179,26 +184,6 @@ public class BuildingHandle : MonoBehaviour
         }
     }
 
-    public void TransparentRoof()
-    {
-        MeshRenderer mesh = roof.GetComponentInChildren<MeshRenderer>();
-        Material tnsMat = SetMaterialAlpha(0.5f);
-        if (mesh != null)
-        {
-            mesh.materials = new Material[0]; // Clear materials
-        }
-        ApplyMaterials(roof, mats[0]);
-    }
-    public void ResetMaterial()
-    {
-        MeshRenderer mesh = roof.GetComponentInChildren<MeshRenderer>();
-        Material tnsMat = SetMaterialAlpha(0.5f);
-        if (mesh != null)
-        {
-            mesh.materials = new Material[0]; // Clear materials
-        }
-        ApplyMaterials(roof, tnsMat);
-    }
 
     [Button]
     private void ClearMaterials()

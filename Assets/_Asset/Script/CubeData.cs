@@ -53,12 +53,13 @@ public class CubeData
 
     public void AssignBuildingHandleToBlockController()
     {
-        _blockController.BuildingHandle = this._buildingHandle;
+        _blockController.SetBuildingHandle(_buildingHandle);
     }
-    public void AssignMaterialToBuildingHandle(Material mainMat, Material EmissionLight)
+    public void AssignMaterialToBuildingHandle(Material mainMat, Material EmissionLight, Material transMat)
     {
         _buildingHandle.AddMat(mainMat);
         _buildingHandle.AddMat(EmissionLight);
+        _buildingHandle.AddTNSMat(transMat);
         _buildingHandle.ChangeMaterials();
     }
 }

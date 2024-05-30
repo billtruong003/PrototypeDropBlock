@@ -122,6 +122,7 @@ public class MeshRuleConfig : ScriptableObject
     {
         return num < 10 ? $"0{num}" : num.ToString();
     }
+
     [Button]
     private void ClearMatData()
     {
@@ -140,6 +141,7 @@ public class MeshRuleConfig : ScriptableObject
         Debug.LogWarning($"No main material found for type {matType}");
         return null;
     }
+
     public Material GetEmissionLightMat(MaterialType matType)
     {
         foreach (var materialData in materialDatas)
@@ -150,6 +152,19 @@ public class MeshRuleConfig : ScriptableObject
             }
         }
         Debug.LogWarning($"No main material found for type {matType}");
+        return null;
+    }
+
+    public Material GetTNSMat(MaterialType matType)
+    {
+        foreach (var materialData in materialDatas)
+        {
+            if (materialData.MatType == matType)
+            {
+                return materialData.Transparent_Mat;
+            }
+        }
+        Debug.LogWarning($"No transparent material found for type {matType}");
         return null;
     }
 

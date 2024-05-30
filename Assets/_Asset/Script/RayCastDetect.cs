@@ -166,6 +166,8 @@ public class RayCastDetect : MonoBehaviour
             meshRenderer.material = touchColor;
             lastHitObject = hitObject;
             lastMeshRenderer = meshRenderer;
+
+            TransparentRoof(hitObject.transform);
         }
     }
 
@@ -184,6 +186,8 @@ public class RayCastDetect : MonoBehaviour
                     lastMeshRenderer.material = blockNormCol;
                 }
             }
+            ResetRoof(lastHitObject.transform);
+
             lastHitObject = null;
             lastMeshRenderer = null;
         }
@@ -222,4 +226,47 @@ public class RayCastDetect : MonoBehaviour
         Debug.Log($"No block detected in direction {direction} from position {origin}.");
         return false;
     }
+    public void TransparentRoof(Transform hitObject)
+    {
+        Debug.Log("TransparentRoof called with hitObject: " + (hitObject != null ? hitObject.name : "null"));
+
+        if (!hitObject.CompareTag("Block"))
+        {
+            Debug.Log("Hit object is not a block.");
+            return;
+        }
+
+        BlockController blockController = hitObject.parent.GetComponentInParent<BlockController>();
+        if (blockController == null)
+        {
+            Debug.LogError("BlockController not found in parent.");
+            return;
+        }
+
+        Debug.Log("Making the roof transparent for block: " + hitObject.name);
+        blockController.TransparentRoof();
+    }
+
+    public void ResetRoof(Transform hitObject)
+    {
+        Debug.Log("ResetRoof called with hitObject: " + (hitObject != null ? hitObject.name : "null"));
+
+        if (!hitObject.CompareTag("Block"))
+        {
+            Debug.Log("Hit object is not a block.");
+            return;
+        }
+
+        BlockController blockController = hitObject.parent.GetComponentInParent<BlockController>();
+        if (blockController == null)
+        {
+
+            Debug.LogError("BlockController not found in hitObject.");
+            return;
+        }
+
+        Debug.Log("Resetting the roof for block: " + hitObject.name);
+        blockController.ResetRoof();
+    }
+
 }

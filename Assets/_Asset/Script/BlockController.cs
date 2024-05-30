@@ -34,7 +34,7 @@ public class BlockController : MonoBehaviour
     [BoxGroup("CubeData")]
     [SerializeField] private MaterialType materialType;
 
-    public BuildingHandle BuildingHandle;
+    private BuildingHandle buildingHandle;
     // Private variables
     private float targetHeight;
     private Vector3 targetPosition;
@@ -44,7 +44,7 @@ public class BlockController : MonoBehaviour
     public bool DoneDrop { get; private set; } = false;
 
     public Transform GetPivot() => pivot;
-
+    public void SetBuildingHandle(BuildingHandle buildingHandle) => this.buildingHandle = buildingHandle;
     private void Start()
     {
         Init();
@@ -130,10 +130,7 @@ public class BlockController : MonoBehaviour
         }
     }
 
-    private void TransparentRoof()
-    {
 
-    }
     private void DropToCenter()
     {
         DoneDrop = true;
@@ -320,5 +317,14 @@ public class BlockController : MonoBehaviour
         // Randomly select one of the material types
         int randomIndex = Random.Range(0, materialTypes.Length);
         return materialTypes[randomIndex];
+    }
+
+    public void TransparentRoof()
+    {
+        buildingHandle.SetRoofTransparent();
+    }
+    public void ResetRoof()
+    {
+        buildingHandle.ResetRoof();
     }
 }
