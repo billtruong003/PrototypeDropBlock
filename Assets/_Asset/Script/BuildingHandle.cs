@@ -13,6 +13,7 @@ public class BuildingHandle : MonoBehaviour
     [SerializeField] private GameObject door;
     [SerializeField] private List<Transform> pivots;
     [SerializeField] private List<Material> mats;
+    [SerializeField] private Material TNS_Mat;
     [SerializeField] private Renderer roofRenderer;
     [SerializeField, Range(0, 1)] private float alpha = 0.5f;
 
@@ -54,27 +55,31 @@ public class BuildingHandle : MonoBehaviour
         }
         return null;
     }
+
     public void TurnOnRoof()
     {
         roof.SetActive(true);
     }
+
     public void TurnOffRoof()
     {
         roof.SetActive(false);
     }
+
     public void TurnOnFurniture()
     {
         furniture.SetActive(true);
     }
+
     public void TurnOffFurniture()
     {
         furniture.SetActive(false);
     }
 
-    public void SetMaterialAlpha(float alpha)
+    public Material SetMaterialAlpha(float alpha)
     {
         // Tạo một instance riêng của material
-        Material material = roofRenderer.material;
+        Material material = TNS_Mat;
 
         // Kiểm tra nếu material có thuộc tính _Color
         if (material.HasProperty("_Color"))
@@ -104,11 +109,14 @@ public class BuildingHandle : MonoBehaviour
         material.EnableKeyword("_ALPHABLEND_ON");
         material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
         material.renderQueue = 3000;
+        return material;
     }
+
     public void SetRoofTransparent()
     {
         SetMaterialAlpha(alpha);
     }
+
     public void ResetMaterialAlpha()
     {
         SetMaterialAlpha(1.0f);
@@ -170,6 +178,28 @@ public class BuildingHandle : MonoBehaviour
             Debug.LogError($"MeshRenderer not found in {obj.name}");
         }
     }
+
+    public void TransparentRoof()
+    {
+        MeshRenderer mesh = roof.GetComponentInChildren<MeshRenderer>();
+        Material tnsMat = SetMaterialAlpha(0.5f);
+        if (mesh != null)
+        {
+            mesh.materials = new Material[0]; // Clear materials
+        }
+        ApplyMaterials(roof, mats[0]);
+    }
+    public void ResetMaterial()
+    {
+        MeshRenderer mesh = roof.GetComponentInChildren<MeshRenderer>();
+        Material tnsMat = SetMaterialAlpha(0.5f);
+        if (mesh != null)
+        {
+            mesh.materials = new Material[0]; // Clear materials
+        }
+        ApplyMaterials(roof, tnsMat);
+    }
+
     [Button]
     private void ClearMaterials()
     {

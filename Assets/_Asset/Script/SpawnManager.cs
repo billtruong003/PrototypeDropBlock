@@ -12,14 +12,14 @@ public class SpawnManager : Singleton<SpawnManager>
 
     [CustomHeader("Cheat", 20, "#EE4E4E")]
 
-    [BoxGroup]
+    [BoxGroup("Cheat", "#8B322C", 0.5f)]
     [SerializeField] private bool spawnCheat;
-    [BoxGroup]
+    [BoxGroup("Cheat", "#8B322C", 0.5f)]
     [SerializeField] private GameObject cheatBlock;
 
-    [BoxGroup]
+    [BoxGroup("Cheat", "#8B322C", 0.5f)]
     [SerializeField] private bool materialCheat;
-    [BoxGroup]
+    [BoxGroup("Cheat", "#8B322C", 0.5f)]
     [SerializeField] private MaterialType cheatMaterial;
 
     public bool CheckMatCheat() => materialCheat;

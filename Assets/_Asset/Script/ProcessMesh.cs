@@ -51,8 +51,6 @@ public class ProcessMesh : MonoBehaviour
         cubeData.SetBuildingHandle(buildingHandle);
         cubeData.AssignBuildingHandleToBlockController();
         cubeData.SetMesh(spawnBuilding);
-
-
     }
 
     public GameObject ProcessCubeCode(BlockShape blockShape, BlockAngle blockAngle)

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class FileRenamer : MonoBehaviour
 {
+    [SerializeField] private string prefixName = "TNSMAT";
     [SerializeField] private List<Material> mats;
 
     [ContextMenu("Rename Files")]
@@ -28,7 +29,7 @@ public class FileRenamer : MonoBehaviour
 
             // Determine the new file name
             string directory = Path.GetDirectoryName(oldFilePath);
-            string newFileName = $"MAT_0{ProcessCodeMesh(index)}"; // Example new file name
+            string newFileName = $"{prefixName}_0{ProcessCodeMesh(index)}"; // Example new file name
             string newFilePath = Path.Combine(directory, newFileName);
 
             // Rename the file

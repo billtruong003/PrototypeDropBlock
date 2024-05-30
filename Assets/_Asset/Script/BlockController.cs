@@ -117,6 +117,7 @@ public class BlockController : MonoBehaviour
         }
 
     }
+
     private void ChangeState()
     {
         if (blockAngle == BlockAngle.FLAT)
@@ -127,6 +128,11 @@ public class BlockController : MonoBehaviour
         {
             blockAngle = BlockAngle.FLAT;
         }
+    }
+
+    private void TransparentRoof()
+    {
+
     }
     private void DropToCenter()
     {

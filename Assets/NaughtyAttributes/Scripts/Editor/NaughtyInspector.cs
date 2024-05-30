@@ -88,49 +88,54 @@ namespace NaughtyAttributes.Editor
                 }
             }
 
-            // Draw grouped serialized properties
-            foreach (var group in GetGroupedProperties(_serializedProperties))
+            // Draw grouped serialized properties with foldable box
+            var groupedProperties = GetGroupedProperties(_serializedProperties).ToList();
+            foreach (var group in groupedProperties)
             {
-                IEnumerable<SerializedProperty> visibleProperties = group.Where(p => PropertyUtility.IsVisible(p));
-                if (!visibleProperties.Any())
-                {
-                    continue;
-                }
+                var boxGroupAttribute = PropertyUtility.GetAttribute<BoxGroupAttribute>(group.First());
 
-                NaughtyEditorGUI.BeginBoxGroup_Layout(group.Key);
-                foreach (var property in visibleProperties)
+                if (boxGroupAttribute.Foldable)
                 {
-                    NaughtyEditorGUI.PropertyField_Layout(property, includeChildren: true);
-                }
-
-                NaughtyEditorGUI.EndBoxGroup_Layout();
-            }
-
-            // Draw foldout serialized properties
-            foreach (var group in GetFoldoutProperties(_serializedProperties))
-            {
-                IEnumerable<SerializedProperty> visibleProperties = group.Where(p => PropertyUtility.IsVisible(p));
-                if (!visibleProperties.Any())
-                {
-                    continue;
-                }
-
-                if (!_foldouts.ContainsKey(group.Key))
-                {
-                    _foldouts[group.Key] = new SavedBool($"{target.GetInstanceID()}.{group.Key}", false);
-                }
-
-                _foldouts[group.Key].Value = EditorGUILayout.Foldout(_foldouts[group.Key].Value, group.Key, true);
-                if (_foldouts[group.Key].Value)
-                {
-                    foreach (var property in visibleProperties)
+                    if (!_foldouts.ContainsKey(boxGroupAttribute.Name))
                     {
-                        NaughtyEditorGUI.PropertyField_Layout(property, true);
+                        _foldouts[boxGroupAttribute.Name] = new SavedBool($"{target.GetInstanceID()}.{boxGroupAttribute.Name}", true);
                     }
+
+                    _foldouts[boxGroupAttribute.Name].Value = EditorGUILayout.Foldout(_foldouts[boxGroupAttribute.Name].Value, boxGroupAttribute.Name, true);
+
+                    if (_foldouts[boxGroupAttribute.Name].Value)
+                    {
+                        DrawBoxGroup(group, boxGroupAttribute);
+                    }
+                }
+                else
+                {
+                    DrawBoxGroup(group, boxGroupAttribute);
                 }
             }
 
             serializedObject.ApplyModifiedProperties();
+        }
+
+        private void DrawBoxGroup(IEnumerable<SerializedProperty> group, BoxGroupAttribute boxGroupAttribute)
+        {
+            // Create a GUIStyle for the box
+            var boxStyle = new GUIStyle(GUI.skin.box);
+
+            // Begin box with custom background color
+            var rect = EditorGUILayout.BeginVertical(boxStyle);
+            EditorGUI.DrawRect(rect, new Color(boxGroupAttribute.Color.r, boxGroupAttribute.Color.g, boxGroupAttribute.Color.b, boxGroupAttribute.Opacity));
+            GUILayout.Label(boxGroupAttribute.Name, EditorStyles.boldLabel);
+
+            foreach (var property in group)
+            {
+                if (PropertyUtility.IsVisible(property))
+                {
+                    NaughtyEditorGUI.PropertyField_Layout(property, includeChildren: true);
+                }
+            }
+
+            EditorGUILayout.EndVertical();
         }
 
         protected void DrawNonSerializedFields(bool drawHeader = false)
@@ -190,6 +195,19 @@ namespace NaughtyAttributes.Editor
             }
         }
 
+        private static Texture2D MakeTex(int width, int height, Color col)
+        {
+            Color[] pix = new Color[width * height];
+            for (int i = 0; i < pix.Length; i++)
+            {
+                pix[i] = col;
+            }
+            Texture2D result = new Texture2D(width, height);
+            result.SetPixels(pix);
+            result.Apply();
+            return result;
+        }
+
         private static IEnumerable<SerializedProperty> GetNonGroupedProperties(IEnumerable<SerializedProperty> properties)
         {
             return properties.Where(p => PropertyUtility.GetAttribute<IGroupAttribute>(p) == null);
@@ -200,13 +218,6 @@ namespace NaughtyAttributes.Editor
             return properties
                 .Where(p => PropertyUtility.GetAttribute<BoxGroupAttribute>(p) != null)
                 .GroupBy(p => PropertyUtility.GetAttribute<BoxGroupAttribute>(p).Name);
-        }
-
-        private static IEnumerable<IGrouping<string, SerializedProperty>> GetFoldoutProperties(IEnumerable<SerializedProperty> properties)
-        {
-            return properties
-                .Where(p => PropertyUtility.GetAttribute<FoldoutAttribute>(p) != null)
-                .GroupBy(p => PropertyUtility.GetAttribute<FoldoutAttribute>(p).Name);
         }
 
         private static GUIStyle GetHeaderGUIStyle()

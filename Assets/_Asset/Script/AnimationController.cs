@@ -26,28 +26,16 @@ namespace AnimationController.WithTransform
             Sequence mySequence = DOTween.Sequence();
 
             // Add scaling animations to the sequence
-            mySequence.Append(target.DOScale(new Vector3(1.2f, 0.8f, 1), duration * 0.2f).SetEase(Ease.OutQuad));
-            mySequence.Append(target.DOScale(new Vector3(0.8f, 1.2f, 1), duration * 0.2f).SetEase(Ease.OutQuad));
-            mySequence.Append(target.DOScale(new Vector3(1.1f, 0.9f, 1), duration * 0.2f).SetEase(Ease.OutQuad));
-            mySequence.Append(target.DOScale(new Vector3(0.9f, 1.1f, 1), duration * 0.2f).SetEase(Ease.OutQuad));
+            // mySequence.Append(target.DOScale(new Vector3(1.2f, 0.8f, 1), duration * 0.2f).SetEase(Ease.OutQuad));
+            // mySequence.Append(target.DOScale(new Vector3(0.8f, 1.2f, 1), duration * 0.2f).SetEase(Ease.OutQuad));
+            // mySequence.Append(target.DOScale(new Vector3(1.1f, 0.9f, 1), duration * 0.2f).SetEase(Ease.OutQuad));
+            // mySequence.Append(target.DOScale(new Vector3(0.9f, 1.1f, 1), duration * 0.2f).SetEase(Ease.OutQuad));
+            mySequence.Append(target.DOScale(new Vector3(1f, 0.7f, 1), duration * 0.2f).SetEase(Ease.OutQuad));
+            mySequence.Append(target.DOScale(new Vector3(1.1f, 1.1f, 1), duration * 0.2f).SetEase(Ease.OutQuad));
             mySequence.Append(target.DOScale(Vector3.one, duration * 0.2f).SetEase(Ease.OutQuad));
 
             // Play the sequence
             mySequence.Play();
-        }
-        public static void LineTextureScale(LineRenderer lineRenderer, Vector2 startScale, Vector2 endScale, float duration)
-        {
-            // Ensure the duration is greater than zero to avoid division by zero
-            if (duration <= 0)
-            {
-                Debug.LogWarning("Duration must be greater than zero.");
-                return;
-            }
-
-            lineRenderer.material.SetTextureScale("_MainTex", startScale);
-
-            DOTween.To(() => startScale, x => lineRenderer.material.SetTextureScale("_MainTex", x), endScale, duration)
-                   .SetEase(Ease.InOutQuad);
         }
     }
 }
