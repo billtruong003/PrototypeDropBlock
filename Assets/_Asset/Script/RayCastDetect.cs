@@ -26,13 +26,16 @@ public class RayCastDetect : MonoBehaviour
     [SerializeField] private List<Transform> cube;
     [SerializeField] private BlockShape blockShape;
 
-    // Private variables
-    private bool completeChangeMat;
     private GameObject lastHitObject;
     private Vector3 hitPosition;
     private Ray ray;
     private BlockController blockController;
+    private VisualGuideController visualGuide;
 
+    public void SetVisualGuide(VisualGuideController vsGuide)
+    {
+        this.visualGuide = vsGuide;
+    }
     private void Start()
     {
         blockController = gameObject.GetComponent<BlockController>() ?? transform.parent.GetComponent<BlockController>();
@@ -49,6 +52,7 @@ public class RayCastDetect : MonoBehaviour
         {
             if (blockController.DoneDrop)
             {
+                ResetVisualGuide();
                 ResetLastHitObject();
             }
             else
@@ -111,6 +115,7 @@ public class RayCastDetect : MonoBehaviour
                     {
                         valid = true;
                         HandleRaycastHit(hit);
+                        HandleVisualGuide(hit.collider.gameObject);
                         return;
                     }
                     else
@@ -122,6 +127,7 @@ public class RayCastDetect : MonoBehaviour
             }
             valid = true;
             HandleRaycastHit(hit);
+            HandleVisualGuide(hit.collider.gameObject);
         }
         else
         {
@@ -163,11 +169,12 @@ public class RayCastDetect : MonoBehaviour
                 ResetLastHitObject();
             }
 
-            meshRenderer.material = touchColor;
+            // meshRenderer.material = touchColor;
             lastHitObject = hitObject;
-            lastMeshRenderer = meshRenderer;
+            // lastMeshRenderer = meshRenderer;
 
             TransparentRoof(hitObject.transform);
+
         }
     }
 
@@ -175,17 +182,17 @@ public class RayCastDetect : MonoBehaviour
     {
         if (lastHitObject != null)
         {
-            if (lastMeshRenderer != null)
-            {
-                if (lastMeshRenderer.gameObject.CompareTag("Ground"))
-                {
-                    lastMeshRenderer.material = normalColor;
-                }
-                else
-                {
-                    lastMeshRenderer.material = blockNormCol;
-                }
-            }
+            // if (lastMeshRenderer != null)
+            // {
+            //     if (lastMeshRenderer.gameObject.CompareTag("Ground"))
+            //     {
+            //         lastMeshRenderer.material = normalColor;
+            //     }
+            //     else
+            //     {
+            //         lastMeshRenderer.material = blockNormCol;
+            //     }
+            // }
             ResetRoof(lastHitObject.transform);
 
             lastHitObject = null;
@@ -211,7 +218,6 @@ public class RayCastDetect : MonoBehaviour
     public bool CheckBlockOnTop()
     {
         bool roofOnTop = CheckBlock(transform.position, Vector3.up);
-        Debug.Log($"GameObject {gameObject.name} roofOnTop {roofOnTop}");
         return roofOnTop;
     }
 
@@ -219,54 +225,62 @@ public class RayCastDetect : MonoBehaviour
     {
         if (Physics.Raycast(origin, direction, out RaycastHit hit, detectionRadius, blockLayer))
         {
-            Debug.Log($"Block detected in direction {direction} from position {origin}.");
-            Debug.Log($"Detection Hit: {hit.collider.gameObject}");
             return true;
         }
-        Debug.Log($"No block detected in direction {direction} from position {origin}.");
         return false;
     }
     public void TransparentRoof(Transform hitObject)
     {
-        Debug.Log("TransparentRoof called with hitObject: " + (hitObject != null ? hitObject.name : "null"));
-
         if (!hitObject.CompareTag("Block"))
         {
-            Debug.Log("Hit object is not a block.");
             return;
         }
 
         BlockController blockController = hitObject.parent.GetComponentInParent<BlockController>();
         if (blockController == null)
         {
-            Debug.LogError("BlockController not found in parent.");
             return;
         }
 
-        Debug.Log("Making the roof transparent for block: " + hitObject.name);
         blockController.TransparentRoof();
     }
 
     public void ResetRoof(Transform hitObject)
     {
-        Debug.Log("ResetRoof called with hitObject: " + (hitObject != null ? hitObject.name : "null"));
 
         if (!hitObject.CompareTag("Block"))
         {
-            Debug.Log("Hit object is not a block.");
             return;
         }
 
         BlockController blockController = hitObject.parent.GetComponentInParent<BlockController>();
         if (blockController == null)
         {
-
-            Debug.LogError("BlockController not found in hitObject.");
             return;
         }
 
-        Debug.Log("Resetting the roof for block: " + hitObject.name);
         blockController.ResetRoof();
+    }
+
+    public void HandleVisualGuide(GameObject target)
+    {
+        if (visualGuide == null)
+        {
+            return;
+        }
+        Vector3 targetPosition = target.transform.position;
+        float targetHeight = target != null && target.CompareTag("Block") ? targetPosition.y + 0.5f : targetPosition.y;
+        targetPosition = new Vector3(targetPosition.x, targetHeight, targetPosition.z);
+        visualGuide.Display(targetPosition);
+    }
+    public void ResetVisualGuide()
+    {
+        if (visualGuide == null)
+        {
+            return;
+        }
+        VisualGuide.Instance.AddBackVisualGuide(visualGuide);
+        visualGuide = null;
     }
 
 }

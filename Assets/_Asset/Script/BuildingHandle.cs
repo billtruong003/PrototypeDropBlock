@@ -7,7 +7,7 @@ using UnityEngine;
 public class BuildingHandle : MonoBehaviour
 {
     [SerializeField] private GameObject brick;
-    [SerializeField] private GameObject furniture;
+    [SerializeField] private List<GameObject> furniture;
     [SerializeField] private GameObject roof;
     [SerializeField] private GameObject window;
     [SerializeField] private GameObject door;
@@ -29,10 +29,23 @@ public class BuildingHandle : MonoBehaviour
     private void Init()
     {
         brick = GetChildObjectByName("Brick");
-        furniture = GetChildObjectByName("Furniture");
+        furniture = GetChildObjectsByName("Furniture");
         roof = GetChildObjectByName("Roof");
         window = GetChildObjectByName("Window");
         door = GetChildObjectByName("Door");
+    }
+
+    private List<GameObject> GetChildObjectsByName(string name)
+    {
+        List<GameObject> children = new List<GameObject>();
+        foreach (Transform child in transform)
+        {
+            if (child.name == name)
+            {
+                children.Add(child.gameObject);
+            }
+        }
+        return children;
     }
 
     private GameObject GetChildObjectByName(string childName)
@@ -67,14 +80,14 @@ public class BuildingHandle : MonoBehaviour
         roof.SetActive(false);
     }
 
-    public void TurnOnFurniture()
+    public void TurnOnFurniture(int indexFur)
     {
-        furniture.SetActive(true);
+        furniture[indexFur].SetActive(true);
     }
 
-    public void TurnOffFurniture()
+    public void TurnOffFurniture(int indexFur)
     {
-        furniture.SetActive(false);
+        furniture[indexFur].SetActive(false);
     }
 
     public Material SetMaterialAlpha(float alpha)
@@ -197,15 +210,6 @@ public class BuildingHandle : MonoBehaviour
             }
         }
 
-        if (furniture != null)
-        {
-            MeshRenderer mesh = furniture.GetComponentInChildren<MeshRenderer>();
-            if (mesh != null)
-            {
-                mesh.materials = new Material[0]; // Clear materials
-            }
-        }
-
         if (roof != null)
         {
             MeshRenderer mesh = roof.GetComponentInChildren<MeshRenderer>();
@@ -232,6 +236,30 @@ public class BuildingHandle : MonoBehaviour
                 mesh.materials = new Material[0]; // Clear materials
             }
         }
+    }
+
+    public GameObject CheckFurnituresSide(Vector3 collideNeedCheck)
+    {
+        if (transform.position.x == collideNeedCheck.x && transform.position.z == collideNeedCheck.z)
+        {
+            furniture[0].transform.GetChild(2).gameObject.SetActive(false);
+            return furniture[0];
+        }
+
+        GameObject closestFurniture = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (GameObject furnitureItem in furniture)
+        {
+            float distance = Vector3.Distance(furnitureItem.transform.position, collideNeedCheck);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestFurniture = furnitureItem;
+            }
+        }
+
+        return closestFurniture;
     }
 
 }

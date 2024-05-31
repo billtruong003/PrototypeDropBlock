@@ -4,8 +4,8 @@ using DG.Tweening;
 using AnimationController.WithTransform;
 using BlockBuilder.BlockManagement;
 using NaughtyAttributes;
-using System.Linq;
 using BillUtils.SerializeCustom;
+using System.Collections;
 
 public class BlockController : MonoBehaviour
 {
@@ -44,7 +44,11 @@ public class BlockController : MonoBehaviour
     public bool DoneDrop { get; private set; } = false;
 
     public Transform GetPivot() => pivot;
+    public Vector3 GetCenter() => centerPoint.position;
+    public List<GameObject> GetTotalCube() => totalCube;
     public void SetBuildingHandle(BuildingHandle buildingHandle) => this.buildingHandle = buildingHandle;
+
+
     private void Start()
     {
         Init();
@@ -66,7 +70,8 @@ public class BlockController : MonoBehaviour
 
     private void Init()
     {
-        rayCastDetect = GetAllComponents(gameObject);
+        rayCastDetect = GetAllComponentRaycast(gameObject);
+        GetAvailableVisualGuide();
 #if UNITY_EDITOR
         if (SpawnManager.Instance != null && SpawnManager.Instance.CheckMatCheat())
         {
@@ -75,8 +80,32 @@ public class BlockController : MonoBehaviour
         }
 #endif
         RandomMat();
+
     }
 
+    private void GetAvailableVisualGuide()
+    {
+        Debug.LogWarning("CheckVSGUide");
+        StartCoroutine(Cor_GetAvailableVisualGuide());
+    }
+
+    private IEnumerator Cor_GetAvailableVisualGuide()
+    {
+        yield return new WaitUntil(() => rayCastDetect.Count != 0);
+        foreach (RayCastDetect itemRay in rayCastDetect)
+        {
+            VisualGuideController vsGuide = VisualGuide.Instance.GetAvailableVisualGuide();
+            if (vsGuide != null)
+            {
+                itemRay.SetVisualGuide(vsGuide);
+                Debug.Log("Visual guide set for raycast detector.");
+            }
+            else
+            {
+                Debug.LogWarning("No available visual guide to set.");
+            }
+        }
+    }
     private void RandomMat()
     {
         materialType = RandomizeMaterialType();
@@ -84,8 +113,8 @@ public class BlockController : MonoBehaviour
 
     private void HandleMovement()
     {
-        float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        float moveZ = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        float moveX = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
+        float moveZ = Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
         transform.Translate(new Vector3(moveX, 0, moveZ), Space.World);
     }
     private void HandleRotate()
@@ -177,7 +206,7 @@ public class BlockController : MonoBehaviour
         }
     }
 
-    private List<RayCastDetect> GetAllComponents(GameObject gameObject)
+    private List<RayCastDetect> GetAllComponentRaycast(GameObject gameObject)
     {
         List<RayCastDetect> allComponents = new List<RayCastDetect>();
         gameObject.GetComponentsInChildren(true, allComponents);
@@ -323,6 +352,7 @@ public class BlockController : MonoBehaviour
     {
         buildingHandle.SetRoofTransparent();
     }
+
     public void ResetRoof()
     {
         buildingHandle.ResetRoof();

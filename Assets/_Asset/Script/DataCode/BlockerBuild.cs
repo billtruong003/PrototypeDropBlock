@@ -35,17 +35,23 @@ namespace BlockBuilder.BlockManagement
         BDS_003,
         BDS_004,
     }
+
+    public enum BuildingAesthetic
+    {
+        FIRST_FLOOR,
+        SECOND_FLOOR,
+        TERRACE,
+        ROOFTOP,
+    }
     #endregion
 
     #region Orientation
     public enum Direction
     {
-        TOP,
-        DOWN,
+        FORWARD,
+        BACKWARD,
         LEFT,
         RIGHT,
-        ABOVE_DOWN,
-        ABOVE_UP
     }
 
     public enum AngleShoot
