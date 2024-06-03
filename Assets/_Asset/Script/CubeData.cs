@@ -60,6 +60,34 @@ public class CubeData
         _buildingHandle.AddMat(mainMat);
         _buildingHandle.AddMat(EmissionLight);
         _buildingHandle.AddTNSMat(transMat);
-        _buildingHandle.ChangeMaterials();
     }
+    public void DisplayFurnitureSideAndApplyMaterial()
+    {
+        BlockController blockController = _blockController.GetHitObjectController();
+        GameObject sideFur = null;
+
+        if (blockController == null)
+        {
+            sideFur = _buildingHandle.GetFirstFur();
+            Debug.Log("BlockController is null, using first furniture.");
+        }
+        else
+        {
+            sideFur = _buildingHandle.CheckFurnituresSide(blockController.GetCenterObj());
+            Debug.Log($"BlockController found, using CheckFurnituresSide: {sideFur.name}");
+        }
+
+        if (sideFur != null)
+        {
+            sideFur.SetActive(true);
+            string sideFurName = sideFur.name;
+
+            _buildingHandle.ChangeMaterials(sideFur.transform);
+        }
+        else
+        {
+            Debug.LogError("No furniture found to activate.");
+        }
+    }
+
 }

@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace BillUtils.SerializeCustom
 {
-    public class CustomHeaderAttribute : PropertyAttribute
+    public class BillHeaderAttribute : PropertyAttribute
     {
         public string Header { get; private set; }
         public int FontSize { get; private set; }
         public Color Color { get; private set; }
 
-        public CustomHeaderAttribute(string header, int fontSize = 12, string hexColor = "#FFFFFF")
+        public BillHeaderAttribute(string header, int fontSize = 12, string hexColor = "#FFFFFF")
         {
             this.Header = header;
             this.FontSize = fontSize;

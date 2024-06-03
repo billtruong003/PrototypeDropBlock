@@ -1,13 +1,17 @@
 using System;
+using BillUtils.GameObjectUtilities;
+using BillUtils.SpaceUtilities;
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEditor;
 
 public class BuildingHandle : MonoBehaviour
 {
     [SerializeField] private GameObject brick;
-    [SerializeField] private List<GameObject> furniture;
+    [SerializeField] private List<GameObject> furnitures;
+    [SerializeField] private GameObject furniture;
     [SerializeField] private GameObject roof;
     [SerializeField] private GameObject window;
     [SerializeField] private GameObject door;
@@ -19,6 +23,8 @@ public class BuildingHandle : MonoBehaviour
 
     public void AddMat(Material mat) => mats.Add(mat);
     public void AddTNSMat(Material mat) => TNS_Mat = mat;
+    public GameObject GetFirstFur() => furnitures[0];
+
     private void Start()
     {
         alpha = 0.5f;
@@ -29,10 +35,34 @@ public class BuildingHandle : MonoBehaviour
     private void Init()
     {
         brick = GetChildObjectByName("Brick");
-        furniture = GetChildObjectsByName("Furniture");
-        roof = GetChildObjectByName("Roof");
-        window = GetChildObjectByName("Window");
-        door = GetChildObjectByName("Door");
+        if (brick != null)
+        {
+            Debug.Log($"Brick object found: {brick.name}");
+        }
+        else
+        {
+            Debug.LogError("Brick object not found.");
+        }
+        furniture = GetChildObjectByName("Furniture");
+        furnitures = InitFurs(furniture.transform);
+        if (furnitures.Count > 0)
+        {
+            Debug.Log($"Found {furnitures.Count} furniture objects.");
+        }
+        else
+        {
+            Debug.LogError("No furniture objects found.");
+        }
+    }
+
+    private List<GameObject> InitFurs(Transform furnitureContainer)
+    {
+        List<GameObject> childFur = new List<GameObject>();
+        foreach (Transform child in furnitureContainer)
+        {
+            childFur.Add(child.gameObject);
+        }
+        return childFur;
     }
 
     private List<GameObject> GetChildObjectsByName(string name)
@@ -82,12 +112,12 @@ public class BuildingHandle : MonoBehaviour
 
     public void TurnOnFurniture(int indexFur)
     {
-        furniture[indexFur].SetActive(true);
+        furnitures[indexFur].SetActive(true);
     }
 
     public void TurnOffFurniture(int indexFur)
     {
-        furniture[indexFur].SetActive(false);
+        furnitures[indexFur].SetActive(false);
     }
 
     public Material SetMaterialAlpha(float alpha)
@@ -97,9 +127,7 @@ public class BuildingHandle : MonoBehaviour
         if (material.HasProperty("_Color"))
         {
             Color color = material.color;
-
             color.a = alpha;
-
             material.color = color;
         }
         else if (material.HasProperty("_BaseColor"))
@@ -140,40 +168,46 @@ public class BuildingHandle : MonoBehaviour
         ApplyMaterials(roof, mats[0]);
     }
 
-    public void ChangeMaterials()
+    public void ChangeMaterials(Transform fur)
     {
-        // Ensure there are enough materials
         if (mats.Count < 2)
         {
             Debug.LogError("Not enough materials provided. Please ensure there are at least 4 materials.");
             return;
         }
-
-        ClearMaterials();
-
-        // Apply materials to brick
+        door = GetDoor(fur);
+        window = GetWindow(fur);
+        ClearMaterials(fur);
         if (brick != null)
         {
             ApplyMaterials(brick, mats[0]);
         }
 
-        // Apply materials to door
         if (door != null)
         {
             ApplyMaterials(door, mats[0]);
         }
 
-        // Apply materials to window
         if (window != null)
         {
+
             ApplyMaterials(window, mats[0], mats[1]);
         }
 
-        // Apply materials to roof
         if (roof != null)
         {
             ApplyMaterials(roof, mats[0]);
         }
+    }
+
+    private GameObject GetDoor(Transform fur)
+    {
+        return GetChildObjectByName(fur, "Door");
+    }
+
+    private GameObject GetWindow(Transform fur)
+    {
+        return GetChildObjectByName(fur, "Window");
     }
 
     private void ApplyMaterials(GameObject obj, Material mat1, Material mat2 = null)
@@ -197,69 +231,73 @@ public class BuildingHandle : MonoBehaviour
         }
     }
 
-
     [Button]
-    private void ClearMaterials()
+    private void ClearMaterials(Transform fur)
     {
-        if (brick != null)
-        {
-            MeshRenderer mesh = brick.GetComponentInChildren<MeshRenderer>();
-            if (mesh != null)
-            {
-                mesh.materials = new Material[0]; // Clear materials
-            }
-        }
+        ClearMaterial(brick);
+        ClearMaterial(GetDoor(fur));
+        ClearMaterial(GetWindow(fur));
+        ClearMaterial(door);
+    }
 
-        if (roof != null)
+    private void ClearMaterial(GameObject obj)
+    {
+        if (obj != null)
         {
-            MeshRenderer mesh = roof.GetComponentInChildren<MeshRenderer>();
+            MeshRenderer mesh = obj.GetComponentInChildren<MeshRenderer>();
             if (mesh != null)
             {
                 mesh.materials = new Material[0]; // Clear materials
+                Debug.Log($"Cleared materials from {obj.name}");
             }
-        }
-
-        if (window != null)
-        {
-            MeshRenderer mesh = window.GetComponentInChildren<MeshRenderer>();
-            if (mesh != null)
+            else
             {
-                mesh.materials = new Material[0]; // Clear materials
-            }
-        }
-
-        if (door != null)
-        {
-            MeshRenderer mesh = door.GetComponentInChildren<MeshRenderer>();
-            if (mesh != null)
-            {
-                mesh.materials = new Material[0]; // Clear materials
+                Debug.LogError($"MeshRenderer not found in {obj.name}");
             }
         }
     }
 
-    public GameObject CheckFurnituresSide(Vector3 collideNeedCheck)
+    // FIXME
+    public GameObject CheckFurnituresSide(GameObject collideObj)
     {
-        if (transform.position.x == collideNeedCheck.x && transform.position.z == collideNeedCheck.z)
+        Vector3 colliderPoint = collideObj.transform.position;
+        GameObject doorObject = GetChildObjectByName(furnitures[0].transform, "Door");
+        if (!collideObj.transform.parent.parent.CompareTag("Block"))
         {
-            furniture[0].transform.GetChild(2).gameObject.SetActive(false);
-            return furniture[0];
+            return furnitures[0];
+        }
+
+        if (transform.position.x == colliderPoint.x && transform.position.z == colliderPoint.z)
+        {
+            furnitures[0].transform.GetChild(0).gameObject.SetActive(false);
+            return furnitures[0];
         }
 
         GameObject closestFurniture = null;
         float closestDistance = float.MaxValue;
 
-        foreach (GameObject furnitureItem in furniture)
+        foreach (GameObject furnitureItem in furnitures)
         {
-            float distance = Vector3.Distance(furnitureItem.transform.position, collideNeedCheck);
-            if (distance < closestDistance)
+            doorObject = furnitureItem.transform.GetChild(0).gameObject;
+            if (doorObject != null)
             {
-                closestDistance = distance;
-                closestFurniture = furnitureItem;
+                Vector3 doorPosition = SpaceUtils.GetMeshWorldPosition(doorObject);
+                float distance = Vector3.Distance(doorPosition, colliderPoint);
+                Debug.Log($"Distance: {distance}");
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestFurniture = furnitureItem;
+                }
             }
         }
-
         return closestFurniture;
     }
 
+    public Vector3 GetMeshWorldPosition(GameObject obj)
+    {
+        Vector3 worldPosition = SpaceUtils.GetMeshWorldPosition(obj);
+        Debug.Log($"Mesh World Position of {obj.name}: {worldPosition}");
+        return worldPosition;
+    }
 }

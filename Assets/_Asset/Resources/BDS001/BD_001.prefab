@@ -791,6 +791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5395862653346052430}
   - component: {fileID: -7017470960830845897}
+  - component: {fileID: 4349104073541736699}
   m_Layer: 0
   m_Name: BD_001
   m_TagString: Untagged
@@ -827,6 +828,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 8035759389888091149}
+  furnitures:
+  - {fileID: 5967828827715080066}
+  - {fileID: 8338359618724831987}
+  - {fileID: 368871349993364252}
+  - {fileID: 85914772161376777}
   furniture: {fileID: 9194243867151351579}
   roof: {fileID: 7410444131739194493}
   window: {fileID: 7554435444557160554}
@@ -836,6 +842,19 @@ MonoBehaviour:
   TNS_Mat: {fileID: 0}
   roofRenderer: {fileID: 983935739174413027}
   alpha: 0.5
+--- !u!114 &4349104073541736699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5695345240530951790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9c5f8ad4e09dc41ad10315835026bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 7340515093348807250}
 --- !u!1 &5967828827715080066
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4945781754857403266
 Transform:
   m_ObjectHideFlags: 0

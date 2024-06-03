@@ -25,7 +25,7 @@ public abstract class BlockBase : MonoBehaviour
     [SerializeField] protected List<GameObject> totalCube = new();
 
     // Block data
-    [CustomHeader("Data", 15, "#B0EBB4")]
+    [BillHeader("Data", 15, "#B0EBB4")]
     [BoxGroup("CubeData")]
     [SerializeField] protected BlockShape blockShape;
     [BoxGroup("CubeData")]

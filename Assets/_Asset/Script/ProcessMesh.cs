@@ -44,6 +44,7 @@ public class ProcessMesh : MonoBehaviour
 
         Debug.Log($"Position: {dropPosition}, Roof:");
         cubeData.ConditionalRoof();
+        cubeData.DisplayFurnitureSideAndApplyMaterial();
     }
 
     private void AssignBuildingDataToCube(CubeData cubeData, GameObject spawnBuilding)

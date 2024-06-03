@@ -5,6 +5,7 @@ using AnimationController.WithTransform;
 using BlockBuilder.BlockManagement;
 using NaughtyAttributes;
 using BillUtils.SerializeCustom;
+using BillUtils.EnumUtilities;
 using System.Collections;
 
 public class BlockController : MonoBehaviour
@@ -26,7 +27,7 @@ public class BlockController : MonoBehaviour
     [SerializeField] private List<GameObject> totalCube = new();
 
     // Block data
-    [CustomHeader("Data", 15, "#B0EBB4")]
+    [BillHeader("Data", 15, "#B0EBB4")]
     [BoxGroup("CubeData")]
     [SerializeField] private BlockShape blockShape;
     [BoxGroup("CubeData")]
@@ -47,7 +48,9 @@ public class BlockController : MonoBehaviour
     public Vector3 GetCenter() => centerPoint.position;
     public List<GameObject> GetTotalCube() => totalCube;
     public void SetBuildingHandle(BuildingHandle buildingHandle) => this.buildingHandle = buildingHandle;
-
+    public BlockController GetHitObjectController() => this.hitObject.transform.parent.parent.GetComponent<BlockController>();
+    public GameObject GetCenterObj() => centerPoint.gameObject;
+    public BlockShape getShape => blockShape;
 
     private void Start()
     {
@@ -72,16 +75,20 @@ public class BlockController : MonoBehaviour
     {
         rayCastDetect = GetAllComponentRaycast(gameObject);
         GetAvailableVisualGuide();
-#if UNITY_EDITOR
+
         if (SpawnManager.Instance != null && SpawnManager.Instance.CheckMatCheat())
         {
             materialType = SpawnManager.Instance.GetCheatMat();
+            // TODO: REMOVE JUST SET TO CLEAR INFO
+            UIManager.Instance.SetCurrentMat(materialType);
             return;
         }
-#endif
-        RandomMat();
 
+        materialType = RandomizeMaterialType();
+        // TODO: REMOVE JUST SET TO CLEAR INFO
+        UIManager.Instance.SetCurrentMat(materialType);
     }
+
 
     private void GetAvailableVisualGuide()
     {
@@ -106,11 +113,6 @@ public class BlockController : MonoBehaviour
             }
         }
     }
-    private void RandomMat()
-    {
-        materialType = RandomizeMaterialType();
-    }
-
     private void HandleMovement()
     {
         float moveX = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
@@ -159,7 +161,6 @@ public class BlockController : MonoBehaviour
         }
     }
 
-
     private void DropToCenter()
     {
         DoneDrop = true;
@@ -189,7 +190,6 @@ public class BlockController : MonoBehaviour
         mySequence.Play();
         Debug.Log("Sequence started");
     }
-
 
     private void OnDropComplete()
     {
@@ -286,6 +286,7 @@ public class BlockController : MonoBehaviour
 
         centerPoint.SetParent(pivot, true);
     }
+
     private void SaveData(Vector3 pos, Vector3 angle)
     {
         CubeData cubeData = new();
@@ -305,7 +306,6 @@ public class BlockController : MonoBehaviour
             PositionManager.Instance.SaveCubeType(cubeData);
         }
     }
-
 
     public bool CheckRoof()
     {
@@ -340,10 +340,7 @@ public class BlockController : MonoBehaviour
 
     private MaterialType RandomizeMaterialType()
     {
-        // Get all possible values of MaterialType enum
         MaterialType[] materialTypes = (MaterialType[])System.Enum.GetValues(typeof(MaterialType));
-
-        // Randomly select one of the material types
         int randomIndex = Random.Range(0, materialTypes.Length);
         return materialTypes[randomIndex];
     }

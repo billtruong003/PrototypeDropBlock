@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace BillUtils.SerializeCustom
 {
-    [CustomPropertyDrawer(typeof(CustomHeaderAttribute))]
+    [CustomPropertyDrawer(typeof(BillHeaderAttribute))]
     public class CustomHeaderDrawer : DecoratorDrawer
     {
         public override void OnGUI(Rect position)
         {
-            CustomHeaderAttribute customHeader = (CustomHeaderAttribute)attribute;
+            BillHeaderAttribute customHeader = (BillHeaderAttribute)attribute;
 
             GUIStyle style = new GUIStyle(EditorStyles.label)
             {
@@ -25,7 +25,7 @@ namespace BillUtils.SerializeCustom
 
         public override float GetHeight()
         {
-            CustomHeaderAttribute customHeader = (CustomHeaderAttribute)attribute;
+            BillHeaderAttribute customHeader = (BillHeaderAttribute)attribute;
             return EditorGUIUtility.singleLineHeight * (customHeader.FontSize / 12.0f);
         }
     }

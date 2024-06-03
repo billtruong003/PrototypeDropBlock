@@ -50,6 +50,7 @@ namespace BlockBuilder.BlockManagement
         public MaterialType MatType;
         public Material MainMat;
         public Material EmissionLight;
+        public Material SpecialMat;
         public Material Transparent_Mat;
 
         public Material GetMat()

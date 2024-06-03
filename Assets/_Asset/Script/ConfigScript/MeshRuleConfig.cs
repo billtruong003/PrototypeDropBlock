@@ -74,7 +74,7 @@ public class MeshRuleConfig : ScriptableObject
         return blocks;
     }
 
-    [CustomHeader("Building Data", 15, "#FED8B1")]
+    [BillHeader("Building Data", 15, "#FED8B1")]
     [SerializeField] private List<MaterialApplyInfo> materialDatas;
     [SerializeField] private const string PATH_MATERIAL = "Material";
     [SerializeField] private const string PATH_TNS_MATERIAL = "TNS_Material"; // Transparent Material
@@ -108,7 +108,6 @@ public class MeshRuleConfig : ScriptableObject
             }
             if (materialData.Transparent_Mat == null)
             {
-                // Debug.LogError($"Material not found for type {type} at path {materialData.PathToMaterial}");
                 materialData.Transparent_Mat = Resources.Load<Material>($"{PATH_TNS_MATERIAL}/TNSMAT_0{CountNumCode(countMain)}");
                 countTNS++;
             }

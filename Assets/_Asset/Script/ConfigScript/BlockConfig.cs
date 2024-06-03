@@ -10,7 +10,7 @@ using BillUtils.SerializeCustom;
 [CreateAssetMenu(fileName = "BlockConfig", menuName = "BlockBuilder/BlockCheck")]
 public class BlockConfig : ScriptableObject
 {
-    [CustomHeader("Normal Block Data", 15, "#F6DCAC")]
+    [BillHeader("Normal Block Data", 15, "#F6DCAC")]
     [SerializeField] private List<BlockInfo> blockDatas;
     private string pathBlock = "Block";
 

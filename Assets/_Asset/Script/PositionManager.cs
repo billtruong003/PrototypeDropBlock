@@ -27,7 +27,7 @@ public class PositionManager : Singleton<PositionManager>
         if (cubeDatas.Count > 0 && processMesh != null)
         {
             DisableAllMeshRenderers(data.Cube);
-            Spawn();
+            SpawnMesh();
         }
         else if (processMesh == null)
         {
@@ -35,7 +35,7 @@ public class PositionManager : Singleton<PositionManager>
         }
     }
 
-    public void Spawn()
+    public void SpawnMesh()
     {
         if (processMesh == null)
         {

@@ -1045,7 +1045,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8137965129794161932}
-  - component: {fileID: 3641679492397003661}
   m_Layer: 0
   m_Name: Furniture
   m_TagString: Untagged
@@ -1072,19 +1071,6 @@ Transform:
   - {fileID: 6161401946158387519}
   m_Father: {fileID: 4003783519894720826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3641679492397003661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6651244911073218993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ad01adfaffbf3e498f1e03d54f2ef59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sample: {fileID: 0}
 --- !u!1 &6777873310722025099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,6 +1401,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 963963367573999768}
+  furnitures:
+  - {fileID: 5411086180077151700}
+  - {fileID: 5151813054140501361}
+  - {fileID: 5875618654938918689}
+  - {fileID: 6777873310722025099}
   furniture: {fileID: 6651244911073218993}
   roof: {fileID: 5134610547165265475}
   window: {fileID: 0}

@@ -60,7 +60,7 @@ Use this tag to highlight particularly important sections of code that require s
 # Quy Ước Comment
 
 ## Tổng Quan
-Tài liệu này quy định về cách sử dụng comment trong dự án của chúng ta. Việc tuân theo các hướng dẫn này sẽ giúp mã nguồn của chúng ta rõ ràng, dễ bảo trì và dễ hiểu.
+Tài liệu này quy định về cách sử dụng comment trong dự án của team. Việc tuân theo các hướng dẫn này sẽ giúp mã nguồn của chúng ta rõ ràng, dễ bảo trì và dễ hiểu.
 
 ## Quy Tắc Chung
 1. Diễn Giải: Comment nên mô tả những gì mã đang làm và tại sao nó lại làm như vậy.
