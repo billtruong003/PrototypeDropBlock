@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using NaughtyAttributes;
 using Unity.Mathematics;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class ToolGenPrefab : MonoBehaviour
 {
-    [SerializeField]
-    private string pathLoad = "Building/";
+    [SerializeField] private List<Vector3> Pose;
+    [SerializeField] private List<Quaternion> Angle;
+    [SerializeField] private string pathLoad = "Building/";
     [SerializeField] private string prefix = "SM_Clay_";
     [SerializeField] private string body = "Body_";
     [SerializeField] private string door = "Door_";
@@ -24,25 +25,43 @@ public class ToolGenPrefab : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            // Tạo khối chính
+            // Create the main parent object
             GameObject mainPrefab = Instantiate(instantiatePrefab, Vector3.zero, quaternion.identity, container);
             mainPrefab.name = $"BD_0{ProcessCodeMesh(i + 1)}";
+            BuildingHandle bdHandle = mainPrefab.AddComponent<BuildingHandle>();
 
-            // Tạo khối container
+            // Create the container
             GameObject containAllSmall = Instantiate(instantiatePrefab, Vector3.zero, quaternion.identity, mainPrefab.transform);
             containAllSmall.name = "Container";
 
-            // Tạo các khối con
+            // Create Brick
             CreateChildObject(containAllSmall.transform, "Brick", body, i + 1);
 
+            // Create Furniture with different sides
             GameObject furniture = Instantiate(instantiatePrefab, Vector3.zero, quaternion.identity, containAllSmall.transform);
             furniture.name = "Furniture";
+            furniture.AddComponent<AppearSide>();
 
-            CreateChildObject(furniture.transform, "Door", door, i + 1);
-            CreateChildObject(furniture.transform, "Window", window, i + 1);
+            CreateSideObject(furniture.transform, "Forward", 0, door, window, i + 1);
+            CreateSideObject(furniture.transform, "Left", 90, door, window, i + 1);
+            CreateSideObject(furniture.transform, "Backward", 180, door, window, i + 1);
+            CreateSideObject(furniture.transform, "Right", -90, door, window, i + 1);
 
+            // Create Roof
             CreateChildObject(containAllSmall.transform, "Roof", roof, i + 1);
+            bdHandle.Init();
+            containAllSmall.transform.SetLocalPositionAndRotation(Pose[i], Angle[i]);
         }
+    }
+
+    private void CreateSideObject(Transform parent, string sideName, float yRotation, string doorType, string windowType, int index)
+    {
+        GameObject side = new GameObject(sideName);
+        side.transform.SetParent(parent);
+        CreateChildObject(side.transform, "Door", doorType, index);
+        CreateChildObject(side.transform, "Window", windowType, index);
+        side.transform.localEulerAngles = new Vector3(0, yRotation, 0);
+        side.SetActive(false);
     }
 
     [Button]

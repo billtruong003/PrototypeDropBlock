@@ -54,7 +54,7 @@ public class SpawnManager : Singleton<SpawnManager>
             Debug.LogError("DropBrick list is empty. Cannot spawn cube.");
             return;
         }
-        // CHEAT
+        // CHEAT 
         if (spawnCheat)
         {
             selectedBrick = Instantiate(cheatBlock, Vector3.up * 10, Quaternion.identity, cubeContainer);

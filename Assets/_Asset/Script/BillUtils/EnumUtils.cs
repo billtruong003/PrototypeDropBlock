@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace BillUtils.EnumUtilities
+namespace BillUtils.EnumUtils
 {
-    public static class EnumUtility
+    public static class EnumUtilities
     {
         public static T GetEnumValueAtIndex<T>(int index) where T : Enum
         {

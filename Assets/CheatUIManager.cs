@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using BillUtils.SerializeCustom;
 using BlockBuilder.BlockManagement;
-using BillUtils.EnumUtilities;
+using BillUtils.EnumUtils;
 
 public class CheatUIManager : MonoBehaviour
 {
@@ -42,7 +42,7 @@ public class CheatUIManager : MonoBehaviour
         if (SpawnManager.Instance == null)
             return;
 
-        selectedMaterial = EnumUtility.GetEnumValueAtIndex<MaterialType>(dropDownMaterial.value);
+        selectedMaterial = EnumUtilities.GetEnumValueAtIndex<MaterialType>(dropDownMaterial.value);
         SpawnManager.Instance.SetCheatMaterial(selectedMaterial);
     }
 

@@ -20,10 +20,11 @@ namespace BlockBuilder.BlockManagement
         }
     }
     [Serializable]
-    public class BlockGenInfo
+    public class BlockMeshInfo
     {
         public string PathToBuilding;
         public BuildingType Type;
+        public MaterialType matType;
         public GameObject GetBuilding()
         {
             if (string.IsNullOrEmpty(PathToBuilding))
@@ -41,6 +42,13 @@ namespace BlockBuilder.BlockManagement
             return building;
         }
 
+    }
+
+    [Serializable]
+    public class PathBlock
+    {
+        public MaterialType matType;
+        public string PathToBuilding;
     }
 
     [Serializable]

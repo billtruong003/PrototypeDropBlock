@@ -7,6 +7,7 @@ using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class UIManager : Singleton<UIManager>
 {
     [BillHeader("Cam Angle", 20, "#E88D67")]
@@ -15,18 +16,27 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private int angle = 0;
     private GameObject camOpen;
 
-    [BillHeader("Info Block", 20, "#E88D67")]
+
+    [BillHeader("Info Block", 20, "#FF9EAA")]
     [SerializeField] private TextMeshProUGUI TMP_CurrentBlock;
     [SerializeField] private TextMeshProUGUI TMP_CurrentMaterial;
+
+
+    [BillHeader("FPS", 20, "#FFFFFF")]
+    [SerializeField] private float Set_FPS;
+    [SerializeField] private float currentFPS;
+    [SerializeField] private TextMeshProUGUI FPS;
 
     protected override void Awake()
     {
         base.Awake();
         InitFirstCam();
+        SetTargetFPS(Set_FPS);
     }
     private void Update()
     {
         HandleKeyInput();
+        CheckCurrentFPS();
     }
     public void HandleKeyInput()
     {
@@ -77,5 +87,26 @@ public class UIManager : Singleton<UIManager>
     public void SetCurrentMat(MaterialType matType)
     {
         TMP_CurrentMaterial.text = "Mat Type: " + "\n" + matType.ToString();
+    }
+
+    public void SetTargetFPS(float targetFPS)
+    {
+        Set_FPS = targetFPS;
+        Application.targetFrameRate = (int)Set_FPS;
+    }
+
+    public void CheckCurrentFPS()
+    {
+        currentFPS = 1.0f / Time.deltaTime;
+        if (FPS != null)
+        {
+            FPS.text = "FPS: " + Mathf.RoundToInt(currentFPS).ToString();
+        }
+    }
+
+    public void ReloadCurrentScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex);
     }
 }

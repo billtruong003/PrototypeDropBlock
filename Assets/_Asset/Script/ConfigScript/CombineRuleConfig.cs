@@ -8,7 +8,7 @@ public class CombineRuleConfig : ScriptableObject
 {
     public List<CombineBuildingAndMaterial> combineMat;
     public MeshRuleConfig ruleConfig;
-    public GameObject GetReturnBlock(BlockShape shape, BlockAngle angle)
+    public GameObject GetReturnBlock(BlockShape shape, BlockAngle angle, MaterialType matType)
     {
         if (ruleConfig == null)
         {
@@ -17,9 +17,8 @@ public class CombineRuleConfig : ScriptableObject
         }
 
         BuildingType buildingType = GetBuildingType(shape, angle);
-        GameObject building = ruleConfig.FindMatchBuilding(buildingType);
+        GameObject building = ruleConfig.FindMatchBuilding(buildingType, matType);
 
-        // Kiểm tra xem building có bị null không
         if (building == null)
         {
             Debug.LogError("building is null!");
@@ -28,7 +27,6 @@ public class CombineRuleConfig : ScriptableObject
 
         BuildingHandle buildingHandle = building.GetComponent<BuildingHandle>();
 
-        // Kiểm tra xem buildingHandle có bị null không
         if (buildingHandle == null)
         {
             Debug.LogError("buildingHandle is null!");

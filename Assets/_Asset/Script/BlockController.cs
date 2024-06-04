@@ -5,7 +5,7 @@ using AnimationController.WithTransform;
 using BlockBuilder.BlockManagement;
 using NaughtyAttributes;
 using BillUtils.SerializeCustom;
-using BillUtils.EnumUtilities;
+using BillUtils.EnumUtils;
 using System.Collections;
 
 public class BlockController : MonoBehaviour
@@ -23,7 +23,7 @@ public class BlockController : MonoBehaviour
 
     // Raycast and Cube data
     [Header("Raycast and Cube Data")]
-    [SerializeField] private List<RayCastDetect> rayCastDetect = new List<RayCastDetect>();
+    [SerializeField] private List<RayCastDetect> rayCastDetects = new List<RayCastDetect>();
     [SerializeField] private List<GameObject> totalCube = new();
 
     // Block data
@@ -73,7 +73,7 @@ public class BlockController : MonoBehaviour
 
     private void Init()
     {
-        rayCastDetect = GetAllComponentRaycast(gameObject);
+        rayCastDetects = GetAllComponentRaycast(gameObject);
         GetAvailableVisualGuide();
 
         if (SpawnManager.Instance != null && SpawnManager.Instance.CheckMatCheat())
@@ -98,8 +98,8 @@ public class BlockController : MonoBehaviour
 
     private IEnumerator Cor_GetAvailableVisualGuide()
     {
-        yield return new WaitUntil(() => rayCastDetect.Count != 0);
-        foreach (RayCastDetect itemRay in rayCastDetect)
+        yield return new WaitUntil(() => rayCastDetects.Count != 0);
+        foreach (RayCastDetect itemRay in rayCastDetects)
         {
             VisualGuideController vsGuide = VisualGuide.Instance.GetAvailableVisualGuide();
             if (vsGuide != null)
@@ -124,23 +124,23 @@ public class BlockController : MonoBehaviour
         if (!canRotate)
             return;
 
-        if (Input.GetKeyDown(KeyCode.E)) // Xoay quanh trục Y (right)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 90, transform.eulerAngles.z);
             transform.eulerAngles = angle;
         }
-        if (Input.GetKeyDown(KeyCode.Q)) // Xoay quanh trục Y (left)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 90, transform.eulerAngles.z);
             transform.eulerAngles = angle;
         }
-        if (Input.GetKeyDown(KeyCode.R)) // Xoay quanh trục X (up)
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
             transform.eulerAngles = angle;
             ChangeState();
         }
-        if (Input.GetKeyDown(KeyCode.F)) // Xoay quanh trục X (down)
+        if (Input.GetKeyDown(KeyCode.F))
         {
             Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
             transform.eulerAngles = angle;
@@ -218,7 +218,7 @@ public class BlockController : MonoBehaviour
         float maxY = float.MinValue;
         Vector3 highestPosition = Vector3.zero;
 
-        foreach (var detector in rayCastDetect)
+        foreach (var detector in rayCastDetects)
         {
             if (!detector.valid)
                 continue;
@@ -237,7 +237,7 @@ public class BlockController : MonoBehaviour
         float maxY = float.MinValue;
         GameObject highestHitObject = null;
 
-        foreach (var detector in rayCastDetect)
+        foreach (var detector in rayCastDetects)
         {
             if (!detector.valid)
                 continue;
@@ -256,7 +256,7 @@ public class BlockController : MonoBehaviour
         float maxY = float.MinValue;
         GameObject objectDetected = null;
 
-        foreach (var detector in rayCastDetect)
+        foreach (var detector in rayCastDetects)
         {
             if (!detector.valid)
                 continue;
@@ -309,13 +309,31 @@ public class BlockController : MonoBehaviour
 
     public bool CheckRoof()
     {
+        if (blockShape == BlockShape.BIGPLANE && blockAngle == BlockAngle.STAND) // TODO: FIND A NEW WAY TO IMPLEMENT
+            return CheckBigPlaneExcept();
+
         return blockAngle == BlockAngle.FLAT ? CheckFlatRoof() : CheckStandRoof();
     }
 
+    public bool CheckBigPlaneExcept()
+    {
+        int count = 0;
+        foreach (var item in rayCastDetects)
+        {
+            if (item.CheckBlockOnTop() == true)
+            {
+                count++;
+            }
+        }
+        if (count > 4)
+            return true;
+        return false;
+    }
+
+
     public bool CheckFlatRoof()
     {
-        Debug.Log("CheckFlatRoof");
-        foreach (var item in rayCastDetect)
+        foreach (var item in rayCastDetects)
         {
             if (item.CheckBlockOnTop() == true)
             {
@@ -328,7 +346,7 @@ public class BlockController : MonoBehaviour
     public bool CheckStandRoof()
     {
         Debug.Log("CheckStandRoof");
-        foreach (var item in rayCastDetect)
+        foreach (var item in rayCastDetects)
         {
             if (item.CheckBlockOnTop() == false)
             {
@@ -354,4 +372,34 @@ public class BlockController : MonoBehaviour
     {
         buildingHandle.ResetRoof();
     }
+
+    public bool CheckRoofIsFull()
+    {
+        int count = 0;
+        foreach (RayCastDetect item in rayCastDetects)
+        {
+            if (item.CheckBlockOnTop() == true)
+            {
+                count++;
+            }
+        }
+        if (count == rayCastDetects.Count)
+        {
+            return true;
+        }
+        return false;
+    }
+    // public void ResetVisualGuide()
+    // {
+    //     foreach (RayCastDetect rayCastDetect in rayCastDetects)
+    //     {
+    //         if (rayCastDetect.GetVisualGuide() == null)
+    //         {
+    //             Debug.Log("CheckNULL VSGUIDE");
+    //             continue;
+    //         }
+    //         rayCastDetect.ResetVisualGuide();
+    //         Debug.Log("RESET");
+    //     }
+    // }
 }

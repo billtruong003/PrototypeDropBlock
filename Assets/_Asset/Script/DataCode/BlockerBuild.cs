@@ -76,15 +76,16 @@ namespace BlockBuilder.BlockManagement
 
     public enum MaterialType
     {
-        METAL,
-        RARE_METAL,
-        PEBBLE_BRICK,
+        // METAL,
+        // RARE_METAL,
+        // PEBBLE_BRICK,
         BRICK,
-        ROCK,
-        STONE_BRICK,
+        // ROCK,
+        STONE,
+        // STONE_BRICK,
         CLAY,
         WOOD,
-        GLASS
+        // GLASS
     }
     #endregion
 }

@@ -32,10 +32,8 @@ public class RayCastDetect : MonoBehaviour
     private BlockController blockController;
     private VisualGuideController visualGuide;
 
-    public void SetVisualGuide(VisualGuideController vsGuide)
-    {
-        this.visualGuide = vsGuide;
-    }
+    public void SetVisualGuide(VisualGuideController vsGuide) => this.visualGuide = vsGuide;
+    public VisualGuideController GetVisualGuide() => this.visualGuide;
     private void Start()
     {
         blockController = gameObject.GetComponent<BlockController>() ?? transform.parent.GetComponent<BlockController>();

@@ -9,8 +9,10 @@ using BillUtils.SerializeCustom;
 [CreateAssetMenu(fileName = "MeshRuleConfig", menuName = "BlockBuilder/BuildingConfig")]
 public class MeshRuleConfig : ScriptableObject
 {
+    [SerializeField] private List<PathBlock> pathBlocks;
 
-    [SerializeField] private List<BlockGenInfo> buildingDatas;
+    [SerializeField] private List<BlockMeshInfo> buildingDatas;
+
     [SerializeField] private const string PATH_BUILDING = "BDS001";
 
 
@@ -18,14 +20,18 @@ public class MeshRuleConfig : ScriptableObject
     private void GenerateBlockData()
     {
         buildingDatas.Clear();
-        foreach (BuildingType type in Enum.GetValues(typeof(BuildingType)))
+        foreach (PathBlock pathBlock in pathBlocks)
         {
-            BlockGenInfo newData = new BlockGenInfo
+            foreach (BuildingType type in Enum.GetValues(typeof(BuildingType)))
             {
-                PathToBuilding = $"{PATH_BUILDING}/{type.ToString()}",
-                Type = type,
-            };
-            buildingDatas.Add(newData);
+                BlockMeshInfo newData = new BlockMeshInfo
+                {
+                    PathToBuilding = $"{pathBlock.PathToBuilding}/{type.ToString()}",
+                    Type = type,
+                    matType = pathBlock.matType
+                };
+                buildingDatas.Add(newData);
+            }
         }
     }
 
@@ -35,9 +41,8 @@ public class MeshRuleConfig : ScriptableObject
         buildingDatas.Clear();
     }
 
-    public GameObject FindMatchBuilding(BuildingType buildingType)
+    public GameObject FindMatchBuilding(BuildingType buildingType, MaterialType materialType)
     {
-        // Kiểm tra buildingDatas có null hoặc trống không
         if (buildingDatas == null || buildingDatas.Count == 0)
         {
             Debug.LogError("buildingDatas is null or empty!");
@@ -46,7 +51,7 @@ public class MeshRuleConfig : ScriptableObject
 
         foreach (var item in buildingDatas)
         {
-            if (item.Type == buildingType)
+            if (item.Type == buildingType && item.matType == materialType)
             {
                 GameObject building = item.GetBuilding();
 
@@ -60,7 +65,6 @@ public class MeshRuleConfig : ScriptableObject
             }
         }
 
-        Debug.LogWarning($"No matching building found for buildingType: {buildingType}");
         return null;
     }
     public List<GameObject> GetBlockPrefab()
@@ -91,26 +95,12 @@ public class MeshRuleConfig : ScriptableObject
             MaterialApplyInfo materialData = new MaterialApplyInfo
             {
                 MatType = type,
-                PathToMaterial = $"{PATH_MATERIAL}/{type.ToString()}"
+                PathToMaterial = $"{PATH_MATERIAL}/NORM_MAT"
             };
 
             materialData.MainMat = Resources.Load<Material>(materialData.PathToMaterial);
-            materialData.EmissionLight = Resources.Load<Material>($"{PATH_MATERIAL}/EMISSION_{type.ToString()}");
-            materialData.Transparent_Mat = Resources.Load<Material>($"{PATH_TNS_MATERIAL}/TNSMAT_{type.ToString()}");
-            if (materialData.MainMat == null)
-            {
-                materialData.MainMat = Resources.Load<Material>($"{PATH_MATERIAL}/MAT_0{CountNumCode(countMain)}");
-                countMain++;
-            }
-            if (materialData.EmissionLight == null)
-            {
-                materialData.EmissionLight = Resources.Load<Material>($"{PATH_MATERIAL}/EMISSION_CLAY");
-            }
-            if (materialData.Transparent_Mat == null)
-            {
-                materialData.Transparent_Mat = Resources.Load<Material>($"{PATH_TNS_MATERIAL}/TNSMAT_0{CountNumCode(countMain)}");
-                countTNS++;
-            }
+            materialData.EmissionLight = Resources.Load<Material>($"{PATH_MATERIAL}/EMISSION_LIGHT");
+            materialData.Transparent_Mat = Resources.Load<Material>($"{PATH_TNS_MATERIAL}/TNSMAT");
             materialDatas.Add(materialData);
         }
         countMain = 1;

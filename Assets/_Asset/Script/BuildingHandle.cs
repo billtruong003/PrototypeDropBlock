@@ -1,6 +1,6 @@
 using System;
 using BillUtils.GameObjectUtilities;
-using BillUtils.SpaceUtilities;
+using BillUtils.SpaceUtils;
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
@@ -32,7 +32,7 @@ public class BuildingHandle : MonoBehaviour
     }
 
     [Button]
-    private void Init()
+    public void Init()
     {
         brick = GetChildObjectByName("Brick");
         if (brick != null)
@@ -53,6 +53,8 @@ public class BuildingHandle : MonoBehaviour
         {
             Debug.LogError("No furniture objects found.");
         }
+        roof = GetChildObjectByName("Roof");
+
     }
 
     private List<GameObject> InitFurs(Transform furnitureContainer)
@@ -257,21 +259,29 @@ public class BuildingHandle : MonoBehaviour
         }
     }
 
-    // FIXME
+    // FIXME 
     public GameObject CheckFurnituresSide(GameObject collideObj)
     {
         Vector3 colliderPoint = collideObj.transform.position;
         GameObject doorObject = GetChildObjectByName(furnitures[0].transform, "Door");
-        if (!collideObj.transform.parent.parent.CompareTag("Block"))
+
+        if (!collideObj.transform.parent.parent.CompareTag("Block") || RoofIsFull(collideObj))
         {
+            furnitures[0].transform.GetChild(0).gameObject.SetActive(false);
             return furnitures[0];
         }
 
         if (transform.position.x == colliderPoint.x && transform.position.z == colliderPoint.z)
         {
+            Debug.Log($"Condition met: transform.position.x = {transform.position.x}, colliderPoint.x = {colliderPoint.x}, transform.position.z = {transform.position.z}, colliderPoint.z = {colliderPoint.z}");
             furnitures[0].transform.GetChild(0).gameObject.SetActive(false);
             return furnitures[0];
         }
+        else
+        {
+            Debug.Log($"Condition not met: transform.position.x = {transform.position.x}, colliderPoint.x = {colliderPoint.x}, transform.position.z = {transform.position.z}, colliderPoint.z = {colliderPoint.z}");
+        }
+
 
         GameObject closestFurniture = null;
         float closestDistance = float.MaxValue;
@@ -281,7 +291,7 @@ public class BuildingHandle : MonoBehaviour
             doorObject = furnitureItem.transform.GetChild(0).gameObject;
             if (doorObject != null)
             {
-                Vector3 doorPosition = SpaceUtils.GetMeshWorldPosition(doorObject);
+                Vector3 doorPosition = SpaceUtilities.GetMeshWorldPosition(doorObject);
                 float distance = Vector3.Distance(doorPosition, colliderPoint);
                 Debug.Log($"Distance: {distance}");
                 if (distance < closestDistance)
@@ -294,9 +304,16 @@ public class BuildingHandle : MonoBehaviour
         return closestFurniture;
     }
 
+    public bool RoofIsFull(GameObject colliderObj)
+    {
+        Transform parentCollide = colliderObj.transform.parent.parent;
+        BlockController blockController = parentCollide.GetComponent<BlockController>();
+        return blockController.CheckRoofIsFull();
+    }
+
     public Vector3 GetMeshWorldPosition(GameObject obj)
     {
-        Vector3 worldPosition = SpaceUtils.GetMeshWorldPosition(obj);
+        Vector3 worldPosition = SpaceUtilities.GetMeshWorldPosition(obj);
         Debug.Log($"Mesh World Position of {obj.name}: {worldPosition}");
         return worldPosition;
     }

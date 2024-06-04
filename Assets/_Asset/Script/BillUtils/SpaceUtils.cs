@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace BillUtils.SpaceUtilities
+namespace BillUtils.SpaceUtils
 {
-    public static class SpaceUtils
+    public static class SpaceUtilities
     {
         /// <summary>
         /// Returns the midpoint between two points.

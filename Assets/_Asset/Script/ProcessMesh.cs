@@ -24,9 +24,10 @@ public class ProcessMesh : MonoBehaviour
 
         BlockShape shape = cubeData.Shape;
         BlockAngle angle = cubeData.Angle;
+        MaterialType matType = cubeData.MaterialType;
         Vector3 dropPosition = cubeData.CenterPoint.position;
 
-        GameObject building = ProcessCubeCode(shape, angle);
+        GameObject building = ProcessCubeCode(shape, angle, matType);
         GameObject spawnBuilding = Instantiate(building, meshContainer);
 
         AssignBuildingDataToCube(cubeData, spawnBuilding);
@@ -55,9 +56,9 @@ public class ProcessMesh : MonoBehaviour
         cubeData.SetMesh(spawnBuilding);
     }
 
-    public GameObject ProcessCubeCode(BlockShape blockShape, BlockAngle blockAngle)
+    public GameObject ProcessCubeCode(BlockShape blockShape, BlockAngle blockAngle, MaterialType materialType)
     {
-        return combineRuleConfig.GetReturnBlock(blockShape, blockAngle);
+        return combineRuleConfig.GetReturnBlock(blockShape, blockAngle, materialType);
     }
 
     public Material GetMainMat(MaterialType matType)

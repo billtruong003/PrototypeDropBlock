@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
-using BillUtils.SpaceUtilities;
+using BillUtils.SpaceUtils;
 
 public class CalculateMeshTest : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class CalculateMeshTest : MonoBehaviour
     [Button]
     private void CountMeshPose()
     {
-        Vector3 meshPose = SpaceUtils.GetMeshWorldPosition(door);
+        Vector3 meshPose = SpaceUtilities.GetMeshWorldPosition(door);
         Debug.Log($"Calculated Mesh Position: {meshPose}");
     }
 }
