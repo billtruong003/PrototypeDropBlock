@@ -1,0 +1,239 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43383fe6ad49da0468330f4de3b2c2dc, type: 3}
+  m_Name: LocationData
+  m_EditorClassIdentifier: 
+  locations:
+  - locationName: Tokyo
+    locate: 0
+    latitude: 35.68284
+    longitude: 139.75946
+  - locationName: Kyoto
+    locate: 1
+    latitude: 35.011562
+    longitude: 135.76814
+  - locationName: Osaka
+    locate: 2
+    latitude: 34.693737
+    longitude: 135.50217
+  - locationName: New York
+    locate: 3
+    latitude: 40.712776
+    longitude: -74.005974
+  - locationName: Los Angeles
+    locate: 4
+    latitude: 34.052235
+    longitude: -118.24368
+  - locationName: Chicago
+    locate: 5
+    latitude: 41.878113
+    longitude: -87.6298
+  - locationName: Barrow (Utqiagvik)
+    locate: 6
+    latitude: 71.29056
+    longitude: -156.7886
+  - locationName: Hanoi
+    locate: 7
+    latitude: 21.028511
+    longitude: 105.80482
+  - locationName: Ho Chi Minh City
+    locate: 8
+    latitude: 10.762622
+    longitude: 106.66017
+  - locationName: Da Nang
+    locate: 9
+    latitude: 16.04708
+    longitude: 108.20623
+  - locationName: Oslo
+    locate: 10
+    latitude: 59.913868
+    longitude: 10.752245
+  - locationName: Bergen
+    locate: 11
+    latitude: 60.391262
+    longitude: 5.322054
+  - locationName: Stavanger
+    locate: 12
+    latitude: 58.970055
+    longitude: 5.733945
+  - locationName: "Troms\xF8"
+    locate: 13
+    latitude: 69.6492
+    longitude: 18.956
+  - locationName: Svalbard
+    locate: 14
+    latitude: 78.2232
+    longitude: 15.6469
+  - locationName: New Delhi
+    locate: 15
+    latitude: 28.61394
+    longitude: 77.20902
+  - locationName: Mumbai
+    locate: 16
+    latitude: 19.07609
+    longitude: 72.877426
+  - locationName: Bangalore
+    locate: 17
+    latitude: 12.971599
+    longitude: 77.59457
+  - locationName: Wellington
+    locate: 18
+    latitude: -41.28646
+    longitude: 174.77623
+  - locationName: Auckland
+    locate: 19
+    latitude: -36.84846
+    longitude: 174.76334
+  - locationName: Christchurch
+    locate: 20
+    latitude: -43.532055
+    longitude: 172.63623
+  - locationName: "S\xE3o Paulo"
+    locate: 21
+    latitude: -23.55052
+    longitude: -46.63331
+  - locationName: Rio de Janeiro
+    locate: 22
+    latitude: -22.906847
+    longitude: -43.172897
+  - locationName: Brasilia
+    locate: 23
+    latitude: -15.826691
+    longitude: -47.92182
+  - locationName: Cairo
+    locate: 24
+    latitude: 30.04442
+    longitude: 31.235712
+  - locationName: Alexandria
+    locate: 25
+    latitude: 31.200092
+    longitude: 29.91874
+  - locationName: Giza
+    locate: 26
+    latitude: 30.013056
+    longitude: 31.208853
+  - locationName: Moscow
+    locate: 27
+    latitude: 55.755825
+    longitude: 37.6173
+  - locationName: Saint Petersburg
+    locate: 28
+    latitude: 59.93428
+    longitude: 30.335098
+  - locationName: Novosibirsk
+    locate: 29
+    latitude: 55.008354
+    longitude: 82.93573
+  - locationName: Johannesburg
+    locate: 30
+    latitude: -26.204103
+    longitude: 28.047304
+  - locationName: Cape Town
+    locate: 31
+    latitude: -33.92487
+    longitude: 18.424055
+  - locationName: Durban
+    locate: 32
+    latitude: -29.85868
+    longitude: 31.02184
+  - locationName: Sydney
+    locate: 33
+    latitude: -33.86882
+    longitude: 151.20929
+  - locationName: Melbourne
+    locate: 34
+    latitude: -37.81363
+    longitude: 144.96306
+  - locationName: Brisbane
+    locate: 35
+    latitude: -27.46977
+    longitude: 153.02513
+  - locationName: London
+    locate: 36
+    latitude: 51.50735
+    longitude: -0.127758
+  - locationName: Manchester
+    locate: 37
+    latitude: 53.48076
+    longitude: -2.242631
+  - locationName: Birmingham
+    locate: 38
+    latitude: 52.486244
+    longitude: -1.890401
+  - locationName: Paris
+    locate: 39
+    latitude: 48.856613
+    longitude: 2.352222
+  - locationName: Marseille
+    locate: 40
+    latitude: 43.296482
+    longitude: 5.36978
+  - locationName: Lyon
+    locate: 41
+    latitude: 45.76404
+    longitude: 4.835659
+  - locationName: Berlin
+    locate: 42
+    latitude: 52.520008
+    longitude: 13.404954
+  - locationName: Munich
+    locate: 43
+    latitude: 48.135124
+    longitude: 11.581981
+  - locationName: Hamburg
+    locate: 44
+    latitude: 53.551086
+    longitude: 9.993682
+  - locationName: Buenos Aires
+    locate: 45
+    latitude: -34.60372
+    longitude: -58.38159
+  - locationName: Cordoba
+    locate: 46
+    latitude: -31.420082
+    longitude: -64.188774
+  - locationName: Rosario
+    locate: 47
+    latitude: -32.944244
+    longitude: -60.65054
+  - locationName: Toronto
+    locate: 48
+    latitude: 43.65107
+    longitude: -79.347015
+  - locationName: Vancouver
+    locate: 49
+    latitude: 49.28273
+    longitude: -123.120735
+  - locationName: Montreal
+    locate: 50
+    latitude: 45.50169
+    longitude: -73.56725
+  - locationName: Beijing
+    locate: 51
+    latitude: 39.9042
+    longitude: 116.407394
+  - locationName: Shanghai
+    locate: 52
+    latitude: 31.23039
+    longitude: 121.4737
+  - locationName: Guangzhou
+    locate: 53
+    latitude: 23.12911
+    longitude: 113.26438
+  - locationName: McMurdo Station
+    locate: 54
+    latitude: -77.8419
+    longitude: 166.6863
+  - locationName: Rothera Research Station
+    locate: 55
+    latitude: -67.5683
+    longitude: -68.1236

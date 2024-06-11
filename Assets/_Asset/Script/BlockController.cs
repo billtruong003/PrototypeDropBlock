@@ -5,8 +5,9 @@ using AnimationController.WithTransform;
 using BlockBuilder.BlockManagement;
 using NaughtyAttributes;
 using BillUtils.SerializeCustom;
-using BillUtils.EnumUtils;
+using BillUtils.EnumUtilities;
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class BlockController : MonoBehaviour
 {
@@ -35,8 +36,8 @@ public class BlockController : MonoBehaviour
     [BoxGroup("CubeData")]
     [SerializeField] private MaterialType materialType;
 
+
     private BuildingHandle buildingHandle;
-    // Private variables
     private float targetHeight;
     private Vector3 targetPosition;
     private GameObject detectedObject;
@@ -51,6 +52,8 @@ public class BlockController : MonoBehaviour
     public BlockController GetHitObjectController() => this.hitObject.transform.parent.parent.GetComponent<BlockController>();
     public GameObject GetCenterObj() => centerPoint.gameObject;
     public BlockShape getShape => blockShape;
+    public Vector3 GetDropPose() => targetPosition;
+    public BuildingHandle GetBuildingHandle() => this.buildingHandle;
 
     private void Start()
     {
@@ -79,13 +82,11 @@ public class BlockController : MonoBehaviour
         if (SpawnManager.Instance != null && SpawnManager.Instance.CheckMatCheat())
         {
             materialType = SpawnManager.Instance.GetCheatMat();
-            // TODO: REMOVE JUST SET TO CLEAR INFO
             UIManager.Instance.SetCurrentMat(materialType);
             return;
         }
 
         materialType = RandomizeMaterialType();
-        // TODO: REMOVE JUST SET TO CLEAR INFO
         UIManager.Instance.SetCurrentMat(materialType);
     }
 
@@ -113,12 +114,14 @@ public class BlockController : MonoBehaviour
             }
         }
     }
+
     private void HandleMovement()
     {
         float moveX = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
         float moveZ = Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
         transform.Translate(new Vector3(moveX, 0, moveZ), Space.World);
     }
+
     private void HandleRotate()
     {
         if (!canRotate)
@@ -173,16 +176,18 @@ public class BlockController : MonoBehaviour
             Debug.LogError("Detected object is null");
             return;
         }
+        Vector3 targetPose = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
 
         pivot.position = detectedObject.transform.position;
+
         SetParentAllCube();
 
-        Vector3 targetPose = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
         pivot.position = targetPose;
 
         Sequence mySequence = DOTween.Sequence();
 
         targetHeight = hitObject != null && hitObject.CompareTag("Block") ? targetPosition.y + 1 : targetPosition.y + 0.5f;
+        targetPosition = new Vector3(targetPose.x, targetHeight, targetPose.z);
         mySequence.Append(pivot.DOMoveY(targetHeight, floatingSpeed).SetEase(Ease.InQuad));
 
         Debug.Log("Sequence setup completed");
@@ -389,17 +394,57 @@ public class BlockController : MonoBehaviour
         }
         return false;
     }
-    // public void ResetVisualGuide()
-    // {
-    //     foreach (RayCastDetect rayCastDetect in rayCastDetects)
-    //     {
-    //         if (rayCastDetect.GetVisualGuide() == null)
-    //         {
-    //             Debug.Log("CheckNULL VSGUIDE");
-    //             continue;
-    //         }
-    //         rayCastDetect.ResetVisualGuide();
-    //         Debug.Log("RESET");
-    //     }
-    // }
+
+    public static void MoveParentButKeepChildren(Transform parent, Vector3 newPosition)
+    {
+        List<Transform> children = new List<Transform>();
+        foreach (Transform child in parent)
+        {
+            children.Add(child);
+        }
+
+        foreach (Transform child in children)
+        {
+            child.SetParent(null);
+        }
+
+        parent.position = newPosition;
+
+        foreach (Transform child in children)
+        {
+            child.SetParent(parent);
+        }
+    }
+
+    public void Rotate()
+    {
+        StartCoroutine(RotateCoroutine());
+        buildingHandle.Rotate();
+    }
+
+    private IEnumerator RotateCoroutine()
+    {
+        Transform targetTransform = ReconstructSystem.Instance.GetSelectedObjectTransform();
+        if (targetTransform == null)
+        {
+            Debug.LogWarning("No selected object to rotate.");
+            yield break;
+        }
+
+        Quaternion targetRotation = targetTransform.rotation * Quaternion.Euler(0, 90, 0);
+
+        float duration = 0.5f;
+        float elapsedTime = 0;
+
+        while (elapsedTime < duration)
+        {
+            targetTransform.rotation = Quaternion.Slerp(targetTransform.rotation, targetRotation, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        targetTransform.rotation = targetRotation;
+
+        ReconstructSystem.Instance.RotateDone();
+    }
 }

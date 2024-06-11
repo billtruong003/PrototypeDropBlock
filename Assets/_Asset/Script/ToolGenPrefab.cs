@@ -30,6 +30,9 @@ public class ToolGenPrefab : MonoBehaviour
             mainPrefab.name = $"BD_0{ProcessCodeMesh(i + 1)}";
             BuildingHandle bdHandle = mainPrefab.AddComponent<BuildingHandle>();
 
+            GameObject pivot = Instantiate(instantiatePrefab, Vector3.zero, quaternion.identity, mainPrefab.transform);
+            pivot.name = "Pivot";
+
             // Create the container
             GameObject containAllSmall = Instantiate(instantiatePrefab, Vector3.zero, quaternion.identity, mainPrefab.transform);
             containAllSmall.name = "Container";
@@ -51,6 +54,7 @@ public class ToolGenPrefab : MonoBehaviour
             CreateChildObject(containAllSmall.transform, "Roof", roof, i + 1);
             bdHandle.Init();
             containAllSmall.transform.SetLocalPositionAndRotation(Pose[i], Angle[i]);
+
         }
     }
 

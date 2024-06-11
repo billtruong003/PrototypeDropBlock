@@ -7,6 +7,7 @@ TagManager:
   - Missile
   - Block
   - Ground
+  - UICam
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Block
-  - 
-  - 
+  - UIWordSpace
+  - PostProcessing
   - 
   - 
   - 
@@ -43,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: CanvasWS
+    uniqueID: 4219024015
     locked: 0

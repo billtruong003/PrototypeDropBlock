@@ -20,7 +20,6 @@ public class FileRenamer : MonoBehaviour
 
         foreach (var mat in mats)
         {
-            // Get the path of the material's source file
             string oldFilePath = AssetDatabase.GetAssetPath(mat);
             if (string.IsNullOrEmpty(oldFilePath))
             {
@@ -28,12 +27,10 @@ public class FileRenamer : MonoBehaviour
                 continue;
             }
 
-            // Determine the new file name
             string directory = Path.GetDirectoryName(oldFilePath);
             string newFileName = $"{prefixName}_0{ProcessCodeMesh(index)}"; // Example new file name
             string newFilePath = Path.Combine(directory, newFileName);
 
-            // Rename the file
             if (File.Exists(oldFilePath))
             {
                 AssetDatabase.RenameAsset(oldFilePath, Path.GetFileNameWithoutExtension(newFileName));
@@ -46,7 +43,6 @@ public class FileRenamer : MonoBehaviour
             }
         }
 
-        // Refresh the AssetDatabase to reflect changes in the Unity Editor
         AssetDatabase.Refresh();
     }
     private string ProcessCodeMesh(int num)

@@ -40,12 +40,13 @@ public class ProcessMesh : MonoBehaviour
         spawnBuilding.transform.SetLocalPositionAndRotation(dropPosition, Quaternion.identity);
         spawnBuilding.transform.eulerAngles = new Vector3(0, -cubeData.RotateDrop.y, 0);
 
-        Anim.JellyBounce(spawnBuilding.transform);
+        Anim.JellyBounce(spawnBuilding.transform.GetChild(0));
         vFXManager.TriggerExplo(dropPosition);
 
         Debug.Log($"Position: {dropPosition}, Roof:");
         cubeData.ConditionalRoof();
         cubeData.DisplayFurnitureSideAndApplyMaterial();
+        cubeData.SetPivot();
     }
 
     private void AssignBuildingDataToCube(CubeData cubeData, GameObject spawnBuilding)

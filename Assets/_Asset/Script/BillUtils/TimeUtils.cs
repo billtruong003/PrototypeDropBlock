@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BillUtils.TimeUtils
+namespace BillUtils.TimeUtilities
 {
-    public static class TimeUtilities
+    public static class TimeUtils
     {
         public static WaitForSeconds WaitQuarterSec = new WaitForSeconds(0.25f);
 

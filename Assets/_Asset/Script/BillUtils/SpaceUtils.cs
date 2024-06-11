@@ -138,5 +138,28 @@ namespace BillUtils.SpaceUtils
 
             return worldBounds;
         }
+
+        private static Vector3 GetMeshContainerCenter(Transform container)
+        {
+            MeshFilter[] meshFilters = container.GetComponentsInChildren<MeshFilter>();
+
+            if (meshFilters.Length == 0)
+            {
+                Debug.LogWarning("No meshes found in the container!");
+                return container.position;
+            }
+
+            Bounds bounds = meshFilters[0].mesh.bounds;
+            bounds.center = meshFilters[0].transform.position;
+
+            foreach (MeshFilter mf in meshFilters)
+            {
+                Bounds worldBounds = mf.mesh.bounds;
+                worldBounds.center = mf.transform.position;
+                bounds.Encapsulate(worldBounds);
+            }
+
+            return bounds.center;
+        }
     }
 }

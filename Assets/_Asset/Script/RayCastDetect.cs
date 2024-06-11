@@ -34,6 +34,11 @@ public class RayCastDetect : MonoBehaviour
 
     public void SetVisualGuide(VisualGuideController vsGuide) => this.visualGuide = vsGuide;
     public VisualGuideController GetVisualGuide() => this.visualGuide;
+
+    public BlockController GetBlockController() => this.blockController;
+
+    public bool GetDropState() => this.blockController.DoneDrop;
+
     private void Start()
     {
         blockController = gameObject.GetComponent<BlockController>() ?? transform.parent.GetComponent<BlockController>();
@@ -167,9 +172,7 @@ public class RayCastDetect : MonoBehaviour
                 ResetLastHitObject();
             }
 
-            // meshRenderer.material = touchColor;
             lastHitObject = hitObject;
-            // lastMeshRenderer = meshRenderer;
 
             TransparentRoof(hitObject.transform);
 
@@ -180,17 +183,6 @@ public class RayCastDetect : MonoBehaviour
     {
         if (lastHitObject != null)
         {
-            // if (lastMeshRenderer != null)
-            // {
-            //     if (lastMeshRenderer.gameObject.CompareTag("Ground"))
-            //     {
-            //         lastMeshRenderer.material = normalColor;
-            //     }
-            //     else
-            //     {
-            //         lastMeshRenderer.material = blockNormCol;
-            //     }
-            // }
             ResetRoof(lastHitObject.transform);
 
             lastHitObject = null;

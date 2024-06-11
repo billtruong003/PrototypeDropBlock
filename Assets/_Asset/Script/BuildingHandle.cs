@@ -15,7 +15,7 @@ public class BuildingHandle : MonoBehaviour
     [SerializeField] private GameObject roof;
     [SerializeField] private GameObject window;
     [SerializeField] private GameObject door;
-    [SerializeField] private List<Transform> pivots;
+    [SerializeField] private Transform pivot;
     [SerializeField] private List<Material> mats;
     [SerializeField] private Material TNS_Mat;
     [SerializeField] private Renderer roofRenderer;
@@ -24,6 +24,20 @@ public class BuildingHandle : MonoBehaviour
     public void AddMat(Material mat) => mats.Add(mat);
     public void AddTNSMat(Material mat) => TNS_Mat = mat;
     public GameObject GetFirstFur() => furnitures[0];
+
+    public void AddMaterial(Material mat) => mats.Add(mat);
+
+    public void SetTNSMaterial(Material mat) => TNS_Mat = mat;
+
+    public GameObject GetFirstFurniture() => furnitures.Count > 0 ? furnitures[0] : null;
+
+    public void TurnOnRoof() => SetActiveState(roof, true);
+
+    public void TurnOffRoof() => SetActiveState(roof, false);
+
+    public void TurnOnFurniture(int index) => SetActiveState(furnitures, index, true);
+
+    public void TurnOffFurniture(int index) => SetActiveState(furnitures, index, false);
 
     private void Start()
     {
@@ -34,38 +48,31 @@ public class BuildingHandle : MonoBehaviour
     [Button]
     public void Init()
     {
-        brick = GetChildObjectByName("Brick");
-        if (brick != null)
-        {
-            Debug.Log($"Brick object found: {brick.name}");
-        }
-        else
-        {
-            Debug.LogError("Brick object not found.");
-        }
-        furniture = GetChildObjectByName("Furniture");
-        furnitures = InitFurs(furniture.transform);
-        if (furnitures.Count > 0)
-        {
-            Debug.Log($"Found {furnitures.Count} furniture objects.");
-        }
-        else
-        {
-            Debug.LogError("No furniture objects found.");
-        }
-        roof = GetChildObjectByName("Roof");
+        brick = GetChildObjectByName(transform, "Brick");
+        Debug.Log(brick != null ? $"Brick object found: {brick.name}" : "Brick object not found.");
 
+        furniture = GetChildObjectByName(transform, "Furniture");
+        furnitures = InitializeFurnitureList(furniture?.transform);
+
+        Debug.Log(furnitures.Count > 0 ? $"Found {furnitures.Count} furniture objects." : "No furniture objects found.");
+
+        roof = GetChildObjectByName(transform, "Roof");
+        pivot = GetChildObjectByName(transform, "Pivot")?.transform;
     }
 
-    private List<GameObject> InitFurs(Transform furnitureContainer)
+    private List<GameObject> InitializeFurnitureList(Transform furnitureContainer)
     {
-        List<GameObject> childFur = new List<GameObject>();
-        foreach (Transform child in furnitureContainer)
+        var childFur = new List<GameObject>();
+        if (furnitureContainer != null)
         {
-            childFur.Add(child.gameObject);
+            foreach (Transform child in furnitureContainer)
+            {
+                childFur.Add(child.gameObject);
+            }
         }
         return childFur;
     }
+
 
     private List<GameObject> GetChildObjectsByName(string name)
     {
@@ -102,24 +109,10 @@ public class BuildingHandle : MonoBehaviour
         return null;
     }
 
-    public void TurnOnRoof()
+    public void SetPivotParent(Vector3 pos)
     {
-        roof.SetActive(true);
-    }
-
-    public void TurnOffRoof()
-    {
-        roof.SetActive(false);
-    }
-
-    public void TurnOnFurniture(int indexFur)
-    {
-        furnitures[indexFur].SetActive(true);
-    }
-
-    public void TurnOffFurniture(int indexFur)
-    {
-        furnitures[indexFur].SetActive(false);
+        pivot.position = pos;
+        GetChildObjectByName("Container").transform.SetParent(pivot, true);
     }
 
     public Material SetMaterialAlpha(float alpha)
@@ -155,7 +148,7 @@ public class BuildingHandle : MonoBehaviour
         Material tnsMat = SetMaterialAlpha(0.4f);
         if (mesh != null)
         {
-            mesh.materials = new Material[0]; // Clear materials
+            mesh.materials = new Material[0];
         }
         ApplyMaterials(roof, tnsMat);
     }
@@ -165,7 +158,7 @@ public class BuildingHandle : MonoBehaviour
         MeshRenderer mesh = roof.GetComponentInChildren<MeshRenderer>();
         if (mesh != null)
         {
-            mesh.materials = new Material[0]; // Clear materials
+            mesh.materials = new Material[0];
         }
         ApplyMaterials(roof, mats[0]);
     }
@@ -262,38 +255,38 @@ public class BuildingHandle : MonoBehaviour
     // FIXME 
     public GameObject CheckFurnituresSide(GameObject collideObj)
     {
-        Vector3 colliderPoint = collideObj.transform.position;
-        GameObject doorObject = GetChildObjectByName(furnitures[0].transform, "Door");
+        var colliderPoint = collideObj.transform.position;
+        var doorObject = GetChildObjectByName(furnitures[0].transform, "Door");
 
-        if (!collideObj.transform.parent.parent.CompareTag("Block") || RoofIsFull(collideObj))
+        if (collideObj.transform.parent?.parent == null || !collideObj.transform.parent.parent.CompareTag("Block") || RoofIsFull(collideObj))
         {
-            furnitures[0].transform.GetChild(0).gameObject.SetActive(false);
+            SetActiveStateChild(furnitures[0], 0, false);
             return furnitures[0];
         }
 
-        if (transform.position.x == colliderPoint.x && transform.position.z == colliderPoint.z)
+        if (IsPositionMatch(transform.position, colliderPoint))
         {
-            Debug.Log($"Condition met: transform.position.x = {transform.position.x}, colliderPoint.x = {colliderPoint.x}, transform.position.z = {transform.position.z}, colliderPoint.z = {colliderPoint.z}");
-            furnitures[0].transform.GetChild(0).gameObject.SetActive(false);
+            SetActiveStateChild(furnitures[0], 0, false);   
             return furnitures[0];
         }
-        else
-        {
-            Debug.Log($"Condition not met: transform.position.x = {transform.position.x}, colliderPoint.x = {colliderPoint.x}, transform.position.z = {transform.position.z}, colliderPoint.z = {colliderPoint.z}");
-        }
 
+        return FindClosestFurniture(colliderPoint);
+    }
 
+    private GameObject FindClosestFurniture(Vector3 colliderPoint)
+    {
         GameObject closestFurniture = null;
         float closestDistance = float.MaxValue;
 
-        foreach (GameObject furnitureItem in furnitures)
+        foreach (var furnitureItem in furnitures)
         {
-            doorObject = furnitureItem.transform.GetChild(0).gameObject;
+            var doorObject = furnitureItem.transform.GetChild(0).gameObject;
             if (doorObject != null)
             {
-                Vector3 doorPosition = SpaceUtilities.GetMeshWorldPosition(doorObject);
-                float distance = Vector3.Distance(doorPosition, colliderPoint);
+                var doorPosition = SpaceUtilities.GetMeshWorldPosition(doorObject);
+                var distance = Vector3.Distance(doorPosition, colliderPoint);
                 Debug.Log($"Distance: {distance}");
+
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
@@ -301,6 +294,7 @@ public class BuildingHandle : MonoBehaviour
                 }
             }
         }
+
         return closestFurniture;
     }
 
@@ -316,5 +310,62 @@ public class BuildingHandle : MonoBehaviour
         Vector3 worldPosition = SpaceUtilities.GetMeshWorldPosition(obj);
         Debug.Log($"Mesh World Position of {obj.name}: {worldPosition}");
         return worldPosition;
+    }
+    public void Rotate()
+    {
+        StartCoroutine(RotateCoroutine());
+    }
+
+    private IEnumerator RotateCoroutine()
+    {
+        Transform targetTransform = this.transform.GetChild(0);
+        if (targetTransform == null)
+        {
+            Debug.LogWarning("No selected object to rotate.");
+            yield break;
+        }
+
+        Quaternion targetRotation = targetTransform.rotation * Quaternion.Euler(0, 90, 0);
+
+        float duration = 0.5f;
+        float elapsedTime = 0;
+
+        while (elapsedTime < duration)
+        {
+            targetTransform.rotation = Quaternion.Slerp(targetTransform.rotation, targetRotation, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        targetTransform.rotation = targetRotation;
+
+        ReconstructSystem.Instance.RotateDone();
+    }
+
+    private void SetActiveState(GameObject obj, bool state)
+    {
+        if (obj != null)
+        {
+            obj.SetActive(state);
+        }
+    }
+    private void SetActiveStateChild(GameObject obj, int index, bool state)
+    {
+        if (index >= 0 && index < obj.transform.childCount)
+        {
+            obj.transform.GetChild(index).gameObject.SetActive(state);
+        }
+    }
+    private void SetActiveState(List<GameObject> objects, int index, bool state)
+    {
+        if (index >= 0 && index < objects.Count)
+        {
+            objects[index].SetActive(state);
+        }
+    }
+
+    private bool IsPositionMatch(Vector3 pos1, Vector3 pos2)
+    {
+        return pos1.x == pos2.x && pos1.z == pos2.z;
     }
 }

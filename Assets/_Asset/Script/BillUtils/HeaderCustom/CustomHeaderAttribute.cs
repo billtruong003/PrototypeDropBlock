@@ -19,7 +19,7 @@ namespace BillUtils.SerializeCustom
             }
             else
             {
-                Color = Color.white; // Default to white if parsing fails
+                Color = Color.white; 
             }
         }
     }

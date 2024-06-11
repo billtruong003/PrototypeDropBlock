@@ -889,6 +889,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1073119023173896559}
   - {fileID: 4277592754448085673}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -914,11 +915,11 @@ MonoBehaviour:
   roof: {fileID: 4374572180986621359}
   window: {fileID: 0}
   door: {fileID: 0}
-  pivots: []
+  pivot: {fileID: 1073119023173896559}
   mats: []
   TNS_Mat: {fileID: 0}
   roofRenderer: {fileID: 0}
-  alpha: 0.5
+  alpha: 0
 --- !u!1 &5399049358681580590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1118,37 @@ Transform:
   m_Children:
   - {fileID: 5103651332207945422}
   m_Father: {fileID: 4277592754448085673}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5987564981083605189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073119023173896559}
+  m_Layer: 0
+  m_Name: Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1073119023173896559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5987564981083605189}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3559500322681534944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6567074245828302059
 GameObject:

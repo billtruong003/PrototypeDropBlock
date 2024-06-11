@@ -5,7 +5,6 @@ using UnityEngine;
 [Serializable]
 public class CubeData
 {
-    // Public fields
     public BlockShape Shape { get; private set; }
     public BlockAngle Angle { get; private set; }
     public MaterialType MaterialType { get; set; }
@@ -16,12 +15,9 @@ public class CubeData
     public Transform CenterPoint { get; set; }
     public GameObject Mesh { get; private set; }
 
-    // Private fields
     private BuildingHandle _buildingHandle;
     private BlockController _blockController;
 
-
-    // Set Properties
     public void SetShape(BlockShape shape) => Shape = shape;
     public void SetAngle(BlockAngle angle) => Angle = angle;
     public void SetMaterialType(MaterialType materialType) => MaterialType = materialType;
@@ -88,6 +84,11 @@ public class CubeData
         {
             Debug.LogError("No furniture found to activate.");
         }
+    }
+
+    public void SetPivot()
+    {
+        _buildingHandle.SetPivotParent(Pivot.position);
     }
 
 }
