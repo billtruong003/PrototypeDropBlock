@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ReconstructSystem : Singleton<ReconstructSystem>
 {
+
+    [SerializeField] private VFXManager vFXManager;
+
     [SerializeField] private Camera mainCam;
     [SerializeField] private PositionManager positionManager;
     [SerializeField] private LayerMask buildingLayer;
@@ -49,6 +52,7 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
                         return;
                     blockPick = rayDetect.GetBlockController();
                     buildingHandle = blockPick.GetBuildingHandle();
+                    vFXManager.TriggerExplo(blockPick.GetDropPose());
 
                     HandleUIReconstruct(blockPick.GetDropPose(), mainCam.transform.position);
                 }
@@ -58,6 +62,7 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
 
     private void HandleUIReconstruct(Vector3 pointA, Vector3 pointB)
     {
+
         Vector3 direction = (pointB - pointA).normalized * 2;
 
         Vector3 newPosition = pointA + (direction);

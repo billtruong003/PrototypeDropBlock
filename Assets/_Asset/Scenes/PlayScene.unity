@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1831862466}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CheatUIManager, Assembly-CSharp
         m_MethodName: SetCheatButtonMaterial
         m_Mode: 1
@@ -2450,6 +2450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328987480}
   - component: {fileID: 328987481}
+  - component: {fileID: 328987482}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -2493,6 +2494,18 @@ MonoBehaviour:
   cheatBlock: {fileID: 602012538645101227, guid: e20b78d8787c25643a40253a2487fb00, type: 3}
   materialCheat: 1
   cheatMaterial: 3
+--- !u!114 &328987482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328987479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf27ce4054aafd4aae9b2f59a90c552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &333889999
 GameObject:
   m_ObjectHideFlags: 0
@@ -7572,7 +7585,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1831862466}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CheatUIManager, Assembly-CSharp
         m_MethodName: SwapCheatBlock
         m_Mode: 1
@@ -9976,7 +9989,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1831862466}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CheatUIManager, Assembly-CSharp
         m_MethodName: SwapCheatMaterial
         m_Mode: 1
@@ -12482,7 +12495,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1831862466}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CheatUIManager, Assembly-CSharp
         m_MethodName: SetCheatButtonBlock
         m_Mode: 1
@@ -15955,9 +15968,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1831862464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 882cd820f5e1d994eac4efafa586ec1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 665e5e0e8000e8548bd86810c396ffab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropDownBlock: {fileID: 0}
+  dropDownMaterial: {fileID: 0}
+  btnBlock: {fileID: 0}
+  btnMaterial: {fileID: 0}
+  inactiveCol: {r: 0, g: 0, b: 0, a: 0}
+  activeCol: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1838282647
 GameObject:
   m_ObjectHideFlags: 0
@@ -17519,7 +17538,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
-  mainCam: {fileID: 0}
+  vFXManager: {fileID: 1903591077}
+  mainCam: {fileID: 963194227}
   positionManager: {fileID: 129907686}
   buildingLayer:
     serializedVersion: 2
@@ -17527,8 +17547,6 @@ MonoBehaviour:
   blockPick: {fileID: 0}
   buildingHandle: {fileID: 0}
   UIReconstruct: {fileID: 1233898231}
-  blockToRotate: {fileID: 0}
-  buildingToRotate: {fileID: 0}
 --- !u!1 &2001641144
 GameObject:
   m_ObjectHideFlags: 0
