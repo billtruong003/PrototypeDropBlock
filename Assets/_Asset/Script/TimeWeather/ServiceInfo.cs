@@ -1,6 +1,8 @@
 
 using System;
 using UnityEngine;
+using System.Globalization;
+using BillUtils.GlobalTimeUtils;
 
 [System.Serializable]
 public class SunriseSunsetResponse
@@ -14,9 +16,18 @@ public class SunriseSunsetResponse
         public string sunrise;
         public string sunset;
         public string timezone;
+        public DateTime currentTime; // Thêm thông tin về giờ hiện tại
         public int utc_offset;
+
+        public void GetCorrectSunriseSunsetTimeAtTimeZone()
+        {
+            GlobalTimeUtils.GetCurrentTimeAtTimeZone(timezone);
+        }
+
+
     }
 }
+
 
 [System.Serializable]
 public class WeatherData

@@ -9639,7 +9639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1728940505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9714,7 +9714,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -12072,7 +12072,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
       propertyPath: locate
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: cheatLocate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
       propertyPath: weatherType
@@ -12401,12 +12405,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8587468634107464700, guid: 8273b66afc6e3f54f99cbbb139d49403, type: 3}
       propertyPath: locate
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8587468634107464700, guid: 8273b66afc6e3f54f99cbbb139d49403, type: 3}
       propertyPath: nightLight
       value: 
       objectReference: {fileID: 1728940506}
+    - target: {fileID: 8587468634107464700, guid: 8273b66afc6e3f54f99cbbb139d49403, type: 3}
+      propertyPath: cheatLocate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8587468634107464700, guid: 8273b66afc6e3f54f99cbbb139d49403, type: 3}
       propertyPath: transitionSpeed
       value: 1

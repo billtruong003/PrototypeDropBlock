@@ -26,7 +26,7 @@ def count_lines_of_code(directory, file_extension, excluded_dirs):
 # Set the directory to the current directory
 directory = '.'  # Thư mục hiện tại
 file_extension = '.cs'  # Định dạng file muốn đếm
-excluded_dirs = ['NaughtyAttributes', 'PackageAsset', 'TextMesh Pro', 'DOTween']  # Các thư mục cần loại trừ
+excluded_dirs = ['NaughtyAttributes', 'PackageAsset', 'TextMesh Pro', 'DOTween', 'XR', 'PackageAsset', 'Library', 'Temp']  # Các thư mục cần loại trừ
 
 folder_line_counts = count_lines_of_code(directory, file_extension, excluded_dirs)
 

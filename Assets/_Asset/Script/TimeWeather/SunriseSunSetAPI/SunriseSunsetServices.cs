@@ -32,13 +32,16 @@ public class SunriseSunsetService : MonoBehaviour
     private void ProcessSunriseSunsetData(string jsonData)
     {
         var json = JsonUtility.FromJson<SunriseSunsetResponse>(jsonData);
+        // json.results.GetCorrectSunriseSunsetTimeAtTimeZone();
         OnSunriseSunsetDataReceived?.Invoke(json.results);
 
         Debug.Log("Date: " + json.results.date);
         Debug.Log("Sunrise: " + json.results.sunrise);
         Debug.Log("Sunset: " + json.results.sunset);
         Debug.Log("Timezone: " + json.results.timezone);
+        Debug.Log("Current Time: " + json.results.currentTime);
         Debug.Log("UTC Offset: " + json.results.utc_offset);
     }
+
 }
 

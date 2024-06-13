@@ -3,6 +3,8 @@ using System;
 using System.Globalization;
 using NaughtyAttributes;
 using BillUtils.SerializeCustom;
+using BillUtils.TimeUtilities;
+using BillUtils.GlobalTimeUtils;
 
 public class LightingManager : MonoBehaviour
 {
@@ -20,10 +22,15 @@ public class LightingManager : MonoBehaviour
     private float exposureVelocity = 0.0f;
     [SerializeField, Range(0.01f, 1.0f)] private float transitionSpeed = 0.1f;
 
+    private float lat;
+    private float lon;
+    public void SetLat(float lat) => this.lat = lat;
+    public void SetLon(float lon) => this.lon = lon;
     private SunriseSunsetService sunriseSunsetService;
     private DateTime sunriseTime = DateTime.MinValue;
     private DateTime sunsetTime = DateTime.MinValue;
     private TimeSpan utcOffset;
+    private string timeZoneId;
 
     [BillHeader("Cheat", 20, "#EE4E4E")]
     [BoxGroup("Cheat", "#8B322C", 0.5f)]
@@ -38,6 +45,8 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private LocationData locationData;
     [BoxGroup("CheatLocate", "#8B322C", 0.5f)]
     [SerializeField] private Locate locate;
+
+    private TimeZoneInfo locationTimeZone;
 
     private void Awake()
     {
@@ -55,14 +64,23 @@ public class LightingManager : MonoBehaviour
 
     private void RequestSunriseSunsetData()
     {
-        Vector2 latlon = locationData.GetLocation(locate);
-        float lat = latlon.x;
-        float lon = latlon.y;
-
         if (!cheatLocate)
-            sunriseSunsetService.GetSunriseSunsetTime(21.028511f, 105.804817f);
+        {
+            GetSSTime(lat, lon);
+        }
         else
-            sunriseSunsetService.GetSunriseSunsetTime(lat, lon);
+        {
+            Vector2 latlon = locationData.GetLocation(locate);
+            lat = latlon.x;
+            lon = latlon.y;
+            GetSSTime(lat, lon);
+        }
+    }
+
+    private void GetSSTime(float lat, float lon)
+    {
+        sunriseSunsetService.GetSunriseSunsetTime(lat, lon);
+        locationTimeZone = GetTimeZoneByCoordinates(lat, lon);
     }
 
     private void OnSunriseSunsetDataReceived(SunriseSunsetResponse.Results results)
@@ -72,13 +90,11 @@ public class LightingManager : MonoBehaviour
             DateTime utcSunrise = ParseTime(results.sunrise);
             DateTime utcSunset = ParseTime(results.sunset);
 
-            TimeZoneInfo localTimeZone = TimeZoneInfo.Local;
-
-            sunriseTime = ConvertToLocalTime(utcSunrise, localTimeZone);
-            sunsetTime = ConvertToLocalTime(utcSunset, localTimeZone);
-            utcOffset = localTimeZone.GetUtcOffset(DateTime.UtcNow);
-
-            Debug.Log($"Sunrise at: {sunriseTime}, Sunset at: {sunsetTime}, Local Timezone: {localTimeZone.DisplayName}");
+            sunriseTime = utcSunrise;
+            sunsetTime = utcSunset;
+            utcOffset = locationTimeZone.GetUtcOffset(DateTime.UtcNow);
+            timeZoneId = results.timezone;
+            Debug.Log($"Sunrise at: {sunriseTime}, Sunset at: {sunsetTime}, Timezone: {locationTimeZone.DisplayName}");
         }
         catch (Exception ex)
         {
@@ -91,9 +107,14 @@ public class LightingManager : MonoBehaviour
         return DateTime.Parse(time, null, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
     }
 
-    private DateTime ConvertToLocalTime(DateTime utcTime, TimeZoneInfo localTimeZone)
+    private DateTime ConvertToLocalTime(DateTime utcTime, TimeZoneInfo timeZone)
     {
-        return TimeZoneInfo.ConvertTimeFromUtc(utcTime, localTimeZone);
+        return TimeZoneInfo.ConvertTimeFromUtc(utcTime, timeZone);
+    }
+
+    private TimeZoneInfo GetTimeZoneByCoordinates(float latitude, float longitude)
+    {
+        return TimeZoneInfo.Local;
     }
 
     private void Update()
@@ -116,25 +137,46 @@ public class LightingManager : MonoBehaviour
 
     private void UpdateLighting()
     {
-        DateTime currentTime = GetLocalCurrentTime();
+        DateTime currentTime = GetLocationCurrentTime();
         SetTimeOfDay(currentTime);
 
         float dayProgress = CalculateDayProgress(currentTime);
-
         UpdateAmbientAndFog(dayProgress);
         UpdateDirectionalLight(dayProgress);
-        UpdateSkyboxExposure(dayProgress);
-        ToggleSunAndMoon(dayProgress);
+        UpdateSkyboxExposure();
+        ToggleSunAndMoon();
     }
 
-    private DateTime GetLocalCurrentTime()
+    private bool IsValidTimeZoneId(string timeZoneId)
     {
-        return DateTime.UtcNow + utcOffset;
+        try
+        {
+            TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
+
+
+    private DateTime GetLocationCurrentTime()
+    {
+        return GlobalTimeUtils.GetCurrentTimeAtTimeZone(timeZoneId);
+    }
+
 
     private void SetTimeOfDay(DateTime currentTime)
     {
-        timeOfDay = cheatProgress ? cheatTime : GetRealTimeOfDay(currentTime);
+        if (!cheatProgress)
+        {
+            timeOfDay = GetRealTimeOfDay(currentTime);
+        }
+        else
+        {
+            timeOfDay = cheatTime;
+        }
     }
 
     private float GetRealTimeOfDay(DateTime currentTime)
@@ -158,18 +200,44 @@ public class LightingManager : MonoBehaviour
         directionalLight.transform.localRotation = Quaternion.Euler(new Vector3(sunAngle, 170f, 0f));
     }
 
-    private void UpdateSkyboxExposure(float dayProgress)
+    private void UpdateSkyboxExposure()
     {
-        float targetExposure = GetTargetExposure(dayProgress);
+        DateTime currentTime = GetLocationCurrentTime();
+        float targetExposure = GetTargetExposure(currentTime);
         currentExposure = Mathf.Lerp(currentExposure, targetExposure, transitionSpeed * Time.deltaTime);
         currentExposure = Mathf.Clamp(currentExposure, SkyBoxNight, SkyBoxMorning);
 
         SetSkyboxExposure(currentExposure);
+        Debug.Log($"Current Time: {currentTime}, Target Exposure: {targetExposure}, Current Exposure {currentExposure}");
     }
 
-    private float GetTargetExposure(float dayProgress)
+    private float GetTargetExposure(DateTime currentTime)
     {
-        return dayProgress >= 0f && dayProgress < 0.5f ? SkyBoxMorning : SkyBoxNight;
+        TimeSpan transitionDuration = TimeSpan.FromHours(1);
+
+        DateTime transitionStartMorning = sunriseTime - transitionDuration;
+        DateTime transitionEndMorning = sunriseTime + transitionDuration;
+        DateTime transitionStartEvening = sunsetTime - transitionDuration;
+        DateTime transitionEndEvening = sunsetTime + transitionDuration;
+
+        if (currentTime >= transitionStartMorning && currentTime <= transitionEndMorning)
+        {
+            float t = (float)(currentTime - transitionStartMorning).TotalMinutes / (float)transitionDuration.TotalMinutes;
+            return Mathf.Lerp(SkyBoxNight, SkyBoxMorning, t);
+        }
+        else if (currentTime >= transitionStartEvening && currentTime <= transitionEndEvening)
+        {
+            float t = (float)(currentTime - transitionStartEvening).TotalMinutes / (float)transitionDuration.TotalMinutes;
+            return Mathf.Lerp(SkyBoxMorning, SkyBoxNight, t);
+        }
+        else if (currentTime > sunriseTime && currentTime < sunsetTime)
+        {
+            return SkyBoxMorning;
+        }
+        else
+        {
+            return SkyBoxNight;
+        }
     }
 
     private void SetSkyboxExposure(float exposure)
@@ -180,13 +248,19 @@ public class LightingManager : MonoBehaviour
         }
     }
 
-    private void ToggleSunAndMoon(float dayProgress)
+    private void ToggleSunAndMoon()
     {
-        bool isDay = dayProgress >= 0f && dayProgress < 0.5f;
+        DateTime currentTime = GetLocationCurrentTime();
+        TimeSpan transitionDuration = TimeSpan.FromMinutes(30);
 
-        sun.SetActive(isDay);
-        moon.SetActive(!isDay);
-        SetLighting(isDay);
+        DateTime startDayTransition = sunriseTime - transitionDuration;
+        DateTime endDayTransition = sunsetTime + transitionDuration;
+
+        bool isNight = currentTime < startDayTransition || currentTime >= endDayTransition;
+
+        sun.SetActive(!isNight);
+        moon.SetActive(isNight);
+        SetLighting(!isNight);
     }
 
     private void SetLighting(bool isDay)

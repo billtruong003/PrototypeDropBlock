@@ -54,7 +54,7 @@ MonoBehaviour:
   canRotate: 1
   pivot: {fileID: 6479698850455221809}
   centerPoint: {fileID: 1090463526141819059}
-  rayCastDetect: []
+  rayCastDetects: []
   totalCube:
   - {fileID: 6227558227615447489}
   - {fileID: 1182432290510839230}
@@ -284,7 +284,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2865498431811749153}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
