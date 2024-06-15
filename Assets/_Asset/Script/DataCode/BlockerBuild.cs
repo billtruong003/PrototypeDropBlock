@@ -1,3 +1,5 @@
+using System;
+using UnityEngine;
 namespace BlockBuilder.BlockManagement
 {
     #region Block Configuration
@@ -9,11 +11,29 @@ namespace BlockBuilder.BlockManagement
         ISHAPE,
     }
 
+
     public enum BlockAngle
     {
         FLAT,
         STAND,
     }
+
+    [Serializable]
+    public class BlockMaterial
+    {
+        public MaterialType materialType;
+        public Material material;
+
+        public Material GetMat(MaterialType materialType)
+        {
+            if (this.materialType == materialType)
+            {
+                return material;
+            }
+            return null;
+        }
+    }
+
     #endregion
 
     #region Building Configuration

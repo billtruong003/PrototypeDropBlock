@@ -92,3 +92,13 @@ public class CubeData
     }
 
 }
+
+public class CubeReconstruct
+{
+    public BlockShape buildingHandle;
+    public BlockAngle buildingAngle;
+    public Vector3 PositionDrop;
+    public Vector3 RotateDrop;
+    public void SetPositionDrop(Vector3 positionDrop) => PositionDrop = positionDrop;
+    public void SetRotateDrop(Vector3 rotateDrop) => RotateDrop = rotateDrop;
+}

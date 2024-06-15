@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class VFXManager : MonoBehaviour
+public class VFXManager : Singleton<VFXManager>
 {
     [SerializeField] private Transform vFXContainer;
     [SerializeField] private ParticleSystem fusionExplosion;
@@ -14,7 +14,6 @@ public class VFXManager : MonoBehaviour
         Init();
     }
 
-    // Hàm khởi tạo pool
     private void Init()
     {
         explosionObjectPool = new List<ParticleSystem>();
@@ -26,7 +25,6 @@ public class VFXManager : MonoBehaviour
         }
     }
 
-    // Hàm lấy ParticleSystem từ pool và xóa nó khỏi list
     private ParticleSystem GetExplosion()
     {
         if (explosionObjectPool.Count > 0)
@@ -43,13 +41,11 @@ public class VFXManager : MonoBehaviour
         }
     }
 
-    // Hàm kích hoạt ParticleSystem
     private void ActivateParticle(ParticleSystem particle)
     {
         particle.gameObject.SetActive(true);
     }
 
-    // Hàm trả ParticleSystem vào pool
     private void ReturnExplosion(ParticleSystem particle)
     {
         particle.Stop();
@@ -61,6 +57,7 @@ public class VFXManager : MonoBehaviour
     {
         StartCoroutine(Cor_TriggerExplo(cubePose));
     }
+
     private IEnumerator Cor_TriggerExplo(Vector3 pose)
     {
         ParticleSystem explosion = GetExplosion();

@@ -24,7 +24,6 @@ namespace BillUtils.GameObjectUtilities
                     return child.gameObject;
                 }
 
-                // Recursively search for the child in the child's children
                 GameObject result = GetChildObjectByName(child, childName);
                 if (result != null)
                 {
@@ -32,6 +31,33 @@ namespace BillUtils.GameObjectUtilities
                 }
             }
             return null;
+        }
+
+        public static void DisableAllMeshRenderers(GameObject target)
+        {
+            MeshRenderer[] meshRenderers = target.GetComponentsInChildren<MeshRenderer>();
+            foreach (var meshRenderer in meshRenderers)
+            {
+                meshRenderer.enabled = false;
+            }
+        }
+
+        public static void EnableAllMeshRenderers(GameObject target)
+        {
+            MeshRenderer[] meshRenderers = target.GetComponentsInChildren<MeshRenderer>();
+            foreach (var meshRenderer in meshRenderers)
+            {
+                meshRenderer.enabled = true;
+            }
+        }
+
+        public static void SetAllMaterials(GameObject target, Material mat)
+        {
+            MeshRenderer[] meshRenderers = target.GetComponentsInChildren<MeshRenderer>();
+            foreach (var meshRenderer in meshRenderers)
+            {
+                meshRenderer.material = mat;
+            }
         }
     }
 }

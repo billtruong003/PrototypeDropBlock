@@ -3,6 +3,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using BillUtils.SerializeCustom;
 using BlockBuilder.BlockManagement;
+using BillUtils.GameObjectUtilities;
 public class SpawnManager : Singleton<SpawnManager>
 {
     [SerializeField] private Transform cubeContainer;
@@ -54,22 +55,25 @@ public class SpawnManager : Singleton<SpawnManager>
             Debug.LogError("DropBrick list is empty. Cannot spawn cube.");
             return;
         }
-        // CHEAT 
+
         if (spawnCheat)
         {
             selectedBrick = Instantiate(cheatBlock, Vector3.up * 10, Quaternion.identity, cubeContainer);
-            // TODO: REMOVE JUST SET TO CLEAR INFO
-            UIManager.Instance.SetCurrentBlock(selectedBrick.GetComponent<BlockController>().getShape);
-            return;
+        }
+        else
+        {
+            selectedBrick = dropBrick[Random.Range(0, dropBrick.Count)];
+            selectedBrick = Instantiate(selectedBrick, Vector3.up * 10, Quaternion.identity, cubeContainer);
         }
 
-        selectedBrick = dropBrick[Random.Range(0, dropBrick.Count)];
+        UpdateUIInfo();
+    }
 
-        // TODO: REMOVE JUST SET TO CLEAR INFO
-        selectedBrick = Instantiate(selectedBrick, Vector3.up * 10, Quaternion.identity, cubeContainer);
-
+    private void UpdateUIInfo()
+    {
         UIManager.Instance.SetCurrentBlock(selectedBrick.GetComponent<BlockController>().getShape);
     }
+
 
     private void InitDropBrick()
     {

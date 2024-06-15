@@ -69,5 +69,53 @@ namespace AnimationController.WithTransform
             // Play the sequence
             pressSequence.Play();
         }
+
+        public static void DOTriggerExplosion(List<GameObject> objectsToScatter, Vector3 explosionCenter, float explosionForce = 5f, float scatterDuration = 1f, float returnDuration = 0.5f)
+        {
+            if (objectsToScatter == null || objectsToScatter.Count == 0)
+            {
+                Debug.LogWarning("No objects provided for explosion effect.");
+                return;
+            }
+
+            List<Vector3> originalPositions = new List<Vector3>();
+
+            foreach (GameObject obj in objectsToScatter)
+            {
+                if (obj != null)
+                {
+                    originalPositions.Add(obj.transform.position);
+                }
+                else
+                {
+                    originalPositions.Add(Vector3.zero);
+                }
+            }
+
+            for (int i = 0; i < objectsToScatter.Count; i++)
+            {
+                GameObject obj = objectsToScatter[i];
+                if (obj == null) continue;
+
+                Vector3 direction = (obj.transform.position - explosionCenter).normalized;
+                Vector3 scatterPosition = obj.transform.position + direction * explosionForce;
+
+                obj.transform.DOMove(scatterPosition, scatterDuration).SetEase(Ease.OutQuad);
+            }
+
+            DOVirtual.DelayedCall(scatterDuration, () =>
+            {
+                for (int i = 0; i < objectsToScatter.Count; i++)
+                {
+                    GameObject obj = objectsToScatter[i];
+                    if (obj == null) continue;
+
+                    obj.transform.DOMove(originalPositions[i], returnDuration).SetEase(Ease.InQuad).OnComplete(() =>
+                    {
+                        BlockController blockController = obj.transform.parent.GetComponentInParent<BlockController>();
+                    });
+                }
+            });
+        }
     }
 }

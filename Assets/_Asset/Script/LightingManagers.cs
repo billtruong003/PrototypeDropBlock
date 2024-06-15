@@ -89,10 +89,10 @@ public class LightingManager : MonoBehaviour
         {
             DateTime utcSunrise = ParseTime(results.sunrise);
             DateTime utcSunset = ParseTime(results.sunset);
-
+            TimeSpan utc_offset = TimeSpan.FromMinutes(results.utc_offset);
             sunriseTime = utcSunrise;
             sunsetTime = utcSunset;
-            utcOffset = locationTimeZone.GetUtcOffset(DateTime.UtcNow);
+            utcOffset = utc_offset;
             timeZoneId = results.timezone;
             Debug.Log($"Sunrise at: {sunriseTime}, Sunset at: {sunsetTime}, Timezone: {locationTimeZone.DisplayName}");
         }
@@ -152,6 +152,7 @@ public class LightingManager : MonoBehaviour
         try
         {
             TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+
             return true;
         }
         catch
@@ -163,7 +164,10 @@ public class LightingManager : MonoBehaviour
 
     private DateTime GetLocationCurrentTime()
     {
-        return GlobalTimeUtils.GetCurrentTimeAtTimeZone(timeZoneId);
+        DateTime utcTime = DateTime.UtcNow;
+        DateTime localTime = utcTime + utcOffset;
+
+        return localTime;
     }
 
 

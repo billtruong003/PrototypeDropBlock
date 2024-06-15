@@ -8,26 +8,23 @@ using BillUtils.SerializeCustom;
 using BillUtils.EnumUtilities;
 using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
+using BillUtils.GameObjectUtilities;
 
 public class BlockController : MonoBehaviour
 {
-    // Movement settings
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float floatingSpeed = 2f;
     [SerializeField] private bool canRotate;
 
-    // Transforms
     [Header("Transforms")]
     [SerializeField] private Transform pivot;
     [SerializeField] private Transform centerPoint;
 
-    // Raycast and Cube data
     [Header("Raycast and Cube Data")]
     [SerializeField] private List<RayCastDetect> rayCastDetects = new List<RayCastDetect>();
     [SerializeField] private List<GameObject> totalCube = new();
 
-    // Block data
     [BillHeader("Data", 15, "#B0EBB4")]
     [BoxGroup("CubeData")]
     [SerializeField] private BlockShape blockShape;
@@ -47,13 +44,20 @@ public class BlockController : MonoBehaviour
 
     public Transform GetPivot() => pivot;
     public Vector3 GetCenter() => centerPoint.position;
-    public List<GameObject> GetTotalCube() => totalCube;
-    public void SetBuildingHandle(BuildingHandle buildingHandle) => this.buildingHandle = buildingHandle;
-    public BlockController GetHitObjectController() => this.hitObject.transform.parent.parent.GetComponent<BlockController>();
     public GameObject GetCenterObj() => centerPoint.gameObject;
-    public BlockShape getShape => blockShape;
+
+    public List<GameObject> GetTotalCube() => totalCube;
     public Vector3 GetDropPose() => targetPosition;
+    public BlockShape getShape => blockShape;
+
+    public void SetBuildingHandle(BuildingHandle buildingHandle) => this.buildingHandle = buildingHandle;
     public BuildingHandle GetBuildingHandle() => this.buildingHandle;
+
+    public BlockController GetHitObjectController() => this.hitObject.transform.parent.parent.GetComponent<BlockController>();
+
+    public MaterialType GetMatType() => this.materialType;
+    public void SetMatType(MaterialType matType) => materialType = matType;
+
 
     private void Start()
     {
@@ -71,7 +75,6 @@ public class BlockController : MonoBehaviour
                 DropToCenter();
             }
         }
-
     }
 
     private void Init()
@@ -89,6 +92,7 @@ public class BlockController : MonoBehaviour
         materialType = RandomizeMaterialType();
         UIManager.Instance.SetCurrentMat(materialType);
     }
+
 
 
     private void GetAvailableVisualGuide()
@@ -365,6 +369,9 @@ public class BlockController : MonoBehaviour
     {
         MaterialType[] materialTypes = (MaterialType[])System.Enum.GetValues(typeof(MaterialType));
         int randomIndex = Random.Range(0, materialTypes.Length);
+
+        ReconstructVisual.Instance.SetUpMaterialBlock(this.gameObject, materialTypes[randomIndex]);
+
         return materialTypes[randomIndex];
     }
 

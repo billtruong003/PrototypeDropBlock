@@ -13,8 +13,10 @@ public class BlockConfig : ScriptableObject
     [BillHeader("Normal Block Data", 15, "#F6DCAC")]
     [SerializeField] private List<BlockInfo> blockDatas;
     private string pathBlock = "Block";
-
-
+    [Space]
+    [BillHeader("Block Materials", 15, "#FF6969")]
+    public List<BlockMaterial> blockMaterials;
+    private Material getMat;
 
     [Button]
     private void GenerateBlockData()
@@ -46,5 +48,19 @@ public class BlockConfig : ScriptableObject
             blocks.Add(block);
         }
         return blocks;
+    }
+
+    public Material GetMaterial(MaterialType materialType)
+    {
+        foreach (var item in blockMaterials)
+        {
+            Material foundMaterial = item.GetMat(materialType);
+            if (foundMaterial != null)
+            {
+                return foundMaterial;
+            }
+        }
+
+        return blockMaterials.Count > 0 ? blockMaterials[0].material : null;
     }
 }

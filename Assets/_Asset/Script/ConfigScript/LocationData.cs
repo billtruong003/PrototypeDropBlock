@@ -115,6 +115,5 @@ public class LocationData : ScriptableObject
         // Antarctica
         locations.Add(new Location("McMurdo Station", Locate.McMurdo_Antarctica, -77.8419f, 166.6863f));
         locations.Add(new Location("Rothera Research Station", Locate.Rothera_Antarctica, -67.5683f, -68.1236f));
-
     }
 }

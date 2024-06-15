@@ -59,6 +59,7 @@ MonoBehaviour:
     weatherObject: {fileID: 806837505385876264}
   - weatherType: 3
     weatherObject: {fileID: 2710750158959343193}
+  SecondRepeat: 0
   cheatWeather: 0
   weatherType: 3
   cheatLocate: 1
@@ -118,7 +119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3674802223503693938, guid: f7b394ed0ec5142449f0ccd7403df6ed, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4266230009176989409, guid: f7b394ed0ec5142449f0ccd7403df6ed, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using BillUtils.GameObjectUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +18,8 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
     [SerializeField] private BuildingHandle buildingHandle;
 
     [SerializeField] private GameObject UIReconstruct;
+    [SerializeField] private CubeReconstruct cubeReconstruct;
+    [SerializeField] private ButtonController btnController;
 
     private bool displayUI = false;
     private bool isRotating = false;
@@ -53,11 +57,21 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
                     blockPick = rayDetect.GetBlockController();
                     buildingHandle = blockPick.GetBuildingHandle();
                     vFXManager.TriggerExplo(blockPick.GetDropPose());
+                    btnController.AddBlockController(blockPick);
 
+                    TurnOffMesh(buildingHandle);
+                    GameObjectUtils.EnableAllMeshRenderers(blockPick.gameObject);
                     HandleUIReconstruct(blockPick.GetDropPose(), mainCam.transform.position);
+
                 }
             }
         }
+    }
+
+    private void TurnOffMesh(BuildingHandle buildingHandle)
+    {
+        vFXManager.TriggerExplo(buildingHandle.transform.position);
+        buildingHandle.gameObject.SetActive(false);
     }
 
     private void HandleUIReconstruct(Vector3 pointA, Vector3 pointB)
@@ -95,6 +109,12 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
         blockPick.Rotate();
         isRotating = true;
     }
+
+    public void MoveBlock()
+    {
+
+    }
+
 
     public Transform GetSelectedObjectTransform()
     {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BillUtils.GameObjectUtilities;
 using UnityEngine;
 
 public class PositionManager : Singleton<PositionManager>
@@ -26,7 +27,7 @@ public class PositionManager : Singleton<PositionManager>
         cubeDatas.Add(data);
         if (cubeDatas.Count > 0 && processMesh != null)
         {
-            DisableAllMeshRenderers(data.Cube);
+            GameObjectUtils.DisableAllMeshRenderers(data.Cube);
             SpawnMesh();
         }
         else if (processMesh == null)
@@ -45,43 +46,8 @@ public class PositionManager : Singleton<PositionManager>
 
         foreach (CubeData cubeData in cubeDatas)
         {
-            DisableAllMeshRenderers(cubeData.Cube);
+            // GameObjectUtils.DisableAllMeshRenderers(cubeData.Cube);
             processMesh.SpawnBuilding(cubeData);
-        }
-    }
-
-    public void CheckBlocksAround() // DOUBLE CHECK: THIS FUNCTION ONLY FOR DEBUGGING
-    {
-        foreach (CubeData cubeData in cubeDatas)
-        {
-            Vector3 cubePosition = cubeData.PositionDrop;
-            CheckDirection(cubePosition, Vector3.up);
-            CheckDirection(cubePosition, Vector3.down);
-            CheckDirection(cubePosition, Vector3.left);
-            CheckDirection(cubePosition, Vector3.right);
-            CheckDirection(cubePosition, Vector3.forward);
-            CheckDirection(cubePosition, Vector3.back);
-        }
-    }
-
-    private void DisableAllMeshRenderers(GameObject target)
-    {
-        MeshRenderer[] meshRenderers = target.GetComponentsInChildren<MeshRenderer>();
-        foreach (var meshRenderer in meshRenderers)
-        {
-            meshRenderer.enabled = false;
-        }
-    }
-
-    private void CheckDirection(Vector3 origin, Vector3 direction)
-    {
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, detectionRadius, blockLayer))
-        {
-            Debug.Log($"Block detected in direction {direction} from position {origin}. Hit: {hit.collider.name}");
-        }
-        else
-        {
-            Debug.Log($"No block detected in direction {direction} from position {origin}.");
         }
     }
 }
