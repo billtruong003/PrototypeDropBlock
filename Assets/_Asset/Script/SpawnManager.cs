@@ -6,6 +6,13 @@ using BlockBuilder.BlockManagement;
 using BillUtils.GameObjectUtilities;
 public class SpawnManager : Singleton<SpawnManager>
 {
+    [Header("Object Pooling")]
+    public BlockController CurrentBlock;
+    public List<PoolBlock> poolBlocks;
+    public List<PoolMesh> poolMeshs;
+
+
+    [Header("Container")]
     [SerializeField] private Transform cubeContainer;
     [SerializeField] private List<GameObject> dropBrick;
     [SerializeField] private GameObject brick;
@@ -58,14 +65,14 @@ public class SpawnManager : Singleton<SpawnManager>
 
         if (spawnCheat)
         {
-            selectedBrick = Instantiate(cheatBlock, Vector3.up * 10, Quaternion.identity, cubeContainer);
+            selectedBrick = cheatBlock;
         }
         else
         {
             selectedBrick = dropBrick[Random.Range(0, dropBrick.Count)];
-            selectedBrick = Instantiate(selectedBrick, Vector3.up * 10, Quaternion.identity, cubeContainer);
         }
-
+        selectedBrick = Instantiate(selectedBrick, Vector3.up * 10, Quaternion.identity, cubeContainer);
+        CurrentBlock = selectedBrick.GetComponent<BlockController>();
         UpdateUIInfo();
     }
 
@@ -73,7 +80,6 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         UIManager.Instance.SetCurrentBlock(selectedBrick.GetComponent<BlockController>().getShape);
     }
-
 
     private void InitDropBrick()
     {
@@ -86,5 +92,15 @@ public class SpawnManager : Singleton<SpawnManager>
         dropBrick = blockConfig.GetBlockPrefab();
     }
 
+    public void AddPoolBlock(BlockController blockController)
+    {
+        PoolBlock poolBlock = new PoolBlock(blockController);
+        poolBlocks.Add(poolBlock);
+    }
 
+    public void AddPoolMesh(CubeData cubeData)
+    {
+        PoolMesh poolMesh = new PoolMesh(cubeData);
+        poolMeshs.Add(poolMesh);
+    }
 }

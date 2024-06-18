@@ -60,6 +60,7 @@ MonoBehaviour:
   blockShape: 1
   blockAngle: 0
   materialType: 0
+  reconstructMode: 0
 --- !u!1 &1182432290510839230
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +75,6 @@ GameObject:
   - component: {fileID: 488777153889914992}
   - component: {fileID: 5859006676255469802}
   - component: {fileID: 469098938146453168}
-  - component: {fileID: 6468063703480058329}
   m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Block
@@ -216,33 +216,6 @@ MonoBehaviour:
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
   lastMeshRenderer: {fileID: 0}
   angleShoot: 5
-  blockLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  detectionRadius: 3
-  cube: []
-  blockShape: 0
---- !u!114 &6468063703480058329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182432290510839230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c09584879b6c2844babe3088d18b587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valid: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  touchColor: {fileID: 2100000, guid: 924358803d7b1fb49adb93fdd8e1c443, type: 2}
-  normalColor: {fileID: 2100000, guid: fcbecb990c0337743b882479b1fe39c3, type: 2}
-  blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
-  lastMeshRenderer: {fileID: 0}
-  angleShoot: 6
   blockLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -429,7 +402,6 @@ GameObject:
   - component: {fileID: 4702473061110675451}
   - component: {fileID: 2714712010639932709}
   - component: {fileID: 4769388765516393990}
-  - component: {fileID: 6400744541291906718}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Block
@@ -571,33 +543,6 @@ MonoBehaviour:
   blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
   lastMeshRenderer: {fileID: 0}
   angleShoot: 5
-  blockLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  detectionRadius: 3
-  cube: []
-  blockShape: 0
---- !u!114 &6400744541291906718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6227558227615447489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c09584879b6c2844babe3088d18b587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valid: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  touchColor: {fileID: 2100000, guid: 924358803d7b1fb49adb93fdd8e1c443, type: 2}
-  normalColor: {fileID: 2100000, guid: fcbecb990c0337743b882479b1fe39c3, type: 2}
-  blockNormCol: {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
-  lastMeshRenderer: {fileID: 0}
-  angleShoot: 6
   blockLayer:
     serializedVersion: 2
     m_Bits: 8

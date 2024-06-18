@@ -27,6 +27,11 @@ public class ButtonController : MonoBehaviour
         ReconstructSystem.Instance.RotateBlock();
     }
 
+    public void MoveBtn()
+    {
+        ReconstructSystem.Instance.MoveBlock();
+    }
+
     public void ChangeMaterial()
     {
         if (blockController == null)

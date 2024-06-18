@@ -47,6 +47,7 @@ public class ProcessMesh : MonoBehaviour
         cubeData.ConditionalRoof();
         cubeData.DisplayFurnitureSideAndApplyMaterial();
         cubeData.SetPivot();
+        cubeData.SaveToBlockController();
     }
 
     private void AssignBuildingDataToCube(CubeData cubeData, GameObject spawnBuilding)

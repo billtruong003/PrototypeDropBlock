@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
 
 namespace BillUtils.SpaceUtils
 {
@@ -161,5 +162,9 @@ namespace BillUtils.SpaceUtils
 
             return bounds.center;
         }
+    }
+    public static class VectorUtils
+    {
+        public static Vector3 HalfY = new Vector3(0, 0.5f, 0);
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEditor;
+using BlockBuilder.BlockManagement;
 
 public class BuildingHandle : MonoBehaviour
 {
@@ -266,7 +267,7 @@ public class BuildingHandle : MonoBehaviour
 
         if (IsPositionMatch(transform.position, colliderPoint))
         {
-            SetActiveStateChild(furnitures[0], 0, false);   
+            SetActiveStateChild(furnitures[0], 0, false);
             return furnitures[0];
         }
 

@@ -49,28 +49,24 @@ namespace AnimationController.WithTransform
                 return;
             }
 
-            // Get the RectTransform component of the Button
             RectTransform buttonTransform = button.GetComponent<RectTransform>();
             if (buttonTransform == null)
             {
                 Debug.LogWarning("Button does not have a RectTransform component.");
                 return;
             }
-
-            // Store the original scale of the Button
+            buttonTransform.localScale = Vector3.one;
             Vector3 originalScale = buttonTransform.localScale;
 
-            // Create a sequence for the press effect
             Sequence pressSequence = DOTween.Sequence();
 
             pressSequence.Append(buttonTransform.DOScale(originalScale * 0.9f, pressDuration).SetEase(Ease.OutQuad));
             pressSequence.Append(buttonTransform.DOScale(originalScale, pressDuration).SetEase(Ease.OutQuad));
 
-            // Play the sequence
             pressSequence.Play();
         }
 
-        public static void DOTriggerExplosion(List<GameObject> objectsToScatter, Vector3 explosionCenter, float explosionForce = 5f, float scatterDuration = 1f, float returnDuration = 0.5f)
+        public static void DOTriggerExplosion(List<GameObject> objectsToScatter, Vector3 explosionCenter, float explosionForce = 10f, float scatterDuration = 0.3f, float returnDuration = 0)
         {
             if (objectsToScatter == null || objectsToScatter.Count == 0)
             {
@@ -79,12 +75,18 @@ namespace AnimationController.WithTransform
             }
 
             List<Vector3> originalPositions = new List<Vector3>();
+            Sequence sequence = DOTween.Sequence();
 
             foreach (GameObject obj in objectsToScatter)
             {
                 if (obj != null)
                 {
                     originalPositions.Add(obj.transform.position);
+
+                    Vector3 direction = (obj.transform.position - explosionCenter).normalized;
+                    Vector3 scatterPosition = obj.transform.position + direction * Random.Range(explosionForce / 2f, explosionForce);
+
+                    sequence.Join(obj.transform.DOMove(scatterPosition, scatterDuration).SetEase(Ease.OutQuad));
                 }
                 else
                 {
@@ -92,30 +94,27 @@ namespace AnimationController.WithTransform
                 }
             }
 
-            for (int i = 0; i < objectsToScatter.Count; i++)
+            sequence.AppendInterval(scatterDuration);
+
+
+            sequence.OnComplete(() =>
             {
-                GameObject obj = objectsToScatter[i];
-                if (obj == null) continue;
-
-                Vector3 direction = (obj.transform.position - explosionCenter).normalized;
-                Vector3 scatterPosition = obj.transform.position + direction * explosionForce;
-
-                obj.transform.DOMove(scatterPosition, scatterDuration).SetEase(Ease.OutQuad);
-            }
-
-            DOVirtual.DelayedCall(scatterDuration, () =>
-            {
+                BlockController blockController = objectsToScatter[0].transform.parent.GetComponentInParent<BlockController>();
+                OnExplosionComplete(blockController);
                 for (int i = 0; i < objectsToScatter.Count; i++)
                 {
                     GameObject obj = objectsToScatter[i];
-                    if (obj == null) continue;
-
-                    obj.transform.DOMove(originalPositions[i], returnDuration).SetEase(Ease.InQuad).OnComplete(() =>
+                    if (obj != null)
                     {
-                        BlockController blockController = obj.transform.parent.GetComponentInParent<BlockController>();
-                    });
+                        sequence.Join(obj.transform.DOMove(originalPositions[i], returnDuration));
+                    }
                 }
             });
+        }
+
+        private static void OnExplosionComplete(BlockController blockController)
+        {
+            blockController.gameObject.SetActive(false);
         }
     }
 }

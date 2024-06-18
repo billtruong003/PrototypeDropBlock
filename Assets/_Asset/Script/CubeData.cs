@@ -30,6 +30,9 @@ public class CubeData
     public void SetBuildingHandle(BuildingHandle buildingHandle) => _buildingHandle = buildingHandle;
     public void SetBlockController(BlockController blockController) => _blockController = blockController;
 
+    public BuildingHandle GetBuildingHandle() => _buildingHandle;
+    public BlockController GetBlockController() => _blockController;
+
     public void ConditionalRoof()
     {
         if (CheckRoof())
@@ -91,6 +94,10 @@ public class CubeData
         _buildingHandle.SetPivotParent(Pivot.position);
     }
 
+    public void SaveToBlockController()
+    {
+        _blockController.AddCubeDate(this);
+    }
 }
 
 public class CubeReconstruct

@@ -9,9 +9,12 @@ using BillUtils.EnumUtilities;
 using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using BillUtils.GameObjectUtilities;
+using System.Xml.Serialization;
+using BillUtils.SpaceUtils;
 
 public class BlockController : MonoBehaviour
 {
+    #region Fields and Properties
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float floatingSpeed = 2f;
@@ -32,6 +35,8 @@ public class BlockController : MonoBehaviour
     [SerializeField] private BlockAngle blockAngle;
     [BoxGroup("CubeData")]
     [SerializeField] private MaterialType materialType;
+    [BoxGroup("CubeData")]
+    [SerializeField] private CubeData cubeData;
 
 
     private BuildingHandle buildingHandle;
@@ -55,10 +60,18 @@ public class BlockController : MonoBehaviour
 
     public BlockController GetHitObjectController() => this.hitObject.transform.parent.parent.GetComponent<BlockController>();
 
+    public ReconstructMode reconstructMode;
     public MaterialType GetMatType() => this.materialType;
     public void SetMatType(MaterialType matType) => materialType = matType;
+    public void SwitchModeDoneDrop() => DoneDrop = !DoneDrop;
+
+    public void AddCubeDate(CubeData cubeData) => this.cubeData = cubeData;
+    public CubeData GetCubeData() => this.cubeData;
 
 
+    #endregion
+
+    #region Unity Methods
     private void Start()
     {
         Init();
@@ -68,17 +81,31 @@ public class BlockController : MonoBehaviour
     {
         if (!DoneDrop)
         {
-            HandleMovement();
-            HandleRotate();
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (reconstructMode == ReconstructMode.OFF)
             {
-                DropToCenter();
+                HandleMovement();
+                HandleRotate();
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    DropToCenter();
+                }
+            }
+            else if (reconstructMode == ReconstructMode.ON)
+            {
+                HandleMovement();
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    DropReconstruct();
+                }
             }
         }
     }
+    #endregion
 
+    #region Initialization
     private void Init()
     {
+        reconstructMode = ReconstructMode.OFF;
         rayCastDetects = GetAllComponentRaycast(gameObject);
         GetAvailableVisualGuide();
 
@@ -92,8 +119,6 @@ public class BlockController : MonoBehaviour
         materialType = RandomizeMaterialType();
         UIManager.Instance.SetCurrentMat(materialType);
     }
-
-
 
     private void GetAvailableVisualGuide()
     {
@@ -118,7 +143,9 @@ public class BlockController : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Movement and Rotation
     private void HandleMovement()
     {
         float moveX = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
@@ -153,7 +180,6 @@ public class BlockController : MonoBehaviour
             transform.eulerAngles = angle;
             ChangeState();
         }
-
     }
 
     private void ChangeState()
@@ -166,6 +192,41 @@ public class BlockController : MonoBehaviour
         {
             blockAngle = BlockAngle.FLAT;
         }
+    }
+    #endregion
+
+    #region Drop Logic
+    private void DropReconstruct()
+    {
+        DoneDrop = true;
+        reconstructMode = ReconstructMode.OFF;
+        targetPosition = GetLowestPosition();
+        hitObject = GetHitObject();
+        detectedObject = GetObjectDetect();
+
+        if (detectedObject == null)
+        {
+            Debug.LogError("Detected object is null");
+            return;
+        }
+        Vector3 currentPose = new Vector3(targetPosition.x, pivot.position.y, targetPosition.z);
+
+        pivot.position = detectedObject.transform.position;
+
+        SetParentAllCube();
+
+        pivot.position = currentPose;
+
+        Sequence mySequence = DOTween.Sequence();
+
+        targetHeight = hitObject != null && hitObject.CompareTag("Block") ? targetPosition.y + 1 : targetPosition.y + 0.5f;
+        targetPosition = new Vector3(currentPose.x, targetHeight, currentPose.z);
+        mySequence.Append(pivot.DOMoveY(targetHeight, 0).SetEase(Ease.InQuad));
+
+        Debug.Log("Sequence setup completed");
+        // mySequence.OnComplete(OnDropComplete);
+        mySequence.Play();
+        Debug.Log("Sequence started");
     }
 
     private void DropToCenter()
@@ -204,9 +265,13 @@ public class BlockController : MonoBehaviour
     {
         Debug.Log("OnDropComplete called");
 
-        if (SpawnManager.Instance != null)
+        if (SpawnManager.Instance != null && reconstructMode == ReconstructMode.OFF)
         {
             SpawnManager.Instance.SpawnCube();
+            SaveData(new Vector3(targetPosition.x, targetHeight, targetPosition.z), transform.eulerAngles);
+        }
+        else if (SpawnManager.Instance != null && reconstructMode == ReconstructMode.ON)
+        {
             SaveData(new Vector3(targetPosition.x, targetHeight, targetPosition.z), transform.eulerAngles);
         }
         else
@@ -214,7 +279,9 @@ public class BlockController : MonoBehaviour
             Debug.LogError("SpawnManager.Instance is null");
         }
     }
+    #endregion
 
+    #region BreakDown Methods
     private List<RayCastDetect> GetAllComponentRaycast(GameObject gameObject)
     {
         List<RayCastDetect> allComponents = new List<RayCastDetect>();
@@ -239,6 +306,25 @@ public class BlockController : MonoBehaviour
             }
         }
         return highestPosition;
+    }
+
+    private Vector3 GetLowestPosition()
+    {
+        float minY = float.MaxValue;
+        Vector3 lowestPosition = Vector3.zero;
+
+        foreach (var detector in rayCastDetects)
+        {
+            if (!detector.valid)
+                continue;
+            float y = detector.GetYHitPosition();
+            if (y < minY)
+            {
+                minY = y;
+                lowestPosition = detector.GetHitPosition();
+            }
+        }
+        return lowestPosition;
     }
 
     private GameObject GetHitObject()
@@ -279,14 +365,8 @@ public class BlockController : MonoBehaviour
         return objectDetected;
     }
 
-    private void SetParentAllCube()
+    public void SetParentAllCube()
     {
-        List<Vector3> worldPositions = new List<Vector3>();
-        foreach (var cube in totalCube)
-        {
-            worldPositions.Add(cube.transform.position);
-        }
-
         for (int i = 0; i < totalCube.Count; i++)
         {
             var cube = totalCube[i];
@@ -294,6 +374,18 @@ public class BlockController : MonoBehaviour
         }
 
         centerPoint.SetParent(pivot, true);
+    }
+
+    public void RemovePivotParent()
+    {
+        for (int i = 0; i < totalCube.Count; i++)
+        {
+            var cube = totalCube[i];
+            cube.transform.SetParent(this.transform, true);
+        }
+
+        centerPoint.SetParent(this.transform, true);
+        this.transform.position += VectorUtils.HalfY; //NOTE: (0, 0.5f, 0)
     }
 
     private void SaveData(Vector3 pos, Vector3 angle)
@@ -310,6 +402,11 @@ public class BlockController : MonoBehaviour
         cubeData.SetBlockController(this);
         cubeData.SetCenterPoint(this.centerPoint);
 
+        SpawnMesh(cubeData);
+    }
+
+    public void SpawnMesh(CubeData cubeData)
+    {
         if (PositionManager.Instance != null)
         {
             PositionManager.Instance.SaveCubeType(cubeData);
@@ -338,7 +435,6 @@ public class BlockController : MonoBehaviour
             return true;
         return false;
     }
-
 
     public bool CheckFlatRoof()
     {
@@ -377,8 +473,11 @@ public class BlockController : MonoBehaviour
 
     public void TransparentRoof()
     {
+        if (buildingHandle == null || !buildingHandle.gameObject.activeSelf)
+            return;
         buildingHandle.SetRoofTransparent();
     }
+
 
     public void ResetRoof()
     {
@@ -423,10 +522,16 @@ public class BlockController : MonoBehaviour
         }
     }
 
+    #endregion
+    #region Reconstruct
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
+    private float checkInterval = 0.01f;
     public void Rotate()
     {
+        StopAllCoroutines();
         StartCoroutine(RotateCoroutine());
-        buildingHandle.Rotate();
+        // buildingHandle.Rotate();
     }
 
     private IEnumerator RotateCoroutine()
@@ -438,20 +543,60 @@ public class BlockController : MonoBehaviour
             yield break;
         }
 
+        initialPosition = targetTransform.position;
+        initialRotation = targetTransform.rotation;
+
         Quaternion targetRotation = targetTransform.rotation * Quaternion.Euler(0, 90, 0);
 
-        float duration = 0.5f;
+        float duration = 0.1f;
         float elapsedTime = 0;
 
         while (elapsedTime < duration)
         {
-            targetTransform.rotation = Quaternion.Slerp(targetTransform.rotation, targetRotation, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            float step = elapsedTime / duration;
+            targetTransform.rotation = Quaternion.Slerp(initialRotation, targetRotation, step);
+
+            if (CheckCollision(targetTransform))
+            {
+
+                targetTransform.rotation = initialRotation;
+                targetTransform.position = initialPosition;
+
+                targetTransform.DOShakeRotation(0.5f, new Vector3(0, 5, 0), 20, 90, false)
+                .OnComplete(() =>
+                {
+                    ReconstructSystem.Instance.RotateDone();
+                });
+                yield break;
+            }
+
+            elapsedTime += checkInterval;
+            yield return new WaitForSeconds(checkInterval);
         }
 
         targetTransform.rotation = targetRotation;
-
         ReconstructSystem.Instance.RotateDone();
     }
+
+    private bool CheckCollision(Transform targetTransform)
+    {
+        Collider[] hitColliders = Physics.OverlapBox(
+            targetTransform.position,
+            targetTransform.localScale / 2,
+            targetTransform.rotation
+        );
+
+        foreach (var collider in hitColliders)
+        {
+            if (collider.gameObject != targetTransform.gameObject && collider.CompareTag("Block") && !collider.transform.IsChildOf(targetTransform))
+            {
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+    #endregion
+
 }

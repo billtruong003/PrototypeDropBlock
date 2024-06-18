@@ -108,4 +108,42 @@ namespace BlockBuilder.BlockManagement
         // GLASS
     }
     #endregion
+    #region  ReconstructMode
+    public enum ReconstructMode
+    {
+        ON,
+        OFF,
+    }
+
+    public class PoolBlock
+    {
+        public string BlockName;
+        public BlockShape BlockShape;
+        public BlockController blockController;
+        public GameObject Block;
+
+        public PoolBlock(BlockController blockController)
+        {
+            this.blockController = blockController;
+            this.BlockName = blockController.gameObject.name;
+            this.BlockShape = blockController.getShape;
+            this.Block = blockController.gameObject;
+        }
+    }
+
+    public class PoolMesh
+    {
+        public string Name;
+        public MaterialType MatType;
+        public BuildingHandle BdHandle;
+        public GameObject Building;
+
+        public PoolMesh(CubeData cubeData)
+        {
+            this.BdHandle = cubeData.GetBuildingHandle();
+            this.MatType = cubeData.MaterialType;
+            this.Building = BdHandle.gameObject;
+        }
+    }
+    #endregion
 }

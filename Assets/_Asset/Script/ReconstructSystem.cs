@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using BillUtils.GameObjectUtilities;
+using BlockBuilder.BlockManagement;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
     [SerializeField] private GameObject UIReconstruct;
     [SerializeField] private CubeReconstruct cubeReconstruct;
     [SerializeField] private ButtonController btnController;
-
+    private BlockController currentBlock;
     private bool displayUI = false;
     private bool isRotating = false;
     protected override void Awake()
@@ -29,7 +30,6 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
         mainCam = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
         ClickOnBuilding();
@@ -60,9 +60,9 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
                     btnController.AddBlockController(blockPick);
 
                     TurnOffMesh(buildingHandle);
-                    GameObjectUtils.EnableAllMeshRenderers(blockPick.gameObject);
+                    TurnOnMesh(blockPick);
                     HandleUIReconstruct(blockPick.GetDropPose(), mainCam.transform.position);
-
+                    SwitchModeReconstruct();
                 }
             }
         }
@@ -72,6 +72,10 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
     {
         vFXManager.TriggerExplo(buildingHandle.transform.position);
         buildingHandle.gameObject.SetActive(false);
+    }
+    private void TurnOnMesh(BlockController blockController)
+    {
+        GameObjectUtils.EnableAllMeshRenderers(blockController.gameObject);
     }
 
     private void HandleUIReconstruct(Vector3 pointA, Vector3 pointB)
@@ -95,10 +99,12 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
     {
         displayUI = false;
         UIReconstruct.SetActive(false);
+        SwitchModeReconstruct();
     }
 
     public void RotateDone()
     {
+        Debug.Log("Rotate Done!");
         isRotating = false;
     }
 
@@ -106,18 +112,26 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
     {
         if (isRotating)
             return;
-        blockPick.Rotate();
         isRotating = true;
+        blockPick.Rotate();
+
     }
 
     public void MoveBlock()
     {
-
+        blockPick.SwitchModeDoneDrop();
+        blockPick.RemovePivotParent();
+        blockPick.reconstructMode = ReconstructMode.ON;
     }
-
 
     public Transform GetSelectedObjectTransform()
     {
         return blockPick.GetPivot();
+    }
+
+    private void SwitchModeReconstruct()
+    {
+        currentBlock = SpawnManager.Instance.CurrentBlock;
+        currentBlock.SwitchModeDoneDrop();
     }
 }
