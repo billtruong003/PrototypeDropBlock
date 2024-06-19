@@ -24,6 +24,8 @@ public class PositionManager : Singleton<PositionManager>
 
     public void SaveCubeType(CubeData data)
     {
+        // int index = data.GetBlockController().transform.GetSiblingIndex();
+        // cubeDatas.Insert(index, data);
         cubeDatas.Add(data);
         if (cubeDatas.Count > 0 && processMesh != null)
         {
@@ -49,5 +51,9 @@ public class PositionManager : Singleton<PositionManager>
             // GameObjectUtils.DisableAllMeshRenderers(cubeData.Cube);
             processMesh.SpawnBuilding(cubeData);
         }
+    }
+    public void RemoveCubeData(Transform building)
+    {
+        cubeDatas.RemoveAt(building.GetSiblingIndex());
     }
 }

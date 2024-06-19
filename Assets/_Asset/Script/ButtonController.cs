@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BillUtils.TimeUtilities;
 using AnimationController.WithTransform;
+using BillUtils.GameObjectUtilities;
 public class ButtonController : MonoBehaviour
 {
     [SerializeField] private Animator anim;
@@ -12,8 +13,10 @@ public class ButtonController : MonoBehaviour
     public void DestroyBuilding()
     {
         VFXManager.Instance.TriggerExplo(blockController.GetCenter());
-        Anim.DOTriggerExplosion(blockController.GetTotalCube(), blockController.GetCenter());
-        CloseBtn();
+        // OPTIMIZE: Optimize later with object pool
+        // Anim.DOTriggerExplosion(blockController.GetTotalCube(), blockController.GetCenter());
+        GameObjectUtils.DestroyObject(blockController.gameObject);
+        StartCoroutine(CloseBtnCoroutine());
         Debug.Log("Destroy");
     }
 
@@ -47,6 +50,7 @@ public class ButtonController : MonoBehaviour
     public void CloseBtn()
     {
         Debug.Log("CloseUI button clicked");
+        ReconstructSystem.Instance.SetBackPosition();
         StartCoroutine(CloseBtnCoroutine());
     }
 

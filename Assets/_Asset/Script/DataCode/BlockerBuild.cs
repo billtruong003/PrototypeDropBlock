@@ -96,20 +96,22 @@ namespace BlockBuilder.BlockManagement
 
     public enum MaterialType
     {
-        // METAL,
-        // RARE_METAL,
-        // PEBBLE_BRICK,
+
         BRICK,
-        // ROCK,
         STONE,
-        // STONE_BRICK,
         CLAY,
         WOOD,
-        // GLASS
+        GLASS,
+        METAL,
     }
     #endregion
     #region  ReconstructMode
     public enum ReconstructMode
+    {
+        ON,
+        OFF,
+    }
+    public enum MoveMode
     {
         ON,
         OFF,

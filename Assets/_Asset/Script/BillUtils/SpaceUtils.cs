@@ -140,6 +140,20 @@ namespace BillUtils.SpaceUtils
             return worldBounds;
         }
 
+        public static Bounds CalculateBounds(List<GameObject> gameObjects)
+        {
+            Bounds bounds = new Bounds(gameObjects[0].transform.position, Vector3.zero);
+
+            foreach (GameObject go in gameObjects)
+            {
+                if (go != null)
+                {
+                    bounds.Encapsulate(go.GetComponent<Renderer>().bounds);
+                }
+            }
+
+            return bounds;
+        }
         private static Vector3 GetMeshContainerCenter(Transform container)
         {
             MeshFilter[] meshFilters = container.GetComponentsInChildren<MeshFilter>();

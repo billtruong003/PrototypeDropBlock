@@ -64,6 +64,14 @@ MonoBehaviour:
   blockShape: 2
   blockAngle: 0
   materialType: 0
+  reconstructMode: 0
+  boxSize: {x: 0.97, y: 0.97, z: 0.97}
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  maxDistance: 5
+  originalCol: {r: 1, g: 1, b: 1, a: 1}
+  collideCol: {r: 1, g: 0.5518868, b: 0.5518868, a: 0.3}
 --- !u!1 &1182432290510839230
 GameObject:
   m_ObjectHideFlags: 0

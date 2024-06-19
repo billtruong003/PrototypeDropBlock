@@ -41,7 +41,10 @@ namespace BillUtils.GameObjectUtilities
                 meshRenderer.enabled = false;
             }
         }
-
+        public static void DestroyObject(GameObject target)
+        {
+            GameObject.Destroy(target);
+        }
         public static void EnableAllMeshRenderers(GameObject target)
         {
             MeshRenderer[] meshRenderers = target.GetComponentsInChildren<MeshRenderer>();

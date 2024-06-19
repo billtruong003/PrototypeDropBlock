@@ -5,6 +5,7 @@ using BillUtils.GameObjectUtilities;
 using BlockBuilder.BlockManagement;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ReconstructSystem : Singleton<ReconstructSystem>
 {
@@ -21,13 +22,17 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
     [SerializeField] private GameObject UIReconstruct;
     [SerializeField] private CubeReconstruct cubeReconstruct;
     [SerializeField] private ButtonController btnController;
+
+    private Vector3 originalPos;
     private BlockController currentBlock;
+    private MoveMode moveMode;
     private bool displayUI = false;
     private bool isRotating = false;
     protected override void Awake()
     {
         base.Awake();
         mainCam = Camera.main;
+        moveMode = MoveMode.OFF;
     }
 
     void Update()
@@ -57,9 +62,13 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
                     blockPick = rayDetect.GetBlockController();
                     buildingHandle = blockPick.GetBuildingHandle();
                     vFXManager.TriggerExplo(blockPick.GetDropPose());
-                    btnController.AddBlockController(blockPick);
 
-                    TurnOffMesh(buildingHandle);
+                    btnController.AddBlockController(blockPick);
+                    originalPos = blockPick.transform.position;
+
+                    // TurnOffMesh(buildingHandle); // OPTIMIZE: REDESIGN AS OBJECT POOL
+                    PositionManager.Instance.RemoveCubeData(buildingHandle.transform);
+                    DestroyConstruct(buildingHandle.gameObject);
                     TurnOnMesh(blockPick);
                     HandleUIReconstruct(blockPick.GetDropPose(), mainCam.transform.position);
                     SwitchModeReconstruct();
@@ -73,6 +82,12 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
         vFXManager.TriggerExplo(buildingHandle.transform.position);
         buildingHandle.gameObject.SetActive(false);
     }
+
+    private void DestroyConstruct(GameObject target)
+    {
+        GameObjectUtils.DestroyObject(target);
+    }
+
     private void TurnOnMesh(BlockController blockController)
     {
         GameObjectUtils.EnableAllMeshRenderers(blockController.gameObject);
@@ -97,6 +112,7 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
 
     public void HideUI()
     {
+
         displayUI = false;
         UIReconstruct.SetActive(false);
         SwitchModeReconstruct();
@@ -119,9 +135,30 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
 
     public void MoveBlock()
     {
+        if (moveMode == MoveMode.ON)
+            return;
         blockPick.SwitchModeDoneDrop();
         blockPick.RemovePivotParent();
         blockPick.reconstructMode = ReconstructMode.ON;
+        moveMode = MoveMode.ON;
+    }
+
+    public void ResetMoveMode()
+    {
+        moveMode = MoveMode.OFF;
+    }
+
+    public void SetBackPosition()
+    {
+        if (moveMode == MoveMode.ON)
+        {
+            ResetMoveMode();
+            blockPick.BackToOriginalPose(originalPos);
+        }
+        else
+        {
+            blockPick.ProcessMeshReconstruct();
+        }
     }
 
     public Transform GetSelectedObjectTransform()
@@ -134,4 +171,5 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
         currentBlock = SpawnManager.Instance.CurrentBlock;
         currentBlock.SwitchModeDoneDrop();
     }
+
 }

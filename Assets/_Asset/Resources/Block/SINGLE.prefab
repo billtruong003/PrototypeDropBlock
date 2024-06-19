@@ -58,6 +58,14 @@ MonoBehaviour:
   blockShape: 0
   blockAngle: 0
   materialType: 0
+  reconstructMode: 0
+  boxSize: {x: 0.97, y: 0.97, z: 0.97}
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  maxDistance: 5
+  originalCol: {r: 0, g: 0, b: 0, a: 0}
+  collideCol: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1958766423245264988
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +296,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 92413f41bf136cc419c883d055742fd7, type: 2}
+  - {fileID: 2100000, guid: 8def02712642bf34a9397c6ca5c934f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

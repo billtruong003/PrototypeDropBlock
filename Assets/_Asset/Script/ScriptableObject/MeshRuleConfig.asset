@@ -21,6 +21,10 @@ MonoBehaviour:
     PathToBuilding: BDS003
   - matType: 3
     PathToBuilding: BDS004
+  - matType: 4
+    PathToBuilding: BDS005
+  - matType: 5
+    PathToBuilding: BDS006
   buildingDatas:
   - PathToBuilding: BDS001/BD_001
     Type: 0
@@ -106,6 +110,48 @@ MonoBehaviour:
   - PathToBuilding: BDS004/BD_007
     Type: 6
     matType: 3
+  - PathToBuilding: BDS005/BD_001
+    Type: 0
+    matType: 4
+  - PathToBuilding: BDS005/BD_002
+    Type: 1
+    matType: 4
+  - PathToBuilding: BDS005/BD_003
+    Type: 2
+    matType: 4
+  - PathToBuilding: BDS005/BD_004
+    Type: 3
+    matType: 4
+  - PathToBuilding: BDS005/BD_005
+    Type: 4
+    matType: 4
+  - PathToBuilding: BDS005/BD_006
+    Type: 5
+    matType: 4
+  - PathToBuilding: BDS005/BD_007
+    Type: 6
+    matType: 4
+  - PathToBuilding: BDS006/BD_001
+    Type: 0
+    matType: 5
+  - PathToBuilding: BDS006/BD_002
+    Type: 1
+    matType: 5
+  - PathToBuilding: BDS006/BD_003
+    Type: 2
+    matType: 5
+  - PathToBuilding: BDS006/BD_004
+    Type: 3
+    matType: 5
+  - PathToBuilding: BDS006/BD_005
+    Type: 4
+    matType: 5
+  - PathToBuilding: BDS006/BD_006
+    Type: 5
+    matType: 5
+  - PathToBuilding: BDS006/BD_007
+    Type: 6
+    matType: 5
   materialDatas:
   - PathToMaterial: Material/NORM_MAT
     MatType: 0
@@ -128,6 +174,18 @@ MonoBehaviour:
   - PathToMaterial: Material/NORM_MAT
     MatType: 3
     MainMat: {fileID: 2100000, guid: de15d2b539f16e948bf8e5be2b644294, type: 2}
+    EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}
+    SpecialMat: {fileID: 0}
+    Transparent_Mat: {fileID: 2100000, guid: eaaa09633c857de46bc2ba9c37269b22, type: 2}
+  - PathToMaterial: Material/NORM_MAT
+    MatType: 4
+    MainMat: {fileID: 2100000, guid: 6be52ab7dfa06804592a881a94a88e29, type: 2}
+    EmissionLight: {fileID: 0}
+    SpecialMat: {fileID: 0}
+    Transparent_Mat: {fileID: 2100000, guid: eaaa09633c857de46bc2ba9c37269b22, type: 2}
+  - PathToMaterial: Material/NORM_MAT
+    MatType: 5
+    MainMat: {fileID: 2100000, guid: b6ce68cd7466c8647b6115c1bca379f7, type: 2}
     EmissionLight: {fileID: 2100000, guid: e297045cab4b3394994222fad9c69869, type: 2}
     SpecialMat: {fileID: 0}
     Transparent_Mat: {fileID: 2100000, guid: eaaa09633c857de46bc2ba9c37269b22, type: 2}

@@ -92,8 +92,9 @@ public class BlockController : MonoBehaviour
             }
             else if (reconstructMode == ReconstructMode.ON)
             {
-                HandleMovement();
-                if (Input.GetKeyDown(KeyCode.Space))
+                HandleMovementReconstruct();
+                CheckCollide();
+                if (Input.GetKeyDown(KeyCode.Space) && !isCollisionDetected)
                 {
                     DropReconstruct();
                 }
@@ -199,10 +200,9 @@ public class BlockController : MonoBehaviour
     private void DropReconstruct()
     {
         DoneDrop = true;
-        reconstructMode = ReconstructMode.OFF;
         targetPosition = GetLowestPosition();
-        hitObject = GetHitObject();
-        detectedObject = GetObjectDetect();
+        hitObject = GetHitObjectReconstruct();
+        detectedObject = GetObjectDetectReconstruct();
 
         if (detectedObject == null)
         {
@@ -224,10 +224,11 @@ public class BlockController : MonoBehaviour
         mySequence.Append(pivot.DOMoveY(targetHeight, 0).SetEase(Ease.InQuad));
 
         Debug.Log("Sequence setup completed");
-        // mySequence.OnComplete(OnDropComplete);
+        mySequence.OnComplete(OnDropComplete);
         mySequence.Play();
         Debug.Log("Sequence started");
     }
+
 
     private void DropToCenter()
     {
@@ -261,6 +262,8 @@ public class BlockController : MonoBehaviour
         Debug.Log("Sequence started");
     }
 
+
+
     private void OnDropComplete()
     {
         Debug.Log("OnDropComplete called");
@@ -272,12 +275,19 @@ public class BlockController : MonoBehaviour
         }
         else if (SpawnManager.Instance != null && reconstructMode == ReconstructMode.ON)
         {
-            SaveData(new Vector3(targetPosition.x, targetHeight, targetPosition.z), transform.eulerAngles);
+            reconstructMode = ReconstructMode.OFF;
+            ReconstructSystem.Instance.ResetMoveMode();
         }
         else
         {
             Debug.LogError("SpawnManager.Instance is null");
         }
+    }
+
+    public void ProcessMeshReconstruct()
+    {
+        SaveData(new Vector3(targetPosition.x, targetHeight, targetPosition.z), transform.eulerAngles);
+
     }
     #endregion
 
@@ -308,24 +318,7 @@ public class BlockController : MonoBehaviour
         return highestPosition;
     }
 
-    private Vector3 GetLowestPosition()
-    {
-        float minY = float.MaxValue;
-        Vector3 lowestPosition = Vector3.zero;
 
-        foreach (var detector in rayCastDetects)
-        {
-            if (!detector.valid)
-                continue;
-            float y = detector.GetYHitPosition();
-            if (y < minY)
-            {
-                minY = y;
-                lowestPosition = detector.GetHitPosition();
-            }
-        }
-        return lowestPosition;
-    }
 
     private GameObject GetHitObject()
     {
@@ -363,6 +356,63 @@ public class BlockController : MonoBehaviour
             }
         }
         return objectDetected;
+    }
+
+    private Vector3 GetLowestPosition()
+    {
+        float minY = float.MaxValue;
+        Vector3 lowestPosition = Vector3.zero;
+
+        foreach (var detector in rayCastDetects)
+        {
+            if (!detector.valid)
+                continue;
+            float y = detector.GetYHitPosition();
+            if (y < minY)
+            {
+                minY = y;
+                lowestPosition = detector.GetHitPosition();
+            }
+        }
+        return lowestPosition;
+    }
+
+    private GameObject GetHitObjectReconstruct()
+    {
+        float minY = float.MaxValue;
+        GameObject lowestHitObject = null;
+
+        foreach (var detector in rayCastDetects)
+        {
+            if (!detector.valid)
+                continue;
+            float y = detector.GetYHitPosition();
+            if (y < minY)
+            {
+                minY = y;
+                lowestHitObject = detector.GetHitObject();
+            }
+        }
+        return lowestHitObject;
+    }
+
+    private GameObject GetObjectDetectReconstruct()
+    {
+        float minY = float.MaxValue;
+        GameObject objectDetectedReconstruct = null;
+
+        foreach (var detector in rayCastDetects)
+        {
+            if (!detector.valid)
+                continue;
+            float y = detector.GetYHitPosition();
+            if (y < minY)
+            {
+                minY = y;
+                objectDetectedReconstruct = detector.gameObject;
+            }
+        }
+        return objectDetectedReconstruct;
     }
 
     public void SetParentAllCube()
@@ -527,6 +577,35 @@ public class BlockController : MonoBehaviour
     private Vector3 initialPosition;
     private Quaternion initialRotation;
     private float checkInterval = 0.01f;
+
+    private void HandleMovementReconstruct()
+    {
+        float moveX = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
+        float moveZ = Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
+        transform.Translate(new Vector3(moveX, 0, moveZ), Space.World);
+    }
+
+    private bool CollideBlock()
+    {
+        Vector3 center = transform.position;
+        Vector3 boxSize = new Vector3(1, 1, 1);
+        Vector3 direction = transform.forward;
+        float maxDistance = 10f;
+        LayerMask layerMask = LayerMask.GetMask("Default");
+        bool includeTriggers = false;
+
+        RaycastHit hitInfo;
+
+        bool isHit = Physics.BoxCast(center, boxSize / 2, direction, out hitInfo, transform.rotation, maxDistance, layerMask, includeTriggers ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore);
+
+        if (isHit && hitInfo.collider.CompareTag("Block"))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public void Rotate()
     {
         StopAllCoroutines();
@@ -597,6 +676,98 @@ public class BlockController : MonoBehaviour
 
         return false;
     }
+    public void BackToOriginalPose(Vector3 originalPos)
+    {
+        SetParentAllCube();
+        this.transform.position -= VectorUtils.HalfY;
+        this.transform.position = originalPos;
+        ProcessMeshReconstruct();
+        SwitchModeDoneDrop();
+        reconstructMode = ReconstructMode.OFF;
+        ReconstructSystem.Instance.ResetMoveMode();
+    }
+
+    [Space]
+    [Header("Reconstruct")]
+    [SerializeField] private Vector3 boxSize = new Vector3(0.97f, 0.97f, 0.97f);
+    [SerializeField] private LayerMask collisionLayer = 1 << 3;
+    private Color originalCol = new Color(1, 1, 1, 1);
+    private Color collideCol = new Color(1f, 0, 0, 0.8f);
+    private bool isCollisionDetected;
+    private void CheckCollide()
+    {
+        if (totalCube == null || totalCube.Count == 0)
+            return;
+
+        isCollisionDetected = false;
+
+        foreach (GameObject child in totalCube)
+        {
+            if (child == null)
+                continue;
+
+            Vector3 startPosition = child.transform.position;
+            Quaternion rotation = child.transform.rotation;
+            Vector3 boxHalfExtents = boxSize / 2;
+
+
+            Collider[] colliders = Physics.OverlapBox(
+                startPosition,
+                boxHalfExtents,
+                Quaternion.identity,
+                collisionLayer
+            );
+
+            foreach (var collider in colliders)
+            {
+                if (collider.gameObject.CompareTag("Block") && collider.transform.parent != this.transform)
+                {
+                    isCollisionDetected = true;
+                    Debug.Log($"Hit object: {collider.name} at {collider.transform.position}");
+                    break;
+                }
+            }
+
+            if (isCollisionDetected)
+                break;
+        }
+
+        // Thay đổi màu sắc của tất cả các block dựa trên kết quả va chạm
+        foreach (GameObject child in totalCube)
+        {
+            if (child != null)
+            {
+                Renderer renderer = child.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    renderer.material.color = isCollisionDetected ? collideCol : originalCol;
+                }
+            }
+        }
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        if (totalCube == null || totalCube.Count == 0)
+            return;
+
+        Bounds bounds = SpaceUtilities.CalculateBounds(totalCube);
+        Vector3 center = bounds.center;
+        Vector3 halfExtents = bounds.size / 2;
+        Vector3 direction = transform.forward;
+        Vector3 endPosition = center + direction * 0;
+
+        Gizmos.color = isCollisionDetected ? Color.red : Color.green;
+
+        Gizmos.matrix = Matrix4x4.identity;
+        Gizmos.DrawWireCube(center, bounds.size);
+
+        Gizmos.DrawLine(center, endPosition);
+        Gizmos.DrawWireCube(endPosition, bounds.size);
+    }
+
+
     #endregion
 
 }
