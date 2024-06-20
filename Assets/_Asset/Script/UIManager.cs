@@ -35,7 +35,7 @@ public class UIManager : Singleton<UIManager>
     }
     private void Update()
     {
-        HandleKeyInput();
+        // HandleKeyInput();
         CheckCurrentFPS();
     }
     public void HandleKeyInput()

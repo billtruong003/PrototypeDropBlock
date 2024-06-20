@@ -19,5 +19,17 @@ namespace BillUtils.EnumUtilities
         {
             return Enum.GetValues(typeof(T)).Length;
         }
+        public static int GetEnumIndex<T>(T value) where T : Enum
+        {
+            T[] values = (T[])Enum.GetValues(typeof(T));
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i].Equals(value))
+                {
+                    return i;
+                }
+            }
+            throw new ArgumentException($"Value '{value}' is not a valid member of enum {typeof(T).Name}");
+        }
     }
 }

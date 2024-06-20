@@ -4,11 +4,11 @@ using UnityEngine;
 using BillUtils.TimeUtilities;
 using AnimationController.WithTransform;
 using BillUtils.GameObjectUtilities;
+using BlockBuilder.BlockManagement;
 public class ButtonController : MonoBehaviour
 {
-    [SerializeField] private Animator anim;
+    // [SerializeField] private Animator anim;
     [SerializeField] private BlockController blockController;
-    [SerializeField] private ReconstructVisual reconstructVisual;
 
     public void DestroyBuilding()
     {
@@ -16,7 +16,7 @@ public class ButtonController : MonoBehaviour
         // OPTIMIZE: Optimize later with object pool
         // Anim.DOTriggerExplosion(blockController.GetTotalCube(), blockController.GetCenter());
         GameObjectUtils.DestroyObject(blockController.gameObject);
-        StartCoroutine(CloseBtnCoroutine());
+        StartCoroutine(Cor_Done());
         Debug.Log("Destroy");
     }
 
@@ -35,7 +35,7 @@ public class ButtonController : MonoBehaviour
         ReconstructSystem.Instance.MoveBlock();
     }
 
-    public void ChangeMaterial()
+    public void ChangeMaterial(int indexMat = 0)
     {
         if (blockController == null)
         {
@@ -44,19 +44,29 @@ public class ButtonController : MonoBehaviour
         }
 
         Debug.Log("ChangeMaterial");
-        ReconstructVisual.Instance.ChangeMaterial(blockController);
+        ReconstructVisual.Instance.ChangeMaterial(blockController, indexMat);
     }
 
-    public void CloseBtn()
+    public void SetSaveBlockMat(MaterialType matType)
+    {
+        ReconstructVisual.Instance.SetSaveMaterial(matType);
+    }
+
+    public MaterialType GetCurrentMatType()
+    {
+        return blockController.GetMatType();
+    }
+
+    public void Done()
     {
         Debug.Log("CloseUI button clicked");
         ReconstructSystem.Instance.SetBackPosition();
-        StartCoroutine(CloseBtnCoroutine());
+        StartCoroutine(Cor_Done());
     }
 
-    private IEnumerator CloseBtnCoroutine()
+    private IEnumerator Cor_Done()
     {
-        anim.SetTrigger("Close");
+        // anim.SetTrigger("Close");
         yield return TimeUtils.WaitHalfSec;
         Debug.Log("Triggering HideUI");
         ReconstructSystem.Instance.HideUI();

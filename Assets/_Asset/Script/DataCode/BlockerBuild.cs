@@ -117,6 +117,12 @@ namespace BlockBuilder.BlockManagement
         OFF,
     }
 
+    [Serializable]
+    public class MaterialInfoUI
+    {
+        public MaterialType MatType;
+        public Sprite MatUI;
+    }
     public class PoolBlock
     {
         public string BlockName;

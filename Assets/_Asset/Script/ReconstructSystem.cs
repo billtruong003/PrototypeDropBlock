@@ -9,9 +9,8 @@ using UnityEngine.UIElements;
 
 public class ReconstructSystem : Singleton<ReconstructSystem>
 {
-
+    public bool NotPossibleToControl = true;
     [SerializeField] private VFXManager vFXManager;
-
     [SerializeField] private Camera mainCam;
     [SerializeField] private PositionManager positionManager;
     [SerializeField] private LayerMask buildingLayer;
@@ -22,12 +21,14 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
     [SerializeField] private GameObject UIReconstruct;
     [SerializeField] private CubeReconstruct cubeReconstruct;
     [SerializeField] private ButtonController btnController;
+    [SerializeField] private ReconstructButtonMenu reconstructButtonMenu;
 
     private Vector3 originalPos;
     private BlockController currentBlock;
     private MoveMode moveMode;
     private bool displayUI = false;
     private bool isRotating = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -47,6 +48,7 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
             if (displayUI)
                 return;
 
+            NotPossibleToControl = true;
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -70,13 +72,22 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
                     PositionManager.Instance.RemoveCubeData(buildingHandle.transform);
                     DestroyConstruct(buildingHandle.gameObject);
                     TurnOnMesh(blockPick);
-                    HandleUIReconstruct(blockPick.GetDropPose(), mainCam.transform.position);
+                    DisplayUI();
+
+                    // HandleUIReconstruct(blockPick.GetDropPose(), mainCam.transform.position);
+                    NotPossibleToControl = blockPick.CheckBlockOnTop();
+                    reconstructButtonMenu = btnController.gameObject.GetComponent<ReconstructButtonMenu>();
+                    reconstructButtonMenu.Init();
                     SwitchModeReconstruct();
                 }
             }
         }
     }
 
+    public BlockController GetBlockPick()
+    {
+        return blockPick;
+    }
     private void TurnOffMesh(BuildingHandle buildingHandle)
     {
         vFXManager.TriggerExplo(buildingHandle.transform.position);
@@ -93,16 +104,16 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
         GameObjectUtils.EnableAllMeshRenderers(blockController.gameObject);
     }
 
-    private void HandleUIReconstruct(Vector3 pointA, Vector3 pointB)
-    {
+    // private void HandleUIReconstruct(Vector3 pointA, Vector3 pointB)
+    // {
 
-        Vector3 direction = (pointB - pointA).normalized * 2;
+    //     Vector3 direction = (pointB - pointA).normalized * 2;
 
-        Vector3 newPosition = pointA + (direction);
+    //     Vector3 newPosition = pointA + (direction);
 
-        UIReconstruct.transform.position = newPosition;
-        DisplayUI();
-    }
+    //     UIReconstruct.transform.position = newPosition;
+    //     
+    // }
 
     public void DisplayUI()
     {

@@ -7,9 +7,7 @@ using NaughtyAttributes;
 using BillUtils.SerializeCustom;
 using BillUtils.EnumUtilities;
 using System.Collections;
-using System.Runtime.InteropServices.WindowsRuntime;
 using BillUtils.GameObjectUtilities;
-using System.Xml.Serialization;
 using BillUtils.SpaceUtils;
 
 public class BlockController : MonoBehaviour
@@ -94,7 +92,7 @@ public class BlockController : MonoBehaviour
             {
                 HandleMovementReconstruct();
                 CheckCollide();
-                if (Input.GetKeyDown(KeyCode.Space) && !isCollisionDetected)
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.J) && !isCollisionDetected)
                 {
                     DropReconstruct();
                 }
@@ -585,27 +583,6 @@ public class BlockController : MonoBehaviour
         transform.Translate(new Vector3(moveX, 0, moveZ), Space.World);
     }
 
-    private bool CollideBlock()
-    {
-        Vector3 center = transform.position;
-        Vector3 boxSize = new Vector3(1, 1, 1);
-        Vector3 direction = transform.forward;
-        float maxDistance = 10f;
-        LayerMask layerMask = LayerMask.GetMask("Default");
-        bool includeTriggers = false;
-
-        RaycastHit hitInfo;
-
-        bool isHit = Physics.BoxCast(center, boxSize / 2, direction, out hitInfo, transform.rotation, maxDistance, layerMask, includeTriggers ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore);
-
-        if (isHit && hitInfo.collider.CompareTag("Block"))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
     public void Rotate()
     {
         StopAllCoroutines();
@@ -641,9 +618,11 @@ public class BlockController : MonoBehaviour
                 targetTransform.rotation = initialRotation;
                 targetTransform.position = initialPosition;
 
+                ReconstructVisual.Instance.RotateDialogueDisplay(true);
                 targetTransform.DOShakeRotation(0.5f, new Vector3(0, 5, 0), 20, 90, false)
                 .OnComplete(() =>
                 {
+                    ReconstructVisual.Instance.RotateDialogueDisplay(false);
                     ReconstructSystem.Instance.RotateDone();
                 });
                 yield break;
@@ -661,7 +640,7 @@ public class BlockController : MonoBehaviour
     {
         Collider[] hitColliders = Physics.OverlapBox(
             targetTransform.position,
-            targetTransform.localScale / 2,
+            targetTransform.localScale / 2.5f,
             targetTransform.rotation
         );
 
@@ -699,8 +678,6 @@ public class BlockController : MonoBehaviour
         if (totalCube == null || totalCube.Count == 0)
             return;
 
-        isCollisionDetected = false;
-
         foreach (GameObject child in totalCube)
         {
             if (child == null)
@@ -710,6 +687,7 @@ public class BlockController : MonoBehaviour
             Quaternion rotation = child.transform.rotation;
             Vector3 boxHalfExtents = boxSize / 2;
 
+            isCollisionDetected = false;
 
             Collider[] colliders = Physics.OverlapBox(
                 startPosition,
@@ -729,10 +707,17 @@ public class BlockController : MonoBehaviour
             }
 
             if (isCollisionDetected)
+            {
+                ReconstructVisual.Instance.MoveDialogueDisplay(true);
                 break;
+            }
+            else
+            {
+
+                ReconstructVisual.Instance.MoveDialogueDisplay(false);
+            }
         }
 
-        // Thay đổi màu sắc của tất cả các block dựa trên kết quả va chạm
         foreach (GameObject child in totalCube)
         {
             if (child != null)
@@ -765,8 +750,32 @@ public class BlockController : MonoBehaviour
 
         Gizmos.DrawLine(center, endPosition);
         Gizmos.DrawWireCube(endPosition, bounds.size);
+
+
+        Transform targetTransform = ReconstructSystem.Instance.GetSelectedObjectTransform();
+        if (targetTransform == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(initialPosition, 0.1f);
+        Gizmos.DrawLine(initialPosition, initialPosition + initialRotation * Vector3.forward * 2.0f);
+        Gizmos.DrawLine(initialPosition, initialPosition + initialRotation * Vector3.up * 1.0f);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(targetTransform.position, 0.1f);
+        Gizmos.DrawLine(targetTransform.position, targetTransform.position + targetTransform.rotation * Vector3.forward * 2.0f);
+        Gizmos.DrawLine(targetTransform.position, targetTransform.position + targetTransform.rotation * Vector3.up * 1.0f);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(initialPosition, targetTransform.position);
     }
 
+    public bool CheckBlockOnTop()
+    {
+        if (blockShape == BlockShape.BIGPLANE && blockAngle == BlockAngle.STAND) // TODO: FIND A NEW WAY TO IMPLEMENT
+            return CheckBigPlaneExcept();
+
+        return blockAngle == BlockAngle.FLAT ? CheckFlatRoof() : CheckStandRoof();
+    }
 
     #endregion
 
