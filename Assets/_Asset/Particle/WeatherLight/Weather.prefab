@@ -31,7 +31,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 527515575271130915}
-  - {fileID: 4405902922528654236}
   - {fileID: 8946876233098353341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58,7 +57,7 @@ MonoBehaviour:
   - weatherType: 2
     weatherObject: {fileID: 806837505385876264}
   - weatherType: 3
-    weatherObject: {fileID: 2710750158959343193}
+    weatherObject: {fileID: 0}
   SecondRepeat: 0
   cheatWeather: 0
   weatherType: 3
@@ -119,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3674802223503693938, guid: f7b394ed0ec5142449f0ccd7403df6ed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4266230009176989409, guid: f7b394ed0ec5142449f0ccd7403df6ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -294,75 +293,4 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3931646101484311991, guid: 2a554aeaebd9c2648b1780021358d1a6, type: 3}
   m_PrefabInstance: {fileID: 5384532485616160522}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8404253269252660401
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 7276611795810335699}
-    m_Modifications:
-    - target: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5854507142834465512, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_Name
-      value: PB_Snowing
-      objectReference: {fileID: 0}
-    - target: {fileID: 5854507142834465512, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f3fedb8039128454fb776245096d23eb, type: 3}
---- !u!1 &2710750158959343193 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5854507142834465512, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-  m_PrefabInstance: {fileID: 8404253269252660401}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4405902922528654236 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5297656545223728941, guid: f3fedb8039128454fb776245096d23eb, type: 3}
-  m_PrefabInstance: {fileID: 8404253269252660401}
   m_PrefabAsset: {fileID: 0}
