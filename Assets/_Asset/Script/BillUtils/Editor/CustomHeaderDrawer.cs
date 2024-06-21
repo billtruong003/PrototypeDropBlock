@@ -16,7 +16,7 @@ namespace BillUtils.SerializeCustom
                 fontSize = customHeader.FontSize,
                 fontStyle = FontStyle.Bold,
                 alignment = TextAnchor.MiddleLeft,
-                normal = { textColor = customHeader.Color } // Đặt màu sắc của văn bản
+                normal = { textColor = customHeader.Color } 
             };
 
             GUIContent content = new GUIContent(customHeader.Header);

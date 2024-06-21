@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using BillUtils.SerializeCustom;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,7 +16,11 @@ namespace FishFlock
         public float rot_speed;
         public float speed_offset;
     }
-
+    public enum CheatPos
+    {
+        ON,
+        OFF,
+    }
     public class FishFlockController2 : MonoBehaviour
     {
         public enum MovementAxis
@@ -24,7 +29,9 @@ namespace FishFlock
             XY,
             XZ,
         };
-
+        [BillHeader("Custom Data", 15, "#A0937D")]
+        public Transform spawnPose;
+        public CheatPos CheatCustom;
         [CustomTitle("Settings")]
         [Tooltip("The width limit of the swimming area where the group can swim.")]
         public float swimmingAreaWidth = 10;
@@ -119,7 +126,7 @@ namespace FishFlock
 
             InitializeFishes();
 
-            if(instanced)
+            if (instanced)
             {
                 props = new MaterialPropertyBlock();
                 props.SetFloat("_UniqueID", Random.value);
@@ -224,19 +231,40 @@ namespace FishFlock
         FishBehaviourCPU2 CreateBehaviour()
         {
             FishBehaviourCPU2 behaviour = new FishBehaviourCPU2();
-            Vector3 pos = groupAnchor + Random.insideUnitSphere * spawnRadius;
-            Quaternion rot = Quaternion.Slerp(transform.rotation, Random.rotation, 0.3f);
+            Vector3 pos;
 
-            switch (movementAxis)
+            if (CheatCustom == CheatPos.ON)
             {
-                case MovementAxis.XY:
-                    pos.z = rot.z = 0.0f;
-                    break;
-                case MovementAxis.XZ:
-                    pos.y = rot.y = 0.0f;
-                    break;
+                if (spawnPose == null)
+                {
+                    Debug.LogError("spawnPose is not set!");
+                    return behaviour;
+                }
+                pos = spawnPose.position + Random.insideUnitSphere * spawnRadius;
+                if (movementAxis == MovementAxis.XZ)
+                {
+                    pos.y = spawnPose.position.y;
+                }
             }
 
+            else
+            {
+                pos = groupAnchor + Random.insideUnitSphere * spawnRadius;
+
+                switch (movementAxis)
+                {
+                    case MovementAxis.XY:
+                        pos.z = 0.0f;
+                        break;
+                    case MovementAxis.XZ:
+                        pos.y = 0.0f;
+                        break;
+                    case MovementAxis.XYZ:
+                        break;
+                }
+            }
+
+            Quaternion rot = Quaternion.Slerp(transform.rotation, Random.rotation, 0.3f);
             behaviour.position = pos;
             behaviour.velocity = rot.eulerAngles;
 
@@ -246,18 +274,16 @@ namespace FishFlock
             return behaviour;
         }
 
+
         void Update()
         {
-            if(oldFishesCount != fishesCount)
+            if (oldFishesCount != fishesCount)
             {
                 if (refreshFishCounter.Ended())
                 {
-                    // Dynamically change the fishes
                     ClearAll();
                     InitializeFishes();
                     CreateFishData();
-                    //GC.Collect(); // Maybe?
-
                     refreshFishCounter.Reset();
                 }
             }
@@ -266,7 +292,7 @@ namespace FishFlock
             var time = Time.time;
             var deltaTime = Time.deltaTime;
 
-            if(instanced)
+            if (instanced)
             {
                 fishInstancedMaterial.SetVector("offsetPosition", myTransform.position);
             }
@@ -274,15 +300,12 @@ namespace FishFlock
             for (int i = 0; i < currentFishesCount; i++)
             {
                 FishBehaviourCPU2 fish = fishesData[i];
-
                 Transform fish_transform = instanced ? null : fishesTransforms[i];
+
                 if (!instanced)
                 {
                     fish.position = fish_transform.position;
                 }
-
-                if (movementAxis == MovementAxis.XY) fish.position.z = 0.0f;
-                else if (movementAxis == MovementAxis.XZ) fish.position.y = 0.0f;
 
                 var current_pos = fish.position;
                 var current_rot = instanced ? Quaternion.identity : fish_transform.rotation;
@@ -292,15 +315,14 @@ namespace FishFlock
 
                 var separation = Vector3.zero;
                 var alignment = Vector3.zero;
-                var cohesion = groupAnchor;
+                var cohesion = CheatCustom == CheatPos.ON ? spawnPose.position : groupAnchor;
 
-                //@Collisions!
-                Vector3 next_position = fish.position + (fish.velocity * 3) * (fish_velocity * deltaTime);
-                Vector3 avoidance = new Vector3(0, 0, 0);
+                Vector3 next_position = fish.position + fish.velocity * fish_velocity * deltaTime;
+                Vector3 avoidance = Vector3.zero;
+
                 for (int c = 0; c < collisionDataLength; c++)
                 {
                     CollisionArea ca = collisionData[c];
-
                     Vector3 collider_pos = ca.position;
                     Vector3 collider_size = ca.size;
 
@@ -308,19 +330,18 @@ namespace FishFlock
                         && (next_position.y >= collider_pos.y && next_position.y <= collider_pos.y + collider_size.y)
                         && (next_position.z >= collider_pos.z && next_position.z <= collider_pos.z + collider_size.z))
                     {
-
                         Vector3 coll_point = collider_pos;
                         coll_point.x += collider_size.x / 2.0f;
                         coll_point.y += collider_size.y / 2.0f;
                         coll_point.z += collider_size.z / 2.0f;
 
                         avoidance += next_position - coll_point;
-                        avoidance = (avoidance).normalized;
+                        avoidance = avoidance.normalized;
                         avoidance *= force;
                     }
                 }
 
-                var nearby_fishes_count = 1;
+                int nearby_fishes_count = 1;
                 if (!instanced)
                 {
                     var nearbyBoids = Physics.OverlapSphere(current_pos, neighbourDistance, searchLayer);
@@ -338,7 +359,7 @@ namespace FishFlock
                 }
                 else
                 {
-                    for(int j = 0; j < currentFishesCount; j++)
+                    for (int j = 0; j < currentFishesCount; j++)
                     {
                         if (j == i) continue;
 
@@ -363,8 +384,8 @@ namespace FishFlock
                 var velocity = separation + alignment + cohesion;
                 velocity += avoidance;
 
-                if(movementAxis == MovementAxis.XY) velocity.z = 0.0f;
-                else if(movementAxis == MovementAxis.XZ) velocity.y = 0.0f;
+                if (movementAxis == MovementAxis.XY) velocity.z = 0.0f;
+                else if (movementAxis == MovementAxis.XZ) velocity.y = 0.0f;
 
                 var ip = Mathf.Exp(-fish.rot_speed * deltaTime);
                 if (!instanced)
@@ -378,18 +399,18 @@ namespace FishFlock
                 }
                 else
                 {
-                    fish.velocity = Vector3.Lerp((velocity.normalized), (fish.velocity.normalized), ip);
+                    fish.velocity = Vector3.Lerp(velocity.normalized, fish.velocity.normalized, ip);
                 }
 
                 fish.position += (instanced ? fish.velocity : fish_transform.forward) * (fish_velocity * deltaTime);
 
-                if(!instanced) fish_transform.position = fish.position;
+                if (!instanced) fish_transform.position = fish.position;
 
                 fishesData[i] = fish;
             }
-
-            //fishBuffer.SetData(fishesData);
         }
+
+
 
         private void LateUpdate()
         {
@@ -456,39 +477,47 @@ namespace FishFlock
 
             Vector3 futurePosition = myTransform.position;
 
-            if (!followTarget && targetPositions.Length > 0)
+            if (CheatCustom == CheatPos.ON)
             {
-                if ((groupAnchor - targetPositions[currentTargetPosIndex]).magnitude < 1)
+                groupAnchor = spawnPose.position;
+            }
+            else
+            {
+                if (!followTarget && targetPositions.Length > 0)
                 {
-                    currentTargetPosIndex++;
-
-                    if (currentTargetPosIndex >= targetPositions.Length)
+                    if ((groupAnchor - targetPositions[currentTargetPosIndex]).magnitude < 1)
                     {
-                        if (recalculatePoints)
-                            GeneratePath();
-                        else
-                            currentTargetPosIndex = targetPositions.Length - 1;
+                        currentTargetPosIndex++;
+
+                        if (currentTargetPosIndex >= targetPositions.Length)
+                        {
+                            if (recalculatePoints)
+                                GeneratePath();
+                            else
+                                currentTargetPosIndex = targetPositions.Length - 1;
+                        }
+                    }
+
+                    Vector3 vel = (targetPositions[currentTargetPosIndex] - groupAnchor);
+                    futurePosition = groupAnchor + vel * Time.deltaTime * groupAreaSpeed;
+                }
+                else if (followTarget)
+                {
+                    if (target != null)
+                    {
+                        Vector3 vel = (target.position - groupAnchor);
+                        futurePosition = groupAnchor + vel * Time.deltaTime * groupAreaSpeed;
                     }
                 }
 
-                Vector3 vel = (targetPositions[currentTargetPosIndex] - groupAnchor);
-                futurePosition = groupAnchor + vel * Time.deltaTime * groupAreaSpeed;
-            }
-            else if (followTarget)
-            {
-                if (target != null)
-                {
-                    Vector3 vel = (target.position - groupAnchor);
-                    futurePosition = groupAnchor + vel * Time.deltaTime * groupAreaSpeed;
-                }
-            }
+                futurePosition.x = Mathf.Clamp(futurePosition.x, minX, maxX);
+                futurePosition.y = Mathf.Clamp(futurePosition.y, minY, maxY);
+                futurePosition.z = Mathf.Clamp(futurePosition.z, minZ, maxZ);
 
-            futurePosition.x = Mathf.Clamp(futurePosition.x, minX, maxX);
-            futurePosition.y = Mathf.Clamp(futurePosition.y, minY, maxY);
-            futurePosition.z = Mathf.Clamp(futurePosition.z, minZ, maxZ);
-
-            groupAnchor = futurePosition;
+                groupAnchor = futurePosition;
+            }
         }
+
 
         void GeneratePath()
         {

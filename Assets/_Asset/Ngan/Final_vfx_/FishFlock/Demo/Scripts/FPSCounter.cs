@@ -1,29 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class FPSCounter : MonoBehaviour
+namespace FishFlock
 {
-    float deltaTime = 0.0f;
-
-    void Update()
+    public class FPSCounter : MonoBehaviour
     {
-        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-    }
+        float deltaTime = 0.0f;
 
-    void OnGUI()
-    {
-        int w = Screen.width, h = Screen.height;
+        void Update()
+        {
+            deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        }
 
-        GUIStyle style = new GUIStyle();
+        void OnGUI()
+        {
+            int w = Screen.width, h = Screen.height;
 
-        Rect rect = new Rect(0, 0, w, h * 2 / 100);
-        style.alignment = TextAnchor.UpperLeft;
-        style.fontSize = h * 3 / 100;
-        style.normal.textColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-        float msec = deltaTime * 1000.0f;
-        float fps = 1.0f / deltaTime;
-        string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
-        GUI.Label(rect, text, style);
+            GUIStyle style = new GUIStyle();
+
+            Rect rect = new Rect(0, 0, w, h * 2 / 100);
+            style.alignment = TextAnchor.UpperLeft;
+            style.fontSize = h * 3 / 100;
+            style.normal.textColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            float msec = deltaTime * 1000.0f;
+            float fps = 1.0f / deltaTime;
+            string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
+            GUI.Label(rect, text, style);
+        }
     }
 }
