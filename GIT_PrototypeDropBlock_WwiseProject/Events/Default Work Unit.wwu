@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" SchemaVersion="119">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_sx_game_int_Block_GoingDown_01" ID="{27F84184-6F0A-4DBF-9022-A86CAB24143C}">
+					<ChildrenList>
+						<Action Name="" ID="{CB4FAA22-92F0-4774-8E7C-EA5D720E1C65}" ShortID="643990272">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="sx_game_int_Block_GoingDown_01" ID="{14DAB99D-E31A-4958-98DA-CEF44F096D41}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_mx_uni_amb_MainTheme" ID="{DA98E0B8-C3B5-4295-A20D-E9453C05DA12}">
+					<ChildrenList>
+						<Action Name="" ID="{EB8A1CFB-07F5-45BC-A01F-AD082E761A3C}" ShortID="586431724">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="mx_uni_amb_MainTheme" ID="{8C967DE3-CF7F-4529-996F-7CD94884FD76}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_sx_game_int_Block_Transform_01" ID="{D1AF1F8E-AF7B-4324-9572-02704D0C84FD}">
+					<ChildrenList>
+						<Action Name="" ID="{E87998D8-FD63-4639-AF66-076F916755E5}" ShortID="314444619">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="sx_game_int_Block_Transform_01" ID="{2C2BA9A3-2201-4328-BA6A-2ABCC602793E}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

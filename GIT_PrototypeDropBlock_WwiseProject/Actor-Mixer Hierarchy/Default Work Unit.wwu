@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" SchemaVersion="119">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="sx_game_int_Block_GoingDown_01" ID="{14DAB99D-E31A-4958-98DA-CEF44F096D41}" ShortID="53425388">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sx_game_int_Block_GoingDown_01" ID="{3E683957-78B2-406F-B639-A9A9FCFE51E1}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_int_Block_GoingDown_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1011427497"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sx_game_int_Block_GoingDown_01" ID="{3E683957-78B2-406F-B639-A9A9FCFE51E1}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="mx_uni_amb_MainTheme" ID="{8C967DE3-CF7F-4529-996F-7CD94884FD76}" ShortID="96598373">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="mx_uni_amb_MainTheme" ID="{2B0D0734-D4A1-4AE3-A38C-3F588CB3E4B5}">
+							<Language>SFX</Language>
+							<AudioFile>mx_uni_amb_MainTheme.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="37882530"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="mx_uni_amb_MainTheme" ID="{2B0D0734-D4A1-4AE3-A38C-3F588CB3E4B5}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="sx_game_int_Block_Transform_01" ID="{2C2BA9A3-2201-4328-BA6A-2ABCC602793E}" ShortID="640394745">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sx_game_int_Block_Transform_01" ID="{9EF49A75-A193-4C34-9BD0-4DDF0F4A1176}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_int_Block_Transform_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="66974648"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sx_game_int_Block_Transform_01" ID="{9EF49A75-A193-4C34-9BD0-4DDF0F4A1176}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

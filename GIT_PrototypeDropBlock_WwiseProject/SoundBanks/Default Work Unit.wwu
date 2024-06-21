@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{6A6F1FA5-04B7-4D0F-8125-5FC05CFED137}" SchemaVersion="119">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{6A6F1FA5-04B7-4D0F-8125-5FC05CFED137}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{6A6F1FA5-04B7-4D0F-8125-5FC05CFED137}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="SB_Music" ID="{B55BC6F9-A97C-4921-984A-822B11875FAA}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_mx_uni_amb_MainTheme" ID="{DA98E0B8-C3B5-4295-A20D-E9453C05DA12}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="mx_uni_amb_MainTheme" ID="{8C967DE3-CF7F-4529-996F-7CD94884FD76}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="SB_Block" ID="{CD0F715B-DBCF-4E16-B4B7-F69E260E4CE3}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_sx_game_int_Block_Transform_01" ID="{D1AF1F8E-AF7B-4324-9572-02704D0C84FD}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sx_game_int_Block_Transform_01" ID="{2C2BA9A3-2201-4328-BA6A-2ABCC602793E}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sx_game_int_Block_GoingDown_01" ID="{14DAB99D-E31A-4958-98DA-CEF44F096D41}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_game_int_Block_GoingDown_01" ID="{27F84184-6F0A-4DBF-9022-A86CAB24143C}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>

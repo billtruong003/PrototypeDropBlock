@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="779753582" Type="User" Language="SFX" Hash="{5FE24F89-8A2C-BD65-B844-D09CD2F9CA6C}">
+			<ShortName>SB_Music</ShortName>
+			<Path>SB_Music.bnk</Path>
+			<Media>
+				<File Id="37882530" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>mx_uni_amb_MainTheme.wav</ShortName>
+					<CachePath>SFX/mx_uni_amb_MainTheme_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3039340560" Name="Play_mx_uni_amb_MainTheme" DurationType="OneShot" DurationMin="61.090916" DurationMax="61.090916">
+					<MediaRefs>
+						<MediaRef Id="37882530"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{B6CBD692-12EC-CDBA-0932-48F63C40C91F}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{F74A594E-558C-1BCD-03FF-4A9B2BC1B525}">
+			<ShortName>SB_Block</ShortName>
+			<Path>SB_Block.bnk</Path>
+			<Media>
+				<File Id="66974648" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_int_Block_Transform_01.wav</ShortName>
+					<CachePath>SFX/sx_game_int_Block_Transform_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1011427497" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_int_Block_GoingDown_01.wav</ShortName>
+					<CachePath>SFX/sx_game_int_Block_GoingDown_01_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="830146323" Name="Play_sx_game_int_Block_GoingDown_01" DurationType="OneShot" DurationMin="0.47202083" DurationMax="0.47202083">
+					<MediaRefs>
+						<MediaRef Id="1011427497"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1803726629" Name="Play_sx_game_int_Block_Transform_01" DurationType="OneShot" DurationMin="0.7954583" DurationMax="0.7954583">
+					<MediaRefs>
+						<MediaRef Id="66974648"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{D09E1D73-E936-18D7-5278-B8B51C9A104B}</FileHash>
+</SoundBanksInfo>

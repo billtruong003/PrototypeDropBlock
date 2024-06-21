@@ -86,6 +86,7 @@ public class BlockController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     DropToCenter();
+                    AkSoundEngine.PostEvent("Play_sx_game_int_Block_GoingDown_01", gameObject);
                 }
             }
             else if (reconstructMode == ReconstructMode.ON)
@@ -458,6 +459,7 @@ public class BlockController : MonoBehaviour
         if (PositionManager.Instance != null)
         {
             PositionManager.Instance.SaveCubeType(cubeData);
+            AkSoundEngine.PostEvent("Play_sx_game_int_Block_Transform_01", gameObject);
         }
     }
 
