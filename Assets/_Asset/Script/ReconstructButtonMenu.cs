@@ -37,22 +37,21 @@ public class ReconstructButtonMenu : MonoBehaviour
         DisplayUISelected();
         if (Input.GetKeyDown(KeyCode.I))
         {
-            AkSoundEngine.PostEvent("Play_sx_uni_ui_Controller_MenuNavigation", gameObject); //### OPTIMIZE: Tristan
+            SoundManager.Instance.PlaySound(SoundType.S_NAVIGATION);
             PrevButton();
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            AkSoundEngine.PostEvent("Play_sx_uni_ui_Controller_MenuNavigation", gameObject); //### OPTIMIZE: Tristan
+            SoundManager.Instance.PlaySound(SoundType.S_NAVIGATION);
             NextButton();
         }
         else if (Input.GetKeyDown(KeyCode.J))
         {
-            
+
             Choose();
         }
         else if (Input.GetKeyDown(KeyCode.U))
         {
-             //### OPTIMIZE: Tristan
             Done();
         }
 
@@ -60,12 +59,12 @@ public class ReconstructButtonMenu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.D))
             {
-                AkSoundEngine.PostEvent("Play_sx_uni_ui_Controller_MenuNavigation", gameObject); //### OPTIMIZE: Tristan
+                SoundManager.Instance.PlaySound(SoundType.S_NAVIGATION);
                 NextMat();
             }
             else if (Input.GetKeyDown(KeyCode.A))
             {
-                AkSoundEngine.PostEvent("Play_sx_uni_ui_Controller_MenuNavigation", gameObject); //### OPTIMIZE: Tristan
+                SoundManager.Instance.PlaySound(SoundType.S_NAVIGATION);
                 PrevMat();
             }
         }
@@ -135,7 +134,7 @@ public class ReconstructButtonMenu : MonoBehaviour
                 break;
 
             case Options.MOVE:
-                AkSoundEngine.PostEvent("Play_sx_game_ui_Controller_PressDownInput", gameObject); //### OPTIMIZE: Tristan
+                SoundManager.Instance.PlaySound(SoundType.S_PRESSDOWN);
                 if (currentOptionState != OptionStates.DEFAULT)
                 {
                     if (currentOptionState == OptionStates.MoveOn)
@@ -152,7 +151,7 @@ public class ReconstructButtonMenu : MonoBehaviour
                 break;
 
             case Options.CHANGE:
-                 //### OPTIMIZE: Tristan
+                //### OPTIMIZE: Tristan
                 if (currentOptionState != OptionStates.DEFAULT)
                 {
                     if (currentOptionState == OptionStates.ChangeOn)

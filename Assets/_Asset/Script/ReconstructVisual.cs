@@ -37,7 +37,7 @@ public class ReconstructVisual : Singleton<ReconstructVisual>
                 nextIndex = i + indexMat;
                 if (nextIndex == materialTypes.Length)
                     nextIndex = 0;
-                else if (nextIndex == 0)
+                else if (nextIndex < 0)
                     nextIndex = materialTypes.Length - 1;
                 break;
             }

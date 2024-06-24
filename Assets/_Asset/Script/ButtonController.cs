@@ -12,7 +12,7 @@ public class ButtonController : MonoBehaviour
 
     public void DestroyBuilding()
     {
-        AkSoundEngine.PostEvent("Play_sx_game_int_Block_Destroy", gameObject); //### OPTIMIZE: Tristan
+        SoundManager.Instance.PlaySound(SoundType.S_DESTROY);
         VFXManager.Instance.TriggerExplo(blockController.GetCenter());
         // OPTIMIZE: Optimize later with object pool
         // Anim.DOTriggerExplosion(blockController.GetTotalCube(), blockController.GetCenter());
@@ -70,7 +70,7 @@ public class ButtonController : MonoBehaviour
         // anim.SetTrigger("Close");
         yield return TimeUtils.WaitHalfSec;
         Debug.Log("Triggering HideUI");
-        AkSoundEngine.PostEvent("Play_sx_game_ui_Controller_PressDownInput", gameObject); // OPTIMIZE
+        SoundManager.Instance.PlaySound(SoundType.S_PRESSDOWN);
         ReconstructSystem.Instance.HideUI();
     }
 }

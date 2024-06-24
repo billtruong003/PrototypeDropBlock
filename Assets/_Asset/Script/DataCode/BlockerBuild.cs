@@ -153,5 +153,26 @@ namespace BlockBuilder.BlockManagement
             this.Building = BdHandle.gameObject;
         }
     }
+
+    #endregion
+
+    #region Sound
+    public enum SoundType
+    {
+        DEFAULT,
+        S_ROTATE,
+        S_DESTROY,
+        S_DROP,
+        S_TRANSFORM,
+        S_PRESSDOWN,
+        S_NAVIGATION,
+    }
+
+    [Serializable]
+    public class SoundID
+    {
+        public string soundID;
+        public SoundType soundType;
+    }
     #endregion
 }

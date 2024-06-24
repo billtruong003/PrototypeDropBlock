@@ -24997,7 +24997,7 @@ MonoBehaviour:
   angle: 0
   TMP_CurrentBlock: {fileID: 1902407804}
   TMP_CurrentMaterial: {fileID: 1540295232}
-  Set_FPS: 0
+  Set_FPS: 100
   currentFPS: 0
   FPS: {fileID: 2092138461}
 --- !u!1 &1783476593
@@ -28961,12 +28961,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
-  soundID: []
-  rotateSound: 
-  move: 
-  InputPress: Play_sx_game_ui_Controller_PressDownInput
-  b: 
-  c: 
+  soundIDs:
+  - soundID: Play_sx_game_int_Block_Rotate
+    soundType: 1
+  - soundID: Play_sx_game_int_Block_Destroy
+    soundType: 2
+  - soundID: Play_sx_game_int_Block_GoingDown
+    soundType: 3
+  - soundID: Play_sx_game_int_Block_Transform
+    soundType: 4
+  - soundID: Play_sx_game_ui_Controller_PressDownInput
+    soundType: 5
+  - soundID: Play_sx_uni_ui_Controller_MenuNavigation
+    soundType: 6
+  blockDestroy: Play_sx_game_int_Block_Destroy
+  blockGoingDown: Play_sx_game_int_Block_GoingDown
+  blockRotate: Play_sx_game_int_Block_Rotate
+  blockTransform: Play_sx_game_int_Block_Transform
+  pressDownInput: Play_sx_game_ui_Controller_PressDownInput
+  menuNavigation: Play_sx_uni_ui_Controller_MenuNavigation
 --- !u!1 &2029082156
 GameObject:
   m_ObjectHideFlags: 0
