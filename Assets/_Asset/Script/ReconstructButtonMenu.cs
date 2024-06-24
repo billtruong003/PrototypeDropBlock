@@ -37,18 +37,22 @@ public class ReconstructButtonMenu : MonoBehaviour
         DisplayUISelected();
         if (Input.GetKeyDown(KeyCode.I))
         {
+            AkSoundEngine.PostEvent("Play_sx_uni_ui_Controller_MenuNavigation", gameObject); //### OPTIMIZE: Tristan
             PrevButton();
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
+            AkSoundEngine.PostEvent("Play_sx_uni_ui_Controller_MenuNavigation", gameObject); //### OPTIMIZE: Tristan
             NextButton();
         }
         else if (Input.GetKeyDown(KeyCode.J))
         {
+            
             Choose();
         }
         else if (Input.GetKeyDown(KeyCode.U))
         {
+             //### OPTIMIZE: Tristan
             Done();
         }
 
@@ -56,10 +60,12 @@ public class ReconstructButtonMenu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.D))
             {
+                AkSoundEngine.PostEvent("Play_sx_uni_ui_Controller_MenuNavigation", gameObject); //### OPTIMIZE: Tristan
                 NextMat();
             }
             else if (Input.GetKeyDown(KeyCode.A))
             {
+                AkSoundEngine.PostEvent("Play_sx_uni_ui_Controller_MenuNavigation", gameObject); //### OPTIMIZE: Tristan
                 PrevMat();
             }
         }
@@ -124,16 +130,19 @@ public class ReconstructButtonMenu : MonoBehaviour
             case Options.ROTATE:
                 if (currentOptionState != OptionStates.DEFAULT)
                     return;
+
                 Rotate();
                 break;
 
             case Options.MOVE:
+                AkSoundEngine.PostEvent("Play_sx_game_ui_Controller_PressDownInput", gameObject); //### OPTIMIZE: Tristan
                 if (currentOptionState != OptionStates.DEFAULT)
                 {
                     if (currentOptionState == OptionStates.MoveOn)
                         currentOptionState = OptionStates.DEFAULT;
                     return;
                 }
+
                 if (ReconstructSystem.Instance.NotPossibleToControl)
                 {
                     MoveDialogueDisplay();
@@ -143,15 +152,17 @@ public class ReconstructButtonMenu : MonoBehaviour
                 break;
 
             case Options.CHANGE:
+                 //### OPTIMIZE: Tristan
                 if (currentOptionState != OptionStates.DEFAULT)
                 {
                     if (currentOptionState == OptionStates.ChangeOn)
                     {
+                        SoundManager.Instance.PlaySoundControllerPressDownInput();
                         SwitchChangeMatMode();
                     }
                     return;
                 }
-
+                SoundManager.Instance.PlaySoundControllerPressDownInput();
                 SwitchChangeMatMode();
                 break;
 

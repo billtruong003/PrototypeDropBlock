@@ -9,19 +9,45 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="779753582" Type="User" Language="SFX" Hash="{5FE24F89-8A2C-BD65-B844-D09CD2F9CA6C}">
+		<SoundBank Id="779753582" Type="User" Language="SFX" Hash="{64C7D199-C7D1-B795-4E95-E8EEB293B627}">
 			<ShortName>SB_Music</ShortName>
 			<Path>SB_Music.bnk</Path>
 			<Media>
 				<File Id="37882530" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>mx_uni_amb_MainTheme.wav</ShortName>
-					<CachePath>SFX/mx_uni_amb_MainTheme_818F3B66.wem</CachePath>
+					<CachePath>SFX/mx_uni_amb_MainTheme_FBC78EF0.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
-				<Event Id="3039340560" Name="Play_mx_uni_amb_MainTheme" DurationType="OneShot" DurationMin="61.090916" DurationMax="61.090916">
+				<Event Id="3039340560" Name="Play_mx_uni_amb_MainTheme" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="37882530"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="842127849" Type="User" Language="SFX" Hash="{F32966F8-DE45-EA1C-D675-75A909E0A1B0}">
+			<ShortName>SB_Controller</ShortName>
+			<Path>SB_Controller.bnk</Path>
+			<Media>
+				<File Id="497846776" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_uni_ui_Controller_MenuNavigation_01.wav</ShortName>
+					<CachePath>SFX/sx_uni_ui_Controller_MenuNavigation_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="875902986" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_ui_Controller_PressDownInput_01.wav</ShortName>
+					<CachePath>SFX/sx_game_ui_Controller_PressDownInput_01_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1619009516" Name="Play_sx_game_ui_Controller_PressDownInput" DurationType="OneShot" DurationMin="0.28410417" DurationMax="0.28410417">
+					<MediaRefs>
+						<MediaRef Id="875902986"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2233396232" Name="Play_sx_uni_ui_Controller_MenuNavigation" DurationType="OneShot" DurationMin="0.1395625" DurationMax="0.1395625">
+					<MediaRefs>
+						<MediaRef Id="497846776"/>
 					</MediaRefs>
 				</Event>
 			</Events>
@@ -39,7 +65,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{F74A594E-558C-1BCD-03FF-4A9B2BC1B525}">
+		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{F0C58F48-FADE-A744-7F54-CCD4A4C41A47}">
 			<ShortName>SB_Block</ShortName>
 			<Path>SB_Block.bnk</Path>
 			<Media>
@@ -47,18 +73,36 @@
 					<ShortName>sx_game_int_Block_Transform_01.wav</ShortName>
 					<CachePath>SFX/sx_game_int_Block_Transform_01_818F3B66.wem</CachePath>
 				</File>
+				<File Id="307884731" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_int_Block_Rotate_01.wav</ShortName>
+					<CachePath>SFX/sx_game_int_Block_Rotate_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="752075404" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_int_Block_Destroy_01.wav</ShortName>
+					<CachePath>SFX/sx_game_int_Block_Destroy_01_818F3B66.wem</CachePath>
+				</File>
 				<File Id="1011427497" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_int_Block_GoingDown_01.wav</ShortName>
 					<CachePath>SFX/sx_game_int_Block_GoingDown_01_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
-				<Event Id="830146323" Name="Play_sx_game_int_Block_GoingDown_01" DurationType="OneShot" DurationMin="0.47202083" DurationMax="0.47202083">
+				<Event Id="495565927" Name="Play_sx_game_int_Block_Destroy" DurationType="OneShot" DurationMin="0.6259792" DurationMax="0.6259792">
+					<MediaRefs>
+						<MediaRef Id="752075404"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="339787471" Name="Play_sx_game_int_Block_GoingDown" DurationType="OneShot" DurationMin="0.47202083" DurationMax="0.47202083">
 					<MediaRefs>
 						<MediaRef Id="1011427497"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1803726629" Name="Play_sx_game_int_Block_Transform_01" DurationType="OneShot" DurationMin="0.7954583" DurationMax="0.7954583">
+				<Event Id="1986295342" Name="Play_sx_game_int_Block_Rotate" DurationType="OneShot" DurationMin="0.6818333" DurationMax="0.6818333">
+					<MediaRefs>
+						<MediaRef Id="307884731"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2896509689" Name="Play_sx_game_int_Block_Transform" DurationType="OneShot" DurationMin="0.7954583" DurationMax="0.7954583">
 					<MediaRefs>
 						<MediaRef Id="66974648"/>
 					</MediaRefs>
@@ -66,5 +110,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{D09E1D73-E936-18D7-5278-B8B51C9A104B}</FileHash>
+	<FileHash>{2D8564F9-6D48-693A-ED63-B9599046A6EF}</FileHash>
 </SoundBanksInfo>

@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a51f6f6ab7040f4d81255fc05cfed137
     GuidInternal: 
-    m_lastTime: -8584826429482117816
+    m_lastTime: -8584823936183386077
     List:
     - name: SB_Block
       guid: 5b710fcdcfdb164eb4b7f69e260e4ce3
@@ -82,6 +82,20 @@ MonoBehaviour:
         ObjectType: 7
         guid: 5b710fcdcfdb164eb4b7f69e260e4ce3
       Path: SoundBanks\Default Work Unit\SB_Block
+    - name: SB_Controller
+      guid: ad8c21bf7c41694ca843773ec97ae30a
+      id: 842127849
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: a51f6f6ab7040f4d81255fc05cfed137
+      - ElementName: SB_Controller
+        ObjectType: 7
+        guid: ad8c21bf7c41694ca843773ec97ae30a
+      Path: SoundBanks\Default Work Unit\SB_Controller
     - name: SB_Music
       guid: f9c65bb57ca92149984a822b11875faa
       id: 779753582
@@ -108,7 +122,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 0d768d710c8475488ec0ae5dd00ec6f8
     GuidInternal: 
-    m_lastTime: -8584826429482258034
+    m_lastTime: -8584823936183436205
     List:
     - name: Play_mx_uni_amb_MainTheme
       guid: b8e098dab5c39542a20de9453c05da12
@@ -125,11 +139,11 @@ MonoBehaviour:
         guid: b8e098dab5c39542a20de9453c05da12
       Path: Events\Default Work Unit\Play_mx_uni_amb_MainTheme
       maxAttenuation: 0
-      maxDuration: 61.090916
-      minDuration: 61.090916
-    - name: Play_sx_game_int_Block_GoingDown_01
-      guid: 8441f8270a6fbf4d9022a86cab24143c
-      id: 830146323
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_sx_game_int_Block_Destroy
+      guid: 7b4dbe7dc8de7e4cb84966cd251d111f
+      id: 495565927
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -137,16 +151,33 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
-      - ElementName: Play_sx_game_int_Block_GoingDown_01
+      - ElementName: Play_sx_game_int_Block_Destroy
+        ObjectType: 3
+        guid: 7b4dbe7dc8de7e4cb84966cd251d111f
+      Path: Events\Default Work Unit\Play_sx_game_int_Block_Destroy
+      maxAttenuation: 0
+      maxDuration: 0.6259792
+      minDuration: 0.6259792
+    - name: Play_sx_game_int_Block_GoingDown
+      guid: 8441f8270a6fbf4d9022a86cab24143c
+      id: 339787471
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Play_sx_game_int_Block_GoingDown
         ObjectType: 3
         guid: 8441f8270a6fbf4d9022a86cab24143c
-      Path: Events\Default Work Unit\Play_sx_game_int_Block_GoingDown_01
+      Path: Events\Default Work Unit\Play_sx_game_int_Block_GoingDown
       maxAttenuation: 0
       maxDuration: 0.47202083
       minDuration: 0.47202083
-    - name: Play_sx_game_int_Block_Transform_01
-      guid: 8e1fafd17baf2443957202704d0c84fd
-      id: 1803726629
+    - name: Play_sx_game_int_Block_Rotate
+      guid: 26e6b2238c5ec1438ebd3c0c95694c1e
+      id: 1986295342
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -154,13 +185,64 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
-      - ElementName: Play_sx_game_int_Block_Transform_01
+      - ElementName: Play_sx_game_int_Block_Rotate
+        ObjectType: 3
+        guid: 26e6b2238c5ec1438ebd3c0c95694c1e
+      Path: Events\Default Work Unit\Play_sx_game_int_Block_Rotate
+      maxAttenuation: 0
+      maxDuration: 0.6818333
+      minDuration: 0.6818333
+    - name: Play_sx_game_int_Block_Transform
+      guid: 8e1fafd17baf2443957202704d0c84fd
+      id: 2896509689
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Play_sx_game_int_Block_Transform
         ObjectType: 3
         guid: 8e1fafd17baf2443957202704d0c84fd
-      Path: Events\Default Work Unit\Play_sx_game_int_Block_Transform_01
+      Path: Events\Default Work Unit\Play_sx_game_int_Block_Transform
       maxAttenuation: 0
       maxDuration: 0.7954583
       minDuration: 0.7954583
+    - name: Play_sx_game_ui_Controller_PressDownInput
+      guid: ad4bff3320d3334fab385378e5ebe9b3
+      id: 1619009516
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Play_sx_game_ui_Controller_PressDownInput
+        ObjectType: 3
+        guid: ad4bff3320d3334fab385378e5ebe9b3
+      Path: Events\Default Work Unit\Play_sx_game_ui_Controller_PressDownInput
+      maxAttenuation: 0
+      maxDuration: 0.28410417
+      minDuration: 0.28410417
+    - name: Play_sx_uni_ui_Controller_MenuNavigation
+      guid: c566d9a9040ac040b02abaf150e3707f
+      id: 2233396232
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Play_sx_uni_ui_Controller_MenuNavigation
+        ObjectType: 3
+        guid: c566d9a9040ac040b02abaf150e3707f
+      Path: Events\Default Work Unit\Play_sx_uni_ui_Controller_MenuNavigation
+      maxAttenuation: 0
+      maxDuration: 0.1395625
+      minDuration: 0.1395625
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -218,7 +300,7 @@ MonoBehaviour:
     m_lastTime: -8584826477783917465
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000000600000007000000090000000a0000000b0000000c0000000d000000
+  ExpandedWaapiItemIds: 050000000600000007000000090000000a0000000b0000000c0000000f00000010000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

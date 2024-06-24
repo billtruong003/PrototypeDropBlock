@@ -86,7 +86,7 @@ public class BlockController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     DropToCenter();
-                    AkSoundEngine.PostEvent("Play_sx_game_int_Block_GoingDown_01", gameObject);
+                    AkSoundEngine.PostEvent("Play_sx_game_int_Block_GoingDown", gameObject);
                 }
             }
             else if (reconstructMode == ReconstructMode.ON)
@@ -97,8 +97,11 @@ public class BlockController : MonoBehaviour
                 {
                     DropReconstruct();
                 }
+
+                timeElapsed -= Time.deltaTime;
             }
         }
+        
     }
     #endregion
 
@@ -160,22 +163,27 @@ public class BlockController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            AkSoundEngine.PostEvent("Play_sx_game_int_Block_Rotate", gameObject);
+            SoundManager.Instance.PlaySound("Play_sx_game_int_Block_Rotate");
             Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 90, transform.eulerAngles.z);
             transform.eulerAngles = angle;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            AkSoundEngine.PostEvent("Play_sx_game_int_Block_Rotate", gameObject);
             Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 90, transform.eulerAngles.z);
             transform.eulerAngles = angle;
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
+            AkSoundEngine.PostEvent("Play_sx_game_int_Block_Rotate", gameObject);
             Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
             transform.eulerAngles = angle;
             ChangeState();
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
+            AkSoundEngine.PostEvent("Play_sx_game_int_Block_Rotate", gameObject);
             Vector3 angle = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
             transform.eulerAngles = angle;
             ChangeState();
@@ -459,7 +467,7 @@ public class BlockController : MonoBehaviour
         if (PositionManager.Instance != null)
         {
             PositionManager.Instance.SaveCubeType(cubeData);
-            AkSoundEngine.PostEvent("Play_sx_game_int_Block_Transform_01", gameObject);
+            AkSoundEngine.PostEvent("Play_sx_game_int_Block_Transform", gameObject);
         }
     }
 
@@ -577,12 +585,23 @@ public class BlockController : MonoBehaviour
     private Vector3 initialPosition;
     private Quaternion initialRotation;
     private float checkInterval = 0.01f;
-
+    
+    // OPTIMIZE
+    private float timeElapsed = 0;
+    private float rangePlay = 1;
     private void HandleMovementReconstruct()
     {
         float moveX = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
         float moveZ = Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
         transform.Translate(new Vector3(moveX, 0, moveZ), Space.World);
+        if (moveX > 0 || moveX < 0 || moveZ > 0 || moveZ < 0)
+        {
+            if (timeElapsed <= 0)
+            {
+                timeElapsed = rangePlay;
+                // SoundManager.Instance.PlaySound("");
+            }
+        }
     }
 
     public void Rotate()
@@ -632,6 +651,11 @@ public class BlockController : MonoBehaviour
 
             elapsedTime += checkInterval;
             yield return new WaitForSeconds(checkInterval);
+        }
+
+        if (!CheckCollision(targetTransform))
+        {
+            AkSoundEngine.PostEvent("Play_sx_game_int_Block_Rotate", gameObject);
         }
 
         targetTransform.rotation = targetRotation;

@@ -14,14 +14,19 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID PLAY_MX_UNI_AMB_MAINTHEME = 3039340560U;
-        static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_GOINGDOWN_01 = 830146323U;
-        static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_TRANSFORM_01 = 1803726629U;
+        static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_DESTROY = 495565927U;
+        static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_GOINGDOWN = 339787471U;
+        static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_ROTATE = 1986295342U;
+        static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_TRANSFORM = 2896509689U;
+        static const AkUniqueID PLAY_SX_GAME_UI_CONTROLLER_PRESSDOWNINPUT = 1619009516U;
+        static const AkUniqueID PLAY_SX_UNI_UI_CONTROLLER_MENUNAVIGATION = 2233396232U;
     } // namespace EVENTS
 
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID SB_BLOCK = 2121512728U;
+        static const AkUniqueID SB_CONTROLLER = 842127849U;
         static const AkUniqueID SB_MUSIC = 779753582U;
     } // namespace BANKS
 

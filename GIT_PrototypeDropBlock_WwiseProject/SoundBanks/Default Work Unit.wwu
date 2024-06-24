@@ -13,10 +13,24 @@
 				</SoundBank>
 				<SoundBank Name="SB_Block" ID="{CD0F715B-DBCF-4E16-B4B7-F69E260E4CE3}">
 					<ObjectInclusionList>
-						<ObjectRef Name="Play_sx_game_int_Block_Transform_01" ID="{D1AF1F8E-AF7B-4324-9572-02704D0C84FD}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sx_game_int_Block_Rotate_01" ID="{75BEA821-8A0D-4171-B73A-A7806871E8D5}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_game_int_Block_Transform" ID="{D1AF1F8E-AF7B-4324-9572-02704D0C84FD}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="sx_game_int_Block_Transform_01" ID="{2C2BA9A3-2201-4328-BA6A-2ABCC602793E}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_game_int_Block_Rotate" ID="{23B2E626-5E8C-43C1-8EBD-3C0C95694C1E}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="sx_game_int_Block_GoingDown_01" ID="{14DAB99D-E31A-4958-98DA-CEF44F096D41}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_sx_game_int_Block_GoingDown_01" ID="{27F84184-6F0A-4DBF-9022-A86CAB24143C}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sx_game_int_Block_Destroy_01" ID="{9E973476-DA32-4BE5-9AF4-D067CDAE60CB}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_game_int_Block_Destroy" ID="{7DBE4D7B-DEC8-4C7E-B849-66CD251D111F}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_game_int_Block_GoingDown" ID="{27F84184-6F0A-4DBF-9022-A86CAB24143C}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="SB_Controller" ID="{BF218CAD-417C-4C69-A843-773EC97AE30A}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_sx_uni_ui_Controller_MenuNavigation" ID="{A9D966C5-0A04-40C0-B02A-BAF150E3707F}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{FE8850FD-0C8E-445F-9300-FEABDFE4F1B4}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sx_game_ui_Controller_PressDownInput_01" ID="{B38C75A4-0806-4C02-A764-49E0757E164C}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_game_ui_Controller_PressDownInput" ID="{33FF4BAD-D320-4F33-AB38-5378E5EBE9B3}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

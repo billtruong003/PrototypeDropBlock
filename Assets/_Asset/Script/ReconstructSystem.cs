@@ -58,6 +58,8 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
 
                 if (hit.collider.gameObject.CompareTag("Block"))
                 {
+                    AkSoundEngine.PostEvent("Play_sx_game_ui_Controller_PressDownInput", gameObject); //### OPTIMIZE: Tristan
+
                     RayCastDetect rayDetect = hit.collider.gameObject.GetComponent<RayCastDetect>();
                     if (rayDetect.GetDropState() == false)
                         return;
