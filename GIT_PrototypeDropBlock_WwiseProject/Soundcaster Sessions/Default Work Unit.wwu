@@ -11,11 +11,47 @@
 						</Module>
 						<Module>
 							<ObjectRef Name="sx_game_amb_Biome_PrairieBird_01" ID="{9B5F1F41-E431-428D-90BF-3EEDAA0539E0}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
-							<Position X="1" Y="0"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sx_game_int_Block_Destroy_01" ID="{9E973476-DA32-4BE5-9AF4-D067CDAE60CB}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+							<Position X="0" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sx_game_ui_Controller_PressDownInput_01" ID="{B38C75A4-0806-4C02-A764-49E0757E164C}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+							<Position X="0" Y="4"/>
 						</Module>
 						<Module>
 							<ObjectRef Name="sx_game_amb_Biome_PrairieWind_01" ID="{EDAC1EA6-B78B-4299-A716-AA1C6C070072}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
-							<Position X="2" Y="0"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+							<Position X="1" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sx_game_int_Block_GoingDown_01" ID="{14DAB99D-E31A-4958-98DA-CEF44F096D41}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+							<Position X="1" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{FE8850FD-0C8E-445F-9300-FEABDFE4F1B4}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+							<Position X="1" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sx_game_int_Block_Move_01" ID="{7282C1F3-9141-4940-B347-786050EE5F89}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+							<Position X="2" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sx_game_int_Block_Rotate_01" ID="{75BEA821-8A0D-4171-B73A-A7806871E8D5}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+							<Position X="3" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sx_game_int_Block_Transform_01" ID="{2C2BA9A3-2201-4328-BA6A-2ABCC602793E}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+							<Position X="4" Y="3"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true"/>

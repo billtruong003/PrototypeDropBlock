@@ -4,6 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" PersistMode="Standalone">
 			<ChildrenList>
 				<Sound Name="sx_game_int_Block_GoingDown_01" ID="{14DAB99D-E31A-4958-98DA-CEF44F096D41}" ShortID="53425388">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
@@ -28,6 +35,11 @@
 				<Sound Name="mx_uni_amb_MainTheme" ID="{8C967DE3-CF7F-4529-996F-7CD94884FD76}" ShortID="96598373">
 					<PropertyList>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-20</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -51,6 +63,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="sx_game_int_Block_Transform_01" ID="{2C2BA9A3-2201-4328-BA6A-2ABCC602793E}" ShortID="640394745">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
@@ -73,6 +92,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="sx_game_int_Block_Rotate_01" ID="{75BEA821-8A0D-4171-B73A-A7806871E8D5}" ShortID="969679861">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
@@ -95,6 +121,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="sx_game_int_Block_Destroy_01" ID="{9E973476-DA32-4BE5-9AF4-D067CDAE60CB}" ShortID="511865953">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
@@ -117,6 +150,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="sx_game_ui_Controller_PressDownInput_01" ID="{B38C75A4-0806-4C02-A764-49E0757E164C}" ShortID="159005402">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
@@ -139,6 +179,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{FE8850FD-0C8E-445F-9300-FEABDFE4F1B4}" ShortID="753962650">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
@@ -216,6 +263,11 @@
 								<Value>-150</Value>
 							</ValueList>
 						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -241,6 +293,11 @@
 				<Sound Name="sx_game_amb_Biome_PrairieBird_01" ID="{9B5F1F41-E431-428D-90BF-3EEDAA0539E0}" ShortID="498205825">
 					<PropertyList>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-12</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -267,6 +324,9 @@
 					<PropertyList>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-12</Value>
+							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{D61ED4D8-CEEB-4878-9353-60EFF1383C00}">
@@ -300,6 +360,23 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" ShortID="465639238">
+					<PropertyList>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>30</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-200</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
@@ -322,6 +399,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<BlendContainer Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" ShortID="505429193">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
