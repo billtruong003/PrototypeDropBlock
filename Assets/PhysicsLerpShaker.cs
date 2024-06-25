@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class PhysicsLerpShaker : MonoBehaviour
+public class PhysicsLerpShaker : Singleton<PhysicsLerpShaker>
 {
     [SerializeField] private Transform _objectToMove;
     [SerializeField, Range(0, 1)] private float _duration = 1f; // Total duration to move along the curve
@@ -10,11 +10,15 @@ public class PhysicsLerpShaker : MonoBehaviour
     [SerializeField] private int _count = 20; // Number of points to define the curve
     [SerializeField] private bool CheatDestroy;
     [SerializeField] private bool CheatRandom;
+    public void SetObjectToMove(Transform currentBlock) => _objectToMove = currentBlock;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     private void Update()
     {
-        // For testing, call the LaunchObject() method on a key press
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.L) && _objectToMove != null)
         {
             if (CheatRandom)
             {
