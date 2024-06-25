@@ -65,10 +65,14 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{F0C58F48-FADE-A744-7F54-CCD4A4C41A47}">
+		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{0385F10D-455A-9CD5-B4EF-B8DDCC428120}">
 			<ShortName>SB_Block</ShortName>
 			<Path>SB_Block.bnk</Path>
 			<Media>
+				<File Id="51281222" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_int_Block_Move_01.wav</ShortName>
+					<CachePath>SFX/sx_game_int_Block_Move_01_818F3B66.wem</CachePath>
+				</File>
 				<File Id="66974648" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_int_Block_Transform_01.wav</ShortName>
 					<CachePath>SFX/sx_game_int_Block_Transform_01_818F3B66.wem</CachePath>
@@ -97,6 +101,11 @@
 						<MediaRef Id="1011427497"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="4162922556" Name="Play_sx_game_int_Block_Move" DurationType="OneShot" DurationMin="0.085229166" DurationMax="0.085229166">
+					<MediaRefs>
+						<MediaRef Id="51281222"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1986295342" Name="Play_sx_game_int_Block_Rotate" DurationType="OneShot" DurationMin="0.6818333" DurationMax="0.6818333">
 					<MediaRefs>
 						<MediaRef Id="307884731"/>
@@ -109,6 +118,32 @@
 				</Event>
 			</Events>
 		</SoundBank>
+		<SoundBank Id="3524140603" Type="User" Language="SFX" Hash="{6364884E-71A6-CD0A-B5CA-6576DCDFB4BC}">
+			<ShortName>SB_Biome</ShortName>
+			<Path>SB_Biome.bnk</Path>
+			<Media>
+				<File Id="465292217" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_amb_Biome_PrairieBird_01.wav</ShortName>
+					<CachePath>SFX/sx_game_amb_Biome_PrairieBird_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="800045363" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_amb_Biome_PrairieWind_01.wav</ShortName>
+					<CachePath>SFX/sx_game_amb_Biome_PrairieWind_01_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3593667664" Name="Play_sx_game_amb_Biome_PrairieBird" DurationType="OneShot" DurationMin="11.363646" DurationMax="11.363646">
+					<MediaRefs>
+						<MediaRef Id="465292217"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3478365783" Name="Play_sx_game_amb_Biome_PrairieWind" DurationType="OneShot" DurationMin="4.5454583" DurationMax="4.5454583">
+					<MediaRefs>
+						<MediaRef Id="800045363"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 	</SoundBanks>
-	<FileHash>{2D8564F9-6D48-693A-ED63-B9599046A6EF}</FileHash>
+	<FileHash>{CFEE78F7-05BB-DF89-3820-7D5654EB7C5E}</FileHash>
 </SoundBanksInfo>

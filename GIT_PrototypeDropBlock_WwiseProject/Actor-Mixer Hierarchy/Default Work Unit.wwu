@@ -204,6 +204,72 @@
 						<ActiveSource Name="sx_uni_ui_Controller_PositiveAction_01" ID="{F4E329B0-8ABF-491E-B7FC-349BE582366D}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="sx_game_int_Block_Move_01" ID="{7282C1F3-9141-4940-B347-786050EE5F89}" ShortID="84383693">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sx_game_int_Block_Move_01" ID="{CDBDCDE4-3387-4831-968F-5FF2E5A8A1AC}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_int_Block_Move_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="51281222"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sx_game_int_Block_Move_01" ID="{CDBDCDE4-3387-4831-968F-5FF2E5A8A1AC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="sx_game_amb_Biome_PrairieBird_01" ID="{9B5F1F41-E431-428D-90BF-3EEDAA0539E0}" ShortID="498205825">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sx_game_amb_Biome_PrairieBird_01" ID="{8DF5D1C7-F7C4-4EAF-B0F5-2D7052D23C1C}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_amb_Biome_PrairieBird_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="465292217"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sx_game_amb_Biome_PrairieBird_01" ID="{8DF5D1C7-F7C4-4EAF-B0F5-2D7052D23C1C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="sx_game_amb_Biome_PrairieWind_01" ID="{EDAC1EA6-B78B-4299-A716-AA1C6C070072}" ShortID="830264649">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sx_game_amb_Biome_PrairieWind_01" ID="{4B05431C-C036-4DF6-9E2F-D99BEC939C31}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_amb_Biome_PrairieWind_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="800045363"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sx_game_amb_Biome_PrairieWind_01" ID="{4B05431C-C036-4DF6-9E2F-D99BEC939C31}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

@@ -166,6 +166,8 @@ namespace BlockBuilder.BlockManagement
         S_TRANSFORM,
         S_PRESSDOWN,
         S_NAVIGATION,
+        S_MOVE,
+
     }
 
     [Serializable]

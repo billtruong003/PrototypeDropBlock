@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 8c0336611e1a9a4781f029c3fb39aec4
     GuidInternal: 
-    m_lastTime: -8584823801542850772
+    m_lastTime: -8584826477783255726
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 3a5c014154bded45a753dea50ed346b2
     GuidInternal: 
-    m_lastTime: -8584823801544910973
+    m_lastTime: -8584826477784712600
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -66,8 +66,22 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a51f6f6ab7040f4d81255fc05cfed137
     GuidInternal: 
-    m_lastTime: -8584823801543113779
+    m_lastTime: -8584823840991416113
     List:
+    - name: SB_Biome
+      guid: 6917347be37e8b43bd2db9f64df2c369
+      id: 3524140603
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: a51f6f6ab7040f4d81255fc05cfed137
+      - ElementName: SB_Biome
+        ObjectType: 7
+        guid: 6917347be37e8b43bd2db9f64df2c369
+      Path: SoundBanks\Default Work Unit\SB_Biome
     - name: SB_Block
       guid: 5b710fcdcfdb164eb4b7f69e260e4ce3
       id: 2121512728
@@ -122,7 +136,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 0d768d710c8475488ec0ae5dd00ec6f8
     GuidInternal: 
-    m_lastTime: -8584823801545812610
+    m_lastTime: -8584823840991471222
     List:
     - name: Play_mx_uni_amb_MainTheme
       guid: b8e098dab5c39542a20de9453c05da12
@@ -141,6 +155,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Play_sx_game_amb_Biome_PrairieBird
+      guid: 106e8f4437902b4ca3ed144cc75b8a1a
+      id: 3593667664
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Play_sx_game_amb_Biome_PrairieBird
+        ObjectType: 3
+        guid: 106e8f4437902b4ca3ed144cc75b8a1a
+      Path: Events\Default Work Unit\Play_sx_game_amb_Biome_PrairieBird
+      maxAttenuation: 0
+      maxDuration: 11.363646
+      minDuration: 11.363646
+    - name: Play_sx_game_amb_Biome_PrairieWind
+      guid: 126ec25af3a3eb4fa4a40b3bf5e6715c
+      id: 3478365783
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Play_sx_game_amb_Biome_PrairieWind
+        ObjectType: 3
+        guid: 126ec25af3a3eb4fa4a40b3bf5e6715c
+      Path: Events\Default Work Unit\Play_sx_game_amb_Biome_PrairieWind
+      maxAttenuation: 0
+      maxDuration: 4.5454583
+      minDuration: 4.5454583
     - name: Play_sx_game_int_Block_Destroy
       guid: 7b4dbe7dc8de7e4cb84966cd251d111f
       id: 495565927
@@ -175,6 +223,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.47202083
       minDuration: 0.47202083
+    - name: Play_sx_game_int_Block_Move
+      guid: 484c1d27326a0d4ebfbde920d37da5f6
+      id: 4162922556
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Play_sx_game_int_Block_Move
+        ObjectType: 3
+        guid: 484c1d27326a0d4ebfbde920d37da5f6
+      Path: Events\Default Work Unit\Play_sx_game_int_Block_Move
+      maxAttenuation: 0
+      maxDuration: 0.085229166
+      minDuration: 0.085229166
     - name: Play_sx_game_int_Block_Rotate
       guid: 26e6b2238c5ec1438ebd3c0c95694c1e
       id: 1986295342
@@ -255,7 +320,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: cdbe2f33438a5d43b8a7a04ebd9405cd
     GuidInternal: 
-    m_lastTime: -8584823801545802609
+    m_lastTime: -8584826477784752600
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -269,7 +334,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 13174a6cec596d4baab6b1eed58e560b
     GuidInternal: 
-    m_lastTime: -8584823801543046270
+    m_lastTime: -8584826477784582838
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -283,7 +348,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 36021f027a4b6248b03a752a048bec63
     GuidInternal: 
-    m_lastTime: -8584823801543036251
+    m_lastTime: -8584826477784372732
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -297,10 +362,10 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 104ab4bcd8648c48bf69a69bfcbf4904
     GuidInternal: 
-    m_lastTime: -8584823801542936036
+    m_lastTime: -8584826477783917465
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000000600000007000000090000000a0000000b0000000c0000000f00000010000000
+  ExpandedWaapiItemIds: 1300000014000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

@@ -10,6 +10,7 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private List<SoundID> soundIDs;
     [SerializeField] private string blockDestroy = "Play_sx_game_int_Block_Destroy";
     [SerializeField] private string blockGoingDown = "Play_sx_game_int_Block_GoingDown";
+    [SerializeField] private string blockMove = "Play_sx_game_int_Block_Move";
     [SerializeField] private string blockRotate = "Play_sx_game_int_Block_Rotate";
     [SerializeField] private string blockTransform = "Play_sx_game_int_Block_Transform";
     [SerializeField] private string pressDownInput = "Play_sx_game_ui_Controller_PressDownInput";
@@ -20,6 +21,8 @@ public class SoundManager : Singleton<SoundManager>
     {
         base.Awake();
     }
+
+    // Example usage: SoundManager.Instance.PlaySound(SoundType.S_MOVE);
 
     public void PlaySound(SoundType soundType)
     {

@@ -80,6 +80,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_sx_game_int_Block_Move" ID="{271D4C48-6A32-4E0D-BFBD-E920D37DA5F6}">
+					<ChildrenList>
+						<Action Name="" ID="{A8041A96-AA36-4CDB-8291-E27AF3089935}" ShortID="492470094">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="sx_game_int_Block_Move_01" ID="{7282C1F3-9141-4940-B347-786050EE5F89}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_sx_game_amb_Biome_PrairieBird" ID="{448F6E10-9037-4C2B-A3ED-144CC75B8A1A}">
+					<ChildrenList>
+						<Action Name="" ID="{A733CDC8-0AE3-4C71-8A2A-62FCFEDAEBB1}" ShortID="383579950">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="sx_game_amb_Biome_PrairieBird_01" ID="{9B5F1F41-E431-428D-90BF-3EEDAA0539E0}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_sx_game_amb_Biome_PrairieWind" ID="{5AC26E12-A3F3-4FEB-A4A4-0B3BF5E6715C}">
+					<ChildrenList>
+						<Action Name="" ID="{00368041-EC28-4EBB-BBEC-429000EE74DA}" ShortID="945218743">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="sx_game_amb_Biome_PrairieWind_01" ID="{EDAC1EA6-B78B-4299-A716-AA1C6C070072}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
