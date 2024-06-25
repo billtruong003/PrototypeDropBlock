@@ -10376,6 +10376,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
       propertyPath: weatherType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: cheatWeather
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
@@ -10386,6 +10390,14 @@ PrefabInstance:
       propertyPath: weatherInfo.Array.data[3].soundType
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: weatherInfo.Array.data[2].weatherObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: weatherInfo.Array.data[3].weatherObject
+      value: 
+      objectReference: {fileID: 1530304408}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16195,6 +16207,7 @@ GameObject:
   - component: {fileID: 1220118665}
   - component: {fileID: 1220118668}
   - component: {fileID: 1220118669}
+  - component: {fileID: 1220118670}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -16391,6 +16404,31 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 0e3c75ec1a7024f48a6906a20c7c3e49, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!114 &1220118670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220118661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a68bcfacdca7647b65c81c9bcf85f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 831e7242516dcfc44b6bcd3bf4647e85, type: 2}
   decodeBank: 0
   overrideLoadSetting: 0
   loadAsynchronous: 0
@@ -21100,6 +21138,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526366465}
   m_CullTransparentMesh: 1
+--- !u!1 &1530304408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3693628075465530461, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+  m_PrefabInstance: {fileID: 777412308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1530648199
 GameObject:
   m_ObjectHideFlags: 0

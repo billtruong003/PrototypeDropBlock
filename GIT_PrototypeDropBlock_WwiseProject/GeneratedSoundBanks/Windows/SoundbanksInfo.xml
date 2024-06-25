@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="779753582" Type="User" Language="SFX" Hash="{64C7D199-C7D1-B795-4E95-E8EEB293B627}">
+		<SoundBank Id="779753582" Type="User" Language="SFX" Hash="{CC4186CF-5D2F-4E8E-C93A-5425DD2F8039}">
 			<ShortName>SB_Music</ShortName>
 			<Path>SB_Music.bnk</Path>
 			<Media>
@@ -26,7 +26,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="842127849" Type="User" Language="SFX" Hash="{F32966F8-DE45-EA1C-D675-75A909E0A1B0}">
+		<SoundBank Id="842127849" Type="User" Language="SFX" Hash="{A4FC6771-5667-F9B0-65B7-3F89FA470A7E}">
 			<ShortName>SB_Controller</ShortName>
 			<Path>SB_Controller.bnk</Path>
 			<Media>
@@ -65,7 +65,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{CBA9776F-DB83-3121-C77D-7B6370D7F89F}">
+		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{49A913E7-76E3-700A-D8AF-1D882B070C88}">
 			<ShortName>SB_Block</ShortName>
 			<Path>SB_Block.bnk</Path>
 			<Media>
@@ -118,7 +118,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="2539882731" Type="User" Language="SFX" Hash="{96C258E8-B9F2-7626-807C-B11EE026A7F8}">
+		<SoundBank Id="2539882731" Type="User" Language="SFX" Hash="{6EAFECBA-D884-C27F-82AC-70E92CB0FAEF}">
 			<ShortName>SB_Weather</ShortName>
 			<Path>SB_Weather.bnk</Path>
 			<Media>
@@ -142,14 +142,14 @@
 						<MediaRef Id="1058189046"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2821168490" Name="Play_sx_game_amb_Weather_Snow" DurationType="OneShot" DurationMin="20.000021" DurationMax="20.000021">
+				<Event Id="2821168490" Name="Play_sx_game_amb_Weather_Snow" DurationType="OneShot" DurationMin="22.449265" DurationMax="22.449265">
 					<MediaRefs>
 						<MediaRef Id="343224612"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3524140603" Type="User" Language="SFX" Hash="{5089DC26-D105-C1D5-82FC-7B1BC6EAE0D2}">
+		<SoundBank Id="3524140603" Type="User" Language="SFX" Hash="{63723FBD-5618-B3C3-DE3A-C5AAF84EB352}">
 			<ShortName>SB_Biome</ShortName>
 			<Path>SB_Biome.bnk</Path>
 			<Media>
@@ -176,5 +176,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{69729B22-03AE-B32A-F911-4C82EB6DD571}</FileHash>
+	<FileHash>{4E0F2458-8672-6FC9-3082-BF783582A189}</FileHash>
 </SoundBanksInfo>
