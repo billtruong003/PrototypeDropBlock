@@ -184,7 +184,7 @@ public class RayCastDetect : MonoBehaviour
         if (lastHitObject != null)
         {
             ResetRoof(lastHitObject.transform);
-            SoundManager.Instance.PlaySound(SoundType.S_TRANSFORM);
+            SoundManager.Instance.PlaySound(SoundType.S_MOVE);
             lastHitObject = null;
             lastMeshRenderer = null;
         }

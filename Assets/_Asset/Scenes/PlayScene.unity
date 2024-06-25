@@ -16102,6 +16102,7 @@ GameObject:
   - component: {fileID: 1220118666}
   - component: {fileID: 1220118665}
   - component: {fileID: 1220118668}
+  - component: {fileID: 1220118669}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -16252,7 +16253,7 @@ MonoBehaviour:
   overrideLoadSetting: 0
   loadAsynchronous: 0
   saveDecodedBank: 0
-  unloadTriggerList: 958ca0ea
+  unloadTriggerList: 
   bankNameInternal: 
   valueGuidInternal: 
 --- !u!114 &1220118668
@@ -16273,6 +16274,31 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: f6e22e84fc0fc904eac0c4d3e5a7e6fa, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!114 &1220118669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220118661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a68bcfacdca7647b65c81c9bcf85f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 0e3c75ec1a7024f48a6906a20c7c3e49, type: 2}
   decodeBank: 0
   overrideLoadSetting: 0
   loadAsynchronous: 0
@@ -28974,6 +29000,8 @@ MonoBehaviour:
     soundType: 5
   - soundID: Play_sx_uni_ui_Controller_MenuNavigation
     soundType: 6
+  - soundID: Play_sx_game_int_Block_Move
+    soundType: 7
   blockDestroy: Play_sx_game_int_Block_Destroy
   blockGoingDown: Play_sx_game_int_Block_GoingDown
   blockMove: Play_sx_game_int_Block_Move

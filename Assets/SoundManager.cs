@@ -22,6 +22,8 @@ public class SoundManager : Singleton<SoundManager>
         base.Awake();
     }
 
+    // Example usage: SoundManager.Instance.PlaySound(SoundType.S_MOVE);
+
     public void PlaySound(SoundType soundType)
     {
         idTrigger = GetSoundID(soundType);
