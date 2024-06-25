@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{8F31AEF7-E3F6-4DD4-9202-788230E5CF8B}" SchemaVersion="119">
 	<MixingSessions>
-		<WorkUnit Name="Default Work Unit" ID="{8F31AEF7-E3F6-4DD4-9202-788230E5CF8B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{8F31AEF7-E3F6-4DD4-9202-788230E5CF8B}" PersistMode="Standalone">
+			<ChildrenList>
+				<MixingSession Name="Architopia" ID="{3DBD0B82-6AEF-4293-9E5E-DDE710E14442}">
+					<ObjectList>
+						<ObjectRef Name="mx_uni_amb_MainTheme" ID="{8C967DE3-CF7F-4529-996F-7CD94884FD76}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+						<ObjectRef Name="sx_game_amb_Biome_PrairieBird_01" ID="{9B5F1F41-E431-428D-90BF-3EEDAA0539E0}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+						<ObjectRef Name="sx_game_amb_Biome_PrairieWind_01" ID="{EDAC1EA6-B78B-4299-A716-AA1C6C070072}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+					</ObjectList>
+				</MixingSession>
+			</ChildrenList>
+		</WorkUnit>
 	</MixingSessions>
 </WwiseDocument>

@@ -10242,6 +10242,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1352995804}
     m_Modifications:
+    - target: {fileID: 806837505385876264, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2615129612622816052, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
       propertyPath: m_Name
       value: Weather
@@ -10293,6 +10297,30 @@ PrefabInstance:
     - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
       propertyPath: cheatLocate
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: weatherType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: cheatWeather
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: weatherInfo.Array.data[1].soundType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: weatherInfo.Array.data[3].soundType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: weatherInfo.Array.data[0].weatherObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: weatherInfo.Array.data[2].weatherObject
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16100,6 +16128,7 @@ GameObject:
   - component: {fileID: 1220118664}
   - component: {fileID: 1220118667}
   - component: {fileID: 1220118666}
+  - component: {fileID: 1220118670}
   - component: {fileID: 1220118665}
   - component: {fileID: 1220118668}
   - component: {fileID: 1220118669}
@@ -16299,6 +16328,31 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 0e3c75ec1a7024f48a6906a20c7c3e49, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!114 &1220118670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220118661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a68bcfacdca7647b65c81c9bcf85f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 831e7242516dcfc44b6bcd3bf4647e85, type: 2}
   decodeBank: 0
   overrideLoadSetting: 0
   loadAsynchronous: 0
@@ -27884,7 +27938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 50, y: -50}
+  m_AnchoredPosition: {x: 50.000122, y: -50}
   m_SizeDelta: {x: 800, y: 700}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1965812340
@@ -29002,6 +29056,10 @@ MonoBehaviour:
     soundType: 6
   - soundID: Play_sx_game_int_Block_Move
     soundType: 7
+  - soundID: Play_sx_game_amb_Weather_Snow
+    soundType: 8
+  - soundID: Play_sx_game_amb_Weather_Rain
+    soundType: 9
   blockDestroy: Play_sx_game_int_Block_Destroy
   blockGoingDown: Play_sx_game_int_Block_GoingDown
   blockMove: Play_sx_game_int_Block_Move
@@ -29009,6 +29067,8 @@ MonoBehaviour:
   blockTransform: Play_sx_game_int_Block_Transform
   pressDownInput: Play_sx_game_ui_Controller_PressDownInput
   menuNavigation: Play_sx_uni_ui_Controller_MenuNavigation
+  weatherSnow: Play_sx_game_amb_Weather_Snow
+  weatherRain: Play_sx_game_amb_Weather_Rain
 --- !u!1 &2029082156
 GameObject:
   m_ObjectHideFlags: 0

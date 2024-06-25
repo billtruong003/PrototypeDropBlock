@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a51f6f6ab7040f4d81255fc05cfed137
     GuidInternal: 
-    m_lastTime: -8584823840991416113
+    m_lastTime: -8584823045979264168
     List:
     - name: SB_Biome
       guid: 6917347be37e8b43bd2db9f64df2c369
@@ -124,6 +124,20 @@ MonoBehaviour:
         ObjectType: 7
         guid: f9c65bb57ca92149984a822b11875faa
       Path: SoundBanks\Default Work Unit\SB_Music
+    - name: SB_Weather
+      guid: baeb89200cd985459bd6304baeca176a
+      id: 2539882731
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: a51f6f6ab7040f4d81255fc05cfed137
+      - ElementName: SB_Weather
+        ObjectType: 7
+        guid: baeb89200cd985459bd6304baeca176a
+      Path: SoundBanks\Default Work Unit\SB_Weather
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -136,7 +150,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 0d768d710c8475488ec0ae5dd00ec6f8
     GuidInternal: 
-    m_lastTime: -8584823840991471222
+    m_lastTime: -8584823045979328108
     List:
     - name: Play_mx_uni_amb_MainTheme
       guid: b8e098dab5c39542a20de9453c05da12
@@ -170,8 +184,8 @@ MonoBehaviour:
         guid: 106e8f4437902b4ca3ed144cc75b8a1a
       Path: Events\Default Work Unit\Play_sx_game_amb_Biome_PrairieBird
       maxAttenuation: 0
-      maxDuration: 11.363646
-      minDuration: 11.363646
+      maxDuration: -1
+      minDuration: -1
     - name: Play_sx_game_amb_Biome_PrairieWind
       guid: 126ec25af3a3eb4fa4a40b3bf5e6715c
       id: 3478365783
@@ -187,8 +201,42 @@ MonoBehaviour:
         guid: 126ec25af3a3eb4fa4a40b3bf5e6715c
       Path: Events\Default Work Unit\Play_sx_game_amb_Biome_PrairieWind
       maxAttenuation: 0
-      maxDuration: 4.5454583
-      minDuration: 4.5454583
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_sx_game_amb_Weather_Rain
+      guid: bc0307c8d9509648a9deb788e29eb939
+      id: 244388389
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Play_sx_game_amb_Weather_Rain
+        ObjectType: 3
+        guid: bc0307c8d9509648a9deb788e29eb939
+      Path: Events\Default Work Unit\Play_sx_game_amb_Weather_Rain
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_sx_game_amb_Weather_Snow
+      guid: 27a1d80befaa4940988009f661083e4d
+      id: 2821168490
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Play_sx_game_amb_Weather_Snow
+        ObjectType: 3
+        guid: 27a1d80befaa4940988009f661083e4d
+      Path: Events\Default Work Unit\Play_sx_game_amb_Weather_Snow
+      maxAttenuation: 0
+      maxDuration: 20.000021
+      minDuration: 20.000021
     - name: Play_sx_game_int_Block_Destroy
       guid: 7b4dbe7dc8de7e4cb84966cd251d111f
       id: 495565927
@@ -238,8 +286,8 @@ MonoBehaviour:
         guid: 484c1d27326a0d4ebfbde920d37da5f6
       Path: Events\Default Work Unit\Play_sx_game_int_Block_Move
       maxAttenuation: 0
-      maxDuration: 0.085229166
-      minDuration: 0.085229166
+      maxDuration: 0.092943065
+      minDuration: 0.092943065
     - name: Play_sx_game_int_Block_Rotate
       guid: 26e6b2238c5ec1438ebd3c0c95694c1e
       id: 1986295342
@@ -308,6 +356,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.1395625
       minDuration: 0.1395625
+    - name: Play_Weather
+      guid: 43de40b6df48cc4da1d01baa5dfd48fc
+      id: 3308884970
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Play_Weather
+        ObjectType: 3
+        guid: 43de40b6df48cc4da1d01baa5dfd48fc
+      Path: Events\Default Work Unit\Play_Weather
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:

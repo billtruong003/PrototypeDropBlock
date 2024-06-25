@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using System.Globalization;
 using BillUtils.GlobalTimeUtils;
+using BlockBuilder.BlockManagement;
 
 [System.Serializable]
 public class SunriseSunsetResponse
@@ -70,11 +71,14 @@ public class WeatherDisplay
 {
     public WeatherType weatherType;
     public GameObject weatherObject;
+    public SoundType soundType;
 
     public void TriggerWeather()
     {
         if (weatherObject == null)
             return;
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySound(soundType);
         weatherObject.SetActive(true);
     }
     public void DeactiveWeather()

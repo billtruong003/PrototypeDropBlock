@@ -16,6 +16,8 @@ namespace AK
         static const AkUniqueID PLAY_MX_UNI_AMB_MAINTHEME = 3039340560U;
         static const AkUniqueID PLAY_SX_GAME_AMB_BIOME_PRAIRIEBIRD = 3593667664U;
         static const AkUniqueID PLAY_SX_GAME_AMB_BIOME_PRAIRIEWIND = 3478365783U;
+        static const AkUniqueID PLAY_SX_GAME_AMB_WEATHER_RAIN = 244388389U;
+        static const AkUniqueID PLAY_SX_GAME_AMB_WEATHER_SNOW = 2821168490U;
         static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_DESTROY = 495565927U;
         static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_GOINGDOWN = 339787471U;
         static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_MOVE = 4162922556U;
@@ -32,6 +34,7 @@ namespace AK
         static const AkUniqueID SB_BLOCK = 2121512728U;
         static const AkUniqueID SB_CONTROLLER = 842127849U;
         static const AkUniqueID SB_MUSIC = 779753582U;
+        static const AkUniqueID SB_WEATHER = 2539882731U;
     } // namespace BANKS
 
     namespace BUSSES

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using BillUtils.SerializeCustom;
 using NaughtyAttributes;
+using BlockBuilder.BlockManagement;
 public class OpenWeatherServices : MonoBehaviour
 {
     [SerializeField] private string apiKey = "5f971192b5447c21d69a957edadef2c8"; // Sử dụng API key của bạn
@@ -108,13 +109,15 @@ public class OpenWeatherServices : MonoBehaviour
                 case "rain":
                 case "drizzle":
                 case "thunderstorm":
+                    SoundManager.Instance.PlaySound(SoundType.S_RAIN);
                     return WeatherType.RAIN;
-
                 case "snow":
                 case "sleet":
+                    SoundManager.Instance.PlaySound(SoundType.S_SNOW);
                     return WeatherType.SNOWY;
                 case "clouds":
                 case "clear":
+                    SoundManager.Instance.PlaySound(SoundType.S_RAIN);
                     return WeatherType.DEFAULT;
                 case "mist":
                 case "fog":

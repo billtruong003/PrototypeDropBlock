@@ -168,6 +168,8 @@ namespace BlockBuilder.BlockManagement
         S_NAVIGATION,
         S_MOVE,
 
+        S_SNOW,
+        S_RAIN,
     }
 
     [Serializable]

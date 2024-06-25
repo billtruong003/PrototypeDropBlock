@@ -113,6 +113,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_sx_game_amb_Weather_Rain" ID="{C80703BC-50D9-4896-A9DE-B788E29EB939}">
+					<ChildrenList>
+						<Action Name="" ID="{90C5CDDF-1A66-4572-8500-D3065E7DE889}" ShortID="114277765">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_sx_game_amb_Weather_Snow" ID="{0BD8A127-AAEF-4049-9880-09F661083E4D}">
+					<ChildrenList>
+						<Action Name="" ID="{D2F51EEE-8F93-4580-BA34-4D63798BBD2A}" ShortID="323770573">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Weather" ID="{B640DE43-48DF-4DCC-A1D0-1BAA5DFD48FC}">
+					<ChildrenList>
+						<Action Name="" ID="{5E087374-5ABC-479F-9D1E-3756F73C9253}" ShortID="290116768">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

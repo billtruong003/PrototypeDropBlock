@@ -15,6 +15,9 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private string blockTransform = "Play_sx_game_int_Block_Transform";
     [SerializeField] private string pressDownInput = "Play_sx_game_ui_Controller_PressDownInput";
     [SerializeField] private string menuNavigation = "Play_sx_uni_ui_Controller_MenuNavigation";
+    [SerializeField] private string weatherSnow = "Play_sx_game_amb_Weather_Snow";
+    [SerializeField] private string weatherRain = "Play_sx_game_amb_Weather_Rain";
+
 
     private string idTrigger;
     protected override void Awake()
