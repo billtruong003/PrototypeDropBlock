@@ -30,9 +30,9 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1494649936132620996}
   - {fileID: 527515575271130915}
   - {fileID: 8946876233098353341}
+  - {fileID: 3168294016496150936}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8934572789819397013
@@ -58,9 +58,9 @@ MonoBehaviour:
   - weatherType: 2
     weatherObject: {fileID: 806837505385876264}
   - weatherType: 3
-    weatherObject: {fileID: 865955050173314817}
-  SecondRepeat: 900
-  cheatWeather: 1
+    weatherObject: {fileID: 0}
+  SecondRepeat: 0
+  cheatWeather: 0
   weatherType: 3
   cheatLocate: 1
   locationData: {fileID: 11400000, guid: 641ee62a70121414988ada3c1f6d2d7b, type: 2}
@@ -119,7 +119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3674802223503693938, guid: f7b394ed0ec5142449f0ccd7403df6ed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4266230009176989409, guid: f7b394ed0ec5142449f0ccd7403df6ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -295,7 +295,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3931646101484311991, guid: 2a554aeaebd9c2648b1780021358d1a6, type: 3}
   m_PrefabInstance: {fileID: 5384532485616160522}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6717997070053776873
+--- !u!1001 &7096833056403289781
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -303,6 +303,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7276611795810335699}
     m_Modifications:
+    - target: {fileID: 3685066843814904625, guid: 3decf36f299e29b48afdc44707de7f6c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab8401b91bf3c6445a08569033f7c7af, type: 2}
+    - target: {fileID: 3685066844245524192, guid: 3decf36f299e29b48afdc44707de7f6c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b40ba6492e04ca42bf9b80f4573b7e4, type: 2}
     - target: {fileID: 5297656545223728941, guid: 3decf36f299e29b48afdc44707de7f6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -347,22 +355,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: PB_Snowing
       objectReference: {fileID: 0}
-    - target: {fileID: 5854507142834465512, guid: 3decf36f299e29b48afdc44707de7f6c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3decf36f299e29b48afdc44707de7f6c, type: 3}
---- !u!1 &865955050173314817 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5854507142834465512, guid: 3decf36f299e29b48afdc44707de7f6c, type: 3}
-  m_PrefabInstance: {fileID: 6717997070053776873}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1494649936132620996 stripped
+--- !u!4 &3168294016496150936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5297656545223728941, guid: 3decf36f299e29b48afdc44707de7f6c, type: 3}
-  m_PrefabInstance: {fileID: 6717997070053776873}
+  m_PrefabInstance: {fileID: 7096833056403289781}
   m_PrefabAsset: {fileID: 0}
