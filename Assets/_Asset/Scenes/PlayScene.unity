@@ -10244,7 +10244,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 806837505385876264, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2615129612622816052, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
       propertyPath: m_Name
@@ -10305,6 +10305,14 @@ PrefabInstance:
     - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
       propertyPath: weatherType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: weatherInfo.Array.data[1].soundType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934572789819397013, guid: 6a87cdce0641b6e41ba3724a423ae700, type: 3}
+      propertyPath: weatherInfo.Array.data[3].soundType
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29014,6 +29022,10 @@ MonoBehaviour:
     soundType: 6
   - soundID: Play_sx_game_int_Block_Move
     soundType: 7
+  - soundID: Play_sx_game_amb_Weather_Snow
+    soundType: 8
+  - soundID: Play_sx_game_amb_Weather_Rain
+    soundType: 9
   blockDestroy: Play_sx_game_int_Block_Destroy
   blockGoingDown: Play_sx_game_int_Block_GoingDown
   blockMove: Play_sx_game_int_Block_Move
@@ -29021,6 +29033,8 @@ MonoBehaviour:
   blockTransform: Play_sx_game_int_Block_Transform
   pressDownInput: Play_sx_game_ui_Controller_PressDownInput
   menuNavigation: Play_sx_uni_ui_Controller_MenuNavigation
+  weatherSnow: Play_sx_game_amb_Weather_Snow
+  weatherRain: Play_sx_game_amb_Weather_Rain
 --- !u!1 &2029082156
 GameObject:
   m_ObjectHideFlags: 0
