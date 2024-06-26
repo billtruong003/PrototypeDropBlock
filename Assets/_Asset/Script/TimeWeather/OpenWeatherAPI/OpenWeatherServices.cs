@@ -41,6 +41,12 @@ public class OpenWeatherServices : MonoBehaviour
     [BoxGroup("Cheat", "#8B322C", 0.5f)]
     [SerializeField] private Locate locate;
     private WeatherType currentWeather;
+
+    [Button]
+    private void ReTriggerWeather()
+    {
+        RefreshWeather();
+    }
     void Start()
     {
 
