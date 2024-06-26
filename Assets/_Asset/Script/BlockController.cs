@@ -15,7 +15,7 @@ public class BlockController : MonoBehaviour
     #region Fields and Properties
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float floatingSpeed = 2f;
+    [SerializeField] private float floatingSpeed = 1f;
     [SerializeField] private bool canRotate;
 
     [Header("Transforms")]
@@ -276,13 +276,15 @@ public class BlockController : MonoBehaviour
 
         if (SpawnManager.Instance != null && reconstructMode == ReconstructMode.OFF)
         {
-            SpawnManager.Instance.SpawnCube();
+            // SpawnManager.Instance.SpawnCube();
             SaveData(new Vector3(targetPosition.x, targetHeight, targetPosition.z), transform.eulerAngles);
+            SpawnManager.Instance.ReadySpawn = true;
         }
         else if (SpawnManager.Instance != null && reconstructMode == ReconstructMode.ON)
         {
             reconstructMode = ReconstructMode.OFF;
             ReconstructSystem.Instance.ResetMoveMode();
+            SpawnManager.Instance.ReadySpawn = true;
         }
         else
         {

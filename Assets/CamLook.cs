@@ -1,6 +1,7 @@
 using BillUtils.SerializeCustom;
 using UnityEngine;
 using BillUtils.HexUtils;
+using Unity.VisualScripting;
 
 public class CamLook : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CamLook : MonoBehaviour
 
     [BillHeader("RayCast", 15, HexColors.DarkGoldenrod)]
     public float rayCastDistance = 100f;
+    public ChooseBlockSpawn chooseBlockSpawn;
 
     void Start()
     {
@@ -18,6 +20,8 @@ public class CamLook : MonoBehaviour
 
     void Update()
     {
+        ShootRaycast();
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -27,16 +31,48 @@ public class CamLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
 
-        ShootRaycast();
+        if (Input.GetMouseButtonDown(0))
+        {
+            HandleSpawnBlock();
+        }
+    }
+
+    private void HandleSpawnBlock()
+    {
+        if (chooseBlockSpawn == null)
+            return;
+
+        chooseBlockSpawn.SpawnBlock();
     }
 
     void ShootRaycast()
     {
-        Vector3 rayOrigin = playerBody.position + playerBody.forward * transform.localPosition.z;
-        if (Physics.Raycast(rayOrigin, playerBody.forward, out RaycastHit hit, rayCastDistance))
+        Vector3 rayOrigin = Camera.main.transform.position;
+        Vector3 rayDirection = Camera.main.transform.forward;
+
+        if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayCastDistance))
         {
-            Debug.Log("Hit: " + hit.collider.name);
-            // Do something with the hit object
+            if (hit.collider != null)
+            {
+                ChooseBlockSpawn hitChooseBlockSpawn = hit.collider.gameObject.GetComponent<ChooseBlockSpawn>();
+                if (hitChooseBlockSpawn != null)
+                {
+                    chooseBlockSpawn = hitChooseBlockSpawn;
+                    Debug.Log("Hit: " + hit.collider.name);
+                }
+                else
+                {
+                    chooseBlockSpawn = null;
+                }
+            }
+            else
+            {
+                chooseBlockSpawn = null;
+            }
+        }
+        else
+        {
+            chooseBlockSpawn = null;
         }
     }
 }
