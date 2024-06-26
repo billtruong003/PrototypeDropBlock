@@ -25,6 +25,7 @@ namespace AK
         static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_TRANSFORM = 2896509689U;
         static const AkUniqueID PLAY_SX_GAME_UI_CONTROLLER_PRESSDOWNINPUT = 1619009516U;
         static const AkUniqueID PLAY_SX_UNI_UI_CONTROLLER_MENUNAVIGATION = 2233396232U;
+        static const AkUniqueID PLAY_WEATHER = 3308884970U;
     } // namespace EVENTS
 
     namespace BANKS
