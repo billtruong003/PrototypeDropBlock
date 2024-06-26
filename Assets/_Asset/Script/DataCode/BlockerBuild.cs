@@ -165,6 +165,7 @@ namespace BlockBuilder.BlockManagement
         S_DROP,
         S_TRANSFORM,
         S_PRESSDOWN,
+        S_SPAWN,
         S_NAVIGATION,
         S_MOVE,
 

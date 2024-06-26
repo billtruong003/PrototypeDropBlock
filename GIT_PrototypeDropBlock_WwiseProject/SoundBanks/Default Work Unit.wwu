@@ -31,7 +31,11 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_sx_uni_ui_Controller_MenuNavigation" ID="{A9D966C5-0A04-40C0-B02A-BAF150E3707F}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{FE8850FD-0C8E-445F-9300-FEABDFE4F1B4}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sx_uni_ui_Controller_PositiveAction_01" ID="{EBAB9A6C-59D6-4887-ABB3-C7357E030061}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="sx_game_ui_Controller_PressDownInput_01" ID="{B38C75A4-0806-4C02-A764-49E0757E164C}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sx_uni_ui_Controller_NegativeAction_01" ID="{D01D350E-7EC9-4DB9-A3FB-DD121CFD1481}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_uni_ui_Controller_PositiveAction" ID="{002B8DB0-7FE4-4E0B-A595-E1581F2B3F19}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_uni_ui_Controller_NegativeAction" ID="{11848C03-EF64-4E93-B5CC-536B1B29440E}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_sx_game_ui_Controller_PressDownInput" ID="{33FF4BAD-D320-4F33-AB38-5378E5EBE9B3}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
@@ -55,6 +59,18 @@
 						<ObjectRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Stop_sx_game_amb_Weather_Rain" ID="{A611C748-CFD7-4E84-B07B-2D833B1299A6}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="SB_Misc" ID="{D32B1A27-774F-4183-B00A-F73553079E11}">
+					<ObjectInclusionList>
+						<ObjectRef Name="sx_game_env_Shake_Start_01" ID="{D7BAC3E1-A527-4029-AA8A-C91BA2E99BFB}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_game_env_Shake_Start" ID="{D6487381-4BB2-4889-9A36-9612CD951ECA}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sx_game_int_Bubble_Pop_01" ID="{B0FB74AD-F089-4B1F-AD44-991BBA070406}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_game_amb_Environment_WaterStream" ID="{E6C7CE2D-B053-4BA0-B120-311F6FD4E95A}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sx_game_amb_Environment_WaterStream_01" ID="{3EF10691-22EA-4CFF-B7B5-F74A8A819005}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_game_int_Bubble_Pop" ID="{A2E49585-05DF-4F31-8874-9AAA3392018D}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

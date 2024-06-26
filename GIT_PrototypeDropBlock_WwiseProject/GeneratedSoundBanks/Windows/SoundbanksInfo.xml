@@ -26,13 +26,21 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="842127849" Type="User" Language="SFX" Hash="{DA9E456E-58C2-97F7-2E4D-D7F1D3F951E6}">
+		<SoundBank Id="842127849" Type="User" Language="SFX" Hash="{72A3D399-FC86-0864-A92A-6EC7B7323E7F}">
 			<ShortName>SB_Controller</ShortName>
 			<Path>SB_Controller.bnk</Path>
 			<Media>
+				<File Id="259513338" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_uni_ui_Controller_PositiveAction_01.wav</ShortName>
+					<CachePath>SFX/sx_uni_ui_Controller_PositiveAction_01_8E324C96.wem</CachePath>
+				</File>
 				<File Id="497846776" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_uni_ui_Controller_MenuNavigation_01.wav</ShortName>
 					<CachePath>SFX/sx_uni_ui_Controller_MenuNavigation_01_8E324C96.wem</CachePath>
+				</File>
+				<File Id="822189774" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_uni_ui_Controller_NegativeAction_01.wav</ShortName>
+					<CachePath>SFX/sx_uni_ui_Controller_NegativeAction_01_8E324C96.wem</CachePath>
 				</File>
 				<File Id="875902986" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_ui_Controller_PressDownInput_01.wav</ShortName>
@@ -48,6 +56,16 @@
 				<Event Id="2233396232" Name="Play_sx_uni_ui_Controller_MenuNavigation" DurationType="OneShot" DurationMin="0.1395625" DurationMax="0.1395625">
 					<MediaRefs>
 						<MediaRef Id="497846776"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3133967616" Name="Play_sx_uni_ui_Controller_NegativeAction" DurationType="OneShot" DurationMin="0.4545625" DurationMax="0.4545625">
+					<MediaRefs>
+						<MediaRef Id="822189774"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2864429968" Name="Play_sx_uni_ui_Controller_PositiveAction" DurationType="OneShot" DurationMin="0.45454165" DurationMax="0.45454165">
+					<MediaRefs>
+						<MediaRef Id="259513338"/>
 					</MediaRefs>
 				</Event>
 			</Events>
@@ -192,6 +210,37 @@
 				</Event>
 			</Events>
 		</SoundBank>
+		<SoundBank Id="4077548513" Type="User" Language="SFX" Hash="{15606597-1C39-C51C-7EB8-0E302C75F05C}">
+			<ShortName>SB_Misc</ShortName>
+			<Path>SB_Misc.bnk</Path>
+			<Media>
+				<File Id="248100609" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_amb_Environment_WaterStream_01.wav</ShortName>
+					<CachePath>SFX/sx_game_amb_Environment_WaterStream_01_8E324C96.wem</CachePath>
+				</File>
+				<File Id="255705228" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_env_Shake_Start_01.wav</ShortName>
+					<CachePath>SFX/sx_game_env_Shake_Start_01_8E324C96.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1510396663" Name="Play_sx_game_amb_Environment_WaterStream" DurationType="OneShot" DurationMin="1.8181875" DurationMax="1.8181875">
+					<MediaRefs>
+						<MediaRef Id="248100609"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2556225634" Name="Play_sx_game_env_Shake_Start" DurationType="OneShot" DurationMin="3.636375" DurationMax="3.636375">
+					<MediaRefs>
+						<MediaRef Id="255705228"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2269733319" Name="Play_sx_game_int_Bubble_Pop" DurationType="OneShot" DurationMin="3.636375" DurationMax="3.636375">
+					<MediaRefs>
+						<MediaRef Id="255705228"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 	</SoundBanks>
-	<FileHash>{08922233-F392-5363-4402-B98421690850}</FileHash>
+	<FileHash>{A828BFA9-C50F-3008-5072-2307D813A17D}</FileHash>
 </SoundBanksInfo>

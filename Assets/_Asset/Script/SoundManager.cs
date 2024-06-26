@@ -14,6 +14,7 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private string blockRotate = "Play_sx_game_int_Block_Rotate";
     [SerializeField] private string blockTransform = "Play_sx_game_int_Block_Transform";
     [SerializeField] private string pressDownInput = "Play_sx_game_ui_Controller_PressDownInput";
+    [SerializeField] private string bubblePop = "Play_sx_game_int_Bubble_Pop";
     [SerializeField] private string menuNavigation = "Play_sx_uni_ui_Controller_MenuNavigation";
     [SerializeField] private string weatherSnowStart = "Play_sx_game_amb_Weather_Snow";
     [SerializeField] private string weatherSnowStop = "Stop_sx_game_amb_Weather_Snow";

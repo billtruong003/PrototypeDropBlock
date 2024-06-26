@@ -269,7 +269,7 @@
 												<ModifierInfo>
 													<Modifier Name="" ID="{68E2B2A5-A42A-48AE-9D5A-4BA0491B7630}">
 														<PropertyList>
-															<Property Name="Max" Type="Real64" Value="5"/>
+															<Property Name="Max" Type="Real64" Value="3"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -557,6 +557,93 @@
 						</Sound>
 					</ChildrenList>
 				</Folder>
+				<Sound Name="sx_game_int_Bubble_Pop_01" ID="{B0FB74AD-F089-4B1F-AD44-991BBA070406}" ShortID="789321548">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sx_game_int_Bubble_Pop_01" ID="{4FFA4FC6-E525-48C8-B0C2-62508F909A8F}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_int_Bubble_Pop_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="402529193"/>
+							</MediaIDList>
+						</AudioFileSource>
+						<AudioFileSource Name="sx_game_amb_Environment_WaterStream_01" ID="{37F1D29A-F827-4645-A287-852BC438B270}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_amb_Environment_WaterStream_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="248100609"/>
+							</MediaIDList>
+						</AudioFileSource>
+						<AudioFileSource Name="sx_game_env_Shake_Start_01" ID="{EA5C23B1-5786-4EA3-A8E6-3A9ED393C41C}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_env_Shake_Start_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="255705228"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sx_game_env_Shake_Start_01" ID="{EA5C23B1-5786-4EA3-A8E6-3A9ED393C41C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="sx_game_amb_Environment_WaterStream_01" ID="{3EF10691-22EA-4CFF-B7B5-F74A8A819005}" ShortID="798225763">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sx_game_npc_Block_Clean_01" ID="{08E04015-BD05-4128-A6CC-C83D258F5EAB}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_npc_Block_Clean_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="339470866"/>
+							</MediaIDList>
+						</AudioFileSource>
+						<AudioFileSource Name="sx_game_amb_Environment_WaterStream_01" ID="{81DB6ED3-2DF7-4876-BCE4-3806AA0E9CD2}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_amb_Environment_WaterStream_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="248100609"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sx_game_amb_Environment_WaterStream_01" ID="{81DB6ED3-2DF7-4876-BCE4-3806AA0E9CD2}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="sx_game_env_Shake_Start_01" ID="{D7BAC3E1-A527-4029-AA8A-C91BA2E99BFB}" ShortID="799819844">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sx_game_env_Shake_Start_01" ID="{9C9873AC-1F1D-49FC-9AE2-7698C110696C}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_env_Shake_Start_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="255705228"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sx_game_env_Shake_Start_01" ID="{9C9873AC-1F1D-49FC-9AE2-7698C110696C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
