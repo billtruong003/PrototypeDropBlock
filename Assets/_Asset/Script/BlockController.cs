@@ -21,6 +21,7 @@ public class BlockController : MonoBehaviour
     [Header("Transforms")]
     [SerializeField] private Transform pivot;
     [SerializeField] private Transform centerPoint;
+    [SerializeField] private GameObject visualBlock;
 
     [Header("Raycast and Cube Data")]
     [SerializeField] private List<RayCastDetect> rayCastDetects = new List<RayCastDetect>();
@@ -45,6 +46,7 @@ public class BlockController : MonoBehaviour
 
     public bool DoneDrop { get; private set; } = false;
 
+    public GameObject GetVisualBlock() => visualBlock;
     public Transform GetPivot() => pivot;
     public Vector3 GetCenter() => centerPoint.position;
     public GameObject GetCenterObj() => centerPoint.gameObject;
@@ -521,7 +523,7 @@ public class BlockController : MonoBehaviour
         MaterialType[] materialTypes = (MaterialType[])System.Enum.GetValues(typeof(MaterialType));
         int randomIndex = Random.Range(0, materialTypes.Length);
 
-        ReconstructVisual.Instance.SetUpMaterialBlock(this.gameObject, materialTypes[randomIndex]);
+        ReconstructVisual.Instance.SetUpMaterialBlock(visualBlock, materialTypes[randomIndex]);
 
         return materialTypes[randomIndex];
     }

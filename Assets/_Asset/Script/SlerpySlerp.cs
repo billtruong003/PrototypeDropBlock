@@ -19,22 +19,22 @@ public class SlerpySlerp : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        var points = useBezierCurve
-            ? EvaluateBezierPoints(_start.position, _center.position, _end.position, _count)
-            : EvaluateSlerpPoints(_start.position, _end.position, _center.position, _count);
+    // private void OnDrawGizmos()
+    // {
+    //     var points = useBezierCurve
+    //         ? EvaluateBezierPoints(_start.position, _center.position, _end.position, _count)
+    //         : EvaluateSlerpPoints(_start.position, _end.position, _center.position, _count);
 
-        foreach (var point in points)
-        {
-            Gizmos.DrawSphere(point, 0.1f);
-        }
+    //     foreach (var point in points)
+    //     {
+    //         Gizmos.DrawSphere(point, 0.1f);
+    //     }
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(_center.position, 0.5f);
-        Gizmos.DrawSphere(_start.position, 0.5f);
-        Gizmos.DrawSphere(_end.position, 0.5f);
-    }
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawSphere(_center.position, 0.5f);
+    //     Gizmos.DrawSphere(_start.position, 0.5f);
+    //     Gizmos.DrawSphere(_end.position, 0.5f);
+    // }
 
     private List<Vector3> EvaluateSlerpPoints(Vector3 start, Vector3 end, Vector3 center, int count)
     {

@@ -71,10 +71,15 @@ public class SpawnManager : Singleton<SpawnManager>
         {
             selectedBrick = dropBrick[Random.Range(0, dropBrick.Count)];
         }
+
         selectedBrick = Instantiate(selectedBrick, Vector3.up * 10, Quaternion.identity, cubeContainer);
+        if (CurrentBlock != null)
+            PhysicsLerpShaker.Instance.SetObjectToMove(CurrentBlock.transform.GetChild(0));
+
         CurrentBlock = selectedBrick.GetComponent<BlockController>();
         UpdateUIInfo();
     }
+
 
     private void UpdateUIInfo()
     {

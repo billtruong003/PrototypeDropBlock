@@ -32,7 +32,11 @@ namespace BillUtils.GameObjectUtilities
             }
             return null;
         }
-
+        public static void DisableMeshVisualBlock(GameObject target)
+        {
+            MeshRenderer meshRenderer = target.GetComponent<MeshRenderer>();
+            meshRenderer.enabled = false;
+        }
         public static void DisableAllMeshRenderers(GameObject target)
         {
             MeshRenderer[] meshRenderers = target.GetComponentsInChildren<MeshRenderer>();
@@ -54,6 +58,11 @@ namespace BillUtils.GameObjectUtilities
             }
         }
 
+        public static void EnableVisualBlock(GameObject target)
+        {
+            MeshRenderer meshRenderer = target.GetComponent<MeshRenderer>();
+            meshRenderer.enabled = true;
+        }
         public static void SetAllMaterials(GameObject target, Material mat)
         {
             MeshRenderer[] meshRenderers = target.GetComponentsInChildren<MeshRenderer>();
@@ -61,6 +70,12 @@ namespace BillUtils.GameObjectUtilities
             {
                 meshRenderer.material = mat;
             }
+        }
+
+        public static void SetMaterialForBlock(GameObject target, Material mat)
+        {
+            MeshRenderer meshRenderer = target.GetComponent<MeshRenderer>();
+            meshRenderer.material = mat;
         }
     }
 }
