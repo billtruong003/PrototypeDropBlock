@@ -168,8 +168,10 @@ namespace BlockBuilder.BlockManagement
         S_NAVIGATION,
         S_MOVE,
 
-        S_SNOW,
-        S_RAIN,
+        S_SNOW_START,
+        S_RAIN_START,
+        S_RAIN_STOP,
+        S_SNOW_STOP,
     }
 
     [Serializable]
@@ -177,6 +179,8 @@ namespace BlockBuilder.BlockManagement
     {
         public string soundID;
         public SoundType soundType;
+
+        
     }
     #endregion
 }

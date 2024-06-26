@@ -113,28 +113,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_sx_game_amb_Weather_Rain" ID="{C80703BC-50D9-4896-A9DE-B788E29EB939}">
-					<ChildrenList>
-						<Action Name="" ID="{90C5CDDF-1A66-4572-8500-D3065E7DE889}" ShortID="114277765">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_sx_game_amb_Weather_Snow" ID="{0BD8A127-AAEF-4049-9880-09F661083E4D}">
-					<ChildrenList>
-						<Action Name="" ID="{D2F51EEE-8F93-4580-BA34-4D63798BBD2A}" ShortID="323770573">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="Play_Weather" ID="{B640DE43-48DF-4DCC-A1D0-1BAA5DFD48FC}">
 					<ChildrenList>
 						<Action Name="" ID="{5E087374-5ABC-479F-9D1E-3756F73C9253}" ShortID="290116768">
@@ -146,6 +124,119 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Folder Name="Weather" ID="{44257006-AB8E-4CEE-9F2B-932EEEC7ED7C}" ShortID="611772384">
+					<ChildrenList>
+						<Folder Name="Rain" ID="{FA452829-75EC-4CB8-A861-87FEA80FE392}" ShortID="153060592">
+							<ChildrenList>
+								<Event Name="Play_sx_game_amb_Weather_Rain" ID="{C80703BC-50D9-4896-A9DE-B788E29EB939}">
+									<ChildrenList>
+										<Action Name="" ID="{90C5CDDF-1A66-4572-8500-D3065E7DE889}" ShortID="114277765">
+											<PropertyList>
+												<Property Name="FadeTime" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{784C739A-8973-47BF-9037-8EDB9E9E97A2}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="2"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Stop_sx_game_amb_Weather_Rain" ID="{A611C748-CFD7-4E84-B07B-2D833B1299A6}">
+									<ChildrenList>
+										<Action Name="" ID="{6DD8BAC1-C21A-4736-B006-8DB6F562ADF0}" ShortID="764445216">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{E09B75A5-B603-46D5-BC58-1B8F173AF6DD}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="2"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Snow" ID="{B8D614F0-349F-4ED6-93FF-C4436EBFCEEC}" ShortID="99650886">
+							<ChildrenList>
+								<Event Name="Play_sx_game_amb_Weather_Snow" ID="{0BD8A127-AAEF-4049-9880-09F661083E4D}">
+									<ChildrenList>
+										<Action Name="" ID="{D2F51EEE-8F93-4580-BA34-4D63798BBD2A}" ShortID="323770573">
+											<PropertyList>
+												<Property Name="FadeTime" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1D3D7CAD-3EAD-4260-BA5E-0854E90F9024}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="2"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Stop_sx_game_amb_Weather_Snow" ID="{0DDD1768-171A-47E0-BE70-3B8CBF11A687}">
+									<ChildrenList>
+										<Action Name="" ID="{24B38987-59CA-40DA-97F7-BDA08D98270C}" ShortID="993585484">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="2">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1E616DA7-425C-49C4-A60D-6C33604BB4F2}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="5"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -85,6 +85,8 @@ public class WeatherDisplay
     {
         if (weatherObject == null)
             return;
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.TransitionStopSound(soundType);
         weatherObject.SetActive(false);
     }
 }

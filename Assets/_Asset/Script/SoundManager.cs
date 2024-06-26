@@ -15,11 +15,14 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private string blockTransform = "Play_sx_game_int_Block_Transform";
     [SerializeField] private string pressDownInput = "Play_sx_game_ui_Controller_PressDownInput";
     [SerializeField] private string menuNavigation = "Play_sx_uni_ui_Controller_MenuNavigation";
-    [SerializeField] private string weatherSnow = "Play_sx_game_amb_Weather_Snow";
-    [SerializeField] private string weatherRain = "Play_sx_game_amb_Weather_Rain";
+    [SerializeField] private string weatherSnowStart = "Play_sx_game_amb_Weather_Snow";
+    [SerializeField] private string weatherSnowStop = "Stop_sx_game_amb_Weather_Snow";
+    [SerializeField] private string weatherRainStart = "Play_sx_game_amb_Weather_Rain";
+    [SerializeField] private string weatherRainStop = "Stop_sx_game_amb_Weather_Rain";
 
 
     private string idTrigger;
+    private string idStop;
     protected override void Awake()
     {
         base.Awake();
@@ -33,6 +36,35 @@ public class SoundManager : Singleton<SoundManager>
         AkSoundEngine.PostEvent(idTrigger, gameObject);
     }
 
+    public void StopSound(SoundType soundType)
+    {
+        idStop = GetSoundID(soundType);
+        uint evenId = AkSoundEngine.GetIDFromString(idStop);
+        AkSoundEngine.ExecuteActionOnEvent(evenId, AkActionOnEventType.AkActionOnEventType_Stop, gameObject);
+    }
+
+    public void TransitionStopSound(SoundType soundType)
+    {
+        idStop = GetSoundID(soundType);
+        AkSoundEngine.PostEvent(idStop, gameObject);
+    }
+
+    public void CheckSoundWeatherAmbient(WeatherType weatherType)
+    {
+        if (weatherType == WeatherType.SNOWY)
+        {
+            TransitionStopSound(SoundType.S_SNOW_STOP);
+        }
+        else if(weatherType == WeatherType.RAIN)
+        {
+            TransitionStopSound(SoundType.S_RAIN_STOP);
+        }
+        else
+        {
+            return;
+        }
+    }
+
     private string GetSoundID(SoundType soundType)
     {
         foreach (SoundID soundID in soundIDs)
@@ -44,7 +76,7 @@ public class SoundManager : Singleton<SoundManager>
         }
         return "";
     }
-
+     
     public void PlaySoundControllerPressDownInput()
     {
         AkSoundEngine.PostEvent(pressDownInput, gameObject);

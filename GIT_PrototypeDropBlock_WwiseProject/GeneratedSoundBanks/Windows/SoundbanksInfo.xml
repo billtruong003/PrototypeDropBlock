@@ -118,7 +118,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="2539882731" Type="User" Language="SFX" Hash="{0CBF87CB-0117-2AF6-E8B8-3FB045B547E0}">
+		<SoundBank Id="2539882731" Type="User" Language="SFX" Hash="{A8DA54BA-B2E5-4A8B-1C7F-BD71C3801308}">
 			<ShortName>SB_Weather</ShortName>
 			<Path>SB_Weather.bnk</Path>
 			<Media>
@@ -153,6 +153,17 @@
 						<MediaRef Id="1058189046"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3175754591" Name="Stop_sx_game_amb_Weather_Rain" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="63898651"/>
+						<MediaRef Id="1058189046"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1920249428" Name="Stop_sx_game_amb_Weather_Snow" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="343224612"/>
+					</MediaRefs>
+				</Event>
 			</Events>
 		</SoundBank>
 		<SoundBank Id="3524140603" Type="User" Language="SFX" Hash="{A6295A40-28A1-CA8A-7617-C6A526C9C908}">
@@ -182,5 +193,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{270A28A7-4D04-6AD8-57B1-845963B15DAF}</FileHash>
+	<FileHash>{08922233-F392-5363-4402-B98421690850}</FileHash>
 </SoundBanksInfo>

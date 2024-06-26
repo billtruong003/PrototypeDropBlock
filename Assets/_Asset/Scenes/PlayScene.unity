@@ -4011,6 +4011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   CurrentBlock: {fileID: 0}
+  ReadySpawn: 1
   cubeContainer: {fileID: 2073816790}
   dropBrick: []
   brick: {fileID: 602012538645101227, guid: 0ecde2428373bc54588236317432c705, type: 3}
@@ -31498,6 +31499,26 @@ PrefabInstance:
     - target: {fileID: 5119970139080773414, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
       propertyPath: m_Name
       value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: soundIDs.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: soundIDs.Array.data[9].soundID
+      value: Stop_sx_game_amb_Weather_Rain
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: soundIDs.Array.data[10].soundID
+      value: Stop_sx_game_amb_Weather_Snow
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: soundIDs.Array.data[9].soundType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: soundIDs.Array.data[10].soundType
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

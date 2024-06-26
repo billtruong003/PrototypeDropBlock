@@ -156,12 +156,12 @@ public class ReconstructButtonMenu : MonoBehaviour
                 {
                     if (currentOptionState == OptionStates.ChangeOn)
                     {
-                        SoundManager.Instance.PlaySoundControllerPressDownInput();
+                        SoundManager.Instance.PlaySound(SoundType.S_PRESSDOWN);
                         SwitchChangeMatMode();
                     }
                     return;
                 }
-                SoundManager.Instance.PlaySoundControllerPressDownInput();
+                SoundManager.Instance.PlaySound(SoundType.S_PRESSDOWN);
                 SwitchChangeMatMode();
                 break;
 

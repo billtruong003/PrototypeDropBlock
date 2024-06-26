@@ -98,6 +98,7 @@ public class OpenWeatherServices : MonoBehaviour
         if (currentWeather != WeatherType.DEFAULT)
         {
             GetWeatherObj(currentWeather).DeactiveWeather();
+            SoundManager.Instance.CheckSoundWeatherAmbient(currentWeather);
         }
         currentWeather = DetermineWeatherType(weatherData.weather);
         GetWeatherObj(currentWeather).TriggerWeather();
@@ -115,15 +116,18 @@ public class OpenWeatherServices : MonoBehaviour
                 case "rain":
                 case "drizzle":
                 case "thunderstorm":
-                    SoundManager.Instance.PlaySound(SoundType.S_RAIN);
+                    SoundManager.Instance.PlaySound(SoundType.S_RAIN_START);
                     return WeatherType.RAIN;
                 case "snow":
                 case "sleet":
-                    SoundManager.Instance.PlaySound(SoundType.S_SNOW);
+                    //SoundManager.Instance.PlaySound(SoundType.S_RAIN_STOP);
+                    AkSoundEngine.StopPlayingID(AkSoundEngine.PostEvent("Play_sx_game_amb_Weather_Rain", gameObject));
+                    SoundManager.Instance.PlaySound(SoundType.S_SNOW_START);
                     return WeatherType.SNOWY;
                 case "clouds":
                 case "clear":
-                    SoundManager.Instance.PlaySound(SoundType.S_RAIN);
+                    AkSoundEngine.StopPlayingID(AkSoundEngine.PostEvent("Play_sx_game_amb_Weather_Rain", gameObject));
+                    //SoundManager.Instance.PlaySound(SoundType.S_RAIN_STOP);
                     return WeatherType.DEFAULT;
                 case "mist":
                 case "fog":
@@ -135,6 +139,7 @@ public class OpenWeatherServices : MonoBehaviour
                 case "squall":
                 case "tornado":
                 case "wind":
+                    SoundManager.Instance.PlaySound(SoundType.S_RAIN_STOP);
                     return WeatherType.WINDY;
 
                 default:
