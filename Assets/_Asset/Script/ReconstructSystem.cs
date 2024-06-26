@@ -103,7 +103,7 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
 
     private void TurnOnMesh(BlockController blockController)
     {
-        GameObjectUtils.EnableAllMeshRenderers(blockController.gameObject);
+        GameObjectUtils.DisableMeshVisualBlock(blockController.GetVisualBlock());
     }
 
     // private void HandleUIReconstruct(Vector3 pointA, Vector3 pointB)

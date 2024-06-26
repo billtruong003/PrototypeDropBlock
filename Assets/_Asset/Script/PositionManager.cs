@@ -29,7 +29,8 @@ public class PositionManager : Singleton<PositionManager>
         cubeDatas.Add(data);
         if (cubeDatas.Count > 0 && processMesh != null)
         {
-            GameObjectUtils.DisableAllMeshRenderers(data.Cube);
+            BlockController blockController = data.GetBlockController();
+            GameObjectUtils.DisableMeshVisualBlock(blockController.GetVisualBlock());
             SpawnMesh();
         }
         else if (processMesh == null)

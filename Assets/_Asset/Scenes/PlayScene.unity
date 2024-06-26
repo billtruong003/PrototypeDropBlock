@@ -3875,7 +3875,6 @@ GameObject:
   m_Component:
   - component: {fileID: 328987480}
   - component: {fileID: 328987481}
-  - component: {fileID: 328987482}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -3920,18 +3919,6 @@ MonoBehaviour:
   cheatBlock: {fileID: 602012538645101227, guid: 0ecde2428373bc54588236317432c705, type: 3}
   materialCheat: 0
   cheatMaterial: 2
---- !u!114 &328987482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328987479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cf27ce4054aafd4aae9b2f59a90c552, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &333889999
 GameObject:
   m_ObjectHideFlags: 0
