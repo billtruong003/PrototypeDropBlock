@@ -103,7 +103,7 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
 
     private void TurnOnMesh(BlockController blockController)
     {
-        GameObjectUtils.DisableMeshVisualBlock(blockController.GetVisualBlock());
+        GameObjectUtils.EnableAllMeshRenderers(blockController.GetVisualBlock());
     }
 
     // private void HandleUIReconstruct(Vector3 pointA, Vector3 pointB)
@@ -151,6 +151,7 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
         if (moveMode == MoveMode.ON)
             return;
         blockPick.SwitchModeDoneDrop();
+        SpawnManager.Instance.ReadySpawn = false;
         blockPick.RemovePivotParent();
         blockPick.reconstructMode = ReconstructMode.ON;
         moveMode = MoveMode.ON;

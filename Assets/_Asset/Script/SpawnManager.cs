@@ -8,6 +8,7 @@ public class SpawnManager : Singleton<SpawnManager>
 {
     [Header("Object Pooling")]
     public BlockController CurrentBlock;
+    public bool ReadySpawn = true;
     public List<PoolBlock> poolBlocks;
     public List<PoolMesh> poolMeshs;
 
@@ -51,7 +52,6 @@ public class SpawnManager : Singleton<SpawnManager>
     private void Start()
     {
         InitDropBrick();
-        SpawnCube();
     }
 
 
@@ -78,6 +78,21 @@ public class SpawnManager : Singleton<SpawnManager>
 
         CurrentBlock = selectedBrick.GetComponent<BlockController>();
         UpdateUIInfo();
+    }
+
+    public void SpawnBlock(BlockShape blockShape)
+    {
+        foreach (GameObject gameObject in dropBrick)
+        {
+            if (gameObject.name == blockShape.ToString())
+            {
+                selectedBrick = Instantiate(gameObject, Vector3.up * 15, Quaternion.identity, cubeContainer);
+                if (CurrentBlock != null)
+                    PhysicsLerpShaker.Instance.SetObjectToMove(CurrentBlock.transform.GetChild(0));
+                CurrentBlock = selectedBrick.GetComponent<BlockController>();
+                UpdateUIInfo();
+            }
+        }
     }
 
 

@@ -212,7 +212,7 @@ public class LightingManager : MonoBehaviour
         currentExposure = Mathf.Clamp(currentExposure, SkyBoxNight, SkyBoxMorning);
 
         SetSkyboxExposure(currentExposure);
-        Debug.Log($"Current Time: {currentTime}, Target Exposure: {targetExposure}, Current Exposure {currentExposure}");
+        // Debug.Log($"Current Time: {currentTime}, Target Exposure: {targetExposure}, Current Exposure {currentExposure}");
     }
 
     private float GetTargetExposure(DateTime currentTime)
