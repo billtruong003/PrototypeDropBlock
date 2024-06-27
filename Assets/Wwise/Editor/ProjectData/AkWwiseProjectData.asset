@@ -38,8 +38,36 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 3a5c014154bded45a753dea50ed346b2
     GuidInternal: 
-    m_lastTime: -8584826477784712600
+    m_lastTime: -8584821298604602559
     List:
+    - name: Biome
+      guid: 620dbac8af82414da8d4067da6c3ed42
+      id: 835576787
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3a5c014154bded45a753dea50ed346b2
+      - ElementName: Biome
+        ObjectType: 2
+        guid: 620dbac8af82414da8d4067da6c3ed42
+      Path: Master-Mixer Hierarchy\Default Work Unit\Biome
+    - name: Interactible
+      guid: 5b65f1452a7fb54885d66711a6e6cf95
+      id: 887362671
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3a5c014154bded45a753dea50ed346b2
+      - ElementName: Interactible
+        ObjectType: 2
+        guid: 5b65f1452a7fb54885d66711a6e6cf95
+      Path: Master-Mixer Hierarchy\Default Work Unit\Interactible
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 3803692087
@@ -54,6 +82,20 @@ MonoBehaviour:
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
+    - name: Weather
+      guid: e06df87883c2c243b968ae864712310f
+      id: 317282339
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3a5c014154bded45a753dea50ed346b2
+      - ElementName: Weather
+        ObjectType: 2
+        guid: e06df87883c2c243b968ae864712310f
+      Path: Master-Mixer Hierarchy\Default Work Unit\Weather
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
@@ -66,7 +108,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a51f6f6ab7040f4d81255fc05cfed137
     GuidInternal: 
-    m_lastTime: -8584821455848957465
+    m_lastTime: -8584821298604649891
     List:
     - name: SB_Biome
       guid: 6917347be37e8b43bd2db9f64df2c369
@@ -164,7 +206,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 0d768d710c8475488ec0ae5dd00ec6f8
     GuidInternal: 
-    m_lastTime: -8584821455849002547
+    m_lastTime: -8584821298604825445
     List:
     - name: Biome
       guid: 415b55ea2dd6be4f97f47ddf196493e2
@@ -578,7 +620,7 @@ MonoBehaviour:
       maxDuration: 0.45454165
       minDuration: 0.45454165
     - name: Play_Weather
-      guid: 43de40b6df48cc4da1d01baa5dfd48fc
+      guid: 355d0417a9f1d14eb3bec8b2256e2f54
       id: 3308884970
       PathAndIcons:
       - ElementName: Events
@@ -589,7 +631,7 @@ MonoBehaviour:
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
       - ElementName: Play_Weather
         ObjectType: 3
-        guid: 43de40b6df48cc4da1d01baa5dfd48fc
+        guid: 355d0417a9f1d14eb3bec8b2256e2f54
       Path: Events\Default Work Unit\Play_Weather
       maxAttenuation: 0
       maxDuration: -1
@@ -723,8 +765,188 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 13174a6cec596d4baab6b1eed58e560b
     GuidInternal: 
-    m_lastTime: -8584826477784582838
-    List: []
+    m_lastTime: -8584821298604883910
+    List:
+    - name: Biome
+      guid: 9b7fc6c44b554145a8ff91d81cacbab8
+      id: 835576787
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 13174a6cec596d4baab6b1eed58e560b
+      - ElementName: Biome
+        ObjectType: 9
+        guid: 9b7fc6c44b554145a8ff91d81cacbab8
+      Path: States\Default Work Unit\Biome
+      values:
+      - name: Coastal_Area
+        guid: ec8ae7aecbfb7d42ac7b615475cc0e2f
+        id: 1836997670
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 13174a6cec596d4baab6b1eed58e560b
+        - ElementName: Biome
+          ObjectType: 9
+          guid: 9b7fc6c44b554145a8ff91d81cacbab8
+        - ElementName: Coastal_Area
+          ObjectType: 8
+          guid: ec8ae7aecbfb7d42ac7b615475cc0e2f
+      - name: Desert
+        guid: 7d02f6519c87bf4e86f80b29d9b04f87
+        id: 1850388778
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 13174a6cec596d4baab6b1eed58e560b
+        - ElementName: Biome
+          ObjectType: 9
+          guid: 9b7fc6c44b554145a8ff91d81cacbab8
+        - ElementName: Desert
+          ObjectType: 8
+          guid: 7d02f6519c87bf4e86f80b29d9b04f87
+      - name: Mountain
+        guid: 4ee1a605de256c42b0abb1b9963302ba
+        id: 513139656
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 13174a6cec596d4baab6b1eed58e560b
+        - ElementName: Biome
+          ObjectType: 9
+          guid: 9b7fc6c44b554145a8ff91d81cacbab8
+        - ElementName: Mountain
+          ObjectType: 8
+          guid: 4ee1a605de256c42b0abb1b9963302ba
+      - name: None
+        guid: f166392fb780774c9664446a5de07444
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 13174a6cec596d4baab6b1eed58e560b
+        - ElementName: Biome
+          ObjectType: 9
+          guid: 9b7fc6c44b554145a8ff91d81cacbab8
+        - ElementName: None
+          ObjectType: 8
+          guid: f166392fb780774c9664446a5de07444
+      - name: Prairie
+        guid: 9fadb639300911429aa59a65a4db95f5
+        id: 237089847
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 13174a6cec596d4baab6b1eed58e560b
+        - ElementName: Biome
+          ObjectType: 9
+          guid: 9b7fc6c44b554145a8ff91d81cacbab8
+        - ElementName: Prairie
+          ObjectType: 8
+          guid: 9fadb639300911429aa59a65a4db95f5
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Weather
+      guid: f1a47b1a6a71f340ade93dd9f1be0dd7
+      id: 317282339
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 13174a6cec596d4baab6b1eed58e560b
+      - ElementName: Weather
+        ObjectType: 9
+        guid: f1a47b1a6a71f340ade93dd9f1be0dd7
+      Path: States\Default Work Unit\Weather
+      values:
+      - name: None
+        guid: 40a1752a5bf2c14685a63814ed35659c
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 13174a6cec596d4baab6b1eed58e560b
+        - ElementName: Weather
+          ObjectType: 9
+          guid: f1a47b1a6a71f340ade93dd9f1be0dd7
+        - ElementName: None
+          ObjectType: 8
+          guid: 40a1752a5bf2c14685a63814ed35659c
+      - name: Rain
+        guid: 1017bbcac21b844392d01ea0f964ea8d
+        id: 2043403999
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 13174a6cec596d4baab6b1eed58e560b
+        - ElementName: Weather
+          ObjectType: 9
+          guid: f1a47b1a6a71f340ade93dd9f1be0dd7
+        - ElementName: Rain
+          ObjectType: 8
+          guid: 1017bbcac21b844392d01ea0f964ea8d
+      - name: Snow
+        guid: c106fe5733612d4e8c5bd5fe491625ff
+        id: 787898836
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 13174a6cec596d4baab6b1eed58e560b
+        - ElementName: Weather
+          ObjectType: 9
+          guid: f1a47b1a6a71f340ade93dd9f1be0dd7
+        - ElementName: Snow
+          ObjectType: 8
+          guid: c106fe5733612d4e8c5bd5fe491625ff
+      - name: Sun
+        guid: 74feb89bc59a8345b7f9b58d3aa3f6f1
+        id: 644904077
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 13174a6cec596d4baab6b1eed58e560b
+        - ElementName: Weather
+          ObjectType: 9
+          guid: f1a47b1a6a71f340ade93dd9f1be0dd7
+        - ElementName: Sun
+          ObjectType: 8
+          guid: 74feb89bc59a8345b7f9b58d3aa3f6f1
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     PathAndIcons:
@@ -737,74 +959,8 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 36021f027a4b6248b03a752a048bec63
     GuidInternal: 
-    m_lastTime: -8584821473567845869
-    List:
-    - name: Weather
-      guid: 3975f7085fd7e247b327195d2c75b598
-      id: 317282339
-      PathAndIcons:
-      - ElementName: Switches
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 36021f027a4b6248b03a752a048bec63
-      - ElementName: Weather
-        ObjectType: 11
-        guid: 3975f7085fd7e247b327195d2c75b598
-      Path: Switches\Default Work Unit\Weather
-      values:
-      - name: Rain
-        guid: 1bea4857bcf8004981a38e64e770d371
-        id: 2043403999
-        PathAndIcons:
-        - ElementName: Switches
-          ObjectType: 5
-          guid: 00000000000000000000000000000000
-        - ElementName: Default Work Unit
-          ObjectType: 12
-          guid: 36021f027a4b6248b03a752a048bec63
-        - ElementName: Weather
-          ObjectType: 11
-          guid: 3975f7085fd7e247b327195d2c75b598
-        - ElementName: Rain
-          ObjectType: 10
-          guid: 1bea4857bcf8004981a38e64e770d371
-      - name: Snow
-        guid: c18d25d575531b4cb4c5e0bced30f5bf
-        id: 787898836
-        PathAndIcons:
-        - ElementName: Switches
-          ObjectType: 5
-          guid: 00000000000000000000000000000000
-        - ElementName: Default Work Unit
-          ObjectType: 12
-          guid: 36021f027a4b6248b03a752a048bec63
-        - ElementName: Weather
-          ObjectType: 11
-          guid: 3975f7085fd7e247b327195d2c75b598
-        - ElementName: Snow
-          ObjectType: 10
-          guid: c18d25d575531b4cb4c5e0bced30f5bf
-      - name: Sun
-        guid: b8748f5ee1c89945b3035b439f664a66
-        id: 644904077
-        PathAndIcons:
-        - ElementName: Switches
-          ObjectType: 5
-          guid: 00000000000000000000000000000000
-        - ElementName: Default Work Unit
-          ObjectType: 12
-          guid: 36021f027a4b6248b03a752a048bec63
-        - ElementName: Weather
-          ObjectType: 11
-          guid: 3975f7085fd7e247b327195d2c75b598
-        - ElementName: Sun
-          ObjectType: 10
-          guid: b8748f5ee1c89945b3035b439f664a66
-      ValueGuids: []
-      ValueIcons: []
-      valuesInternal: []
+    m_lastTime: -8584821343408107943
+    List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:

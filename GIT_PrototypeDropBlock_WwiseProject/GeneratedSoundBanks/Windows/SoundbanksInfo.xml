@@ -26,7 +26,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="842127849" Type="User" Language="SFX" Hash="{72A3D399-FC86-0864-A92A-6EC7B7323E7F}">
+		<SoundBank Id="842127849" Type="User" Language="SFX" Hash="{1E670F76-1A5B-EF3B-F30E-63A1D09A7C49}">
 			<ShortName>SB_Controller</ShortName>
 			<Path>SB_Controller.bnk</Path>
 			<Media>
@@ -70,7 +70,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{B6CBD692-12EC-CDBA-0932-48F63C40C91F}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{562F2AB7-1453-BAA0-CB94-661EF112146D}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -80,19 +80,32 @@
 				</AudioDevices>
 			</Plugins>
 			<Busses>
+				<Bus Id="317282339" Name="Weather"/>
+				<Bus Id="835576787" Name="Biome"/>
+				<Bus Id="887362671" Name="Interactible"/>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
-			<SwitchGroups>
-				<SwitchGroup Id="317282339" Name="Weather">
-					<Switches>
-						<Switch Id="644904077" Name="Sun"/>
-						<Switch Id="787898836" Name="Snow"/>
-						<Switch Id="2043403999" Name="Rain"/>
-					</Switches>
-				</SwitchGroup>
-			</SwitchGroups>
+			<StateGroups>
+				<StateGroup Id="317282339" Name="Weather">
+					<States>
+						<State Id="644904077" Name="Sun"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="787898836" Name="Snow"/>
+						<State Id="2043403999" Name="Rain"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="835576787" Name="Biome">
+					<States>
+						<State Id="237089847" Name="Prairie"/>
+						<State Id="513139656" Name="Mountain"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="1836997670" Name="Coastal_Area"/>
+						<State Id="1850388778" Name="Desert"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{D5D3C043-A5FF-D407-1402-7A5A21D7516F}">
+		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{2D371B01-70F8-A5B6-FE0C-FD9688A7AA8E}">
 			<ShortName>SB_Block</ShortName>
 			<Path>SB_Block.bnk</Path>
 			<Media>
@@ -145,7 +158,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="2539882731" Type="User" Language="SFX" Hash="{81FCA84B-FB1C-F824-368F-D3DEC2A58323}">
+		<SoundBank Id="2539882731" Type="User" Language="SFX" Hash="{F5756F88-5FBA-E4CF-4DE5-DBC4CA1E67AD}">
 			<ShortName>SB_Weather</ShortName>
 			<Path>SB_Weather.bnk</Path>
 			<Media>
@@ -177,6 +190,7 @@
 				<Event Id="3308884970" Name="Play_Weather" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="63898651"/>
+						<MediaRef Id="343224612"/>
 						<MediaRef Id="1058189046"/>
 					</MediaRefs>
 				</Event>
@@ -192,17 +206,8 @@
 					</MediaRefs>
 				</Event>
 			</Events>
-			<SwitchGroups>
-				<SwitchGroup Id="317282339" Name="Weather">
-					<Switches>
-						<Switch Id="644904077" Name="Sun"/>
-						<Switch Id="787898836" Name="Snow"/>
-						<Switch Id="2043403999" Name="Rain"/>
-					</Switches>
-				</SwitchGroup>
-			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3524140603" Type="User" Language="SFX" Hash="{A6295A40-28A1-CA8A-7617-C6A526C9C908}">
+		<SoundBank Id="3524140603" Type="User" Language="SFX" Hash="{358F9F54-CAA0-FFD3-C8F7-7617823B01D0}">
 			<ShortName>SB_Biome</ShortName>
 			<Path>SB_Biome.bnk</Path>
 			<Media>
@@ -264,5 +269,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7A76CA6F-D16C-54C3-A09F-5494F4867B69}</FileHash>
+	<FileHash>{661CD099-B0A6-2447-9576-E1266F4F1697}</FileHash>
 </SoundBanksInfo>

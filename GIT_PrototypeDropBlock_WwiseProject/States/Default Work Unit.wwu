@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{6C4A1713-59EC-4B6D-AAB6-B1EED58E560B}" SchemaVersion="119">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{6C4A1713-59EC-4B6D-AAB6-B1EED58E560B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{6C4A1713-59EC-4B6D-AAB6-B1EED58E560B}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Weather" ID="{1A7BA4F1-716A-40F3-ADE9-3DD9F1BE0DD7}">
+					<PropertyList>
+						<Property Name="DefaultTransitionTime" Type="Real64" Value="3"/>
+					</PropertyList>
+					<ChildrenList>
+						<State Name="None" ID="{2A75A140-F25B-46C1-85A6-3814ED35659C}"/>
+						<State Name="Sun" ID="{9BB8FE74-9AC5-4583-B7F9-B58D3AA3F6F1}"/>
+						<State Name="Rain" ID="{CABB1710-1BC2-4384-92D0-1EA0F964EA8D}"/>
+						<State Name="Snow" ID="{57FE06C1-6133-4E2D-8C5B-D5FE491625FF}"/>
+					</ChildrenList>
+				</StateGroup>
+				<StateGroup Name="Biome" ID="{C4C67F9B-554B-4541-A8FF-91D81CACBAB8}">
+					<ChildrenList>
+						<State Name="None" ID="{2F3966F1-80B7-4C77-9664-446A5DE07444}"/>
+						<State Name="Prairie" ID="{39B6AD9F-0930-4211-9AA5-9A65A4DB95F5}"/>
+						<State Name="Desert" ID="{51F6027D-879C-4EBF-86F8-0B29D9B04F87}"/>
+						<State Name="Mountain" ID="{05A6E14E-25DE-426C-B0AB-B1B9963302BA}"/>
+						<State Name="Coastal_Area" ID="{AEE78AEC-FBCB-427D-AC7B-615475CC0E2F}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

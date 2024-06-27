@@ -14,10 +14,6 @@
 							<Position X="0" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
-							<Position X="0" Y="2"/>
-						</Module>
-						<Module>
 							<ObjectRef Name="sx_game_int_Block_Destroy_01" ID="{9E973476-DA32-4BE5-9AF4-D067CDAE60CB}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
 							<Position X="0" Y="3"/>
 						</Module>
@@ -50,11 +46,7 @@
 							<Position X="2" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_sx_game_amb_Weather_Rain" ID="{C80703BC-50D9-4896-A9DE-B788E29EB939}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}"/>
-							<Position X="3" Y="1"/>
-						</Module>
-						<Module>
-							<ObjectRef Name="Play_sx_game_amb_Weather_Snow" ID="{0BD8A127-AAEF-4049-9880-09F661083E4D}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}"/>
+							<ObjectRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
 							<Position X="3" Y="2"/>
 						</Module>
 						<Module>
@@ -62,23 +54,15 @@
 							<Position X="3" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Stop_sx_game_amb_Weather_Rain" ID="{A611C748-CFD7-4E84-B07B-2D833B1299A6}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}"/>
-							<Position X="4" Y="1"/>
-						</Module>
-						<Module>
-							<ObjectRef Name="Stop_sx_game_amb_Weather_Snow" ID="{0DDD1768-171A-47E0-BE70-3B8CBF11A687}" WorkUnitID="{718D760D-840C-4875-8EC0-AE5DD00EC6F8}"/>
-							<Position X="4" Y="2"/>
-						</Module>
-						<Module>
 							<ObjectRef Name="sx_game_int_Block_Transform_01" ID="{2C2BA9A3-2201-4328-BA6A-2ABCC602793E}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
 							<Position X="4" Y="3"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true"/>
-					<CurrentStateList ShowAll="true"/>
-					<CurrentSwitchList ShowAll="true">
-						<CurrentSwitchRef Name="Rain" ID="{5748EA1B-F8BC-4900-81A3-8E64E770D371}"/>
-					</CurrentSwitchList>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Snow" ID="{57FE06C1-6133-4E2D-8C5B-D5FE491625FF}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>

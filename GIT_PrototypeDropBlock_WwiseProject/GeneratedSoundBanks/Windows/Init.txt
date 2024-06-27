@@ -1,4 +1,22 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	317282339	Weather			\Default Work Unit\Weather	
+	835576787	Biome			\Default Work Unit\Biome	
+
+State	ID	Name	State Group			Notes
+	644904077	Sun	Weather			
+	748895195	None	Weather			
+	787898836	Snow	Weather			
+	2043403999	Rain	Weather			
+	237089847	Prairie	Biome			
+	513139656	Mountain	Biome			
+	748895195	None	Biome			
+	1836997670	Coastal_Area	Biome			
+	1850388778	Desert	Biome			
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	317282339	Weather			\Default Work Unit\Weather	
+	835576787	Biome			\Default Work Unit\Biome	
+	887362671	Interactible			\Default Work Unit\Interactible	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
 
 Audio Devices	ID	Name	Type				Notes
