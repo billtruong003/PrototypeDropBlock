@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a51f6f6ab7040f4d81255fc05cfed137
     GuidInternal: 
-    m_lastTime: -8584822097266063733
+    m_lastTime: -8584821455848957465
     List:
     - name: SB_Biome
       guid: 6917347be37e8b43bd2db9f64df2c369
@@ -164,7 +164,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 0d768d710c8475488ec0ae5dd00ec6f8
     GuidInternal: 
-    m_lastTime: -8584822097266024096
+    m_lastTime: -8584821455849002547
     List:
     - name: Biome
       guid: 415b55ea2dd6be4f97f47ddf196493e2
@@ -355,8 +355,8 @@ MonoBehaviour:
         guid: 27a1d80befaa4940988009f661083e4d
       Path: Events\Default Work Unit\Weather\Snow\Play_sx_game_amb_Weather_Snow
       maxAttenuation: 0
-      maxDuration: 22.449265
-      minDuration: 22.449265
+      maxDuration: -1
+      minDuration: -1
     - name: Play_sx_game_env_Shake_Start
       guid: 817348d6b24b89489a369612cd951eca
       id: 2556225634
@@ -495,8 +495,8 @@ MonoBehaviour:
         guid: 8595e4a2df05314f88749aaa3392018d
       Path: Events\Default Work Unit\Misc\Play_sx_game_int_Bubble_Pop
       maxAttenuation: 0
-      maxDuration: 3.636375
-      minDuration: 3.636375
+      maxDuration: 0.2556875
+      minDuration: 0.2556875
     - name: Play_sx_game_ui_Controller_PressDownInput
       guid: ad4bff3320d3334fab385378e5ebe9b3
       id: 1619009516
@@ -737,8 +737,74 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 36021f027a4b6248b03a752a048bec63
     GuidInternal: 
-    m_lastTime: -8584826477784372732
-    List: []
+    m_lastTime: -8584821473567845869
+    List:
+    - name: Weather
+      guid: 3975f7085fd7e247b327195d2c75b598
+      id: 317282339
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36021f027a4b6248b03a752a048bec63
+      - ElementName: Weather
+        ObjectType: 11
+        guid: 3975f7085fd7e247b327195d2c75b598
+      Path: Switches\Default Work Unit\Weather
+      values:
+      - name: Rain
+        guid: 1bea4857bcf8004981a38e64e770d371
+        id: 2043403999
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Weather
+          ObjectType: 11
+          guid: 3975f7085fd7e247b327195d2c75b598
+        - ElementName: Rain
+          ObjectType: 10
+          guid: 1bea4857bcf8004981a38e64e770d371
+      - name: Snow
+        guid: c18d25d575531b4cb4c5e0bced30f5bf
+        id: 787898836
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Weather
+          ObjectType: 11
+          guid: 3975f7085fd7e247b327195d2c75b598
+        - ElementName: Snow
+          ObjectType: 10
+          guid: c18d25d575531b4cb4c5e0bced30f5bf
+      - name: Sun
+        guid: b8748f5ee1c89945b3035b439f664a66
+        id: 644904077
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Weather
+          ObjectType: 11
+          guid: 3975f7085fd7e247b327195d2c75b598
+        - ElementName: Sun
+          ObjectType: 10
+          guid: b8748f5ee1c89945b3035b439f664a66
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:
@@ -754,7 +820,7 @@ MonoBehaviour:
     m_lastTime: -8584826477783917465
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 1000000011000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

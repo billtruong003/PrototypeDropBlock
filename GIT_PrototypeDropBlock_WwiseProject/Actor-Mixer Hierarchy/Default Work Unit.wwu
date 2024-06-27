@@ -206,133 +206,28 @@
 				</Sound>
 				<Folder Name="Weather" ID="{ED539F68-2A7D-45E6-B119-BF78EF8C992E}" ShortID="391891093">
 					<ChildrenList>
-						<Sound Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" ShortID="465639238">
-							<PropertyList>
-								<Property Name="Lowpass" Type="int16">
-									<ValueList>
-										<Value>30</Value>
-									</ValueList>
-								</Property>
-								<Property Name="Pitch" Type="int32">
-									<ValueList>
-										<Value>-200</Value>
-									</ValueList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-10</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
+						<SwitchContainer Name="Weather" ID="{0DB49DBC-93A1-4AD3-ACB4-FF81BD5EF98D}" ShortID="312413056">
 							<ReferenceList>
 								<Reference Name="Conversion">
-									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="Sun" ID="{5E8F74B8-C8E1-4599-B303-5B439F664A66}" WorkUnitID="{021F0236-4B7A-4862-B03A-752A048BEC63}"/>
 								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
 								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="sx_game_amb_Weather_Snow_01" ID="{95C2A9B1-A5BC-4CAE-879D-E0C643E1FAC0}">
-									<Language>SFX</Language>
-									<AudioFile>sx_game_amb_Weather_Snow_01.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="343224612"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="sx_game_amb_Weather_Snow_01" ID="{95C2A9B1-A5BC-4CAE-879D-E0C643E1FAC0}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<BlendContainer Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" ShortID="505429193">
-							<PropertyList>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-10</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Weather" ID="{08F77539-D75F-47E2-B327-195D2C75B598}" WorkUnitID="{021F0236-4B7A-4862-B03A-752A048BEC63}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="sx_game_amb_Weather_Rain_01" ID="{1B8F1DA3-FD7A-4412-8795-ADDC358A1954}" ShortID="36126453">
+								<BlendContainer Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" ShortID="505429193">
 									<PropertyList>
-										<Property Name="InitialDelay" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{68E2B2A5-A42A-48AE-9D5A-4BA0491B7630}">
-														<PropertyList>
-															<Property Name="Max" Type="Real64" Value="3"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="sx_game_amb_Weather_Rain_01" ID="{6B7F32E7-BDF2-497A-B650-54158EC407BF}">
-											<Language>SFX</Language>
-											<AudioFile>sx_game_amb_Weather_Rain_01.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1058189046"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="sx_game_amb_Weather_Rain_01" ID="{6B7F32E7-BDF2-497A-B650-54158EC407BF}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<RandomSequenceContainer Name="Thunder" ID="{B3544ECA-7940-48C6-A470-C676FF18A1C9}" ShortID="521712545">
-									<PropertyList>
-										<Property Name="InitialDelay" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{AE533977-36B3-459F-85C6-5D91CF65B280}"/>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="8">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{849D7D10-2051-49C5-BE02-A8E58A6AA2A0}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="15"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="Volume" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{F82F1397-D99B-41DD-9E03-B97BD1D47961}">
-														<PropertyList>
-															<Property Name="Max" Type="Real64" Value="5"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
+											<ValueList>
+												<Value>-10</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -344,12 +239,12 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="sx_game_env_Weather_Thunder_01" ID="{C89269E3-D1AA-4495-9E79-BE532FADF7A1}" ShortID="165290518">
+										<Sound Name="sx_game_amb_Weather_Rain_01" ID="{1B8F1DA3-FD7A-4412-8795-ADDC358A1954}" ShortID="36126453">
 											<PropertyList>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
-															<Modifier Name="" ID="{1D638EEC-66DF-4E4E-B19A-8AB7B0D01682}">
+															<Modifier Name="" ID="{68E2B2A5-A42A-48AE-9D5A-4BA0491B7630}">
 																<PropertyList>
 																	<Property Name="Max" Type="Real64" Value="3"/>
 																</PropertyList>
@@ -357,14 +252,60 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="sx_game_amb_Weather_Rain_01" ID="{6B7F32E7-BDF2-497A-B650-54158EC407BF}">
+													<Language>SFX</Language>
+													<AudioFile>sx_game_amb_Weather_Rain_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1058189046"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="sx_game_amb_Weather_Rain_01" ID="{6B7F32E7-BDF2-497A-B650-54158EC407BF}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<RandomSequenceContainer Name="Thunder" ID="{B3544ECA-7940-48C6-A470-C676FF18A1C9}" ShortID="521712545">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{AE533977-36B3-459F-85C6-5D91CF65B280}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="8">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{849D7D10-2051-49C5-BE02-A8E58A6AA2A0}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="15"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="Volume" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
-															<Modifier Name="" ID="{06975CDB-B39A-475D-858C-90425FFBDEC3}">
+															<Modifier Name="" ID="{F82F1397-D99B-41DD-9E03-B97BD1D47961}">
 																<PropertyList>
-																	<Property Name="Enabled" Type="bool" Value="True"/>
 																	<Property Name="Max" Type="Real64" Value="5"/>
-																	<Property Name="Min" Type="Real64" Value="-5"/>
 																</PropertyList>
 															</Modifier>
 														</ModifierInfo>
@@ -380,22 +321,124 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="sx_game_env_Weather_Thunder_01" ID="{88706AC2-8AEA-4E84-A95E-8EB3A7FB817E}">
-													<Language>SFX</Language>
-													<AudioFile>sx_game_env_Weather_Thunder_01.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="63898651"/>
-													</MediaIDList>
-												</AudioFileSource>
+												<Sound Name="sx_game_env_Weather_Thunder_01" ID="{C89269E3-D1AA-4495-9E79-BE532FADF7A1}" ShortID="165290518">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{1D638EEC-66DF-4E4E-B19A-8AB7B0D01682}">
+																		<PropertyList>
+																			<Property Name="Max" Type="Real64" Value="3"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{06975CDB-B39A-475D-858C-90425FFBDEC3}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="5"/>
+																			<Property Name="Min" Type="Real64" Value="-5"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="sx_game_env_Weather_Thunder_01" ID="{88706AC2-8AEA-4E84-A95E-8EB3A7FB817E}">
+															<Language>SFX</Language>
+															<AudioFile>sx_game_env_Weather_Thunder_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="63898651"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="sx_game_env_Weather_Thunder_01" ID="{88706AC2-8AEA-4E84-A95E-8EB3A7FB817E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="sx_game_env_Weather_Thunder_01" ID="{88706AC2-8AEA-4E84-A95E-8EB3A7FB817E}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
+										</RandomSequenceContainer>
 									</ChildrenList>
-								</RandomSequenceContainer>
+								</BlendContainer>
+								<Sound Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" ShortID="465639238">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>30</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-200</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-10</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="sx_game_amb_Weather_Snow_01" ID="{95C2A9B1-A5BC-4CAE-879D-E0C643E1FAC0}">
+											<Language>SFX</Language>
+											<AudioFile>sx_game_amb_Weather_Snow_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="343224612"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="sx_game_amb_Weather_Snow_01" ID="{95C2A9B1-A5BC-4CAE-879D-E0C643E1FAC0}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
-						</BlendContainer>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Rain" ID="{5748EA1B-F8BC-4900-81A3-8E64E770D371}"/>
+										<ItemList>
+											<ItemRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Snow" ID="{D5258DC1-5375-4C1B-B4C5-E0BCED30F5BF}"/>
+										<ItemList>
+											<ItemRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Block" ID="{EC6CED71-8196-44ED-8988-AD4E2714ECB3}" ShortID="567143926">
@@ -557,42 +600,6 @@
 						</Sound>
 					</ChildrenList>
 				</Folder>
-				<Sound Name="sx_game_int_Bubble_Pop_01" ID="{B0FB74AD-F089-4B1F-AD44-991BBA070406}" ShortID="789321548">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="sx_game_int_Bubble_Pop_01" ID="{4FFA4FC6-E525-48C8-B0C2-62508F909A8F}">
-							<Language>SFX</Language>
-							<AudioFile>sx_game_int_Bubble_Pop_01.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="402529193"/>
-							</MediaIDList>
-						</AudioFileSource>
-						<AudioFileSource Name="sx_game_amb_Environment_WaterStream_01" ID="{37F1D29A-F827-4645-A287-852BC438B270}">
-							<Language>SFX</Language>
-							<AudioFile>sx_game_amb_Environment_WaterStream_01.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="248100609"/>
-							</MediaIDList>
-						</AudioFileSource>
-						<AudioFileSource Name="sx_game_env_Shake_Start_01" ID="{EA5C23B1-5786-4EA3-A8E6-3A9ED393C41C}">
-							<Language>SFX</Language>
-							<AudioFile>sx_game_env_Shake_Start_01.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="255705228"/>
-							</MediaIDList>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="sx_game_env_Shake_Start_01" ID="{EA5C23B1-5786-4EA3-A8E6-3A9ED393C41C}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
 				<Sound Name="sx_game_amb_Environment_WaterStream_01" ID="{3EF10691-22EA-4CFF-B7B5-F74A8A819005}" ShortID="798225763">
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -642,6 +649,28 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="sx_game_env_Shake_Start_01" ID="{9C9873AC-1F1D-49FC-9AE2-7698C110696C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="sx_game_int_Bubble_Pop_01" ID="{DEF714C4-FE2A-4AF1-A09A-DC9043B66C31}" ShortID="726313046">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sx_game_int_Bubble_Pop_01" ID="{8E60479E-8EC1-453E-B35A-CD7F7922E006}">
+							<Language>SFX</Language>
+							<AudioFile>sx_game_int_Bubble_Pop_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="402529193"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sx_game_int_Bubble_Pop_01" ID="{8E60479E-8EC1-453E-B35A-CD7F7922E006}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

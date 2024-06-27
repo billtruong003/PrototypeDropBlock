@@ -116,16 +116,12 @@ public class OpenWeatherServices : MonoBehaviour
                 case "rain":
                 case "drizzle":
                 case "thunderstorm":
-                    SoundManager.Instance.PlaySound(SoundType.S_RAIN_START);
                     return WeatherType.RAIN;
                 case "snow":
                 case "sleet":
-                    //AkSoundEngine.StopPlayingID(AkSoundEngine.PostEvent("Play_sx_game_amb_Weather_Rain", gameObject));
-                    SoundManager.Instance.PlaySound(SoundType.S_SNOW_START);
                     return WeatherType.SNOWY;
                 case "clouds":
                 case "clear":
-                    //AkSoundEngine.StopPlayingID(AkSoundEngine.PostEvent("Play_sx_game_amb_Weather_Rain", gameObject));
                     return WeatherType.DEFAULT;
                 case "mist":
                 case "fog":

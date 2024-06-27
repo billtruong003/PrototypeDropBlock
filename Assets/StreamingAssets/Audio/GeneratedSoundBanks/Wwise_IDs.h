@@ -35,6 +35,22 @@ namespace AK
         static const AkUniqueID STOP_SX_GAME_AMB_WEATHER_SNOW = 1920249428U;
     } // namespace EVENTS
 
+    namespace SWITCHES
+    {
+        namespace WEATHER
+        {
+            static const AkUniqueID GROUP = 317282339U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID RAIN = 2043403999U;
+                static const AkUniqueID SNOW = 787898836U;
+                static const AkUniqueID SUN = 644904077U;
+            } // namespace SWITCH
+        } // namespace WEATHER
+
+    } // namespace SWITCHES
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
