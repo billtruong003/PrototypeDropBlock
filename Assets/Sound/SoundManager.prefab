@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7755717854286829852}
   - component: {fileID: 3830842295264555109}
   - component: {fileID: 3625364065845570820}
+  - component: {fileID: 7142999736115407890}
   - component: {fileID: 1474090833377576254}
   - component: {fileID: 5163572355919326351}
   - component: {fileID: 1368566506416676904}
@@ -87,6 +88,31 @@ MonoBehaviour:
   loadAsynchronous: 0
   saveDecodedBank: 0
   unloadTriggerList: 
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!114 &7142999736115407890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794777903759937107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a68bcfacdca7647b65c81c9bcf85f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
   bankNameInternal: 
   valueGuidInternal: 
 --- !u!114 &1474090833377576254
@@ -316,6 +342,9 @@ MonoBehaviour:
   blockRotate: Play_sx_game_int_Block_Rotate
   blockTransform: Play_sx_game_int_Block_Transform
   pressDownInput: Play_sx_game_ui_Controller_PressDownInput
+  bubblePop: Play_sx_game_int_Bubble_Pop
   menuNavigation: Play_sx_uni_ui_Controller_MenuNavigation
-  weatherSnow: Play_sx_game_amb_Weather_Snow
-  weatherRain: Play_sx_game_amb_Weather_Rain
+  weatherSnowStart: Play_sx_game_amb_Weather_Snow
+  weatherSnowStop: Stop_sx_game_amb_Weather_Snow
+  weatherRainStart: Play_sx_game_amb_Weather_Rain
+  weatherRainStop: Stop_sx_game_amb_Weather_Rain

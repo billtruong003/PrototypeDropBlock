@@ -54,7 +54,7 @@ public class SpawnManager : Singleton<SpawnManager>
         InitDropBrick();
     }
 
-
+    // FIXME: OLD TYPE SPAWN
     public void SpawnCube()
     {
         if (dropBrick == null || dropBrick.Count == 0)
@@ -72,7 +72,7 @@ public class SpawnManager : Singleton<SpawnManager>
             selectedBrick = dropBrick[Random.Range(0, dropBrick.Count)];
         }
 
-        SoundManager.Instance.PlaySound(SoundType.S_SPAWN);
+        
         selectedBrick = Instantiate(selectedBrick, Vector3.up * 10, Quaternion.identity, cubeContainer);
         if (CurrentBlock != null)
             PhysicsLerpShaker.Instance.SetObjectToMove(CurrentBlock.transform.GetChild(0));
@@ -91,6 +91,7 @@ public class SpawnManager : Singleton<SpawnManager>
                 if (CurrentBlock != null)
                     PhysicsLerpShaker.Instance.SetObjectToMove(CurrentBlock.transform.GetChild(0));
                 CurrentBlock = selectedBrick.GetComponent<BlockController>();
+                SoundManager.Instance.PlaySound(SoundType.S_SPAWN);
                 UpdateUIInfo();
             }
         }
