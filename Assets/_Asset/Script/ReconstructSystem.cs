@@ -183,7 +183,6 @@ public class ReconstructSystem : Singleton<ReconstructSystem>
     private void SwitchModeReconstruct()
     {
         currentBlock = SpawnManager.Instance.CurrentBlock;
-        currentBlock.SwitchModeDoneDrop();
     }
 
 }
