@@ -31456,6 +31456,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1363699544}
     m_Modifications:
+    - target: {fileID: 1175930969262851373, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: unloadTriggerList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175930969262851373, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: unloadTriggerList.Array.data[0]
+      value: -358577003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474090833377576254, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: triggerList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474090833377576254, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: triggerList.Array.data[0]
+      value: 1151176110
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474090833377576254, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: triggerList.Array.data[1]
+      value: 1281810935
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474090833377576254, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: unloadTriggerList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474090833377576254, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: unloadTriggerList.Array.data[0]
+      value: -358577003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560767508933800122, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: unloadTriggerList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560767508933800122, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: unloadTriggerList.Array.data[0]
+      value: -358577003
+      objectReference: {fileID: 0}
     - target: {fileID: 3194946561613351216, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -31496,13 +31532,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3405739773150528751, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: unloadTriggerList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3405739773150528751, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: unloadTriggerList.Array.data[0]
+      value: -358577003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625364065845570820, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: unloadTriggerList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625364065845570820, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: unloadTriggerList.Array.data[0]
+      value: -358577003
+      objectReference: {fileID: 0}
     - target: {fileID: 5119970139080773414, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
     - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
       propertyPath: soundIDs.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
       propertyPath: soundIDs.Array.data[9].soundID
@@ -31513,12 +31565,20 @@ PrefabInstance:
       value: Stop_sx_game_amb_Weather_Snow
       objectReference: {fileID: 0}
     - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: soundIDs.Array.data[11].soundID
+      value: Play_sx_game_int_Bubble_Pop
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
       propertyPath: soundIDs.Array.data[9].soundType
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
       propertyPath: soundIDs.Array.data[10].soundType
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240216158516242331, guid: fc7140e48d766cd46971c3d35ca4299f, type: 3}
+      propertyPath: soundIDs.Array.data[11].soundType
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

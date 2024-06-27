@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a51f6f6ab7040f4d81255fc05cfed137
     GuidInternal: 
-    m_lastTime: -8584822190471787720
+    m_lastTime: -8584822097266063733
     List:
     - name: SB_Biome
       guid: 6917347be37e8b43bd2db9f64df2c369
@@ -110,6 +110,20 @@ MonoBehaviour:
         ObjectType: 7
         guid: ad8c21bf7c41694ca843773ec97ae30a
       Path: SoundBanks\Default Work Unit\SB_Controller
+    - name: SB_Misc
+      guid: 271a2bd34f778341b00af73553079e11
+      id: 4077548513
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: a51f6f6ab7040f4d81255fc05cfed137
+      - ElementName: SB_Misc
+        ObjectType: 7
+        guid: 271a2bd34f778341b00af73553079e11
+      Path: SoundBanks\Default Work Unit\SB_Misc
     - name: SB_Music
       guid: f9c65bb57ca92149984a822b11875faa
       id: 779753582
@@ -150,8 +164,76 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 0d768d710c8475488ec0ae5dd00ec6f8
     GuidInternal: 
-    m_lastTime: -8584822190471835703
+    m_lastTime: -8584822097266024096
     List:
+    - name: Biome
+      guid: 415b55ea2dd6be4f97f47ddf196493e2
+      id: 835576787
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Biome
+        ObjectType: 4
+        guid: 415b55ea2dd6be4f97f47ddf196493e2
+      Path: Events\Default Work Unit\Biome
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Block
+      guid: ce2be8679fd2ea429299636aaf6c26ba
+      id: 4001580976
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Block
+        ObjectType: 4
+        guid: ce2be8679fd2ea429299636aaf6c26ba
+      Path: Events\Default Work Unit\Block
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Controller
+      guid: d66c757caa005e468d4192ba13ce2687
+      id: 1720438449
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Controller
+        ObjectType: 4
+        guid: d66c757caa005e468d4192ba13ce2687
+      Path: Events\Default Work Unit\Controller
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Misc
+      guid: 329f039c5905864f97fcef6a1676c6a8
+      id: 3062523257
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Misc
+        ObjectType: 4
+        guid: 329f039c5905864f97fcef6a1676c6a8
+      Path: Events\Default Work Unit\Misc
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_mx_uni_amb_MainTheme
       guid: b8e098dab5c39542a20de9453c05da12
       id: 3039340560
@@ -179,10 +261,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Biome
+        ObjectType: 4
+        guid: 415b55ea2dd6be4f97f47ddf196493e2
       - ElementName: Play_sx_game_amb_Biome_PrairieBird
         ObjectType: 3
         guid: 106e8f4437902b4ca3ed144cc75b8a1a
-      Path: Events\Default Work Unit\Play_sx_game_amb_Biome_PrairieBird
+      Path: Events\Default Work Unit\Biome\Play_sx_game_amb_Biome_PrairieBird
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -196,13 +281,36 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Biome
+        ObjectType: 4
+        guid: 415b55ea2dd6be4f97f47ddf196493e2
       - ElementName: Play_sx_game_amb_Biome_PrairieWind
         ObjectType: 3
         guid: 126ec25af3a3eb4fa4a40b3bf5e6715c
-      Path: Events\Default Work Unit\Play_sx_game_amb_Biome_PrairieWind
+      Path: Events\Default Work Unit\Biome\Play_sx_game_amb_Biome_PrairieWind
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Play_sx_game_amb_Environment_WaterStream
+      guid: 2dcec7e653b0a04bb120311f6fd4e95a
+      id: 1510396663
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Misc
+        ObjectType: 4
+        guid: 329f039c5905864f97fcef6a1676c6a8
+      - ElementName: Play_sx_game_amb_Environment_WaterStream
+        ObjectType: 3
+        guid: 2dcec7e653b0a04bb120311f6fd4e95a
+      Path: Events\Default Work Unit\Misc\Play_sx_game_amb_Environment_WaterStream
+      maxAttenuation: 0
+      maxDuration: 1.8181875
+      minDuration: 1.8181875
     - name: Play_sx_game_amb_Weather_Rain
       guid: bc0307c8d9509648a9deb788e29eb939
       id: 244388389
@@ -249,6 +357,26 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 22.449265
       minDuration: 22.449265
+    - name: Play_sx_game_env_Shake_Start
+      guid: 817348d6b24b89489a369612cd951eca
+      id: 2556225634
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Misc
+        ObjectType: 4
+        guid: 329f039c5905864f97fcef6a1676c6a8
+      - ElementName: Play_sx_game_env_Shake_Start
+        ObjectType: 3
+        guid: 817348d6b24b89489a369612cd951eca
+      Path: Events\Default Work Unit\Misc\Play_sx_game_env_Shake_Start
+      maxAttenuation: 0
+      maxDuration: 3.636375
+      minDuration: 3.636375
     - name: Play_sx_game_int_Block_Destroy
       guid: 7b4dbe7dc8de7e4cb84966cd251d111f
       id: 495565927
@@ -259,10 +387,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Block
+        ObjectType: 4
+        guid: ce2be8679fd2ea429299636aaf6c26ba
       - ElementName: Play_sx_game_int_Block_Destroy
         ObjectType: 3
         guid: 7b4dbe7dc8de7e4cb84966cd251d111f
-      Path: Events\Default Work Unit\Play_sx_game_int_Block_Destroy
+      Path: Events\Default Work Unit\Block\Play_sx_game_int_Block_Destroy
       maxAttenuation: 0
       maxDuration: 0.6259792
       minDuration: 0.6259792
@@ -276,10 +407,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Block
+        ObjectType: 4
+        guid: ce2be8679fd2ea429299636aaf6c26ba
       - ElementName: Play_sx_game_int_Block_GoingDown
         ObjectType: 3
         guid: 8441f8270a6fbf4d9022a86cab24143c
-      Path: Events\Default Work Unit\Play_sx_game_int_Block_GoingDown
+      Path: Events\Default Work Unit\Block\Play_sx_game_int_Block_GoingDown
       maxAttenuation: 0
       maxDuration: 0.47202083
       minDuration: 0.47202083
@@ -293,10 +427,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Block
+        ObjectType: 4
+        guid: ce2be8679fd2ea429299636aaf6c26ba
       - ElementName: Play_sx_game_int_Block_Move
         ObjectType: 3
         guid: 484c1d27326a0d4ebfbde920d37da5f6
-      Path: Events\Default Work Unit\Play_sx_game_int_Block_Move
+      Path: Events\Default Work Unit\Block\Play_sx_game_int_Block_Move
       maxAttenuation: 0
       maxDuration: 0.092943065
       minDuration: 0.092943065
@@ -310,10 +447,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Block
+        ObjectType: 4
+        guid: ce2be8679fd2ea429299636aaf6c26ba
       - ElementName: Play_sx_game_int_Block_Rotate
         ObjectType: 3
         guid: 26e6b2238c5ec1438ebd3c0c95694c1e
-      Path: Events\Default Work Unit\Play_sx_game_int_Block_Rotate
+      Path: Events\Default Work Unit\Block\Play_sx_game_int_Block_Rotate
       maxAttenuation: 0
       maxDuration: 0.6818333
       minDuration: 0.6818333
@@ -327,13 +467,36 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Block
+        ObjectType: 4
+        guid: ce2be8679fd2ea429299636aaf6c26ba
       - ElementName: Play_sx_game_int_Block_Transform
         ObjectType: 3
         guid: 8e1fafd17baf2443957202704d0c84fd
-      Path: Events\Default Work Unit\Play_sx_game_int_Block_Transform
+      Path: Events\Default Work Unit\Block\Play_sx_game_int_Block_Transform
       maxAttenuation: 0
       maxDuration: 0.7954583
       minDuration: 0.7954583
+    - name: Play_sx_game_int_Bubble_Pop
+      guid: 8595e4a2df05314f88749aaa3392018d
+      id: 2269733319
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Misc
+        ObjectType: 4
+        guid: 329f039c5905864f97fcef6a1676c6a8
+      - ElementName: Play_sx_game_int_Bubble_Pop
+        ObjectType: 3
+        guid: 8595e4a2df05314f88749aaa3392018d
+      Path: Events\Default Work Unit\Misc\Play_sx_game_int_Bubble_Pop
+      maxAttenuation: 0
+      maxDuration: 3.636375
+      minDuration: 3.636375
     - name: Play_sx_game_ui_Controller_PressDownInput
       guid: ad4bff3320d3334fab385378e5ebe9b3
       id: 1619009516
@@ -344,10 +507,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Controller
+        ObjectType: 4
+        guid: d66c757caa005e468d4192ba13ce2687
       - ElementName: Play_sx_game_ui_Controller_PressDownInput
         ObjectType: 3
         guid: ad4bff3320d3334fab385378e5ebe9b3
-      Path: Events\Default Work Unit\Play_sx_game_ui_Controller_PressDownInput
+      Path: Events\Default Work Unit\Controller\Play_sx_game_ui_Controller_PressDownInput
       maxAttenuation: 0
       maxDuration: 0.28410417
       minDuration: 0.28410417
@@ -361,13 +527,56 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Controller
+        ObjectType: 4
+        guid: d66c757caa005e468d4192ba13ce2687
       - ElementName: Play_sx_uni_ui_Controller_MenuNavigation
         ObjectType: 3
         guid: c566d9a9040ac040b02abaf150e3707f
-      Path: Events\Default Work Unit\Play_sx_uni_ui_Controller_MenuNavigation
+      Path: Events\Default Work Unit\Controller\Play_sx_uni_ui_Controller_MenuNavigation
       maxAttenuation: 0
       maxDuration: 0.1395625
       minDuration: 0.1395625
+    - name: Play_sx_uni_ui_Controller_NegativeAction
+      guid: 038c841164ef934eb5cc536b1b29440e
+      id: 3133967616
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Controller
+        ObjectType: 4
+        guid: d66c757caa005e468d4192ba13ce2687
+      - ElementName: Play_sx_uni_ui_Controller_NegativeAction
+        ObjectType: 3
+        guid: 038c841164ef934eb5cc536b1b29440e
+      Path: Events\Default Work Unit\Controller\Play_sx_uni_ui_Controller_NegativeAction
+      maxAttenuation: 0
+      maxDuration: 0.4545625
+      minDuration: 0.4545625
+    - name: Play_sx_uni_ui_Controller_PositiveAction
+      guid: b08d2b00e47f0b4ea595e1581f2b3f19
+      id: 2864429968
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Controller
+        ObjectType: 4
+        guid: d66c757caa005e468d4192ba13ce2687
+      - ElementName: Play_sx_uni_ui_Controller_PositiveAction
+        ObjectType: 3
+        guid: b08d2b00e47f0b4ea595e1581f2b3f19
+      Path: Events\Default Work Unit\Controller\Play_sx_uni_ui_Controller_PositiveAction
+      maxAttenuation: 0
+      maxDuration: 0.45454165
+      minDuration: 0.45454165
     - name: Play_Weather
       guid: 43de40b6df48cc4da1d01baa5dfd48fc
       id: 3308884970
@@ -445,6 +654,29 @@ MonoBehaviour:
         ObjectType: 3
         guid: 48c711a6d7cf844eb07b2d833b1299a6
       Path: Events\Default Work Unit\Weather\Rain\Stop_sx_game_amb_Weather_Rain
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_sx_game_amb_Weather_Snow
+      guid: 6817dd0d1a17e047be703b8cbf11a687
+      id: 1920249428
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: Weather
+        ObjectType: 4
+        guid: 067025448eabee4c9f2b932eeec7ed7c
+      - ElementName: Snow
+        ObjectType: 4
+        guid: f014d6b89f34d64e93ffc4436ebfceec
+      - ElementName: Stop_sx_game_amb_Weather_Snow
+        ObjectType: 3
+        guid: 6817dd0d1a17e047be703b8cbf11a687
+      Path: Events\Default Work Unit\Weather\Snow\Stop_sx_game_amb_Weather_Snow
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
