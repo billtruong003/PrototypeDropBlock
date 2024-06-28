@@ -539,103 +539,163 @@
 				</Folder>
 				<Folder Name="Controller" ID="{447BDA5B-1D10-444E-90DC-87809211A7ED}" ShortID="952953305">
 					<ChildrenList>
-						<Sound Name="sx_game_ui_Controller_PressDownInput_01" ID="{B38C75A4-0806-4C02-A764-49E0757E164C}" ShortID="159005402">
-							<PropertyList>
-								<Property Name="Volume" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{5CF51866-AC3F-44C7-8470-048AB84676D4}"/>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-							</PropertyList>
+						<SwitchContainer Name="Controller" ID="{FA0FF564-B6A4-4012-ACC6-2C388B46F6D2}" ShortID="356694803">
 							<ReferenceList>
 								<Reference Name="Conversion">
-									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BD62E387-03FB-468F-96AC-51D3B3CF4A0D}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="PressDownInput" ID="{710289BC-6D75-48D8-B9E4-191F955BF39A}" WorkUnitID="{021F0236-4B7A-4862-B03A-752A048BEC63}"/>
 								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
 								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="sx_game_ui_Controller_PressDownInput_01" ID="{6A4259AF-4435-4715-9AC3-D6EDE2ED89EC}">
-									<Language>SFX</Language>
-									<AudioFile>sx_game_ui_Controller_PressDownInput_01.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="875902986"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="sx_game_ui_Controller_PressDownInput_01" ID="{6A4259AF-4435-4715-9AC3-D6EDE2ED89EC}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{FE8850FD-0C8E-445F-9300-FEABDFE4F1B4}" ShortID="753962650">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Controller" ID="{F8FE9744-2BD3-443B-88DF-C259C076F043}" WorkUnitID="{021F0236-4B7A-4862-B03A-752A048BEC63}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{4F6D1A25-E6BD-4B93-8624-D4932E82D254}">
-									<Language>SFX</Language>
-									<AudioFile>sx_uni_ui_Controller_MenuNavigation_01.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="497846776"/>
-									</MediaIDList>
-								</AudioFileSource>
+								<Sound Name="sx_game_ui_Controller_PressDownInput_01" ID="{B38C75A4-0806-4C02-A764-49E0757E164C}" ShortID="159005402">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{5CF51866-AC3F-44C7-8470-048AB84676D4}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="sx_game_ui_Controller_PressDownInput_01" ID="{6A4259AF-4435-4715-9AC3-D6EDE2ED89EC}">
+											<Language>SFX</Language>
+											<AudioFile>sx_game_ui_Controller_PressDownInput_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="875902986"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="sx_game_ui_Controller_PressDownInput_01" ID="{6A4259AF-4435-4715-9AC3-D6EDE2ED89EC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{FE8850FD-0C8E-445F-9300-FEABDFE4F1B4}" ShortID="753962650">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{4F6D1A25-E6BD-4B93-8624-D4932E82D254}">
+											<Language>SFX</Language>
+											<AudioFile>sx_uni_ui_Controller_MenuNavigation_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="497846776"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{4F6D1A25-E6BD-4B93-8624-D4932E82D254}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="sx_uni_ui_Controller_NegativeAction_01" ID="{D01D350E-7EC9-4DB9-A3FB-DD121CFD1481}" ShortID="58389759">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="sx_uni_ui_Controller_NegativeAction_01" ID="{27D19B86-63D6-4765-A7E9-C5C871CFFEBB}">
+											<Language>SFX</Language>
+											<AudioFile>sx_uni_ui_Controller_NegativeAction_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="822189774"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="sx_uni_ui_Controller_NegativeAction_01" ID="{27D19B86-63D6-4765-A7E9-C5C871CFFEBB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="sx_uni_ui_Controller_PositiveAction_01" ID="{EBAB9A6C-59D6-4887-ABB3-C7357E030061}" ShortID="379962537">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="sx_uni_ui_Controller_PositiveAction_01" ID="{F4E329B0-8ABF-491E-B7FC-349BE582366D}">
+											<Language>SFX</Language>
+											<AudioFile>sx_uni_ui_Controller_PositiveAction_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="259513338"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="sx_uni_ui_Controller_PositiveAction_01" ID="{F4E329B0-8ABF-491E-B7FC-349BE582366D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{4F6D1A25-E6BD-4B93-8624-D4932E82D254}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="sx_uni_ui_Controller_NegativeAction_01" ID="{D01D350E-7EC9-4DB9-A3FB-DD121CFD1481}" ShortID="58389759">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="sx_uni_ui_Controller_NegativeAction_01" ID="{27D19B86-63D6-4765-A7E9-C5C871CFFEBB}">
-									<Language>SFX</Language>
-									<AudioFile>sx_uni_ui_Controller_NegativeAction_01.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="822189774"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="sx_uni_ui_Controller_NegativeAction_01" ID="{27D19B86-63D6-4765-A7E9-C5C871CFFEBB}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="sx_uni_ui_Controller_PositiveAction_01" ID="{EBAB9A6C-59D6-4887-ABB3-C7357E030061}" ShortID="379962537">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{41015C3A-BD54-45ED-A753-DEA50ED346B2}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="sx_uni_ui_Controller_PositiveAction_01" ID="{F4E329B0-8ABF-491E-B7FC-349BE582366D}">
-									<Language>SFX</Language>
-									<AudioFile>sx_uni_ui_Controller_PositiveAction_01.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="259513338"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="sx_uni_ui_Controller_PositiveAction_01" ID="{F4E329B0-8ABF-491E-B7FC-349BE582366D}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="sx_uni_ui_Controller_NegativeAction_01" ID="{D01D350E-7EC9-4DB9-A3FB-DD121CFD1481}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="sx_uni_ui_Controller_PositiveAction_01" ID="{EBAB9A6C-59D6-4887-ABB3-C7357E030061}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="sx_game_ui_Controller_PressDownInput_01" ID="{B38C75A4-0806-4C02-A764-49E0757E164C}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{FE8850FD-0C8E-445F-9300-FEABDFE4F1B4}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="MenuNavigation" ID="{E113A43F-A605-4028-AF80-48317A76B732}"/>
+										<ItemList>
+											<ItemRef Name="sx_uni_ui_Controller_MenuNavigation_01" ID="{FE8850FD-0C8E-445F-9300-FEABDFE4F1B4}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="PositiveAction" ID="{81477C58-02FD-4F4D-9E94-DE19B7E9877B}"/>
+										<ItemList>
+											<ItemRef Name="sx_uni_ui_Controller_PositiveAction_01" ID="{EBAB9A6C-59D6-4887-ABB3-C7357E030061}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="NegativeAction" ID="{9A73436C-76C9-4380-B280-2F7AFAC34FC4}"/>
+										<ItemList>
+											<ItemRef Name="sx_uni_ui_Controller_NegativeAction_01" ID="{D01D350E-7EC9-4DB9-A3FB-DD121CFD1481}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="PressDownInput" ID="{710289BC-6D75-48D8-B9E4-191F955BF39A}"/>
+										<ItemList>
+											<ItemRef Name="sx_game_ui_Controller_PressDownInput_01" ID="{B38C75A4-0806-4C02-A764-49E0757E164C}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Biome" ID="{26B3173E-BA54-40C2-8EB9-DB1C93F7B8F4}" ShortID="194557076">

@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a51f6f6ab7040f4d81255fc05cfed137
     GuidInternal: 
-    m_lastTime: -8584821298604649891
+    m_lastTime: -8584820560987363288
     List:
     - name: SB_Biome
       guid: 6917347be37e8b43bd2db9f64df2c369
@@ -206,7 +206,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 0d768d710c8475488ec0ae5dd00ec6f8
     GuidInternal: 
-    m_lastTime: -8584821298604825445
+    m_lastTime: -8584820560987463424
     List:
     - name: Biome
       guid: 415b55ea2dd6be4f97f47ddf196493e2
@@ -276,6 +276,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: New Events
+      guid: 459769aed842014c95864891bda92f64
+      id: 493743476
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: New Events
+        ObjectType: 4
+        guid: 459769aed842014c95864891bda92f64
+      Path: Events\Default Work Unit\New Events
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_mx_uni_amb_MainTheme
       guid: b8e098dab5c39542a20de9453c05da12
       id: 3039340560
@@ -290,6 +307,26 @@ MonoBehaviour:
         ObjectType: 3
         guid: b8e098dab5c39542a20de9453c05da12
       Path: Events\Default Work Unit\Play_mx_uni_amb_MainTheme
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_sx_game_amb_Biome_Prairie
+      guid: 9a1a7eda0dc0d94a94f47fc638b28680
+      id: 1974711153
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: New Events
+        ObjectType: 4
+        guid: 459769aed842014c95864891bda92f64
+      - ElementName: Play_sx_game_amb_Biome_Prairie
+        ObjectType: 3
+        guid: 9a1a7eda0dc0d94a94f47fc638b28680
+      Path: Events\Default Work Unit\New Events\Play_sx_game_amb_Biome_Prairie
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -419,6 +456,26 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 3.636375
       minDuration: 3.636375
+    - name: Play_sx_game_int_Block
+      guid: cc4ef37b55e1914dbfc7d694567a337a
+      id: 542312424
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: New Events
+        ObjectType: 4
+        guid: 459769aed842014c95864891bda92f64
+      - ElementName: Play_sx_game_int_Block
+        ObjectType: 3
+        guid: cc4ef37b55e1914dbfc7d694567a337a
+      Path: Events\Default Work Unit\New Events\Play_sx_game_int_Block
+      maxAttenuation: 0
+      maxDuration: 0.6818333
+      minDuration: 0.092943065
     - name: Play_sx_game_int_Block_Destroy
       guid: 7b4dbe7dc8de7e4cb84966cd251d111f
       id: 495565927
@@ -517,8 +574,8 @@ MonoBehaviour:
         guid: 8e1fafd17baf2443957202704d0c84fd
       Path: Events\Default Work Unit\Block\Play_sx_game_int_Block_Transform
       maxAttenuation: 0
-      maxDuration: 0.7954583
-      minDuration: 0.7954583
+      maxDuration: 0.56820834
+      minDuration: 0.56820834
     - name: Play_sx_game_int_Bubble_Pop
       guid: 8595e4a2df05314f88749aaa3392018d
       id: 2269733319
@@ -559,6 +616,26 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.28410417
       minDuration: 0.28410417
+    - name: Play_sx_uni_Controller
+      guid: 9122f4a018ee194bb858699f7bb719fd
+      id: 2790362335
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: New Events
+        ObjectType: 4
+        guid: 459769aed842014c95864891bda92f64
+      - ElementName: Play_sx_uni_Controller
+        ObjectType: 3
+        guid: 9122f4a018ee194bb858699f7bb719fd
+      Path: Events\Default Work Unit\New Events\Play_sx_uni_Controller
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_sx_uni_ui_Controller_MenuNavigation
       guid: c566d9a9040ac040b02abaf150e3707f
       id: 2233396232
@@ -629,10 +706,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 0d768d710c8475488ec0ae5dd00ec6f8
+      - ElementName: New Events
+        ObjectType: 4
+        guid: 459769aed842014c95864891bda92f64
       - ElementName: Play_Weather
         ObjectType: 3
         guid: 355d0417a9f1d14eb3bec8b2256e2f54
-      Path: Events\Default Work Unit\Play_Weather
+      Path: Events\Default Work Unit\New Events\Play_Weather
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -765,7 +845,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 13174a6cec596d4baab6b1eed58e560b
     GuidInternal: 
-    m_lastTime: -8584821298604883910
+    m_lastTime: -8584820616490107031
     List:
     - name: Biome
       guid: 9b7fc6c44b554145a8ff91d81cacbab8
@@ -959,8 +1039,204 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 36021f027a4b6248b03a752a048bec63
     GuidInternal: 
-    m_lastTime: -8584821343408107943
-    List: []
+    m_lastTime: -8584820560987408340
+    List:
+    - name: Block
+      guid: 2628c05221496a4badcf3f58b8884be0
+      id: 4001580976
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36021f027a4b6248b03a752a048bec63
+      - ElementName: Block
+        ObjectType: 11
+        guid: 2628c05221496a4badcf3f58b8884be0
+      Path: Switches\Default Work Unit\Block
+      values:
+      - name: Destroy
+        guid: ef5162fc7c33304ba02701527d51cf91
+        id: 3936390293
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Block
+          ObjectType: 11
+          guid: 2628c05221496a4badcf3f58b8884be0
+        - ElementName: Destroy
+          ObjectType: 10
+          guid: ef5162fc7c33304ba02701527d51cf91
+      - name: GoingDown
+        guid: cdfc565db1262f4ab0b0465f6435c34f
+        id: 3833811789
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Block
+          ObjectType: 11
+          guid: 2628c05221496a4badcf3f58b8884be0
+        - ElementName: GoingDown
+          ObjectType: 10
+          guid: cdfc565db1262f4ab0b0465f6435c34f
+      - name: Move
+        guid: cbc34ba982b5ec43badd6f516fe85330
+        id: 3011204530
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Block
+          ObjectType: 11
+          guid: 2628c05221496a4badcf3f58b8884be0
+        - ElementName: Move
+          ObjectType: 10
+          guid: cbc34ba982b5ec43badd6f516fe85330
+      - name: Rotate
+        guid: 0fa2983f0cb403408eaac08f51606ed5
+        id: 1302771492
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Block
+          ObjectType: 11
+          guid: 2628c05221496a4badcf3f58b8884be0
+        - ElementName: Rotate
+          ObjectType: 10
+          guid: 0fa2983f0cb403408eaac08f51606ed5
+      - name: Spawn
+        guid: 77d38130df380b4a9d44ae834c8742a5
+        id: 71202558
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Block
+          ObjectType: 11
+          guid: 2628c05221496a4badcf3f58b8884be0
+        - ElementName: Spawn
+          ObjectType: 10
+          guid: 77d38130df380b4a9d44ae834c8742a5
+      - name: Transform
+        guid: 4e2985296fd8514c81cce0aa51077cfd
+        id: 1422622395
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Block
+          ObjectType: 11
+          guid: 2628c05221496a4badcf3f58b8884be0
+        - ElementName: Transform
+          ObjectType: 10
+          guid: 4e2985296fd8514c81cce0aa51077cfd
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Controller
+      guid: 4497fef8d32b3b4488dfc259c076f043
+      id: 1720438449
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36021f027a4b6248b03a752a048bec63
+      - ElementName: Controller
+        ObjectType: 11
+        guid: 4497fef8d32b3b4488dfc259c076f043
+      Path: Switches\Default Work Unit\Controller
+      values:
+      - name: MenuNavigation
+        guid: 3fa413e105a62840af8048317a76b732
+        id: 1734944998
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Controller
+          ObjectType: 11
+          guid: 4497fef8d32b3b4488dfc259c076f043
+        - ElementName: MenuNavigation
+          ObjectType: 10
+          guid: 3fa413e105a62840af8048317a76b732
+      - name: NegativeAction
+        guid: 6c43739ac9768043b2802f7afac34fc4
+        id: 854209238
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Controller
+          ObjectType: 11
+          guid: 4497fef8d32b3b4488dfc259c076f043
+        - ElementName: NegativeAction
+          ObjectType: 10
+          guid: 6c43739ac9768043b2802f7afac34fc4
+      - name: PositiveAction
+        guid: 587c4781fd024d4f9e94de19b7e9877b
+        id: 563177502
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Controller
+          ObjectType: 11
+          guid: 4497fef8d32b3b4488dfc259c076f043
+        - ElementName: PositiveAction
+          ObjectType: 10
+          guid: 587c4781fd024d4f9e94de19b7e9877b
+      - name: PressDownInput
+        guid: bc890271756dd848b9e4191f955bf39a
+        id: 3802024022
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 36021f027a4b6248b03a752a048bec63
+        - ElementName: Controller
+          ObjectType: 11
+          guid: 4497fef8d32b3b4488dfc259c076f043
+        - ElementName: PressDownInput
+          ObjectType: 10
+          guid: bc890271756dd848b9e4191f955bf39a
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:
@@ -976,7 +1252,7 @@ MonoBehaviour:
     m_lastTime: -8584826477783917465
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 1000000011000000
+  ExpandedWaapiItemIds: 0a0000001000000011000000120000001300000014000000150000001e0000001f0000002000000021000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

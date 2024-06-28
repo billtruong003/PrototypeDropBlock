@@ -13,6 +13,14 @@
 						<Switch Name="Spawn" ID="{3081D377-38DF-4A0B-9D44-AE834C8742A5}"/>
 					</ChildrenList>
 				</SwitchGroup>
+				<SwitchGroup Name="Controller" ID="{F8FE9744-2BD3-443B-88DF-C259C076F043}">
+					<ChildrenList>
+						<Switch Name="PressDownInput" ID="{710289BC-6D75-48D8-B9E4-191F955BF39A}"/>
+						<Switch Name="MenuNavigation" ID="{E113A43F-A605-4028-AF80-48317A76B732}"/>
+						<Switch Name="PositiveAction" ID="{81477C58-02FD-4F4D-9E94-DE19B7E9877B}"/>
+						<Switch Name="NegativeAction" ID="{9A73436C-76C9-4380-B280-2F7AFAC34FC4}"/>
+					</ChildrenList>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>

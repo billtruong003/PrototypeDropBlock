@@ -232,17 +232,6 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Play_sx_game_int_Block" ID="{7BF34ECC-E155-4D91-BFC7-D694567A337A}">
-							<ChildrenList>
-								<Action Name="" ID="{86615768-B068-4F0D-96C7-A540AF5449DF}" ShortID="424790725">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Block" ID="{C124B7B4-7A34-4DA7-B6EE-8711A6FC5841}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Biome" ID="{EA555B41-D62D-4FBE-97F4-7DDF196493E2}" ShortID="630719475">
@@ -264,17 +253,6 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="sx_game_amb_Biome_PrairieWind_01" ID="{EDAC1EA6-B78B-4299-A716-AA1C6C070072}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Play_sx_game_amb_Biome_Prairie" ID="{DA7E1A9A-C00D-4AD9-94F4-7FC638B28680}">
-							<ChildrenList>
-								<Action Name="" ID="{67E4355C-7FE8-45D4-B2A0-EFD296479883}" ShortID="296341925">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Prairie" ID="{495B2DA6-62EC-42F7-B7FC-E1048EC9E167}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -319,24 +297,61 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
-				<Event Name="Play_Weather" ID="{17045D35-F1A9-4ED1-B3BE-C8B2256E2F54}">
+				<Folder Name="New Events" ID="{AE699745-42D8-4C01-9586-4891BDA92F64}" ShortID="837289410">
 					<ChildrenList>
-						<Action Name="" ID="{09AED6ED-819A-4DFB-961B-8A6E7D93BB94}" ShortID="1040908135">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{EA335116-7733-4F78-AC25-6C54A270757A}" ShortID="1032156115">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="Play_sx_game_amb_Biome_Prairie" ID="{DA7E1A9A-C00D-4AD9-94F4-7FC638B28680}">
+							<ChildrenList>
+								<Action Name="" ID="{67E4355C-7FE8-45D4-B2A0-EFD296479883}" ShortID="296341925">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Prairie" ID="{495B2DA6-62EC-42F7-B7FC-E1048EC9E167}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_sx_game_int_Block" ID="{7BF34ECC-E155-4D91-BFC7-D694567A337A}">
+							<ChildrenList>
+								<Action Name="" ID="{86615768-B068-4F0D-96C7-A540AF5449DF}" ShortID="424790725">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Block" ID="{C124B7B4-7A34-4DA7-B6EE-8711A6FC5841}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Weather" ID="{17045D35-F1A9-4ED1-B3BE-C8B2256E2F54}">
+							<ChildrenList>
+								<Action Name="" ID="{09AED6ED-819A-4DFB-961B-8A6E7D93BB94}" ShortID="1040908135">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Rainy Weather" ID="{38393E45-E9E5-4AF1-BF91-0F027A199ECA}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{EA335116-7733-4F78-AC25-6C54A270757A}" ShortID="1032156115">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="sx_game_amb_Weather_Snow_01" ID="{FF7AEE6C-410D-494C-BC3E-31D66D3D5B79}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_sx_uni_Controller" ID="{A0F42291-EE18-4B19-B858-699F7BB719FD}">
+							<ChildrenList>
+								<Action Name="" ID="{ACBA84CE-F19A-4A7B-81D0-68A33B9D4185}" ShortID="542225596">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Controller" ID="{FA0FF564-B6A4-4012-ACC6-2C388B46F6D2}" WorkUnitID="{9D636C18-C30A-4B09-ACA2-6A95D5B5347B}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
