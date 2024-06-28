@@ -70,7 +70,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{722F955E-626A-E5B4-FBBF-C145B0D480A5}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{562F2AB7-1453-BAA0-CB94-661EF112146D}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -104,20 +104,8 @@
 					</States>
 				</StateGroup>
 			</StateGroups>
-			<SwitchGroups>
-				<SwitchGroup Id="4001580976" Name="Block">
-					<Switches>
-						<Switch Id="71202558" Name="Spawn"/>
-						<Switch Id="1302771492" Name="Rotate"/>
-						<Switch Id="1422622395" Name="Transform"/>
-						<Switch Id="3011204530" Name="Move"/>
-						<Switch Id="3833811789" Name="GoingDown"/>
-						<Switch Id="3936390293" Name="Destroy"/>
-					</Switches>
-				</SwitchGroup>
-			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{3987913A-41E0-A068-5775-BB740A167C9F}">
+		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{1E44E693-75F8-0331-93BC-64AD8AD1A892}">
 			<ShortName>SB_Block</ShortName>
 			<Path>SB_Block.bnk</Path>
 			<Media>
@@ -133,10 +121,6 @@
 					<ShortName>sx_game_int_Block_Rotate_01.wav</ShortName>
 					<CachePath>SFX/sx_game_int_Block_Rotate_01_8E324C96.wem</CachePath>
 				</File>
-				<File Id="402529193" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>sx_game_int_Bubble_Pop_01.wav</ShortName>
-					<CachePath>SFX/sx_game_int_Bubble_Pop_01_8E324C96.wem</CachePath>
-				</File>
 				<File Id="752075404" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_int_Block_Destroy_01.wav</ShortName>
 					<CachePath>SFX/sx_game_int_Block_Destroy_01_8E324C96.wem</CachePath>
@@ -147,46 +131,6 @@
 				</File>
 			</Media>
 			<Events>
-				<Event Id="542312424" Name="Play_sx_game_int_Block" DurationType="OneShot" DurationMin="0.092943065" DurationMax="0.6818333">
-					<SwitchContainers>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="4001580976" Id="1302771492"/>
-							<MediaRefs>
-								<MediaRef Id="307884731"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="4001580976" Id="1422622395"/>
-							<MediaRefs>
-								<MediaRef Id="66974648"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="4001580976" Id="71202558" Default="true"/>
-							<MediaRefs>
-								<MediaRef Id="402529193"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="4001580976" Id="3011204530"/>
-							<MediaRefs>
-								<MediaRef Id="51281222"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="4001580976" Id="3833811789"/>
-							<MediaRefs>
-								<MediaRef Id="1011427497"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="4001580976" Id="3936390293"/>
-							<MediaRefs>
-								<MediaRef Id="752075404"/>
-							</MediaRefs>
-						</SwitchContainer>
-					</SwitchContainers>
-				</Event>
 				<Event Id="495565927" Name="Play_sx_game_int_Block_Destroy" DurationType="OneShot" DurationMin="0.6259792" DurationMax="0.6259792">
 					<MediaRefs>
 						<MediaRef Id="752075404"/>
@@ -213,34 +157,22 @@
 					</MediaRefs>
 				</Event>
 			</Events>
-			<SwitchGroups>
-				<SwitchGroup Id="4001580976" Name="Block">
-					<Switches>
-						<Switch Id="71202558" Name="Spawn"/>
-						<Switch Id="1302771492" Name="Rotate"/>
-						<Switch Id="1422622395" Name="Transform"/>
-						<Switch Id="3011204530" Name="Move"/>
-						<Switch Id="3833811789" Name="GoingDown"/>
-						<Switch Id="3936390293" Name="Destroy"/>
-					</Switches>
-				</SwitchGroup>
-			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2539882731" Type="User" Language="SFX" Hash="{25D7196C-32EE-6DFB-F3FB-5F11C76E9B3E}">
+		<SoundBank Id="2539882731" Type="User" Language="SFX" Hash="{F5756F88-5FBA-E4CF-4DE5-DBC4CA1E67AD}">
 			<ShortName>SB_Weather</ShortName>
 			<Path>SB_Weather.bnk</Path>
 			<Media>
 				<File Id="63898651" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_env_Weather_Thunder_01.wav</ShortName>
-					<CachePath>SFX/sx_game_env_Weather_Thunder_01_8E324C96.wem</CachePath>
+					<CachePath>SFX/sx_game_env_Weather_Thunder_01_818F3B66.wem</CachePath>
 				</File>
 				<File Id="343224612" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_amb_Weather_Snow_01.wav</ShortName>
-					<CachePath>SFX/sx_game_amb_Weather_Snow_01_56CEF360.wem</CachePath>
+					<CachePath>SFX/sx_game_amb_Weather_Snow_01_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="1058189046" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_amb_Weather_Rain_01.wav</ShortName>
-					<CachePath>SFX/sx_game_amb_Weather_Rain_01_56CEF360.wem</CachePath>
+					<CachePath>SFX/sx_game_amb_Weather_Rain_01_FBC78EF0.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -275,7 +207,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3524140603" Type="User" Language="SFX" Hash="{65385F97-B0E4-ADFC-ACA7-2AB801FE5BF0}">
+		<SoundBank Id="3524140603" Type="User" Language="SFX" Hash="{358F9F54-CAA0-FFD3-C8F7-7617823B01D0}">
 			<ShortName>SB_Biome</ShortName>
 			<Path>SB_Biome.bnk</Path>
 			<Media>
@@ -301,7 +233,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="4077548513" Type="User" Language="SFX" Hash="{6EF4DA67-2915-EF4A-FD1D-C511BB41ED86}">
+		<SoundBank Id="4077548513" Type="User" Language="SFX" Hash="{B55B3521-9252-3FDF-F4CE-5CD03DA8A532}">
 			<ShortName>SB_Misc</ShortName>
 			<Path>SB_Misc.bnk</Path>
 			<Media>
@@ -315,7 +247,7 @@
 				</File>
 				<File Id="402529193" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_int_Bubble_Pop_01.wav</ShortName>
-					<CachePath>SFX/sx_game_int_Bubble_Pop_01_8E324C96.wem</CachePath>
+					<CachePath>SFX/sx_game_int_Bubble_Pop_01_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -335,19 +267,7 @@
 					</MediaRefs>
 				</Event>
 			</Events>
-			<SwitchGroups>
-				<SwitchGroup Id="4001580976" Name="Block">
-					<Switches>
-						<Switch Id="71202558" Name="Spawn"/>
-						<Switch Id="1302771492" Name="Rotate"/>
-						<Switch Id="1422622395" Name="Transform"/>
-						<Switch Id="3011204530" Name="Move"/>
-						<Switch Id="3833811789" Name="GoingDown"/>
-						<Switch Id="3936390293" Name="Destroy"/>
-					</Switches>
-				</SwitchGroup>
-			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{B4325FBC-F967-CE1A-B194-1138C327872F}</FileHash>
+	<FileHash>{4B4888BA-B094-AC9C-6479-517C40F58991}</FileHash>
 </SoundBanksInfo>
