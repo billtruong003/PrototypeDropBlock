@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using AK.Wwise;
-
 namespace BlockBuilder.BlockManagement
 {
     #region Block Configuration
@@ -186,8 +184,7 @@ namespace BlockBuilder.BlockManagement
     {
         public string soundID;
         public SoundType soundType;
-        public Switch Switch;
-        
+
     }
     #endregion
 }

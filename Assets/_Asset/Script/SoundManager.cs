@@ -62,7 +62,7 @@ public class SoundManager : Singleton<SoundManager>
         {
             TransitionStopSound(SoundType.S_SNOW_STOP);
         }
-        else if(weatherType == WeatherType.RAIN)
+        else if (weatherType == WeatherType.RAIN)
         {
             TransitionStopSound(SoundType.S_RAIN_STOP);
         }
@@ -83,7 +83,7 @@ public class SoundManager : Singleton<SoundManager>
         }
         return "";
     }
-     
+
     public void PlaySoundControllerPressDownInput()
     {
         AkSoundEngine.PostEvent(pressDownInput, gameObject);

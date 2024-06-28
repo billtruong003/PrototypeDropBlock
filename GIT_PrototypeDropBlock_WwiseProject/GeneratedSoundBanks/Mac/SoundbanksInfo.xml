@@ -26,7 +26,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="842127849" Type="User" Language="SFX" Hash="{72A3D399-FC86-0864-A92A-6EC7B7323E7F}">
+		<SoundBank Id="842127849" Type="User" Language="SFX" Hash="{1E670F76-1A5B-EF3B-F30E-63A1D09A7C49}">
 			<ShortName>SB_Controller</ShortName>
 			<Path>SB_Controller.bnk</Path>
 			<Media>
@@ -70,7 +70,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{D326F752-7CA2-0A14-FDB1-63ECE89D0199}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{109893EE-4B5E-E303-467F-80AA863E1CED}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -80,10 +80,32 @@
 				</AudioDevices>
 			</Plugins>
 			<Busses>
+				<Bus Id="317282339" Name="Weather"/>
+				<Bus Id="835576787" Name="Biome"/>
+				<Bus Id="887362671" Name="Interactible"/>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
+			<StateGroups>
+				<StateGroup Id="317282339" Name="Weather">
+					<States>
+						<State Id="644904077" Name="Sun"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="787898836" Name="Snow"/>
+						<State Id="2043403999" Name="Rain"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="835576787" Name="Biome">
+					<States>
+						<State Id="237089847" Name="Prairie"/>
+						<State Id="513139656" Name="Mountain"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="1836997670" Name="Coastal_Area"/>
+						<State Id="1850388778" Name="Desert"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{D5D3C043-A5FF-D407-1402-7A5A21D7516F}">
+		<SoundBank Id="2121512728" Type="User" Language="SFX" Hash="{2D371B01-70F8-A5B6-FE0C-FD9688A7AA8E}">
 			<ShortName>SB_Block</ShortName>
 			<Path>SB_Block.bnk</Path>
 			<Media>
@@ -136,21 +158,21 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="2539882731" Type="User" Language="SFX" Hash="{A8DA54BA-B2E5-4A8B-1C7F-BD71C3801308}">
+		<SoundBank Id="2539882731" Type="User" Language="SFX" Hash="{F5756F88-5FBA-E4CF-4DE5-DBC4CA1E67AD}">
 			<ShortName>SB_Weather</ShortName>
 			<Path>SB_Weather.bnk</Path>
 			<Media>
 				<File Id="63898651" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_env_Weather_Thunder_01.wav</ShortName>
-					<CachePath>SFX/sx_game_env_Weather_Thunder_01_8E324C96.wem</CachePath>
+					<CachePath>SFX/sx_game_env_Weather_Thunder_01_818F3B66.wem</CachePath>
 				</File>
 				<File Id="343224612" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_amb_Weather_Snow_01.wav</ShortName>
-					<CachePath>SFX/sx_game_amb_Weather_Snow_01_8E324C96.wem</CachePath>
+					<CachePath>SFX/sx_game_amb_Weather_Snow_01_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="1058189046" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_amb_Weather_Rain_01.wav</ShortName>
-					<CachePath>SFX/sx_game_amb_Weather_Rain_01_56CEF360.wem</CachePath>
+					<CachePath>SFX/sx_game_amb_Weather_Rain_01_FBC78EF0.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -160,7 +182,7 @@
 						<MediaRef Id="1058189046"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2821168490" Name="Play_sx_game_amb_Weather_Snow" DurationType="OneShot" DurationMin="22.449265" DurationMax="22.449265">
+				<Event Id="2821168490" Name="Play_sx_game_amb_Weather_Snow" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="343224612"/>
 					</MediaRefs>
@@ -168,6 +190,7 @@
 				<Event Id="3308884970" Name="Play_Weather" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="63898651"/>
+						<MediaRef Id="343224612"/>
 						<MediaRef Id="1058189046"/>
 					</MediaRefs>
 				</Event>
@@ -184,7 +207,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3524140603" Type="User" Language="SFX" Hash="{A6295A40-28A1-CA8A-7617-C6A526C9C908}">
+		<SoundBank Id="3524140603" Type="User" Language="SFX" Hash="{358F9F54-CAA0-FFD3-C8F7-7617823B01D0}">
 			<ShortName>SB_Biome</ShortName>
 			<Path>SB_Biome.bnk</Path>
 			<Media>
@@ -210,7 +233,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="4077548513" Type="User" Language="SFX" Hash="{15606597-1C39-C51C-7EB8-0E302C75F05C}">
+		<SoundBank Id="4077548513" Type="User" Language="SFX" Hash="{B55B3521-9252-3FDF-F4CE-5CD03DA8A532}">
 			<ShortName>SB_Misc</ShortName>
 			<Path>SB_Misc.bnk</Path>
 			<Media>
@@ -221,6 +244,10 @@
 				<File Id="255705228" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sx_game_env_Shake_Start_01.wav</ShortName>
 					<CachePath>SFX/sx_game_env_Shake_Start_01_8E324C96.wem</CachePath>
+				</File>
+				<File Id="402529193" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sx_game_int_Bubble_Pop_01.wav</ShortName>
+					<CachePath>SFX/sx_game_int_Bubble_Pop_01_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -234,13 +261,13 @@
 						<MediaRef Id="255705228"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2269733319" Name="Play_sx_game_int_Bubble_Pop" DurationType="OneShot" DurationMin="3.636375" DurationMax="3.636375">
+				<Event Id="2269733319" Name="Play_sx_game_int_Bubble_Pop" DurationType="OneShot" DurationMin="0.2556875" DurationMax="0.2556875">
 					<MediaRefs>
-						<MediaRef Id="255705228"/>
+						<MediaRef Id="402529193"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{FF74EAAB-5942-6429-9A0E-928A479CA931}</FileHash>
+	<FileHash>{95873A96-74ED-0F6C-D704-E6ED800CA8D9}</FileHash>
 </SoundBanksInfo>
