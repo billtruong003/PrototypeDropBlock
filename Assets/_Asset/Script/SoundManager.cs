@@ -50,6 +50,12 @@ public class SoundManager : Singleton<SoundManager>
         AkSoundEngine.PostEvent(idStop, gameObject);
     }
 
+    //public void SwitchState()
+    //{
+    //    AkSoundEngine.SetState()
+    //    AkSoundEngine.SetSwitch();
+    //}
+
     public void CheckSoundWeatherAmbient(WeatherType weatherType)
     {
         if (weatherType == WeatherType.SNOWY)
@@ -82,6 +88,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         AkSoundEngine.PostEvent(pressDownInput, gameObject);
     }
+
 
 
 }

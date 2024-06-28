@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{021F0236-4B7A-4862-B03A-752A048BEC63}" SchemaVersion="119">
 	<Switches>
-		<WorkUnit Name="Default Work Unit" ID="{021F0236-4B7A-4862-B03A-752A048BEC63}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{021F0236-4B7A-4862-B03A-752A048BEC63}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="Block" ID="{52C02826-4921-4B6A-ADCF-3F58B8884BE0}">
+					<ChildrenList>
+						<Switch Name="Destroy" ID="{FC6251EF-337C-4B30-A027-01527D51CF91}"/>
+						<Switch Name="GoingDown" ID="{5D56FCCD-26B1-4A2F-B0B0-465F6435C34F}"/>
+						<Switch Name="Move" ID="{A94BC3CB-B582-43EC-BADD-6F516FE85330}"/>
+						<Switch Name="Rotate" ID="{3F98A20F-B40C-4003-8EAA-C08F51606ED5}"/>
+						<Switch Name="Transform" ID="{2985294E-D86F-4C51-81CC-E0AA51077CFD}"/>
+						<Switch Name="Spawn" ID="{3081D377-38DF-4A0B-9D44-AE834C8742A5}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</Switches>
 </WwiseDocument>

@@ -3,8 +3,19 @@ Event	ID	Name			Wwise Object Path	Notes
 	2269733319	Play_sx_game_int_Bubble_Pop			\Default Work Unit\Misc\Play_sx_game_int_Bubble_Pop	
 	2556225634	Play_sx_game_env_Shake_Start			\Default Work Unit\Misc\Play_sx_game_env_Shake_Start	
 
+Switch Group	ID	Name			Wwise Object Path	Notes
+	4001580976	Block			\Default Work Unit\Block	
+
+Switch	ID	Name	Switch Group			Notes
+	71202558	Spawn	Block			
+	1302771492	Rotate	Block			
+	1422622395	Transform	Block			
+	3011204530	Move	Block			
+	3833811789	GoingDown	Block			
+	3936390293	Destroy	Block			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	248100609	sx_game_amb_Environment_WaterStream_01	C:\Users\trite\Documents\Unity Projects\GIT_PrototypeDropBlock\GIT_PrototypeDropBlock_WwiseProject\.cache\Windows\SFX\sx_game_amb_Environment_WaterStream_01_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\sx_game_amb_Environment_WaterStream_01		20807
-	255705228	sx_game_env_Shake_Start_01	C:\Users\trite\Documents\Unity Projects\GIT_PrototypeDropBlock\GIT_PrototypeDropBlock_WwiseProject\.cache\Windows\SFX\sx_game_env_Shake_Start_01_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\sx_game_env_Shake_Start_01		43462
-	402529193	sx_game_int_Bubble_Pop_01	C:\Users\trite\Documents\Unity Projects\GIT_PrototypeDropBlock\GIT_PrototypeDropBlock_WwiseProject\.cache\Windows\SFX\sx_game_int_Bubble_Pop_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\sx_game_int_Bubble_Pop_01		49188
+	248100609	sx_game_amb_Environment_WaterStream_01	D:\Documents\Unity Projects\GIT_PrototypeDropBlock\GIT_PrototypeDropBlock_WwiseProject\.cache\Windows\SFX\sx_game_amb_Environment_WaterStream_01_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Misc\sx_game_amb_Environment_WaterStream_01		20807
+	255705228	sx_game_env_Shake_Start_01	D:\Documents\Unity Projects\GIT_PrototypeDropBlock\GIT_PrototypeDropBlock_WwiseProject\.cache\Windows\SFX\sx_game_env_Shake_Start_01_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Misc\sx_game_env_Shake_Start_01		43462
+	402529193	sx_game_int_Bubble_Pop_01	D:\Documents\Unity Projects\GIT_PrototypeDropBlock\GIT_PrototypeDropBlock_WwiseProject\.cache\Windows\SFX\sx_game_int_Bubble_Pop_01_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Block\Block\sx_game_int_Bubble_Pop_01		5134
 

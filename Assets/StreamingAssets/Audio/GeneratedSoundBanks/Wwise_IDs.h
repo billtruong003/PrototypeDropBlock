@@ -20,6 +20,7 @@ namespace AK
         static const AkUniqueID PLAY_SX_GAME_AMB_WEATHER_RAIN = 244388389U;
         static const AkUniqueID PLAY_SX_GAME_AMB_WEATHER_SNOW = 2821168490U;
         static const AkUniqueID PLAY_SX_GAME_ENV_SHAKE_START = 2556225634U;
+        static const AkUniqueID PLAY_SX_GAME_INT_BLOCK = 542312424U;
         static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_DESTROY = 495565927U;
         static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_GOINGDOWN = 339787471U;
         static const AkUniqueID PLAY_SX_GAME_INT_BLOCK_MOVE = 4162922556U;
@@ -65,6 +66,25 @@ namespace AK
         } // namespace WEATHER
 
     } // namespace STATES
+
+    namespace SWITCHES
+    {
+        namespace BLOCK
+        {
+            static const AkUniqueID GROUP = 4001580976U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID DESTROY = 3936390293U;
+                static const AkUniqueID GOINGDOWN = 3833811789U;
+                static const AkUniqueID MOVE = 3011204530U;
+                static const AkUniqueID ROTATE = 1302771492U;
+                static const AkUniqueID SPAWN = 71202558U;
+                static const AkUniqueID TRANSFORM = 1422622395U;
+            } // namespace SWITCH
+        } // namespace BLOCK
+
+    } // namespace SWITCHES
 
     namespace BANKS
     {

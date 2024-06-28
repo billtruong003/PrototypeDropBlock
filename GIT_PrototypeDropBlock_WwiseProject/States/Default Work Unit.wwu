@@ -15,6 +15,9 @@
 					</ChildrenList>
 				</StateGroup>
 				<StateGroup Name="Biome" ID="{C4C67F9B-554B-4541-A8FF-91D81CACBAB8}">
+					<PropertyList>
+						<Property Name="DefaultTransitionTime" Type="Real64" Value="3"/>
+					</PropertyList>
 					<ChildrenList>
 						<State Name="None" ID="{2F3966F1-80B7-4C77-9664-446A5DE07444}"/>
 						<State Name="Prairie" ID="{39B6AD9F-0930-4211-9AA5-9A65A4DB95F5}"/>
