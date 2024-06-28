@@ -185,7 +185,6 @@ namespace BlockBuilder.BlockManagement
         public string soundID;
         public SoundType soundType;
 
-        
     }
     #endregion
 }
